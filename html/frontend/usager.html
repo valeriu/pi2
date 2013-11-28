@@ -1,4 +1,4 @@
-
+﻿
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,7 +15,7 @@
     <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for login page -->
-    <link href="css/login.css" rel="stylesheet">
+    <link href="css/usager.css" rel="stylesheet">
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
@@ -25,18 +25,45 @@
 
   <body>
     <div class="container">
-      <form class="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" class="form-control" placeholder="Email address" required autofocus>
-        <input type="password" class="form-control" placeholder="Password" required>
-        <label class="checkbox">
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-        <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
-      </form>
-
+		<div id="usager">
+			<form class="form-signin">
+				<button name="enregistrer" id="enregistrer" class="btn btn-lg btn-primary" type="button">S'enregistrer</button>
+				<button name="connecter" id="connecter" class="btn btn-lg btn-primary" type="button">Se connecter</button>
+			</form>
+			
+			<div id="connecterDiv">
+				<form class="form-signin">
+					<div class="input-group input-group-sm">
+						Courriel:
+						<input name="courriel" type="email" class="form-control" required>
+					</div>
+					<div class="input-group input-group-sm">
+						Mot de Passe:
+						<input name="password" type="password" class="form-control" required>
+					</div>
+					<button name="connexion" id="connexion" class="btn btn-primary" type="submit">Connexion</button>
+				</form>
+			</div>
+			
+			<div id="enregistrerDiv">
+				<div class="input-group input-group-sm">
+					Nom, Prénom:
+					<input name="nom" type="text" class="form-control" required>
+				</div>
+				<div class="input-group input-group-sm">
+					Courriel:
+					<input name="courriel" type="email" class="form-control" required>
+				</div>
+				<div class="input-group input-group-sm">
+					Mot de Passe:
+					<input name="password" type="password" class="form-control" required>
+				</div>
+				<button name="confirmer" id="confirmer" class="btn btn-primary" type="submit">Confirmer</button>
+			</div>
+		</div>
     </div> <!-- /container -->
     <!-- Bootstrap core JavaScript
     ================================================== -->
+	<script src="js/bootstrap.min.js"></script>
   </body>
 </html>
