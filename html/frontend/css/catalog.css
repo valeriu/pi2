@@ -1,0 +1,118 @@
+/* ==========================================================================
+   Catalogue's custom styles
+   ========================================================================== */
+
+article.produit {
+	width: 25%;
+	float: left;
+	margin-bottom: 25px;
+}
+
+article.produit > header {
+	font-weight: bold;
+	font-size: 125%;
+}
+
+section.image > img {
+	width: 100%;
+	height: auto;
+}
+
+
+	/* GRID VIEW STYLES */
+
+article.grid {
+	font-size: 80%;
+	width: 12%;
+}
+
+article.grid > section.image > img {
+	width: 80%;
+}
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+body {
+	font-family: 'Roboto Condensed', sans-serif;
+	padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: 'Francois One', sans-serif;
+}
+
+a.navbar-brand > img {
+	height: 130px;
+}
+
+a.popoverThis > img {
+	height: 200px;
+}
+
+ul.navbar-nav > li > a {
+	font-size: 175%;
+}
+
+div.popover {
+	max-width: 800px;
+}
+
+div.msg > img {
+	height: 700px;
+}
+
+div.item > img {
+	width: 100%;
+}
+
+div.carousel-caption {
+	background-color: black;
+	opacity: 0.7;
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+div.carousel-caption > h1 {
+	font-size: 200%;
+}
+
+div.carousel-caption > p {
+	font-size: 110%;
+}
+
+input.noborder {
+	border-radius: 5px;
+	text-align: center;
+}
+
+label.contact_label {
+	font-size: 100%;
+	font-weight: 300;
+}
+
+.modal {
+	width: 650px;
+}
+
+.modal.fade.in {
+	top: 3%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
