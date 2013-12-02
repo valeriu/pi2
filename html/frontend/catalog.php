@@ -30,12 +30,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a rel="tooltip" title="Accueil" class="navbar-brand" href="catalog.php"><img src="./img/logo_grisOr.png" alt="GrisOr"></a>
+          <a title="Accueil" class="navbar-brand" href="catalog.php"><img src="./img/logo_grisOr.png" alt="GrisOr"></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
-              <a rel="tooltip" title="Nombre de produits par page" href="#" class="dropdown-toggle" data-toggle="dropdown">Produits par page <b class="caret"></b></a>
+              <a title="Nombre de produits par page" href="#" class="dropdown-toggle" data-toggle="dropdown">Produits par page <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="catalog.php?nbP=12&amp;page=1&amp;mode=<?php if(isset($_GET['mode'])) echo $_GET['mode']; else echo 'details'; ?>">12</a></li>
                 <li><a href="catalog.php?nbP=24&amp;page=1&amp;mode=<?php if(isset($_GET['mode'])) echo $_GET['mode']; else echo 'details'; ?>">24</a></li>
@@ -43,8 +43,8 @@
                 <li><a href="catalog.php?nbP=99&amp;page=1&amp;mode=<?php if(isset($_GET['mode'])) echo $_GET['mode']; else echo 'details'; ?>">Tous les produits</a></li>
               </ul>
             </li>
-            <li><a rel="tooltip" title="Afficher les vignettes" href="catalog.php?mode=details&amp;page=1&amp;nbP=<?php if(isset($_GET['nbP'])) echo $_GET['nbP']; else echo 12; ?>">Vignettes</a></li>
-            <li><a rel="tooltip" title="Afficher une liste" href="catalog.php?mode=grid&amp;page=1&amp;nbP=<?php if(isset($_GET['nbP'])) echo $_GET['nbP']; else echo 12; ?>">Liste</a></li>
+            <li><a title="Afficher les vignettes" href="catalog.php?mode=details&amp;page=1&amp;nbP=<?php if(isset($_GET['nbP'])) echo $_GET['nbP']; else echo 12; ?>">Vignettes</a></li>
+            <li><a title="Afficher une liste" href="catalog.php?mode=grid&amp;page=1&amp;nbP=<?php if(isset($_GET['nbP'])) echo $_GET['nbP']; else echo 12; ?>">Liste</a></li>
           </ul>
           <ul id="pages-control" class="nav nav-pills pull-right">
             <!--DYNAMIC PAGINATION NAV -->
@@ -70,6 +70,5 @@
         <script type="text/javascript" src="js/products.js"></script>
         <script type="text/javascript" src="js/productView.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script src="js/catalog.js"></script>
     </body>
 </html>
