@@ -44,7 +44,7 @@
 	width: 350px;
 }
 #connecterDiv {
-	display: none;
+	/*display: none;*/
 	padding: 15px;
 	background-color: lightgrey;
 }
@@ -53,12 +53,27 @@
 	padding: 15px;
 	background-color: lightgrey;
 }
+#connecterDiv a{
+	margin-top: 15px;
+}
+#motPasseOublieDiv {
+	/*display: none;*/
+	padding: 15px;
+	background-color: lightgrey;
+}
 #connecterDiv .input-group, #enregistrerDiv .input-group{
 	margin: 0 auto;
 }
-#connecterDiv button, #enregistrerDiv button{
+#connecterDiv button, #enregistrerDiv button, #motPasseOublieDiv button{
 	margin-top: 15px;
 }
+#infosConnecter{
+	display: none;
+}
+#infosEnregistrer{
+	display: none;
+}
+
 
 
 
