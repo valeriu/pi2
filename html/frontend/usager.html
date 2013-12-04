@@ -12,14 +12,14 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/usager.js"></script>
 
-    <title>Signin Template for Bootstrap</title>
+    <title>Formulaire pour la gestion des connexions et inscriptions USAGERS</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for login page -->
     <link href="css/usager.css" rel="stylesheet">
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
@@ -28,64 +28,70 @@
 
   <body>
     <div class="container">
-		<div id="usager">
-			<form class="form-signin">
-				<button name="enregistrer" id="enregistrer" class="btn btn-lg btn-primary" type="button">S'enregistrer</button>
-				<button name="connecter" id="connecter" class="btn btn-lg btn-primary" type="button">Se connecter</button>
-			</form>
-			
-			<div id="connecterDiv">
-				<form class="form-signin" name="form-usager-connecter">
-					<div class="input-group input-group-sm">
-						Courriel:
-						<input name="courriel" type="email" class="form-control" size="32" required>
-					</div>
-					<div class="input-group input-group-sm">
-						Mot de Passe:
-						<input name="password" type="password" class="form-control" size="25" required>
-					</div>
-					<a name="motPasseOublie" id="motPasseOublie" href="#">Mot de passe oublié?</a>
-					<br>
-					<button name="connexion" id="connexion" class="btn btn-primary" type="submit">Connexion</button>
-					<br>
-					<a id="infosConnecter" href="modifierInfos.php">Compléter les informations du compte</a>
-					
+			<div id="usager">
+				<form class="form-signin">
+					<button name="enregistrer" id="enregistrer" class="btn btn-lg btn-primary" type="button">S'enregistrer</button>
+					<button name="connecter" id="connecter" class="btn btn-lg btn-primary" type="button">Se connecter</button>
 				</form>
+				
+				<div id="connecterDiv">
+					<form class="form-signin" name="form-usager-connecter">
+						<div class="input-group input-group-sm">
+							Courriel:
+							<input name="courriel" type="email" class="form-control" size="32" required>
+						</div>
+						<div class="input-group input-group-sm">
+							Mot de Passe:
+							<input name="password" type="password" class="form-control" size="25" required>
+						</div>
+						<a name="motPasseOublie" id="motPasseOublie" href="#">Mot de passe oublié?</a>
+						<br>
+						<button name="connexion" id="connexion" class="btn btn-primary" type="submit">Connexion</button>
+						<br>
+					</form>
+					<div id="infosConnecter">
+						<h1>Bienvenue sur le site de Wadagbé!</h1>
+						<a name="completerInfos" href="completerInfos.html">Compléter les informations du compte</a>
+					</div>
+				</div>
+				
+				<div id="enregistrerDiv">
+					<form class="form-signin" name="form-usager-enregistrer">
+						<div class="input-group input-group-sm">
+							Nom, Prénom:
+							<input name="nom" type="text" class="form-control" size="25" required>
+						</div>
+						<div class="input-group input-group-sm">
+							Courriel:
+							<input name="courriel" type="email" class="form-control" size="32" required>
+						</div>
+						<div class="input-group input-group-sm">
+							Mot de Passe:
+							<input name="password" type="password" class="form-control" size="25" required>
+						</div>
+						<button name="confirmer" id="confirmer" class="btn btn-primary" type="submit">Confirmer</button>
+						<br>
+					</form>
+					<div id="infosEnregistrer">
+						<h1>Bienvenue sur le site de Wadagbé!</h1>
+						<a name="completerInfos" href="completerInfos.html">Compléter les informations du compte</a>
+					</div>	
+				</div>
+				
+				<div id="motPasseOublieDiv">
+					<form class="form-signin" name="form-usager-oublie">
+						<div class="input-group input-group-sm">
+							Courriel:
+							<input name="courriel" type="email" class="form-control" size="32" required>
+						</div>
+						<button name="envoyer" id="envoyer" class="btn btn-primary" type="submit">Envoyer</button>
+					</form>	
+					<div id="courrielEnvoye">
+						<h1>Un courriel avec un mot de passe temporaire vous a été envoyé.</h1>
+					</div>
+				</div>
 			</div>
-			
-			<div id="enregistrerDiv">
-				<form class="form-signin" name="form-usager-enregistrer">
-					<div class="input-group input-group-sm">
-						Nom, Prénom:
-						<input name="nom" type="text" class="form-control" size="25" required>
-					</div>
-					<div class="input-group input-group-sm">
-						Courriel:
-						<input name="courriel" type="email" class="form-control" size="32" required>
-					</div>
-					<div class="input-group input-group-sm">
-						Mot de Passe:
-						<input name="password" type="password" class="form-control" size="25" required>
-					</div>
-					<button name="confirmer" id="confirmer" class="btn btn-primary" type="submit">Confirmer</button>
-					<br>
-					<a id="infosEnregistrer" href="modifierInfos.php">Compléter les informations du compte</a>
-				</form>	
-			</div>
-			
-			<div id="motPasseOublieDiv">
-				<form class="form-signin" name="form-usager-oublie">
-					<div class="input-group input-group-sm">
-						Courriel:
-						<input name="courriel" type="email" class="form-control" size="32" required>
-					</div>
-					<button name="envoyer" id="envoyer" class="btn btn-primary" type="submit">Envoyer</button>
-				</form>	
-			</div>
-		</div>
     </div> <!-- /container -->
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
 	
   </body>
 </html>

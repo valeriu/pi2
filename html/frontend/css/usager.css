@@ -28,28 +28,32 @@
 .form-signin .form-control:focus {
   z-index: 2;
 }
-.form-signin input[type="text"] {
+.form-signin input[type="text"], .form-signin input[type="password"], .form-signin input[type="email"] {
   margin-bottom: 10px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
-.form-signin input[type="password"] {
+/*.form-signin input[type="password"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-}
+}*/
+
+/* USAGER */
 #usager{
 	margin: 0 auto;
 	text-align: center;
 	width: 350px;
 }
+#usager h1{
+	font-size: 20px;
+	font-style: bold;
+}
 #connecterDiv {
-	/*display: none;*/
 	padding: 15px;
 	background-color: lightgrey;
 }
 #enregistrerDiv {
-	/*display: none;*/
 	padding: 15px;
 	background-color: lightgrey;
 }
@@ -57,7 +61,6 @@
 	margin-top: 15px;
 }
 #motPasseOublieDiv {
-	/*display: none;*/
 	padding: 15px;
 	background-color: lightgrey;
 }
@@ -73,7 +76,33 @@
 #infosEnregistrer{
 	display: none;
 }
+#courrielEnvoye{
+	display: none;
+}
 
+/* USAGERINFOS */
+#usagerInfos{
+	margin: 0 auto;
+	width: 700px;
+	height: auto;
+	padding: 25px;
+	background-color: grey;
+}
+#usagerInfos .form-signin {
+	max-width: 700px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 50px;
+  padding-top: 5px;
+	border: 1px solid black;
+}
+#usagerInfos h1{
+	font-size: 20px;
+}
+
+#usagerInfos .input-group {
+	display: block;
+}
 
 
 

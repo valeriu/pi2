@@ -1,0 +1,77 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/usager.js"></script>
+
+    <title>Formulaire pour compléter les infos des usagers</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for login page -->
+    <link href="css/usager.css" rel="stylesheet">
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+			<div id="usagerInfos">
+				<form class="form-signin" name="form-usager-informations">
+						<h1>Remplissez les champs suivant:</h1>
+						<div class="input-group input-group-sm">
+							Nom, Prénom:
+							<input name="nom" type="text" class="form-control"  placeholder="Nom placé avec PHP" required>
+						</div>
+						<div class="input-group input-group-sm">
+							Courriel:
+							<input name="courriel" type="email" class="form-control" placeholder="Courriel placé avec PHP" required>
+						</div>
+						<div class="input-group input-group-sm">
+							Téléphone:
+							<input name="tel" type="tel" class="form-control" required>
+						</div>
+						<div class="input-group input-group-sm">
+							Numéro Civique:
+							<input name="numCivique" type="number" class="form-control" required>
+						</div>
+						<div class="input-group input-group-sm">
+							Rue:
+							<input name="rue" type="text" class="form-control" required>
+						</div>
+						<div class="input-group input-group-sm">
+							Appartement:
+							<input name="appartement" type="text" class="form-control">
+						</div>
+						<div class="input-group input-group-sm">
+							Ville:
+							<input name="ville" type="text" class="form-control" required>
+						</div>
+						<div class="input-group input-group-sm">
+							Province:
+							<input name="province" type="text" class="form-control" required>
+						</div>
+						<div class="input-group input-group-sm">
+							Code Postal:
+							<input name="codePostal" type="text" class="form-control" required>
+						</div>
+						<button name="soumettre" id="soumettre" class="btn btn-primary" type="submit">Soumettre</button>
+						<br>
+				</form>
+			</div>
+    </div> <!-- /container -->
+	
+  </body>
+</html>
