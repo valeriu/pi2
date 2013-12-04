@@ -1,4 +1,18 @@
-﻿body {
+﻿/* =====================================================
+	Panier
+========================================================*/
+
+.panier .row p {
+	margin: 0 0 10px;
+    position: relative;
+    top: 50%;
+}
+.panier .featurette-divider {
+	border-color:#777;
+}
+
+/* / ===================================================*/
+body {
   background-color: #eee;
 }
 .container {
