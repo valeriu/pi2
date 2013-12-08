@@ -127,14 +127,13 @@ $(function(){
                 // Récuperation de chanque produit trouvé au Panier
                 //Condition pour savoir s'il y a au minimum un produit dans le Panier
                 if($('.total').length > 0){
-                    var totalproduits=1;
+                    var total=1;
                     $('.total').each(function(index, element){
-                        totalproduits += index;
+                        total += index;
                     });
                     totalProduits = $('#totalProduitsPanier');
-                    totalProduits.html(totalproduits);
-                    console.log(totalProduits);
-                    //shipping.valeurShipping(totalProduits);
+                    totalProduits.html(total);
+                    //shipping.valeurShipping(total);
                 }else{
                     // Élimination du content Panier
                     $('#panier').remove();
@@ -147,11 +146,15 @@ $(function(){
     var shipping = (function(){
         return {
             valeurShipping : function(e){
-                console.log(e);
-                //console.log(t);
-
                 var valS = $(e.currentTarget).val();
-                //return valS;
+                //$( "input:radio[name=bar]:checked" ).val();
+                // Total prix par produit
+                //total  = $(e.currentTarget).offsetParent().offsetParent().siblings().children().children('.total');
+                //total.html(val_prix*val_input);
+
+                console.log(valS);
+
+                return valS;
             }
         };
     }());
