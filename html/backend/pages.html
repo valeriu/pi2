@@ -40,16 +40,24 @@
     <div class="container">
     	<div class="row">
 		  <div class="col-lg-2 col-md-2">
-		  	<ul>
-		  		<li><a href="">Accueil</a></li>
-		  		<li><a href="">Produits</a></li>
-		  		<li><a href="">Pages</a></li>
-		  		<li><a href="">Utilisateurs</a></li>
-		  		<li><a href="">Ventes</a></li>
-		  	</ul>
+			<div class="list-group">
+				<a href="#" class="list-group-item active">Dashboard</a>
+				<a href="#" class="list-group-item"><span class="badge">414</span>Ventes</a>
+				<a href="#" class="list-group-item"><span class="badge">85</span>Produits</a>
+				<a href="#" class="list-group-item"><span class="badge">8</span>Pages</a>
+				<a href="#" class="list-group-item"><span class="badge">309</span>Utilisateurs</a>
+				<a href="#" class="list-group-item"><span class="badge">4</span>Menu</a>
+			</div>
 		  </div>
 		  <div class="col-lg-10 col-md-10">
-		  	<h1>Tous les pages <span class="label label-info">5</span></h1>
+		  <div class="panel panel-default">
+			<!-- Default panel contents -->
+			<div class="panel-heading">Tous les pages <span class="badge pull-right">8</span></div>
+			<div class="panel-body">
+			<p>Pages often used to present timeless information about site, in addition to the generally required "About" and "Contact" Pages, other examples of common pages include Copyright, Disclosure, Legal Information, Reprint Permissions, Company Information, and Accessibility Statement.</p>
+			</div>
+
+			<!-- Table pages-->
 			<table class="table table-hover">
 				<thead>
 				  <tr>
@@ -62,26 +70,75 @@
 				<tbody>
 				  <tr>
 					<td>1</td>
-					<td>A popos</td>
-					<td>Otto</td>
-					<td>@mdo</td>
+					<td><a href="#" title="Edit: A popos">A popos</a></td>
+					<td>2013/11/22</td>
+					<td><span class="label label-success">Publié</span></td>
 				  </tr>
 				  <tr>
 					<td>2</td>
-					<td>Contact</td>
-					<td>Thornton</td>
-					<td>@fat</td>
+					<td><a href="#" title="Edit: Contact">Contact</a></td>
+					<td>2013/11/25</td>
+					<td><span class="label label-warning">Draft</span></td>
 				  </tr>
 				  <tr>
 					<td>3</td>
-					<td>Politique de confidentialité Accord d’utilisation du site Web</td>
-					<td>@twitter</td>
+					<td><a href="#" title="Edit: Politique de confidentialité">Politique de confidentialité</a></td>
+					<td>2013/12/15</td>
+					<td><span class="label label-danger">Désactivé</span></td>
+				  </tr>
+				  <tr>
+					<td>5</td>
+					<td><a href="#" title="Edit: Accord d’utilisation du site Web">Accord d’utilisation du site Web</a></td>
+					<td>2013/12/15</td>
+					<td><span class="label label-success">Publié</span></td>
+				  </tr>
+				  <tr>
+					<td>8</td>
+					<td><a href="#" title="Edit: Copyright">Copyright</a></td>
+					<td>2013/12/15</td>
+					<td><span class="label label-success">Publié</span></td>
+				  </tr>
+				  <tr>
+					<td>6</td>
+					<td><a href="#" title="Edit:Company Information">Company Information</a></td>
+					<td>2013/12/15</td>
+					<td><span class="label label-danger">Désactivé</span></td>
+				  </tr>
+				  <tr>
+					<td>9</td>
+					<td><a href="#" title="Edit: Accessibility Statement">Accessibility Statement</a></td>
+					<td>2013/12/15</td>
+					<td><span class="label label-success">Publié</span></td>
+				  </tr>
+				  <tr>
+					<td>10</td>
+					<td><a href="#" title="Edit: Reprint Permissions">Reprint Permissions</a></td>
+					<td>2013/12/15</td>
+					<td><span class="label label-success">Publié</span></td>
 				  </tr>
 				</tbody>
-			  </table>
+			  </table><!-- end table-->
+			</div><!--end panel-->
+			<!--Pagination-->
+			<ul class="pagination">
+				<li class="disabled"><a href="#">&laquo;</a></li>
+				<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li><a href="#">&raquo;</a></li>
+			</ul>
 		  </div>
 		</div>
-    </div>
+    </div><!-- end content -->
+    <!-- Footer div -->
+    <div class="container">
+    <!-- Static navbar -->
+		<footer>
+			<p class="navbar-text">Copyright 2013 - Wadagbe</p>
+		</footer>
+    </div> <!-- /container -->
     <!-- Bootstrap core JavaScript
     ================================================== -->
   </body>
