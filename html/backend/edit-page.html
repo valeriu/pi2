@@ -57,37 +57,66 @@
 			<!-- Form Edit pages-->
 				<form role="form">
 					<div class="form-group">
-						<label for="exampleInputEmail1">Email address</label>
-						<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+						<label for="page-title">Title</label>
+						<input type="text" class="form-control" id="page-title" placeholder="Enter Title">
 					</div>
 					<div class="form-group">
-						<label for="exampleInputPassword1">Password</label>
-						<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+						<label for="page-description">Description</label>
+						<textarea class="form-control" rows="3" id="page-description" placeholder="Meta Description"></textarea>
+						<p class="help-block">L’une des premières utilisations a été de servir de clé d’accès supplémentaire pour les outils de recherche. <code>&lt;meta name="description" content=""&gt;</code></p>
 					</div>
 					<div class="form-group">
-						<label for="exampleInputFile">File input</label>
-						<input type="file" id="exampleInputFile">
-						<p class="help-block">Example block-level help text here.</p>
+						<label for="page-contenu">Contenu</label>
+						<textarea class="form-control" rows="18" id="page-contenu" placeholder="Page contenu"></textarea>
 					</div>
+
+					<div class="radio">
+						<label>
+							<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+							Option one is this and that&mdash;be sure to include why it's great
+						</label>
+					</div>
+					<div class="radio">
+						<label>
+							<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+							Option two can be something else and selecting it will deselect option one
+						</label>
+					</div>
+
 					<div class="checkbox">
 						<label>
-							<input type="checkbox"> Check me out
+							<input type="checkbox">Page aura une carte.
 						</label>
+					</div>
+					<div id="pagemap">
+						<div class="form-group">
+							<label for="page-latitudes">Latitudes</label>
+							<input type="text" class="form-control" id="page-latitudes" placeholder="Enter Latitudes">
 						</div>
-					<button type="submit" class="btn btn-default">Submit</button>
+						<div class="form-group">
+							<label for="page-longitudes">Longitudes</label>
+							<input type="text" class="form-control" id="page-longitudes" placeholder="Enter Longitudes">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="page-title">Auteur</label>
+						<input type="text" class="form-control" id="page-auteur" value="Valeriu Tihai" disabled>
+					</div>
+					<div class="form-group">
+						<label for="page-date">Date</label>
+						<input type="text" class="form-control" id="page-date" value="Jeudi 11 octobre 2013, 16:03" disabled>
+					</div>
+					<div class="form-group">
+						<label for="page-ip">Adresse IP</label>
+						<input type="text" class="form-control" id="page-ip" value="66.55.84.125" disabled>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary" data-loading-text="Sauvegardez...">Submit</button>
+					</div>
+					<div class="btn-group" data-toggle="buttons">
 				</form>		<!-- /Form Edit pages-->
 			</div>
 			</div><!--end panel-->
-			<!--Pagination-->
-			<ul class="pagination">
-				<li class="disabled"><a href="#">&laquo;</a></li>
-				<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#">&raquo;</a></li>
-			</ul>
 		  </div>
 		</div>
     </div><!-- end content -->
@@ -102,3 +131,4 @@
     ================================================== -->
   </body>
 </html>
+Status
