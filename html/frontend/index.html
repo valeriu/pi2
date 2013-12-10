@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bijouterie Fabio Villaba joallier, bijoutier à Montréal, fabrication des boucles d’oreilles, des colliers, des bracelets, des clips de cols, des chaînes à lunettes et des trouvailles vintages">
+    <meta name="author" content="Luis Felipe Rosas">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+
+    <title>Carousel Template for Bootstrap</title>
+   
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="css/carousel.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+    <!-- Header -->
+    <header class="container">
+      <div class="row"><!-- Une autre division pour le logo de la page -->
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+          <a class="thumbnail" href="#">
+            <img class="img-responsive" src="img/Logo.png" alt="Bojouterie Fabio Villalba"><!-- logo -->
+          </a>
+        </div>
+        <div class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-12">
+        <!-- / Connexion Usagers -->
+          <div id="usager" class="pull-right">
+            <form class="form-signin">
+              <button name="enregistrer" id="enregistrer" class="btn btn-primary" type="button">S'enregistrer</button>
+              <button name="connecter" id="connecter" class="btn btn-primary" type="button">Se connecter</button>
+            </form>
+            
+            <div id="connecterDiv">
+              <form class="form-signin" name="form-usager-connecter">
+                <div class="input-group input-group-sm">
+                  Courriel:
+                  <input name="courriel" type="email" class="form-control" size="32" required>
+                </div>
+                <div class="input-group input-group-sm">
+                  Mot de Passe:
+                  <input name="password" type="password" class="form-control" size="25" required>
+                </div>
+                <a name="motPasseOublie" id="motPasseOublie" href="#">Mot de passe oublié?</a>
+                <br>
+                <button name="connexion" id="connexion" class="btn btn-primary" type="submit">Connexion</button>
+                <br>
+              </form>
+              <div id="infosConnecter">
+                <h1>Bienvenue sur le site de Wadagbé!</h1>
+                <a name="completerInfos" href="completerInfos.html">Compléter les informations du compte</a>
+              </div>
+            </div>
+            
+            <div id="enregistrerDiv">
+              <form class="form-signin" name="form-usager-enregistrer">
+                <div class="input-group input-group-sm">
+                  Nom, Prénom:
+                  <input name="nom" type="text" class="form-control" size="25" required>
+                </div>
+                <div class="input-group input-group-sm">
+                  Courriel:
+                  <input name="courriel" type="email" class="form-control" size="32" required>
+                </div>
+                <div class="input-group input-group-sm">
+                  Mot de Passe:
+                  <input name="password" type="password" class="form-control" size="25" required>
+                </div>
+                <button name="confirmer" id="confirmer" class="btn btn-primary" type="submit">Confirmer</button>
+                <br>
+              </form>
+              <div id="infosEnregistrer">
+                <h1>Bienvenue sur le site de Wadagbé!</h1>
+                <a name="completerInfos" href="completerInfos.html">Compléter les informations du compte</a>
+              </div>  
+            </div>
+            
+            <div id="motPasseOublieDiv">
+              <form class="form-signin" name="form-usager-oublie">
+                <div class="input-group input-group-sm">
+                  Courriel:
+                  <input name="courriel" type="email" class="form-control" size="32" required>
+                </div>
+                <button name="envoyer" id="envoyer" class="btn btn-primary" type="submit">Envoyer</button>
+              </form> 
+              <div id="courrielEnvoye">
+                <h1>Un courriel avec un mot de passe temporaire vous a été envoyé.</h1>
+              </div>
+            </div>
+          </div><!-- / Connexion Usagers -->
+        </div>
+      </div><!-- / -->
+      <div class="row">
+        <!-- Menu de Navegation -->
+        <nav class="navbar-wrapper">
+          <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+            <div class="container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+              </div>
+              <div class="navbar-collapse collapse"><!-- PLUGIN DROPDOWN BOOTSTRAP -->
+                <ul class="nav navbar-nav">
+                  <li class="active"><a href="#">Accueil</a></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+            <li class="dropdown-header">Solar Panels</li>
+                      <li><a href="#">######</a></li>
+                      <li><a href="#">######</a></li>
+                      <li><a href="#">######</a></li>
+                      <li class="divider"></li>
+                      <li class="dropdown-header hidden-xs">LED Lamps</li><!-- hidden dans les petits écrans pour eviter le scroll -->
+                      <li><a class="hidden-xs" href="#">######</a></li><!-- hidden dans les petits écrans pour eviter le scroll -->
+                      <li><a class="hidden-xs" href="#">######</a></li><!-- hidden dans les petits écrans pour eviter le scroll -->
+                    </ul>
+                  </li>
+                  <li><a href="about.html">About us</a></li>
+                  <li><a href="contact.html">Contact</a></li>
+                </ul>
+              </div><!-- / PLUGIN DROPDOWN BOOTSTRAP -->
+            </div>
+          </div>
+        </nav><!-- / Menu de Navegation -->        
+      </div>
+    </header><!-- / Header -->
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Division du contenu principal -->
+    <div class="container marketing">
+  		<!-- Carousel -->
+  		<div class="row hidden-xs">
+  			<div class="col-lg-12"><!-- configuration pour les différents écrans -->
+  			  <!-- Carousel au milieu du page, pas visible dans les petits écrans -->
+  			  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  				<!-- Indicators -->
+  				<ol class="carousel-indicators">
+  				  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+  				  <li data-target="#myCarousel" data-slide-to="1"></li>
+  				  <li data-target="#myCarousel" data-slide-to="2"></li>
+  				</ol>
+  				<div class="carousel-inner">
+  					<div class="item active">
+  						<img src="img/slider03.jpg" alt="">
+  					</div>
+  					<div class="item">
+  						<img src="img/slider02.jpg" alt="">
+  					</div>
+  					<div class="item">
+  						<img src="img/slider01.jpg" alt="">
+  					</div>
+  				</div>
+  				<a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+  				<a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+  			  </div>
+  			</div>
+  		</div><!-- / Carousel -->
+  		
+  		<!-- Trois colonnes de texte en dessous du carrousel -->
+  		<div class="row">
+  			<div class="col-lg-4 col-md-4">
+  			  <img class="img-thumbnail" src="img/produit_promo.jpg" alt="Generic placeholder image">
+  			  <h2>Solar Panels</h2>
+  			  <p>Nous faisons vos rêves reels! Nos artisans sont capables de reproduire toutes sortes de créations à votre demande. Si vous n'avez pas un modelé à vous, nous mettons la meilleure équipe d’experts créateurs à votre service.</p>
+  			  <p><a class="btn btn-default" href="contact.html" role="button">Contactez-nous &raquo;</a></p>
+  			</div><!-- /.col-lg-4 -->
+  			<div class="col-lg-4 col-md-4">
+  			  <img class="img-thumbnail" src="img/produit_promo.jpg" alt="Generic placeholder image">
+  			  <h2>Solar Panels</h2>
+  			  <p>Les plus fines bagues de mariage pour ce moment si spécial. Célébrez votre amour avec des bagues de mariage fait spécialement pour vous.</p>
+  			  <p><a class="btn btn-default" href="2013.html" role="button">En savoir plus &raquo;</a></p>
+  			</div><!-- /.col-lg-4 -->
+  			<div class="col-lg-4 col-md-4">
+  			  <img class="img-thumbnail" src="img/produit_promo.jpg" alt="Generic placeholder image">
+  			  <h2>Solar Panels</h2>
+  			  <p>Le mariage parfait entre modernité et élégance. Vous aimerez notre ample collection de bijoux contemporains. Dessin exclusif de Fabio Villalba!</p>
+  			  <p><a class="btn btn-default" href="#" role="button">En savoir plus &raquo;</a></p>
+  			</div><!-- /.col-lg-4 -->
+  		</div><!-- /.row -->
+
+  		<hr class="featurette-divider">
+
+  		<!-- FOOTER -->
+  		<footer>
+  			<p class="pull-right"><a href="#">Back to top</a></p>
+  			<p class="auteur">&copy; 2013 Projet Intégration II</p>
+  		</footer>
+    </div><!-- /.container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/holder.js"></script>
+    <script src="js/usager.js"></script>
+  </body>
+</html>

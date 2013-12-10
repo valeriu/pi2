@@ -1,0 +1,184 @@
+/* ==========================================================================
+*   
+
+   ========================================================================== */
+
+/* background body*/
+body{
+	/*font-family: Helvetica,Arial,sans-serif;*/
+	background: url("../img/greyzz.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+/* background body*/
+/* Pour changer le couleur de liens*/
+a{
+	color:black;
+}
+a:hover, a:focus{
+	color:#5a5a5a;
+}
+/*/*/
+/* Alignation de texte justifié */
+p {
+	text-align:justify;
+}
+/*/*/
+/* bordeur y background-color au container*/
+.marketing{
+	background-color: rgba(255, 255, 255, 0.29);
+	border: 1px solid #DDDDDD;
+	padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+}/* / */
+/* logo */
+header .thumbnail {
+	background-color: transparent;
+	box-shadow:none;
+	border:none;
+}
+/* / logo */
+
+/* Désactivation d'effect hover dans tous les lines*/
+a:focus{
+	outline:none;
+}
+/* /*/
+
+/* -------------- Menu --------------------*/
+.navbar-inverse{
+	background: none;
+}
+.navbar-wrapper .container{
+	padding-left:15px;
+	padding-right:15px;
+}
+/* Pour effacer la bordeur */
+.navbar-wrapper .navbar{
+	border-radius: 0;	
+}
+/* Color de police */
+.navbar-inverse .navbar-nav > li > a{
+	color: #999;
+}
+/* Color de police en hover*/
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+	background-color: transparent;
+	border-bottom: 4px solid;
+    color: #080808;
+    padding-bottom: 5px;
+}
+.navbar-inverse .navbar-nav > .active > a {
+	border-bottom: 0;
+}
+/* Menu dropdown*/
+.navbar-inverse .navbar-nav > .dropdown > a:hover .caret{ /* Pour le petit triangle du dropdown*/
+	border-top-color:#080808;
+}
+/* Pour faire le ronde dans la partie dropdown du menu */
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus{
+	border-radius: 51%;
+	border-bottom: 0;
+	padding-bottom:15px;
+}
+.dropdown-menu{
+	background-color: #EFEFEF;
+}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{
+	background-color: #080808;
+}
+/* Icon Menu pour les mobiles */
+.navbar-toggle{
+	background-color: #555;
+}
+/* / -------------- Menu --------------------*/
+
+/* ---------------- Carrousel ---------------*/
+.navbar-wrapper{
+	position: relative;
+}
+.carousel .item{
+	background-color: transparent; 	
+}
+.carousel-control.left, .carousel-control.right{
+	background: none;
+}
+/* ---------------- Jumbotrom ---------------*/
+.jumbotron {
+	background-color: transparent; /*color transparent*/
+}
+/* /---------------- Jumbotrom ---------------*/
+
+/* -----------------  USAGER ---------------- */
+#usager{
+	margin: 10px auto;
+	text-align: center;
+	width: 280px;
+}
+#usager h1{
+	font-size: 20px;
+	font-style: bold;
+}
+#connecterDiv, #enregistrerDiv, #motPasseOublieDiv {
+	position: absolute;
+	z-index: 3000;
+}
+#connecterDiv {
+	margin-top: 5px;
+	padding: 15px;
+	background-color: lightgrey;
+}
+#enregistrerDiv {
+	margin-top: 5px;
+	padding: 15px;
+	background-color: lightgrey;
+}
+#connecterDiv a{
+	margin-top: 15px;
+}
+#motPasseOublieDiv {
+	margin-top: 5px;
+	padding: 15px;
+	background-color: lightgrey;
+}
+#connecterDiv .input-group, #enregistrerDiv .input-group{
+	margin: 0 auto;
+}
+#connecterDiv button, #enregistrerDiv button, #motPasseOublieDiv button{
+	margin-top: 15px;
+}
+#infosConnecter{
+	display: none;
+}
+#infosEnregistrer{
+	display: none;
+}
+#courrielEnvoye{
+	display: none;
+}
+/* -----------------  / USAGER ---------------- */
+
+/* ----------------- RESPONSIVE  ---------------- */
+@media (min-width: 768px) and (max-width: 992px) {
+	/* Modification du Carrousel pour que soit responsive avec les images*/
+	.carousel{
+		height: 294px;
+	}
+	.carousel .item{
+		height: 294px;	
+	}
+	.carousel-caption{
+		height:100%;
+	}
+	.carousel-inner > .item > img{
+		height:100%;
+	}
+	/* /---------------- Carrousel ---------------*/
+}
+/* ----------------- RESPONSIVE  ---------------- */
+
+/* ----------------- RESPONSIVE  ---------------- */
+@media (min-width: 320px) and (max-width: 750px) {
+	
+}
+/* ----------------- RESPONSIVE  ---------------- */
+
