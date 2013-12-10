@@ -119,26 +119,23 @@ a:focus{
 	font-style: bold;
 }
 #connecterDiv, #enregistrerDiv, #motPasseOublieDiv {
+	margin-top: 5px;
+	padding: 15px;
+	background-color: lightgrey;
 	position: absolute;
 	z-index: 3000;
 }
 #connecterDiv {
-	margin-top: 5px;
-	padding: 15px;
-	background-color: lightgrey;
+	display: none;
 }
 #enregistrerDiv {
-	margin-top: 5px;
-	padding: 15px;
-	background-color: lightgrey;
+	display: none;
 }
 #connecterDiv a{
 	margin-top: 15px;
 }
 #motPasseOublieDiv {
-	margin-top: 5px;
-	padding: 15px;
-	background-color: lightgrey;
+	display: none;
 }
 #connecterDiv .input-group, #enregistrerDiv .input-group{
 	margin: 0 auto;
