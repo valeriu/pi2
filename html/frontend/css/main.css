@@ -35,14 +35,25 @@ header .thumbnail {
 	background-color: transparent;
 	box-shadow:none;
 	border:none;
+	margin-bottom: auto;
+    margin-top: 15px;
 }
 /* / logo */
 
 /* Désactivation d'effect hover dans tous les lines*/
 a:focus{
 	outline:none;
+}/* /*/
+
+/* Shopping Cart */
+#shopping-cart{
+	margin-right: 27px;
+    padding-top: 25px;
 }
-/* /*/
+#nbProducts{
+	display: inline;
+}
+/* / Shopping Cart */
 
 /* -------------- Menu --------------------*/
 .navbar-inverse{
