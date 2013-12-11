@@ -52,7 +52,7 @@
 		  <div class="col-lg-10 col-md-10">
 		  <div class="panel panel-default">
 			<!-- Default panel contents -->
-			<div class="panel-heading">A popos</div>
+			<div class="panel-heading">Add or edit page</div>
 			<div class="panel-body">
 			<!-- Form Edit pages-->
 				<form role="form">
@@ -69,18 +69,26 @@
 						<label for="page-contenu">Contenu</label>
 						<textarea class="form-control" rows="18" id="page-contenu" placeholder="Page contenu"></textarea>
 					</div>
-
-					<div class="radio">
-						<label>
-							<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-							Option one is this and that&mdash;be sure to include why it's great
-						</label>
-					</div>
-					<div class="radio">
-						<label>
-							<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-							Option two can be something else and selecting it will deselect option one
-						</label>
+					<div class="form-group">
+						<label for="page-contenu">Page status</label>
+						<div class="radio">
+							<label>
+								<input type="radio" name="optionsRadios" id="optionsRadios1" value="publie" checked>
+								<span class="label label-success">Publié</span>
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name="optionsRadios" id="optionsRadios2" value="draft">
+								<span class="label label-warning">Draft</span>
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name="optionsRadios" id="optionsRadios3" value="desactive">
+								<span class="label label-danger">Désactivé</span>
+							</label>
+						</div>
 					</div>
 
 					<div class="checkbox">
@@ -131,4 +139,3 @@
     ================================================== -->
   </body>
 </html>
-Status
