@@ -2,12 +2,6 @@
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
-body {
-  padding-bottom: 40px;
-  color: #5a5a5a;
-}
-
-
 
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
@@ -70,10 +64,10 @@ body {
 }
 
 /* Center align the text within the three columns below the carousel */
-.marketing .col-lg-4 {
+/*.marketing .col-lg-4 {
   text-align: center;
   margin-bottom: 20px;
-}
+}*/
 .marketing h2 {
   font-weight: normal;
 }
@@ -86,9 +80,10 @@ body {
 /* Featurettes
 ------------------------- */
 
-.featurette-divider {
-  margin: 80px 0; /* Space out the Bootstrap <hr> more */
-}
+/* Space out the Bootstrap <hr> more*/
+/*.featurette-divider {
+  margin: 80px 0; 
+}*/
 
 /* Thin out the marketing headings */
 .featurette-heading {
@@ -111,9 +106,9 @@ body {
   }
 
   /* Navbar positioning foo */
-  .navbar-wrapper {
+  /*.navbar-wrapper {
     margin-top: 20px;
-  }
+  }*/
   .navbar-wrapper .container {
     padding-left:  15px;
     padding-right: 15px;

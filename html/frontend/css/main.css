@@ -163,6 +163,9 @@ a:focus{
 #courrielEnvoye{
 	display: none;
 }
+.btn-primary{
+	min-width: 110px;
+}
 /* -----------------  / USAGER ---------------- */
 
 /* ----------------- RESPONSIVE  ---------------- */
