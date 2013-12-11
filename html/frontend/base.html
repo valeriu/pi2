@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Bijouterie Fabio Villaba joallier, bijoutier à Montréal, fabrication des boucles d’oreilles, des colliers, des bracelets, des clips de cols, des chaînes à lunettes et des trouvailles vintages">
+    <meta name="description" content="">
     <meta name="author" content="Luis Felipe Rosas">
     <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
-    <title>Carousel Template for Bootstrap</title>
+    <title>Wadagbé</title>
    
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -32,87 +32,87 @@
   <body>
     <!-- Header -->
     <header class="container">
-      <div class="row"><!-- Une autre division pour le logo de la page -->
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+      <article class="row"><!-- Une autre division pour le logo de la page -->
+        <article class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
           <a class="thumbnail" href="#">
             <img class="img-responsive" src="img/Logo.png" alt="Bojouterie Fabio Villalba"><!-- logo -->
           </a>
-        </div>
-        <div class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-12 pull-right">
+        </article>
+        <article class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-12 pull-right">
         <!-- / Connexion Usagers -->
-          <div id="usager" class="pull-right">
+          <section id="usager" class="pull-right">
             <form class="form-signin">
-              <button name="enregistrer" id="enregistrer" class="btn btn-primary" type="button">S'enregistrer</button>
-              <button name="connecter" id="connecter" class="btn btn-primary" type="button">Se connecter</button>
+              <button name="enregistrer" id="enregistrer" class="btn btn-primary" type="button">Register</button>
+              <button name="connecter" id="connecter" class="btn btn-primary" type="button">Login</button>
             </form>
             
-            <div id="connecterDiv">
+            <article id="connecterDiv">
               <form class="form-signin" name="form-usager-connecter">
                 <div class="input-group input-group-sm">
-                  Courriel:
+                  Email :
                   <input name="courriel" type="email" class="form-control" size="32" required>
                 </div>
                 <div class="input-group input-group-sm">
-                  Mot de Passe:
+                  Pasword :
                   <input name="password" type="password" class="form-control" size="25" required>
                 </div>
-                <a name="motPasseOublie" id="motPasseOublie" href="#">Mot de passe oublié?</a>
+                <a name="motPasseOublie" id="motPasseOublie" href="#">Forgotten password?</a>
                 <br>
                 <button name="connexion" id="connexion" class="btn btn-primary" type="submit">Connexion</button>
                 <br>
               </form>
               <div id="infosConnecter">
-                <h1>Bienvenue sur le site de Wadagbé!</h1>
-                <a name="completerInfos" href="completerInfos.html">Compléter les informations du compte</a>
+                <h1>Wellcome Wadagbé!</h1>
+                <a name="completerInfos" href="completerInfos.html">Complete account informations</a>
               </div>
-            </div>
+            </article>
             
-            <div id="enregistrerDiv">
+            <article id="enregistrerDiv">
               <form class="form-signin" name="form-usager-enregistrer">
                 <div class="input-group input-group-sm">
-                  Nom, Prénom:
+                  Last name, name:
                   <input name="nom" type="text" class="form-control" size="25" required>
                 </div>
                 <div class="input-group input-group-sm">
-                  Courriel:
+                  Email:
                   <input name="courriel" type="email" class="form-control" size="32" required>
                 </div>
                 <div class="input-group input-group-sm">
-                  Mot de Passe:
+                  Password:
                   <input name="password" type="password" class="form-control" size="25" required>
                 </div>
                 <button name="confirmer" id="confirmer" class="btn btn-primary" type="submit">Confirmer</button>
                 <br>
               </form>
               <div id="infosEnregistrer">
-                <h1>Bienvenue sur le site de Wadagbé!</h1>
-                <a name="completerInfos" href="completerInfos.html">Compléter les informations du compte</a>
+                <h1>Wellcome Wadagbé!</h1>
+                <a name="completerInfos" href="completerInfos.html">Complete account informations</a>
               </div>  
-            </div>
+            </article>
             
-            <div id="motPasseOublieDiv">
+            <article id="motPasseOublieDiv">
               <form class="form-signin" name="form-usager-oublie">
                 <div class="input-group input-group-sm">
-                  Courriel:
+                  Email:
                   <input name="courriel" type="email" class="form-control" size="32" required>
                 </div>
-                <button name="envoyer" id="envoyer" class="btn btn-primary" type="submit">Envoyer</button>
+                <button name="envoyer" id="envoyer" class="btn btn-primary" type="submit">Submit</button>
               </form> 
               <div id="courrielEnvoye">
-                <h1>Un courriel avec un mot de passe temporaire vous a été envoyé.</h1>
+                <h1>A temporary password has been sent.</h1>
               </div>
-            </div>
-          </div><!-- / Connexion Usagers -->
-        </div>
+            </article>
+          </section><!-- / Connexion Usagers -->
+        </article>
         <!-- Shopping Cart -->
-        <div id="shopping-cart" class="col-lg-4 pull-right text-right">
+        <article id="shopping-cart" class="col-lg-4 pull-right text-right">
           <button type="button" class="btn btn-primary btn-lg">
              <span class="glyphicon glyphicon-shopping-cart"></span> Cart : <span id="nbProducts">Empty</span>
           </button>
-        </div>
+        </article>
         <!-- / Shopping Cart -->
-      </div><!-- / -->
-      <div class="row">
+      </article><!-- / -->
+      <section class="row">
         <!-- Menu de Navegation -->
         <nav class="navbar-wrapper">
           <div class="navbar navbar-inverse navbar-static-top" role="navigation">
@@ -127,7 +127,7 @@
               </div>
               <div class="navbar-collapse collapse"><!-- PLUGIN DROPDOWN BOOTSTRAP -->
                 <ul class="nav navbar-nav">
-                  <li class="active"><a href="#">Accueil</a></li>
+                  <li class="active"><a href="#">Home</a></li>
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -148,10 +148,10 @@
             </div>
           </div>
         </nav><!-- / Menu de Navegation -->        
-      </div>
+      </section>
     </header><!-- / Header -->
     <!-- Division du contenu principal -->
-    <div class="container marketing">
+    <main class="container marketing">
       <!-- ======================= 
            *** BASE ***
       =========================== -->
@@ -170,7 +170,7 @@
   			<p class="pull-right"><a href="#">Back to top</a></p>
   			<p class="auteur">&copy; 2013 Projet Intégration II</p>
   		</footer><!-- / FOOTER -->
-    </div>
+    </main>
     <!-- /.container -->
 
     <!-- Bootstrap core JavaScript
