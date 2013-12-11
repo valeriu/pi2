@@ -1,25 +1,22 @@
 ﻿/* USAGERINFOS */
 #usagerInfos{
 	margin: 0 auto;
-	width: 700px;
-	height: auto;
-	padding: 25px;
-	background-color: grey;
-}
-#usagerInfos .form-signin {
-	max-width: 700px;
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-bottom: 50px;
-  padding-top: 5px;
-	border: 1px solid black;
 }
 #usagerInfos h1{
 	font-size: 20px;
 }
-
 #usagerInfos .input-group {
+	width: 80%;
+	margin-right: 10%;
+	margin-left: 10%;
 	display: block;
+}
+#soumettre{
+	margin-top: 20px;
+}
+#usagerInfos button{
+	margin-left: 50%;
+	margin-right: 50%;
 }
 /* / FIN USAGERINFOS */
 
