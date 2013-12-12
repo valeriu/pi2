@@ -153,77 +153,100 @@
 			<!-- ======================= 
 					 *** BASE ***
 			=========================== -->
-			<form id="panier" class="panier-etape1">
-				<div class="panel panel-default">
-					<header class="panel-heading">
-						<h2>Shippings adresse options</h2>
-					</header>
-					<article id="produits" class="panel-body">
-						<div class="panel panel-default">
-							<div class="panel-heading">User Adress (id: 54)
-							</div>
-							<div class="panel-body">
-								<p>2650 Desjardins st.</p>
-								<p>appartement 4</p>
-								<p>Montreal, Québec</p>
-								<p>H1V 2H7</p>
-							</div>
-						</div>    
-					</article>
-					<article id="infoPanier" class="panel-footer">
-						<article id="totalProduits" class="row">
-							<div class="col-lg-12">
-								<div class="col-md-offset-8 col-md-2 text-right">
-									<p><strong>Products</strong></p>
-								</div>
-								<div class="col-md-2 text-center">
-									<p id="totalProduitsPanier">3</p>
-								</div>
-							</div>
-						</article>
-					</article>
-				</div>
-				<div class="panel panel-default">
+			<form id="ShippingAddress" method="POST" action="#">
+				<div class="panel-group" id="accordion">
+					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h3 class="panel-title">Delivery options</h3>
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+									Shippings adresse options
+								</a>
+							</h4>
 						</div>
-						<div id="optionsShipping" class="panel-body">
+						<div id="collapseOne" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<div class="row">
+									<article class="col-lg-3">
+										<p>2650 Desjardins st. App. 4</p>
+										<p>Montreal, Québec &nbsp;H1V 2H7</p>
+										<div class="input-group">
+											<label for="address1" class="form-control">Address 1</label> 
+											<span class="input-group-addon">
+												<input type="radio" id="address1" name="shippingAddress" value="20">
+											</span>
+										</div><!-- /input-group -->
+									</article>
+									<article class="col-lg-3">
+										<p>1936 Rue Martial App. 9</p>
+										<p>Montreal, Québec &nbsp;H1H 1W7</p>
+										<div class="input-group">
+											<label for="address2" class="form-control">Address 2</label> 
+											<span class="input-group-addon">
+												<input type="radio" id="address2" name="shippingAddress" value="20">
+											</span>
+										</div><!-- /input-group -->
+									</article>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+						  <h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+								New Shipping Address
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseTwo" class="panel-collapse collapse">
+							<div class="panel-body">
+								<div class="input-group input-group-sm">
+									Phone number:
+									<input name="tel" type="tel" class="form-control" required>
+								</div>
+								<div class="input-group input-group-sm">
+									Adress:
+									<input name="numCivique" type="number" class="form-control" required>
+								</div>
+								<div class="input-group input-group-sm">
+									Street:
+									<input name="rue" type="text" class="form-control" required>
+								</div>
+								<div class="input-group input-group-sm">
+									Appartement:
+									<input name="appartement" type="text" class="form-control">
+								</div>
+								<div class="input-group input-group-sm">
+									Town:
+									<input name="ville" type="text" class="form-control" required>
+								</div>
+								<div class="input-group input-group-sm">
+									Province:
+									<input name="province" type="text" class="form-control" required>
+								</div>
+								<div class="input-group input-group-sm">
+									Zip Code:
+									<input name="codePostal" type="text" class="form-control" required>
+								</div>
+							</div>
 							<div class="row">
-								<div class="col-lg-2">
+								<article class="col-lg-3">
 									<div class="input-group">
-										<label for="option1" class="form-control">Option 1</label> 
-											<span class="input-group-addon">
-												<input type="radio" id="option1" name="choixLivraison" value="10" checked="checked">
-											</span>
+										<label for="address3" class="form-control">Validate address</label> 
+										<span class="input-group-addon">
+											<input type="radio" id="address3" name="shippingAddress" value="20">
+										</span>
 									</div><!-- /input-group -->
-								</div><!-- /.col-lg-6 -->
-								<div class="col-lg-2">
-									<div class="input-group">
-										<label for="option2" class="form-control">Option 2</label> 
-											<span class="input-group-addon">
-												<input type="radio" id="option2" name="choixLivraison" value="20">
-											</span>
-									</div><!-- /input-group -->
-								</div><!-- /.col-lg-6 -->
-								<div class="col-lg-2">
-									<div class="input-group">
-										<label for="option3" class="form-control">Option 3</label> 
-											<span class="input-group-addon">
-												<input type="radio" id="option3" name="choixLivraison" value="30">
-											</span>
-									</div><!-- /input-group -->
-								</div><!-- /.col-lg-6 -->
-						</div><!-- /.row -->
+								</article>
+							</div>
 						</div>
+					</div>
+					<hr class="featurette-divider">
+					<a href="panier.html"><button name="back" id="back" class="btn btn-lg btn-primary" type="button">Back</button></a>
+					<a href="panier_confirmation.html"><button name="pay" id="pay" class="btn btn-lg btn-primary" type="button">Pay</button></a>
+					<!--<button name="pay" id="pay" class="btn btn-lg btn-primary" type="submit">Pay</button>-->
 				</div>
-				<button name="retourner" id="back" class="btn btn-lg btn-primary" type="button">Back</button>
-				<button name="continuer" id="next" class="btn btn-lg btn-primary" type="button">Next</button>
 			</form>
-			<div id="panierVide">
-				<div class="alert alert-danger">
-					<p>Your shopping cart is empty</p>
-				</div>
-			</div>
 			<!-- ======================= 
 				 *** / FIN BASE ***
 			=========================== -->

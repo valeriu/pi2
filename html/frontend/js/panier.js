@@ -40,11 +40,17 @@ $(function(){
                 prix  = $(e.currentTarget).offsetParent().offsetParent().siblings().children().children('.prix');
                 // On recupere le prix du produit
                 val_prix = prix.html();
+                
+                // **************************
+                shipping.totalShipping()
 
                 // Total prix par produit
                 total  = $(e.currentTarget).offsetParent().offsetParent().siblings().children().children('.total');
                 total.html(val_prix*val_input);
-
+                
+                // Appelle de la fonction qui montre le total de produits au panier
+                totalProduitsPanier.totalProduits();
+                    
                 // Appelle à la fonction qui montre le prix total du Panier
                 totalPrixPanier.totalPrix();
             }
@@ -72,9 +78,15 @@ $(function(){
                     // On recupere le prix du produit
                     val_prix = prix.html();
 
+                    // **************************
+                    shipping.totalShipping()
+
                     // Total prix par produit
                     total  = $(e.currentTarget).offsetParent().offsetParent().siblings().children().children('.total');
                     total.html(val_prix*val_input);
+
+                    // Appelle de la fonction qui montre le total de produits au panier
+                    totalProduitsPanier.totalProduits();
 
                     // Appelle à la fonction qui montre le prix total du Panier
                     totalPrixPanier.totalPrix();
@@ -93,6 +105,7 @@ $(function(){
                 // Cibler le bon produit à éffacer
                 val_cible = $(e.currentTarget).parents('.row');
                 val_cible.remove();
+
                 // Appelle de la fonction qui montre le total de produits au panier
                 totalProduitsPanier.totalProduits();
                 // Appelle à la fonction qui montre le prix total du Panier
@@ -103,6 +116,7 @@ $(function(){
     }());
 
     var totalPrixPanier = (function (){
+        var totalshipping, totalTaxes;
 
         return {
              //Total produits au Panier
@@ -115,6 +129,20 @@ $(function(){
                     totalCumulatif += cumulatif*1;
                 });
                 totalPrix     = $('#totalPrixPanier');
+                totalTaxes    = $('#totalTaxes').html();
+                console.log(totalTaxes);
+
+                totalshipping = shipping.totalShipping();
+
+                if(totalshipping == undefined || !totalTaxes){
+                    totalshipping = 10;
+                    totalTaxes = 54;
+                    totalCumulatif += (totalshipping*1) + (totalTaxes*1);
+                }else{
+                    totalCumulatif += (totalshipping*1) + (totalTaxes*1);
+                    //console.log(totalshipping+totalTaxes);
+                }
+
                 totalPrix.html(totalCumulatif);
             }
         }
@@ -126,13 +154,17 @@ $(function(){
             totalProduits : function(){
                 // Récuperation de chanque produit trouvé au Panier
                 //Condition pour savoir s'il y a au minimum un produit dans le Panier
-                if($('.total').length > 0){
-                    var total=1;
-                    $('.total').each(function(index, element){
-                        total += index;
-                    });
+
+                var totalCumulatif=0;
+                $( "input[name=quantite]:text").each(function(index, element){
+                    var cumulatif = $(this).val();
+                    totalCumulatif += cumulatif*1;
+                });
+                //console.log(totalCumulatif);
+
+                if(totalCumulatif > 0){
                     totalProduits = $('#totalProduitsPanier');
-                    totalProduits.html(total);
+                    totalProduits.html(totalCumulatif);
                     //shipping.valeurShipping(total);
                 }else{
                     // Élimination du content Panier
@@ -144,6 +176,7 @@ $(function(){
     }());
 
     var shipping = (function(){
+        var total, priceShipping = 10;
         return {
             valeurShipping : function(e){
                 var valS = $(e.currentTarget).val();
@@ -152,9 +185,26 @@ $(function(){
                 //total  = $(e.currentTarget).offsetParent().offsetParent().siblings().children().children('.total');
                 //total.html(val_prix*val_input);
 
-                console.log(valS);
+                //optionShipping = $("input[name=choixLivraison]:text").val();
 
-                return valS;
+                total = $('#totalshipping');
+                total.html(valS);
+
+                priceShipping = parseInt(valS);
+
+                // Appelle à la fonction qui montre le prix total du Panier
+                totalPrixPanier.totalPrix();
+
+                //console.log("1", priceShipping);
+
+                return priceShipping;
+            },
+
+            totalShipping : function (){
+
+                //console.log("2", priceShipping);
+
+                return priceShipping;
             }
         };
     }());

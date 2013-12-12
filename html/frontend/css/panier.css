@@ -67,10 +67,20 @@ hr:not(:first-of-type) {
 /* / */
 
 /* Boutton connecter */
-#next {
+#next, #pay {
   float: right;
 }
 /* / */
+
+/* Shipping Address */
+
+#ShippingAddress #accordion .panel-collapse article{
+  border:1px solid #DDDDDD;
+  margin: 0 10px;
+  padding: 15px;
+}
+
+/* / Shipping Address */
 /* =====================================================
   Fin Panier
 ========================================================*/
