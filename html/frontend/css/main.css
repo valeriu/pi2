@@ -45,6 +45,12 @@ a:focus{
 	outline:none;
 }/* /*/
 
+/* Input group display block */
+.input-group {
+	display: block;
+}
+/* / */
+
 /* Shopping Cart */
 #shopping-cart{
 	margin-right: 27px;
