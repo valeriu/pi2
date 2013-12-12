@@ -24,6 +24,10 @@ table.table-hover>tbody>tr>td {
 	text-align: center;
 }
 
+span[class~=glyphicon-star] {
+	color: orange;
+}
+
 
 
 
