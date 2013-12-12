@@ -12,19 +12,19 @@ $(function() {
         //TOGGLE DETAILS AND IMAGES IN CATALOG
             if(count==1) {
                 $target.parent().find("img").animate(large, "slow", function() {
-                    $target.closest("tr").next().find("div.product-details").slideToggle("slow");
-                    $target.closest("tr").next().find("div.product-details").toggleClass("visible-details");
+                    $target.closest("tr").next().find("article.product-details").slideToggle("slow");
+                    $target.closest("tr").next().find("article.product-details").toggleClass("visible-details");
                     $target.parent().find("img").toggleClass("large-image");
                     count = 2;
                 });
             } else {
-                $("div.visible-details").slideToggle("slow", function() {
-                    $("div.visible-details").toggleClass("visible-details");
+                $("article.visible-details").slideToggle("slow", function() {
+                    $("article.visible-details").toggleClass("visible-details");
                     $("img.large-image").animate(small, "slow", function() {
                         $("img.large-image").toggleClass("large-image");
                         $target.parent().find("img").animate(large, "slow", function() {
-                            $target.closest("tr").next().find("div.product-details").slideToggle("slow");
-                            $target.closest("tr").next().find("div.product-details").toggleClass("visible-details");
+                            $target.closest("tr").next().find("article.product-details").slideToggle("slow");
+                            $target.closest("tr").next().find("article.product-details").toggleClass("visible-details");
                             $target.parent().find("img").toggleClass("large-image");
                         });
                     });      
