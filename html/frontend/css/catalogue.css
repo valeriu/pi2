@@ -26,6 +26,28 @@ table.table-hover>tbody>tr>td {
 
 span[class~=glyphicon-star] {
 	color: orange;
+	font-size: 120%;
+	margin-top: 25px;
+}
+
+span[class~=glyphicon-star-empty] {
+	font-size: 120%;
+	margin-top: 25px;
+}
+
+.text-pricing {
+	font-size: 125%;
+	font-weight: bolder;
+}
+
+/*TESTS DESIGN*/
+body {
+	font-family: 'Roboto Slab', serif;
+}
+
+.main-nav {
+	font-size: 120%;
+	font-weight: bold;
 }
 
 
