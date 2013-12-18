@@ -1,193 +1,232 @@
 <!DOCTYPE html>
 <html lang="fr">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Wadagbé">
-		<meta name="author" content="">
-		<link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
-		<title>Wadagbé</title>
-	 
-		<!-- Bootstrap core CSS -->
-		<link href="css/bootstrap.css" rel="stylesheet">
+    <title>Page static template</title>
+   
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    
 
-		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-			<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-		<![endif]-->
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
-		<!-- Custom styles for this template -->
-		<link href="css/carousel.css" rel="stylesheet">
-		<link href="css/main.css" rel="stylesheet">
-		<link href="css/usager.css" rel="stylesheet">
-		<link href="css/panier.css" rel="stylesheet">
-		<link href="css/catalog.css" rel="stylesheet">
-	</head>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="css/carousel.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+        <!-- Google Maps JS -->
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyww0kT3sGjHybCQdvUB1vIOeelhxZtao&sensor=false"></script>
+	<script type="text/javascript">
+	function initialize() {
+		var mapOptions = {
+			center: new google.maps.LatLng(45.6007189, -73.5310528),
+			zoom: 15,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			};
+			var map = new google.maps.Map(document.getElementById("map-wadagbe"), mapOptions);
+	}
+	google.maps.event.addDomListener(window, 'load', initialize);
+	</script>
+  </head>
 <!-- NAVBAR
 ================================================== -->
-	<body>
-		<!-- Header -->
-		<header class="container">
-			<article class="row"><!-- Une autre division pour le logo de la page -->
-				<article class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-					<div id="flashContent">
-						<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="425" height="175" id="wadagbe_logo_animated" align="middle">
-							<param name="movie" value="swf/wadagbe_logo_animated.swf" />
-							<param name="quality" value="best" />
-							<param name="bgcolor" value="#ffffff" />
-							<param name="play" value="true" />
-							<param name="loop" value="true" />
-							<param name="wmode" value="transparent" />
-							<param name="scale" value="showall" />
-							<param name="menu" value="true" />
-							<param name="devicefont" value="false" />
-							<param name="salign" value="" />
-							<param name="allowScriptAccess" value="sameDomain" />
-							<!--[if !IE]>-->
-							<object type="application/x-shockwave-flash" data="swf/wadagbe_logo_animated.swf" width="425" height="175">
-								<param name="movie" value="swf/wadagbe_logo_animated.swf" />
-								<param name="quality" value="best" />
-								<param name="bgcolor" value="#ffffff" />
-								<param name="play" value="true" />
-								<param name="loop" value="true" />
-								<param name="wmode" value="transparent" />
-								<param name="scale" value="showall" />
-								<param name="menu" value="true" />
-								<param name="devicefont" value="false" />
-								<param name="salign" value="" />
-								<param name="allowScriptAccess" value="sameDomain" />
-							<!--<![endif]-->
-								<a href="http://www.adobe.com/go/getflash">
-									<img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" />
-								</a>
-							<!--[if !IE]>-->
-							</object>
-							<!--<![endif]-->
-						</object>
-					</div>
-				</article>
-				<article class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-12 pull-right">
-				<!-- / Connexion Usagers -->
-					<section id="usager" class="pull-right">
-						<form class="form-signin">
-							<button name="enregistrer" id="enregistrer" class="btn btn-primary" type="button">S'enregistrer</button>
-							<button name="connecter" id="connecter" class="btn btn-primary" type="button">Connexion</button>
-						</form>
-						
-						<article id="connecterDiv">
-							<form class="form-signin" name="form-usager-connecter">
-								<div class="input-group input-group-sm">
-									Courriel :
-									<input name="courriel" type="email" class="form-control" required>
-								</div>
-								<div class="input-group input-group-sm">
-									Mot de passe :
-									<input name="password" type="password" class="form-control" required>
-								</div>
-								<a name="motPasseOublie" id="motPasseOublie" href="#">Mot de passe oublié</a>
-								<br>
-								<button name="connexion" id="connexion" class="btn btn-primary" type="submit">Connexion</button>
-								<br>
-							</form>
-							<div id="infosConnecter">
-								<h1>Wellcome Wadagbé!</h1>
-								<a name="completerInfos" href="completerInfos.html">Compléter les informations</a>
-							</div>
-						</article>
-						
-						<article id="enregistrerDiv">
-							<form class="form-signin" name="form-usager-enregistrer">
-								<div class="input-group input-group-sm">
-									Nom, prénom:
-									<input name="nom" type="text" class="form-control"  required>
-								</div>
-								<div class="input-group input-group-sm">
-									Courriel:
-									<input name="courriel" type="email" class="form-control" required>
-								</div>
-								<div class="input-group input-group-sm">
-									Mot de passe:
-									<input name="password" type="password" class="form-control" required>
-								</div>
-								<button name="confirmer" id="confirmer" class="btn btn-primary" type="submit">Confirmer</button>
-								<br>
-							</form>
-							<div id="infosEnregistrer">
-								<h1>Bienvenue sur Wadagbé!</h1>
-								<a name="completerInfos" href="completerInfos.html">Compléter les informations</a>
-							</div>  
-						</article>
-						
-						<article id="motPasseOublieDiv">
-							<form class="form-signin" name="form-usager-oublie">
-								<div class="input-group input-group-sm">
-									Courriel:
-									<input name="courriel" type="email" class="form-control" required>
-								</div>
-								<button name="envoyer" id="envoyer" class="btn btn-primary" type="submit">Soumettre</button>
-							</form> 
-							<div id="courrielEnvoye">
-								<h1>Répondez à la question suivante: </h1>
-							</div>
-						</article>
-					</section><!-- / Connexion Usagers -->
-				</article>
-				<!-- Shopping Cart -->
-				<article id="shopping-cart" class="col-lg-4 pull-right text-right">
-					<a href="panier.html">
-						<button type="button" class="btn btn-primary btn-lg">
-							 <span class="glyphicon glyphicon-shopping-cart"></span> Panier : <span id="nbProducts">Vide</span>
-						</button>
-					</a>
-				</article>
-				<!-- / Shopping Cart -->
-			</article><!-- / -->
-			<section class="row">
-				<!-- Menu de Navegation -->
-				<nav class="navbar-wrapper">
-					<div class="navbar navbar-inverse navbar-static-top" role="navigation">
-						<div class="container">
-							<div class="navbar-header">
-								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-									<span class="sr-only">Toggle navigation</span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-								</button>
-							</div>
-							<div class="navbar-collapse collapse"><!-- PLUGIN DROPDOWN BOOTSTRAP -->
-								<ul class="nav navbar-nav">
-									<li class="active"><a href="#">Accueil</a></li>
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Produits<b class="caret"></b></a>
-										<ul class="dropdown-menu">
-						<li class="dropdown-header">Panneaux solaires</li>
-											<li><a href="#">######</a></li>
-											<li><a href="#">######</a></li>
-											<li><a href="#">######</a></li>
-											<li class="divider"></li>
-											<li class="dropdown-header hidden-xs">Lampes DEL</li><!-- hidden dans les petits écrans pour eviter le scroll -->
-											<li><a class="hidden-xs" href="#">######</a></li><!-- hidden dans les petits écrans pour eviter le scroll -->
-											<li><a class="hidden-xs" href="#">######</a></li><!-- hidden dans les petits écrans pour eviter le scroll -->
-										</ul>
-									</li>
-									<li><a href="about.html">À propos</a></li>
-									<li><a href="contact.html">Contact</a></li>
-								</ul>
-							</div><!-- / PLUGIN DROPDOWN BOOTSTRAP -->
-						</div>
-					</div>
-				</nav><!-- / Menu de Navegation -->        
-			</section>
-		</header><!-- / Header -->
-		<!-- Division du contenu principal -->
-		<main class="container marketing">
-			<!-- ======================= 
-					 *** BASE ***
-			=========================== -->
+<body>
+    <!-- Header -->
+    <header class="container">
+      <article class="row"><!-- Une autre division pour le logo de la page -->
+        <article class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+          <div id="flashContent">
+            <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="425" height="175" id="wadagbe_logo_animated" align="middle">
+              <param name="movie" value="swf/wadagbe_logo_animated.swf" />
+              <param name="quality" value="best" />
+              <param name="bgcolor" value="#ffffff" />
+              <param name="play" value="true" />
+              <param name="loop" value="true" />
+              <param name="wmode" value="transparent" />
+              <param name="scale" value="showall" />
+              <param name="menu" value="true" />
+              <param name="devicefont" value="false" />
+              <param name="salign" value="" />
+              <param name="allowScriptAccess" value="sameDomain" />
+              <!--[if !IE]>-->
+              <object type="application/x-shockwave-flash" data="swf/wadagbe_logo_animated.swf" width="425" height="175">
+                <param name="movie" value="swf/wadagbe_logo_animated.swf" />
+                <param name="quality" value="best" />
+                <param name="bgcolor" value="#ffffff" />
+                <param name="play" value="true" />
+                <param name="loop" value="true" />
+                <param name="wmode" value="transparent" />
+                <param name="scale" value="showall" />
+                <param name="menu" value="true" />
+                <param name="devicefont" value="false" />
+                <param name="salign" value="" />
+                <param name="allowScriptAccess" value="sameDomain" />
+              <!--<![endif]-->
+                <a href="http://www.adobe.com/go/getflash">
+                  <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" />
+                </a>
+              <!--[if !IE]>-->
+              </object>
+              <!--<![endif]-->
+            </object>
+          </div>
+        </article>
+        <article class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-12 pull-right">
+        <!-- / Connexion Usagers -->
+          <section id="usager" class="pull-right">
+            <form class="form-signin">
+              <button name="enregistrer" id="enregistrer" class="btn btn-primary" type="button">Register</button>
+              <button name="connecter" id="connecter" class="btn btn-primary" type="button">Login</button>
+            </form>
+            
+            <article id="connecterDiv">
+              <form class="form-signin" name="form-usager-connecter">
+                <div class="input-group input-group-sm">
+<<<<<<< HEAD
+                  Email :
+                  <input name="courriel" type="email" class="form-control" size="32" required>
+                </div>
+                <div class="input-group input-group-sm">
+                  Pasword :
+                  <input name="password" type="password" class="form-control" size="25" required>
+=======
+                  Courriel:
+                  <input name="courriel" type="email" class="form-control" required>
+                </div>
+                <div class="input-group input-group-sm">
+                  Mot de Passe:
+                  <input name="password" type="password" class="form-control" required>
+>>>>>>> 0cbf5474b0c7691ad73b8d668bb9423196acba9a
+                </div>
+                <a name="motPasseOublie" id="motPasseOublie" href="#">Forgotten password?</a>
+                <br>
+                <button name="connexion" id="connexion" class="btn btn-primary" type="submit">Connexion</button>
+                <br>
+              </form>
+              <div id="infosConnecter">
+                <h1>Wellcome Wadagbé!</h1>
+                <a name="completerInfos" href="completerInfos.html">Complete account informations</a>
+              </div>
+            </article>
+            
+            <article id="enregistrerDiv">
+              <form class="form-signin" name="form-usager-enregistrer">
+                <div class="input-group input-group-sm">
+<<<<<<< HEAD
+                  Last name, name:
+                  <input name="nom" type="text" class="form-control" size="25" required>
+                </div>
+                <div class="input-group input-group-sm">
+                  Email:
+                  <input name="courriel" type="email" class="form-control" size="32" required>
+                </div>
+                <div class="input-group input-group-sm">
+                  Password:
+                  <input name="password" type="password" class="form-control" size="25" required>
+=======
+                  Nom, Prénom:
+                  <input name="nom" type="text" class="form-control"  required>
+                </div>
+                <div class="input-group input-group-sm">
+                  Courriel:
+                  <input name="courriel" type="email" class="form-control" required>
+                </div>
+                <div class="input-group input-group-sm">
+                  Mot de Passe:
+                  <input name="password" type="password" class="form-control" required>
+>>>>>>> 0cbf5474b0c7691ad73b8d668bb9423196acba9a
+                </div>
+                <button name="confirmer" id="confirmer" class="btn btn-primary" type="submit">Confirmer</button>
+                <br>
+              </form>
+              <div id="infosEnregistrer">
+                <h1>Wellcome Wadagbé!</h1>
+                <a name="completerInfos" href="completerInfos.html">Complete account informations</a>
+              </div>  
+            </article>
+            
+            <article id="motPasseOublieDiv">
+              <form class="form-signin" name="form-usager-oublie">
+                <div class="input-group input-group-sm">
+<<<<<<< HEAD
+                  Email:
+                  <input name="courriel" type="email" class="form-control" size="32" required>
+=======
+                  Courriel:
+                  <input name="courriel" type="email" class="form-control" required>
+>>>>>>> 0cbf5474b0c7691ad73b8d668bb9423196acba9a
+                </div>
+                <button name="envoyer" id="envoyer" class="btn btn-primary" type="submit">Submit</button>
+              </form> 
+              <div id="courrielEnvoye">
+                <h1>A temporary password has been sent.</h1>
+              </div>
+            </article>
+          </section><!-- / Connexion Usagers -->
+        </article>
+        <!-- Shopping Cart -->
+        <article id="shopping-cart" class="col-lg-4 pull-right text-right">
+          <a href="panier.html">
+            <button type="button" class="btn btn-primary btn-lg">
+               <span class="glyphicon glyphicon-shopping-cart"></span> Cart : <span id="nbProducts">Empty</span>
+            </button>
+          </a>
+        </article>
+        <!-- / Shopping Cart -->
+      </article><!-- / -->
+      <div class="row">
+        <!-- Menu de Navegation -->
+        <nav class="navbar-wrapper">
+          <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+            <div class="container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+              </div>
+              <div class="navbar-collapse collapse"><!-- PLUGIN DROPDOWN BOOTSTRAP -->
+                <ul class="nav navbar-nav">
+                  <li class="active"><a href="#">Accueil</a></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+            <li class="dropdown-header">Solar Panels</li>
+                      <li><a href="#">######</a></li>
+                      <li><a href="#">######</a></li>
+                      <li><a href="#">######</a></li>
+                      <li class="divider"></li>
+                      <li class="dropdown-header hidden-xs">LED Lamps</li><!-- hidden dans les petits écrans pour eviter le scroll -->
+                      <li><a class="hidden-xs" href="#">######</a></li><!-- hidden dans les petits écrans pour eviter le scroll -->
+                      <li><a class="hidden-xs" href="#">######</a></li><!-- hidden dans les petits écrans pour eviter le scroll -->
+                    </ul>
+                  </li>
+                  <li><a href="about.html">About us</a></li>
+                  <li><a href="contact.html">Contact</a></li>
+                </ul>
+              </div><!-- / PLUGIN DROPDOWN BOOTSTRAP -->
+            </div>
+          </div>
+        </nav><!-- / Menu de Navegation -->        
+      </div>
+    </header><!-- / Header -->
+    <!-- Division du contenu principal -->
+    <div class="container marketing">
+      <!-- ======================= 
+           *** BASE ***
+      =========================== -->
 
   		<h1>Praesent dapibus, neque id cursus faucibus</h1>
 		<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
