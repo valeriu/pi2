@@ -78,7 +78,7 @@
 						</form>
 						
 						<article id="connecterDiv">
-							<form class="form-signin" name="form-usager-connecter">
+							<form class="form-signin" name="form-usager-connecter" action="usager_informations.html" method="post">
 								<div class="input-group input-group-sm">
 									Courriel :
 									<input name="courriel" type="email" class="form-control" required>
@@ -190,29 +190,29 @@
 			=========================== -->
 			<div id="usagerInfos" class="panel panel-default">
 				<header class="panel-heading">
-					<h1>Write down your informations:</h1>
+					<h1>Inscrivez vos informations:</h1>
 				</header>
 				<div class="panel-body">
 					<form class="" name="form-usager-informations">	
 					
 						<div class="input-group input-group-sm">
-							Last name, Name:
+							Nom, prénom:
 							<input name="nom" type="text" class="form-control"  placeholder="Nom placé avec PHP" required>
 						</div>
 						<div class="input-group input-group-sm">
-							Email:
+							Courriel:
 							<input name="courriel" type="email" class="form-control" placeholder="Courriel placé avec PHP" required>
 						</div>
 						<div class="input-group input-group-sm">
-							Phone number:
+							Téléphone
 							<input name="tel" type="tel" class="form-control" required>
 						</div>
 						<div class="input-group input-group-sm">
-							Adress:
+							Adresse:
 							<input name="numCivique" type="number" class="form-control" required>
 						</div>
 						<div class="input-group input-group-sm">
-							Street:
+							Rue:
 							<input name="rue" type="text" class="form-control" required>
 						</div>
 						<div class="input-group input-group-sm">
@@ -220,7 +220,7 @@
 							<input name="appartement" type="text" class="form-control">
 						</div>
 						<div class="input-group input-group-sm">
-							Town:
+							Ville:
 							<input name="ville" type="text" class="form-control" required>
 						</div>
 						<div class="input-group input-group-sm">
@@ -228,7 +228,7 @@
 							<input name="province" type="text" class="form-control" required>
 						</div>
 						<div class="input-group input-group-sm">
-							Zip Code:
+							Code postal:
 							<input name="codePostal" type="text" class="form-control" required>
 						</div>
 						<button name="soumettre" id="soumettre" class="btn btn-primary" type="submit">Submit</button>
