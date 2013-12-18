@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Produits">
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <title>Pages</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for login page -->
+    <link href="css/produits.css" rel="stylesheet">
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+    <!-- Static navbar -->
+		<div class="navbar navbar-default navbar-static-top" role="navigation">
+		  <div class="container">
+			<div class="navbar-header">
+			  <a class="navbar-brand" href="#">Wadagbe Admin</a>
+			</div>
+			<div class="navbar-collapse">
+			  <ul class="nav navbar-nav navbar-right">
+				<li class="active"><a href="./">Log out</a></li>
+			  </ul>
+			</div><!--/.nav-collapse -->
+		  </div>
+		</div>
+    </div> <!-- /container -->
+    <div class="container">
+    	<div class="row">
+		  <div class="col-lg-2 col-md-2">
+			<div class="list-group">
+				<a href="#" class="list-group-item active">Dashboard</a>
+				<a href="#" class="list-group-item"><span class="badge">414</span>Sales</a>
+				<a href="#" class="list-group-item"><span class="badge">85</span>Products</a>
+				<a href="pages.html" class="list-group-item"><span class="badge">8</span>Pages</a>
+				<a href="usager_back.html" class="list-group-item"><span class="badge">309</span>User</a>
+				<a href="#" class="list-group-item"><span class="badge">4</span>Menu</a>
+			</div>
+		  </div>
+		  <div class="col-lg-10 col-md-10">
+		  <div class="panel panel-default">
+			<!-- Default panel contents -->
+			<div class="panel-heading">All products<span class="badge pull-right">85</span><div> <a href="edit-product.html">Add new product</a></div></div>
+			<div class="panel-body">
+			<p>This is your current product listing...</p>
+			</div>
+
+			<!-- Table pages-->
+			<table class="table table-hover">
+				<thead>
+				  <tr>
+					<th>#</th>
+					<th>Product name</th>
+					<th>Category</th>
+					<th>Specifications</th>
+					<th>Status</th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <tr>
+					<td><a href="../frontend/page-static.html" target="_blank" title="Preview Changes">1</a></td>
+					<td><a href="edit-product.html" title="Edit: LED Lamp">LED Lamp</a></td>
+					<td>LED Lamps</td>
+					<td>100W</td>
+					<td><span class="label label-success">Available</span></td>
+				  </tr>
+				  <tr>
+					<td><a href="../frontend/page-static.html" target="_blank" title="Preview Changes">2</a></td>
+					<td><a href="edit-product.html" title="Edit: LED Lamp 2">LED Lamp 2</a></td>
+					<td>LED Lamps</td>
+					<td>150W</td>
+					<td><span class="label label-danger">Unavailable</span></td>
+				  </tr>
+				  <tr>
+					<td><a href="../frontend/page-static.html" target="_blank" title="Preview Changes">3</a></td>
+					<td><a href="edit-product.html" title="Edit: LED Lamp 3">LED Lamp 3</a></td>
+					<td>LED Lamps</td>
+					<td>200W</td>
+					<td><span class="label label-success">Available</span></td>
+				  </tr>
+				  <tr>
+					<td><a href="../frontend/page-static.html" target="_blank" title="Preview Changes">5</a></td>
+					<td><a href="edit-product.html" title="Edit: LED Lamp 4">LED Lamp 4</a></td>
+					<td>LED Lamps</td>
+					<td>200W</td>
+					<td><span class="label label-danger">Unavailable</span></td>
+				  </tr>
+				  <tr>
+					<td><a href="../frontend/page-static.html" target="_blank" title="Preview Changes">8</a></td>
+					<td><a href="edit-product.html" title="Edit: LED Lamp 5">LED Lamp 5</a></td>
+					<td>LED Lamps</td>
+					<td>200W</td>
+					<td><span class="label label-success">Available</span></td>
+				  </tr>
+				  <tr>
+					<td><a href="../frontend/page-static.html" target="_blank" title="Preview Changes">6</a></td>
+					<td><a href="edit-product.html" title="Edit: LED Lamp 6">LED Lamp 6</a></td>
+					<td>LED Lamps</td>
+					<td>200W</td>
+					<td><span class="label label-success">Available</span></td>
+				  </tr>
+				  <tr>
+					<td><a href="../frontend/page-static.html" target="_blank" title="Preview Changes">9</a></td>
+					<td><a href="edit-product.html" title="Edit: Solar panel">Solar panel</a></td>
+					<td>Solar panels</td>
+					<td>250W</td>
+					<td><span class="label label-success">Available</span></td>
+				  </tr>
+				  <tr>
+					<td><a href="../frontend/page-static.html" target="_blank" title="Preview Changes">10</a></td>
+					<td><a href="edit-product.html" title="Edit: Solar panel 2">Solar panel 2</a></td>
+					<td>Solar panels</td>
+					<td>250W</td>
+					<td><span class="label label-danger">Unavailable</span></td>
+				  </tr>
+				</tbody>
+			  </table><!-- end table-->
+			</div><!--end panel-->
+			<!--Pagination-->
+			<ul class="pagination">
+				<li class="disabled"><a href="#">&laquo;</a></li>
+				<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li><a href="#">&raquo;</a></li>
+			</ul>
+		  </div>
+		</div>
+    </div><!-- end content -->
+    <!-- Footer div -->
+    <div class="container">
+    <!-- Static navbar -->
+		<footer>
+			<p class="footer-text">Copyright 2013 - Wadagbe</p>
+		</footer>
+    </div> <!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+  </body>
+</html>

@@ -169,7 +169,7 @@ a:focus{
 #courrielEnvoye{
 	display: none;
 }
-button[class~=btn] {
+button[class=btn-home] {
 	min-width: 110px;
 }
 /* -----------------  / USAGER ---------------- */
