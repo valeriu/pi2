@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -73,64 +73,64 @@
 				<!-- / Connexion Usagers -->
 					<section id="usager" class="pull-right">
 						<form class="form-signin">
-							<button name="enregistrer" id="enregistrer" class="btn btn-primary" type="button">Register</button>
-							<button name="connecter" id="connecter" class="btn btn-primary" type="button">Login</button>
+							<button name="enregistrer" id="enregistrer" class="btn btn-primary" type="button">S'enregistrer</button>
+							<button name="connecter" id="connecter" class="btn btn-primary" type="button">Connexion</button>
 						</form>
 						
 						<article id="connecterDiv">
 							<form class="form-signin" name="form-usager-connecter">
 								<div class="input-group input-group-sm">
-									Email :
+									Courriel :
 									<input name="courriel" type="email" class="form-control" required>
 								</div>
 								<div class="input-group input-group-sm">
-									Pasword :
+									Mot de passe :
 									<input name="password" type="password" class="form-control" required>
 								</div>
-								<a name="motPasseOublie" id="motPasseOublie" href="#">Forgotten password?</a>
+								<a name="motPasseOublie" id="motPasseOublie" href="#">Mot de passe oublié</a>
 								<br>
 								<button name="connexion" id="connexion" class="btn btn-primary" type="submit">Connexion</button>
 								<br>
 							</form>
 							<div id="infosConnecter">
 								<h1>Wellcome Wadagbé!</h1>
-								<a name="completerInfos" href="completerInfos.html">Complete account informations</a>
+								<a name="completerInfos" href="completerInfos.html">Compléter les informations</a>
 							</div>
 						</article>
 						
 						<article id="enregistrerDiv">
 							<form class="form-signin" name="form-usager-enregistrer">
 								<div class="input-group input-group-sm">
-									Last name, name:
+									Nom, prénom:
 									<input name="nom" type="text" class="form-control"  required>
 								</div>
 								<div class="input-group input-group-sm">
-									Email:
+									Courriel:
 									<input name="courriel" type="email" class="form-control" required>
 								</div>
 								<div class="input-group input-group-sm">
-									Password:
+									Mot de passe:
 									<input name="password" type="password" class="form-control" required>
 								</div>
 								<button name="confirmer" id="confirmer" class="btn btn-primary" type="submit">Confirmer</button>
 								<br>
 							</form>
 							<div id="infosEnregistrer">
-								<h1>Wellcome Wadagbé!</h1>
-								<a name="completerInfos" href="completerInfos.html">Complete account informations</a>
+								<h1>Bienvenue sur Wadagbé!</h1>
+								<a name="completerInfos" href="completerInfos.html">Compléter les informations</a>
 							</div>  
 						</article>
 						
 						<article id="motPasseOublieDiv">
 							<form class="form-signin" name="form-usager-oublie">
 								<div class="input-group input-group-sm">
-									Email:
+									Courriel:
 									<input name="courriel" type="email" class="form-control" required>
 								</div>
-								<button name="envoyer" id="envoyer" class="btn btn-primary" type="submit">Submit</button>
+								<button name="envoyer" id="envoyer" class="btn btn-primary" type="submit">Soumettre</button>
 							</form> 
 							<div id="courrielEnvoye">
-								<h1>A temporary password has been sent.</h1>
+								<h1>Répondez à la question suivante: </h1>
 							</div>
 						</article>
 					</section><!-- / Connexion Usagers -->
@@ -139,7 +139,7 @@
 				<article id="shopping-cart" class="col-lg-4 pull-right text-right">
 					<a href="panier.html">
 						<button type="button" class="btn btn-primary btn-lg">
-							 <span class="glyphicon glyphicon-shopping-cart"></span> Cart : <span id="nbProducts">Empty</span>
+							 <span class="glyphicon glyphicon-shopping-cart"></span> Panier : <span id="nbProducts">Vide</span>
 						</button>
 					</a>
 				</article>
@@ -160,21 +160,21 @@
 							</div>
 							<div class="navbar-collapse collapse"><!-- PLUGIN DROPDOWN BOOTSTRAP -->
 								<ul class="nav navbar-nav">
-									<li class="active"><a href="#">Home</a></li>
+									<li class="active"><a href="#">Accueil</a></li>
 									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<b class="caret"></b></a>
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Produits<b class="caret"></b></a>
 										<ul class="dropdown-menu">
-						<li class="dropdown-header">Solar Panels</li>
+						<li class="dropdown-header">Panneaux solaires</li>
 											<li><a href="#">######</a></li>
 											<li><a href="#">######</a></li>
 											<li><a href="#">######</a></li>
 											<li class="divider"></li>
-											<li class="dropdown-header hidden-xs">LED Lamps</li><!-- hidden dans les petits écrans pour eviter le scroll -->
+											<li class="dropdown-header hidden-xs">Lampes DEL</li><!-- hidden dans les petits écrans pour eviter le scroll -->
 											<li><a class="hidden-xs" href="#">######</a></li><!-- hidden dans les petits écrans pour eviter le scroll -->
 											<li><a class="hidden-xs" href="#">######</a></li><!-- hidden dans les petits écrans pour eviter le scroll -->
 										</ul>
 									</li>
-									<li><a href="about.html">About us</a></li>
+									<li><a href="about.html">À propos</a></li>
 									<li><a href="contact.html">Contact</a></li>
 								</ul>
 							</div><!-- / PLUGIN DROPDOWN BOOTSTRAP -->
@@ -199,7 +199,7 @@
 
 			<!-- FOOTER -->
 			<footer>
-				<p class="pull-right"><a href="#">Back to top</a></p>
+				<p class="pull-right"><a href="#">Haut de la page</a></p>
 				<p class="auteur">&copy; 2013 Projet Intégration II</p>
 			</footer><!-- / FOOTER -->
 		</main>
