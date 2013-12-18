@@ -36,48 +36,16 @@
 		<header class="container">
 			<article class="row"><!-- Une autre division pour le logo de la page -->
 				<article class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-					<div id="flashContent">
-						<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="425" height="175" id="wadagbe_logo_animated" align="middle">
-							<param name="movie" value="swf/wadagbe_logo_animated.swf" />
-							<param name="quality" value="best" />
-							<param name="bgcolor" value="#ffffff" />
-							<param name="play" value="true" />
-							<param name="loop" value="true" />
-							<param name="wmode" value="transparent" />
-							<param name="scale" value="showall" />
-							<param name="menu" value="true" />
-							<param name="devicefont" value="false" />
-							<param name="salign" value="" />
-							<param name="allowScriptAccess" value="sameDomain" />
-							<!--[if !IE]>-->
-							<object type="application/x-shockwave-flash" data="swf/wadagbe_logo_animated.swf" width="425" height="175">
-								<param name="movie" value="swf/wadagbe_logo_animated.swf" />
-								<param name="quality" value="best" />
-								<param name="bgcolor" value="#ffffff" />
-								<param name="play" value="true" />
-								<param name="loop" value="true" />
-								<param name="wmode" value="transparent" />
-								<param name="scale" value="showall" />
-								<param name="menu" value="true" />
-								<param name="devicefont" value="false" />
-								<param name="salign" value="" />
-								<param name="allowScriptAccess" value="sameDomain" />
-							<!--<![endif]-->
-								<a href="http://www.adobe.com/go/getflash">
-									<img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" />
-								</a>
-							<!--[if !IE]>-->
-							</object>
-							<!--<![endif]-->
-						</object>
-					</div>
+					<a class="thumbnail" href="index.html">
+						<img class="img-responsive" src="img/Logo.png">
+					</a>
 				</article>
 				<article class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-12 pull-right">
 				<!-- / Connexion Usagers -->
 					<section id="usager" class="pull-right">
 						<form class="form-signin">
-							<button name="enregistrer" id="enregistrer" class="btn btn-default btn-home" type="button">Register</button>
-							<button name="connecter" id="connecter" class="btn btn-default btn-home" type="button">Login</button>
+							<button name="enregistrer" id="enregistrer" class="btn btn-lien btn-home" type="button">Register</button>
+							<button name="connecter" id="connecter" class="btn btn-lien btn-home" type="button">Login</button>
 						</form>
 						
 						<article id="connecterDiv">
@@ -141,7 +109,7 @@
 				<!-- Shopping Cart -->
 				<article id="shopping-cart" class="col-lg-4 pull-right text-right">
 					<a href="panier.html">
-						<button type="button" class="btn btn-primary btn-home">
+						<button type="button" class="btn btn-panier btn-home">
 							<span class="glyphicon glyphicon-shopping-cart"></span> Cart : <span id="nbProducts">Empty</span>
 						</button>
 					</a>

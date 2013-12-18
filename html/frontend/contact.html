@@ -8,7 +8,7 @@
 		<meta name="author" content="">
 		<link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
-		<title>Wadagbé</title>
+		<title>Contact - Wadagbé</title>
 	 
 		<!-- Bootstrap core CSS -->
 		<link href="css/bootstrap.css" rel="stylesheet">
@@ -25,6 +25,21 @@
 		<link href="css/usager.css" rel="stylesheet">
 		<link href="css/panier.css" rel="stylesheet">
 		<link href="css/catalog.css" rel="stylesheet">
+		
+		        <!-- Google Maps JS -->
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyww0kT3sGjHybCQdvUB1vIOeelhxZtao&sensor=false"></script>
+	<script type="text/javascript">
+	function initialize() {
+		var mapOptions = {
+			center: new google.maps.LatLng(45.6007189, -73.5310528),
+			zoom: 15,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			};
+		var map = new google.maps.Map(document.getElementById("map-wadagbe"), mapOptions);
+	}
+	google.maps.event.addDomListener(window, 'load', initialize);
+	</script>
+
 	</head>
 <!-- NAVBAR
 ================================================== -->
@@ -156,101 +171,14 @@
 			<!-- ======================= 
 					 *** BASE ***
 			=========================== -->
-			<form id="ShippingAddress" method="POST" action="#">
-				<div class="panel-group" id="accordion">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-									Options d'adresses de livraison
-								</a>
-							</h4>
-						</div>
-						<div id="collapseOne" class="panel-collapse collapse in">
-							<div class="panel-body">
-								<div class="row">
-									<article class="col-lg-3">
-										<p>2650 Desjardins App.4</p>
-										<p>Montreal, Québec &nbsp;H1V 2H7</p>
-										<div class="input-group">
-											<label for="address1" class="form-control">Addresse 1</label> 
-											<span class="input-group-addon">
-												<input type="radio" id="address1" name="shippingAddress" value="20">
-											</span>
-										</div><!-- /input-group -->
-									</article>
-									<article class="col-lg-3">
-										<p>1936 Martial App. 9</p>
-										<p>Montreal, Québec &nbsp;H1H 1W7</p>
-										<div class="input-group">
-											<label for="address2" class="form-control">Addresse 2</label> 
-											<span class="input-group-addon">
-												<input type="radio" id="address2" name="shippingAddress" value="20">
-											</span>
-										</div><!-- /input-group -->
-									</article>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading">
-						  <h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-								Entrer un nouvelle addresse
-							</a>
-						  </h4>
-						</div>
-						<div id="collapseTwo" class="panel-collapse collapse">
-							<div class="panel-body">
-								<div class="row">
-									<article class="col-lg-6">
-										<div class="input-group input-group-sm">
-											Téléphone:
-											<input name="tel" type="tel" class="form-control" required>
-										</div>
-										<div class="input-group input-group-sm">
-											Adresse:
-											<input name="numCivique" type="number" class="form-control" required>
-										</div>
-										<div class="input-group input-group-sm">
-											Rue:
-											<input name="rue" type="text" class="form-control" required>
-										</div>
-										<div class="input-group input-group-sm">
-											Appartement:
-											<input name="appartement" type="text" class="form-control">
-										</div>
-										<div class="input-group input-group-sm">
-											Ville:
-											<input name="ville" type="text" class="form-control" required>
-										</div>
-										<div class="input-group input-group-sm">
-											Province:
-											<input name="province" type="text" class="form-control" required>
-										</div>
-										<div class="input-group input-group-sm">
-											Code postal:
-											<input name="codePostal" type="text" class="form-control" required>
-										</div>
-										<div class="input-group">
-											<br>
-											<label for="address3" class="form-control">Enregistrer l'adresse</label> 
-											<span class="input-group-addon">
-												<input type="radio" id="address3" name="shippingAddress" value="20">
-											</span>
-										</div><!-- /input-group -->
-									</article>
-								</div>
-							</div>
-						</div>
-					</div>
-					<hr class="featurette-divider">
-					<a href="panier.html"><button name="back" id="back" class="btn btn-lg btn-primary" type="button">Retour</button></a>
-					<a href="panier_confirmation.html"><button name="pay" id="pay" class="btn btn-lg btn-primary" type="button">Payer</button></a>
-					<!--<button name="pay" id="pay" class="btn btn-lg btn-primary" type="submit">Pay</button>-->
-				</div>
-			</form>
+			
+			<h1>Contact</h1>
+			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+			<h2>MAP - Aenean ultricies mi vitae est</h2>
+			<style type="text/css">#map-wadagbe{height: 400px;}</style>
+			<div id="map-wadagbe"></div>
+      
 			<!-- ======================= 
 				 *** / FIN BASE ***
 			=========================== -->

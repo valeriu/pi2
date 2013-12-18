@@ -26,20 +26,6 @@
 		<link href="css/panier.css" rel="stylesheet">
 		<link href="css/catalog.css" rel="stylesheet">
 		
-		        <!-- Google Maps JS -->
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyww0kT3sGjHybCQdvUB1vIOeelhxZtao&sensor=false"></script>
-	<script type="text/javascript">
-	function initialize() {
-		var mapOptions = {
-			center: new google.maps.LatLng(45.6007189, -73.5310528),
-			zoom: 15,
-				mapTypeId: google.maps.MapTypeId.ROADMAP
-			};
-		var map = new google.maps.Map(document.getElementById("map-wadagbe"), mapOptions);
-	}
-	google.maps.event.addDomListener(window, 'load', initialize);
-	</script>
-
 	</head>
 <!-- NAVBAR
 ================================================== -->
@@ -48,48 +34,16 @@
 		<header class="container">
 			<article class="row"><!-- Une autre division pour le logo de la page -->
 				<article class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-					<div id="flashContent">
-						<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="425" height="175" id="wadagbe_logo_animated" align="middle">
-							<param name="movie" value="swf/wadagbe_logo_animated.swf" />
-							<param name="quality" value="best" />
-							<param name="bgcolor" value="#ffffff" />
-							<param name="play" value="true" />
-							<param name="loop" value="true" />
-							<param name="wmode" value="transparent" />
-							<param name="scale" value="showall" />
-							<param name="menu" value="true" />
-							<param name="devicefont" value="false" />
-							<param name="salign" value="" />
-							<param name="allowScriptAccess" value="sameDomain" />
-							<!--[if !IE]>-->
-							<object type="application/x-shockwave-flash" data="swf/wadagbe_logo_animated.swf" width="425" height="175">
-								<param name="movie" value="swf/wadagbe_logo_animated.swf" />
-								<param name="quality" value="best" />
-								<param name="bgcolor" value="#ffffff" />
-								<param name="play" value="true" />
-								<param name="loop" value="true" />
-								<param name="wmode" value="transparent" />
-								<param name="scale" value="showall" />
-								<param name="menu" value="true" />
-								<param name="devicefont" value="false" />
-								<param name="salign" value="" />
-								<param name="allowScriptAccess" value="sameDomain" />
-							<!--<![endif]-->
-								<a href="http://www.adobe.com/go/getflash">
-									<img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" />
-								</a>
-							<!--[if !IE]>-->
-							</object>
-							<!--<![endif]-->
-						</object>
-					</div>
+					<a class="thumbnail" href="index.html">
+						<img class="img-responsive" src="img/Logo.png">
+					</a>
 				</article>
 				<article class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-12 pull-right">
 				<!-- / Connexion Usagers -->
 					<section id="usager" class="pull-right">
 						<form class="form-signin">
-							<button name="enregistrer" id="enregistrer" class="btn btn-primary" type="button">S'enregistrer</button>
-							<button name="connecter" id="connecter" class="btn btn-primary" type="button">Connexion</button>
+							<button name="enregistrer" id="enregistrer" class="btn btn-lien" type="button">S'enregistrer</button>
+							<button name="connecter" id="connecter" class="btn btn-lien" type="button">Connexion</button>
 						</form>
 						
 						<article id="connecterDiv">
@@ -153,7 +107,7 @@
 				<!-- Shopping Cart -->
 				<article id="shopping-cart" class="col-lg-4 pull-right text-right">
 					<a href="panier.html">
-						<button type="button" class="btn btn-primary btn-lg">
+						<button type="button" class="btn btn-panier btn-lg">
 							 <span class="glyphicon glyphicon-shopping-cart"></span> Panier : <span id="nbProducts">Vide</span>
 						</button>
 					</a>
@@ -189,7 +143,7 @@
 											<li><a class="hidden-xs" href="#">######</a></li><!-- hidden dans les petits écrans pour eviter le scroll -->
 										</ul>
 									</li>
-									<li><a href="about.html">À propos</a></li>
+									<li><a href="page-static.html">À propos</a></li>
 									<li><a href="contact.html">Contact</a></li>
 								</ul>
 							</div><!-- / PLUGIN DROPDOWN BOOTSTRAP -->
@@ -222,10 +176,6 @@
 			<h2> Aenean ultricies mi vitae est.</h2>
 			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
 			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-
-			<h2>MAP - Aenean ultricies mi vitae est</h2>
-			<style type="text/css">#map-wadagbe{height: 400px;}</style>
-			<div id="map-wadagbe"></div>
       
 			<!-- ======================= 
 				 *** / FIN BASE ***
@@ -235,7 +185,7 @@
 
 			<!-- FOOTER -->
 			<footer>
-				<p class="pull-right"><a href="#">Haut de la page</a></p>
+				<p class="pull-right btn-lien"><a href="#">Haut de la page</a></p>
 				<p class="auteur">&copy; 2013 Projet Intégration II</p>
 			</footer><!-- / FOOTER -->
 		</main>
