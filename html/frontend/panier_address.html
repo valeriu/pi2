@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,6 +24,7 @@
 		<link href="css/main.css" rel="stylesheet">
 		<link href="css/usager.css" rel="stylesheet">
 		<link href="css/panier.css" rel="stylesheet">
+		<link href="css/catalog.css" rel="stylesheet">
 	</head>
 <!-- NAVBAR
 ================================================== -->
@@ -72,73 +73,75 @@
 				<!-- / Connexion Usagers -->
 					<section id="usager" class="pull-right">
 						<form class="form-signin">
-							<button name="enregistrer" id="enregistrer" class="btn btn-primary" type="button">Register</button>
-							<button name="connecter" id="connecter" class="btn btn-primary" type="button">Login</button>
+							<button name="enregistrer" id="enregistrer" class="btn btn-primary" type="button">S'enregistrer</button>
+							<button name="connecter" id="connecter" class="btn btn-primary" type="button">Connexion</button>
 						</form>
 						
 						<article id="connecterDiv">
 							<form class="form-signin" name="form-usager-connecter">
 								<div class="input-group input-group-sm">
-									Email :
+									Courriel :
 									<input name="courriel" type="email" class="form-control" required>
 								</div>
 								<div class="input-group input-group-sm">
-									Pasword :
+									Mot de passe :
 									<input name="password" type="password" class="form-control" required>
 								</div>
-								<a name="motPasseOublie" id="motPasseOublie" href="#">Forgotten password?</a>
+								<a name="motPasseOublie" id="motPasseOublie" href="#">Mot de passe oublié</a>
 								<br>
 								<button name="connexion" id="connexion" class="btn btn-primary" type="submit">Connexion</button>
 								<br>
 							</form>
 							<div id="infosConnecter">
 								<h1>Wellcome Wadagbé!</h1>
-								<a name="completerInfos" href="completerInfos.html">Complete account informations</a>
+								<a name="completerInfos" href="completerInfos.html">Compléter les informations</a>
 							</div>
 						</article>
 						
 						<article id="enregistrerDiv">
 							<form class="form-signin" name="form-usager-enregistrer">
 								<div class="input-group input-group-sm">
-									Last name, name:
+									Nom, prénom:
 									<input name="nom" type="text" class="form-control"  required>
 								</div>
 								<div class="input-group input-group-sm">
-									Email:
+									Courriel:
 									<input name="courriel" type="email" class="form-control" required>
 								</div>
 								<div class="input-group input-group-sm">
-									Password:
+									Mot de passe:
 									<input name="password" type="password" class="form-control" required>
 								</div>
 								<button name="confirmer" id="confirmer" class="btn btn-primary" type="submit">Confirmer</button>
 								<br>
 							</form>
 							<div id="infosEnregistrer">
-								<h1>Wellcome Wadagbé!</h1>
-								<a name="completerInfos" href="completerInfos.html">Complete account informations</a>
+								<h1>Bienvenue sur Wadagbé!</h1>
+								<a name="completerInfos" href="completerInfos.html">Compléter les informations</a>
 							</div>  
 						</article>
 						
 						<article id="motPasseOublieDiv">
 							<form class="form-signin" name="form-usager-oublie">
 								<div class="input-group input-group-sm">
-									Email:
+									Courriel:
 									<input name="courriel" type="email" class="form-control" required>
 								</div>
-								<button name="envoyer" id="envoyer" class="btn btn-primary" type="submit">Submit</button>
+								<button name="envoyer" id="envoyer" class="btn btn-primary" type="submit">Soumettre</button>
 							</form> 
 							<div id="courrielEnvoye">
-								<h1>A temporary password has been sent.</h1>
+								<h1>Répondez à la question suivante: </h1>
 							</div>
 						</article>
 					</section><!-- / Connexion Usagers -->
 				</article>
 				<!-- Shopping Cart -->
 				<article id="shopping-cart" class="col-lg-4 pull-right text-right">
-					<button type="button" class="btn btn-primary btn-lg">
-						 <span class="glyphicon glyphicon-shopping-cart"></span> Cart : <span id="nbProducts">Empty</span>
-					</button>
+					<a href="panier.html">
+						<button type="button" class="btn btn-primary btn-lg">
+							 <span class="glyphicon glyphicon-shopping-cart"></span> Panier : <span id="nbProducts">Vide</span>
+						</button>
+					</a>
 				</article>
 				<!-- / Shopping Cart -->
 			</article><!-- / -->
@@ -157,21 +160,21 @@
 							</div>
 							<div class="navbar-collapse collapse"><!-- PLUGIN DROPDOWN BOOTSTRAP -->
 								<ul class="nav navbar-nav">
-									<li class="active"><a href="#">Home</a></li>
+									<li class="active"><a href="#">Accueil</a></li>
 									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<b class="caret"></b></a>
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Produits<b class="caret"></b></a>
 										<ul class="dropdown-menu">
-						<li class="dropdown-header">Solar Panels</li>
+						<li class="dropdown-header">Panneaux solaires</li>
 											<li><a href="#">######</a></li>
 											<li><a href="#">######</a></li>
 											<li><a href="#">######</a></li>
 											<li class="divider"></li>
-											<li class="dropdown-header hidden-xs">LED Lamps</li><!-- hidden dans les petits écrans pour eviter le scroll -->
+											<li class="dropdown-header hidden-xs">Lampes DEL</li><!-- hidden dans les petits écrans pour eviter le scroll -->
 											<li><a class="hidden-xs" href="#">######</a></li><!-- hidden dans les petits écrans pour eviter le scroll -->
 											<li><a class="hidden-xs" href="#">######</a></li><!-- hidden dans les petits écrans pour eviter le scroll -->
 										</ul>
 									</li>
-									<li><a href="about.html">About us</a></li>
+									<li><a href="about.html">À propos</a></li>
 									<li><a href="contact.html">Contact</a></li>
 								</ul>
 							</div><!-- / PLUGIN DROPDOWN BOOTSTRAP -->
@@ -191,7 +194,7 @@
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-									Shippings adresse options
+									Options d'adresses de livraison
 								</a>
 							</h4>
 						</div>
@@ -199,20 +202,20 @@
 							<div class="panel-body">
 								<div class="row">
 									<article class="col-lg-3">
-										<p>2650 Desjardins st. App. 4</p>
+										<p>2650 Desjardins App.4</p>
 										<p>Montreal, Québec &nbsp;H1V 2H7</p>
 										<div class="input-group">
-											<label for="address1" class="form-control">Address 1</label> 
+											<label for="address1" class="form-control">Addresse 1</label> 
 											<span class="input-group-addon">
 												<input type="radio" id="address1" name="shippingAddress" value="20">
 											</span>
 										</div><!-- /input-group -->
 									</article>
 									<article class="col-lg-3">
-										<p>1936 Rue Martial App. 9</p>
+										<p>1936 Martial App. 9</p>
 										<p>Montreal, Québec &nbsp;H1H 1W7</p>
 										<div class="input-group">
-											<label for="address2" class="form-control">Address 2</label> 
+											<label for="address2" class="form-control">Addresse 2</label> 
 											<span class="input-group-addon">
 												<input type="radio" id="address2" name="shippingAddress" value="20">
 											</span>
@@ -226,7 +229,7 @@
 						<div class="panel-heading">
 						  <h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-								New Shipping Address
+								Entrer un nouvelle addresse
 							</a>
 						  </h4>
 						</div>
@@ -235,15 +238,15 @@
 								<div class="row">
 									<article class="col-lg-6">
 										<div class="input-group input-group-sm">
-											Phone number:
+											Téléphone:
 											<input name="tel" type="tel" class="form-control" required>
 										</div>
 										<div class="input-group input-group-sm">
-											Adress:
+											Adresse:
 											<input name="numCivique" type="number" class="form-control" required>
 										</div>
 										<div class="input-group input-group-sm">
-											Street:
+											Rue:
 											<input name="rue" type="text" class="form-control" required>
 										</div>
 										<div class="input-group input-group-sm">
@@ -251,7 +254,7 @@
 											<input name="appartement" type="text" class="form-control">
 										</div>
 										<div class="input-group input-group-sm">
-											Town:
+											Ville:
 											<input name="ville" type="text" class="form-control" required>
 										</div>
 										<div class="input-group input-group-sm">
@@ -259,12 +262,12 @@
 											<input name="province" type="text" class="form-control" required>
 										</div>
 										<div class="input-group input-group-sm">
-											Zip Code:
+											Code postal:
 											<input name="codePostal" type="text" class="form-control" required>
 										</div>
 										<div class="input-group">
 											<br>
-											<label for="address3" class="form-control">Validate address</label> 
+											<label for="address3" class="form-control">Enregistrer l'adresse</label> 
 											<span class="input-group-addon">
 												<input type="radio" id="address3" name="shippingAddress" value="20">
 											</span>
@@ -275,8 +278,8 @@
 						</div>
 					</div>
 					<hr class="featurette-divider">
-					<a href="panier.html"><button name="back" id="back" class="btn btn-lg btn-primary" type="button">Back</button></a>
-					<a href="panier_confirmation.html"><button name="pay" id="pay" class="btn btn-lg btn-primary" type="button">Pay</button></a>
+					<a href="panier.html"><button name="back" id="back" class="btn btn-lg btn-primary" type="button">Retour</button></a>
+					<a href="panier_confirmation.html"><button name="pay" id="pay" class="btn btn-lg btn-primary" type="button">Payer</button></a>
 					<!--<button name="pay" id="pay" class="btn btn-lg btn-primary" type="submit">Pay</button>-->
 				</div>
 			</form>
@@ -288,7 +291,7 @@
 
 			<!-- FOOTER -->
 			<footer>
-				<p class="pull-right"><a href="#">Back to top</a></p>
+				<p class="pull-right"><a href="#">Haut de la page</a></p>
 				<p class="auteur">&copy; 2013 Projet Intégration II</p>
 			</footer><!-- / FOOTER -->
 		</main>
