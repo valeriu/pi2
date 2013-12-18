@@ -40,6 +40,9 @@ header .thumbnail {
 	margin-bottom: auto;
     margin-top: 15px;
 }
+header .thumbnail img{
+	max-width:400px;
+}
 /* / logo */
 
 /* Désactivation d'effect hover dans tous les lines*/
@@ -143,6 +146,9 @@ footer{
 /* Icon Menu pour les mobiles */
 .navbar-toggle{
 	background-color: #555;
+}
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus{
+	background-color:#FF9029;
 }
 /* / -------------- Menu --------------------*/
 
