@@ -7,7 +7,7 @@
     <meta name="description" content="Produits">
     <link rel="shortcut icon" href="images/favicon.png">
 
-    <title>Products</title>
+    <title>Édition Pages</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -27,11 +27,11 @@
 		<div class="navbar navbar-default navbar-static-top" role="navigation">
 		  <div class="container">
 			<div class="navbar-header">
-			  <a class="navbar-brand" href="#">Wadagbe Admin</a>
+			  <a class="navbar-brand" href="#">Wadagbe Administration</a>
 			</div>
 			<div class="navbar-collapse">
 			  <ul class="nav navbar-nav navbar-right">
-				<li class="active"><a href="./">Log out</a></li>
+				<li class="active"><a href="./">Déconnexion</a></li>
 			  </ul>
 			</div><!--/.nav-collapse -->
 		  </div>
@@ -41,77 +41,82 @@
     	<div class="row">
 		  <div class="col-lg-2 col-md-2">
 			<div class="list-group">
-				<a href="#" class="list-group-item active">Dashboard</a>
-				<a href="#" class="list-group-item"><span class="badge">414</span>Sales</a>
-				<a href="products.html" class="list-group-item"><span class="badge">85</span>Products</a>
+				<a href="#" class="list-group-item active">Panneau d'administration</a>
+				<a href="commandes.html" class="list-group-item"><span class="badge">414</span>Commandes</a>
+				<a href="produits.html" class="list-group-item"><span class="badge">85</span>Produits</a>
 				<a href="pages.html" class="list-group-item"><span class="badge">8</span>Pages</a>
-				<a href="usager_back.html" class="list-group-item"><span class="badge">309</span>User</a>
-				<a href="#" class="list-group-item"><span class="badge">4</span>Menu</a>
+				<a href="usager_back.html" class="list-group-item"><span class="badge">309</span>Usagers</a>
+				<a href="menu.html" class="list-group-item"><span class="badge">4</span>Menu</a>
 			</div>
 		  </div>
 		  <div class="col-lg-10 col-md-10">
 		  <div class="panel panel-default">
 			<!-- Default panel contents -->
-			<div class="panel-heading">Add or edit products</div>
+			<div class="panel-heading">Add or edit page</div>
 			<div class="panel-body">
 			<!-- Form Edit pages-->
 				<form role="form">
 					<div class="form-group">
-						<label for="product-title">Product name</label>
-						<input type="text" class="form-control" id="product-title" placeholder="Enter Title">
+						<label for="page-title">Title</label>
+						<input type="text" class="form-control" id="page-title" placeholder="Enter Title">
 					</div>
 					<div class="form-group">
-						<label for="product-details">Details</label>
-						<textarea class="form-control" rows="18" id="product-details" placeholder="Product details"></textarea>
+						<label for="page-description">Description</label>
+						<textarea class="form-control" rows="3" id="page-description" placeholder="Meta Description"></textarea>
+						<p class="help-block">The meta description often appears in Google search results to describe the link. <code>&lt;meta name="description" content=""&gt;</code></p>
 					</div>
 					<div class="form-group">
-						<label for="product-power">Specifications</label>
-						<input type="text" class="form-control" id="product-power" value="200W">
+						<label for="page-contenu">Contenu</label>
+						<textarea class="form-control" rows="18" id="page-contenu" placeholder="Page contenu"></textarea>
 					</div>
 					<div class="form-group">
-						<label for="product-category">Category</label>
-						<input type="text" class="form-control" id="product-category" value="200W">
-					</div>
-					<div class="form-group">
-						<label for="product-status">Product status</label>
+						<label for="page-contenu">Page status</label>
 						<div class="radio">
 							<label>
 								<input type="radio" name="optionsRadios" id="optionsRadios1" value="publie" checked>
-								<span class="label label-success">Available</span>
+								<span class="label label-success">Published</span>
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name="optionsRadios" id="optionsRadios2" value="draft">
+								<span class="label label-warning">Draft</span>
 							</label>
 						</div>
 						<div class="radio">
 							<label>
 								<input type="radio" name="optionsRadios" id="optionsRadios3" value="desactive">
-								<span class="label label-danger">Unavailable</span>
+								<span class="label label-danger">Private</span>
 							</label>
 						</div>
 					</div>
-					<div class="form-group">
-						<label for="product-id">Product ID</label>
-						<input type="text" class="form-control" id="product-id" value="1-ABC">
+
+					<div class="checkbox">
+						<label>
+							<input type="checkbox">Page aura une carte.
+						</label>
+					</div>
+					<div id="pagemap">
+						<div class="form-group">
+							<label for="page-latitudes">Latitudes</label>
+							<input type="text" class="form-control" id="page-latitudes" placeholder="Enter Latitudes">
+						</div>
+						<div class="form-group">
+							<label for="page-longitudes">Longitudes</label>
+							<input type="text" class="form-control" id="page-longitudes" placeholder="Enter Longitudes">
+						</div>
 					</div>
 					<div class="form-group">
-						<label for="product-supplier">Supplier</label>
-						<input type="text" class="form-control" id="product-supplier" value="Solar Energy DC">
+						<label for="page-title">Auteur</label>
+						<input type="text" class="form-control" id="page-auteur" value="Valeriu Tihai" disabled>
 					</div>
 					<div class="form-group">
-						<label for="product-supplier-id">Supplier's product ID</label>
-						<input type="text" class="form-control" id="product-supplier-id" value="1-DC">
+						<label for="page-date">Date</label>
+						<input type="text" class="form-control" id="page-date" value="Jeudi 11 octobre 2013, 16:03" disabled>
 					</div>
 					<div class="form-group">
-						<label for="product-price">Price</label>
-						<input type="text" class="form-control" id="product-price" value="99.99">
-					</div>
-					<div class="form-group">
-						<label for="product-weight">Weight (pounds)</label>
-						<input type="text" class="form-control" id="product-weight" value="25">
-					</div>
-					<div class="form-group">
-						<label for="product-dimensions">Dimensions (cm)</label>
-						<input type="text" class="form-control" id="product-supplier" value="Width">
-						<input type="text" class="form-control" id="product-supplier" value="Height">
-						<input type="text" class="form-control" id="product-supplier" value="Thickness">
+						<label for="page-ip">Adresse IP</label>
+						<input type="text" class="form-control" id="page-ip" value="66.55.84.125" disabled>
 					</div>
 					<div class="form-group">
 						<button type="submit" class="btn btn-primary" data-loading-text="Sauvegardez...">Submit</button>
