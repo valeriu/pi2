@@ -7,9 +7,16 @@
 
 /* background body*/
 body{
-	/*font-family: Helvetica,Arial,sans-serif;*/
+	font-family: 'Roboto Slab', serif;
 	background: url("../img/greyzz.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
+
+/*navigation principale*/
+.navbar-wrapper {
+	font-size: 120%;
+	font-weight: bold;
+} 
+
 /* background body*/
 /* Pour changer le couleur de liens*/
 a{

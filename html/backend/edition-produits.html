@@ -14,7 +14,9 @@
 
     <!-- Custom styles for login page -->
     <link href="css/produits.css" rel="stylesheet">
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- GOOGLE FONTS -->
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
@@ -58,19 +60,19 @@
 				<form role="form">
 					<div class="form-group">
 						<label for="product-title">Nom du produit</label>
-						<input type="text" class="form-control" id="product-title" placeholder="Enter Title">
+						<input type="text" class="form-control" id="product-title" placeholder="Titre du produit">
 					</div>
 					<div class="form-group">
 						<label for="product-details">Détails</label>
-						<textarea class="form-control" rows="18" id="product-details" placeholder="Product details"></textarea>
+						<textarea class="form-control" rows="18" id="product-details" placeholder="Détails du produit"></textarea>
 					</div>
 					<div class="form-group">
 						<label for="product-power">Spécifications</label>
-						<input type="text" class="form-control" id="product-power" value="200W">
+						<input type="text" class="form-control" id="product-power" value="Ex. : 200W">
 					</div>
 					<div class="form-group">
 						<label for="product-category">Catégorie</label>
-						<input type="text" class="form-control" id="product-category" value="200W">
+						<input type="text" class="form-control" id="product-category" value="Ex. : Panneaux solaires">
 					</div>
 					<div class="form-group">
 						<label for="product-status">Statut</label>
@@ -82,13 +84,23 @@
 						</div>
 						<div class="radio">
 							<label>
-								<input type="radio" name="optionsRadios" id="optionsRadios3" value="desactive">
-								<span class="label label-danger">Non-disponible</span>
+								<input type="radio" name="optionsRadios" id="optionsRadios2" value="desactive">
+								<span class="label label-warning">Non-disponible</span>
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name="optionsRadios" id="optionsRadios3" value="supprime">
+								<span class="label label-danger">Supprimée</span>
 							</label>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="product-id">Id du produit</label>
+						<label for="product-type">Type du produit</label>
+						<input type="text" class="form-control" id="product-type" value="Ex.: Nouveauté, promotion...">
+					</div>
+					<div class="form-group">
+						<label for="product-id">ID du produit</label>
 						<input type="text" class="form-control" id="product-id" value="1-ABC">
 					</div>
 					<div class="form-group">
@@ -96,22 +108,22 @@
 						<input type="text" class="form-control" id="product-supplier" value="Solar Energy DC">
 					</div>
 					<div class="form-group">
-						<label for="product-supplier-id">Id du produit du fournisseur</label>
+						<label for="product-supplier-id">ID du produit du fournisseur</label>
 						<input type="text" class="form-control" id="product-supplier-id" value="1-DC">
 					</div>
 					<div class="form-group">
-						<label for="product-price">Proix</label>
+						<label for="product-price">Prix</label>
 						<input type="text" class="form-control" id="product-price" value="99.99">
 					</div>
 					<div class="form-group">
-						<label for="product-weight">Poid (livres)</label>
+						<label for="product-weight">Poid (kilogrammes)</label>
 						<input type="text" class="form-control" id="product-weight" value="25">
 					</div>
 					<div class="form-group">
 						<label for="product-dimensions">Dimensions (cm)</label>
-						<input type="text" class="form-control" id="product-supplier" value="Width">
-						<input type="text" class="form-control" id="product-supplier" value="Height">
-						<input type="text" class="form-control" id="product-supplier" value="Thickness">
+						<input type="text" class="form-control" id="product-supplier" value="Largeur">
+						<input type="text" class="form-control" id="product-supplier" value="Hauteur">
+						<input type="text" class="form-control" id="product-supplier" value="Longueur">
 					</div>
 					<div class="form-group">
 						<button type="submit" class="btn btn-primary" data-loading-text="Sauvegardez...">Soumettre</button>

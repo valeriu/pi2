@@ -25,6 +25,8 @@
 		<link href="css/usager.css" rel="stylesheet">
 		<link href="css/panier.css" rel="stylesheet">
 		<link href="css/catalog.css" rel="stylesheet">
+		<!-- GOOGLE FONTS -->
+		<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 		
 	</head>
 <!-- NAVBAR
@@ -34,9 +36,39 @@
 		<header class="container">
 			<article class="row"><!-- Une autre division pour le logo de la page -->
 				<article class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-					<a class="thumbnail" href="index.html">
-						<img class="img-responsive" src="img/Logo.png">
-					</a>
+					<div id="flashContent">
+						<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="400" height="150" id="swf/wadagbe_logo_animated" align="middle">
+							<param name="movie" value="swf/wadagbe_logo_animated.swf" />
+							<param name="quality" value="best" />
+							<param name="bgcolor" value="#ffffff" />
+							<param name="play" value="true" />
+							<param name="loop" value="true" />
+							<param name="wmode" value="transparent" />
+							<param name="scale" value="showall" />
+							<param name="menu" value="true" />
+							<param name="devicefont" value="false" />
+							<param name="salign" value="" />
+							<param name="allowScriptAccess" value="sameDomain" />
+							<!--[if !IE]>-->
+							<object type="application/x-shockwave-flash" data="swf/wadagbe_logo_animated.swf" width="400" height="150">
+								<param name="movie" value="swf/wadagbe_logo_animated.swf" />
+								<param name="quality" value="best" />
+								<param name="bgcolor" value="#ffffff" />
+								<param name="play" value="true" />
+								<param name="loop" value="true" />
+								<param name="wmode" value="transparent" />
+								<param name="scale" value="showall" />
+								<param name="menu" value="true" />
+								<param name="devicefont" value="false" />
+								<param name="salign" value="" />
+								<param name="allowScriptAccess" value="sameDomain" />
+							<!--<![endif]-->
+								<img class="img-responsive" src="img/Logo.png" alt="logo wadagbe">
+							<!--[if !IE]>-->
+							</object>
+							<!--<![endif]-->
+						</object>
+					</div>
 				</article>
 				<article class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-12 pull-right">
 				<!-- / Connexion Usagers -->
@@ -62,7 +94,7 @@
 								<br>
 							</form>
 							<div id="infosConnecter">
-								<h1>Wellcome Wadagbé!</h1>
+								<h1>Bienvenue sur Wadagbé!</h1>
 								<a name="completerInfos" href="completerInfos.html">Compléter les informations</a>
 							</div>
 						</article>
@@ -129,18 +161,18 @@
 							</div>
 							<div class="navbar-collapse collapse"><!-- PLUGIN DROPDOWN BOOTSTRAP -->
 								<ul class="nav navbar-nav">
-									<li class="active"><a href="#">Accueil</a></li>
+									<li class="active"><a href="index.html">Accueil</a></li>
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Produits<b class="caret"></b></a>
 										<ul class="dropdown-menu">
-						<li class="dropdown-header">Panneaux solaires</li>
-											<li><a href="#">######</a></li>
-											<li><a href="#">######</a></li>
-											<li><a href="#">######</a></li>
+											<li class="dropdown-header">Panneaux solaires</li>
+											<li><a href="catalogue.html">######</a></li>
+											<li><a href="catalogue.html">######</a></li>
+											<li><a href="catalogue.html">######</a></li>
 											<li class="divider"></li>
 											<li class="dropdown-header hidden-xs">Lampes DEL</li><!-- hidden dans les petits écrans pour eviter le scroll -->
-											<li><a class="hidden-xs" href="#">######</a></li><!-- hidden dans les petits écrans pour eviter le scroll -->
-											<li><a class="hidden-xs" href="#">######</a></li><!-- hidden dans les petits écrans pour eviter le scroll -->
+											<li><a class="hidden-xs" href="catalogue.html">######</a></li><!-- hidden dans les petits écrans pour eviter le scroll -->
+											<li><a class="hidden-xs" href="catalogue.html">######</a></li><!-- hidden dans les petits écrans pour eviter le scroll -->
 										</ul>
 									</li>
 									<li><a href="page-static.html">À propos</a></li>
