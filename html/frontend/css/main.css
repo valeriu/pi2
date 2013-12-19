@@ -89,9 +89,9 @@ a:focus{
 	background: linear-gradient(to bottom,  #ff9028 0%,#ff9532 49%,#ffa73d 96%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff9028', endColorstr='#ffa73d',GradientType=0 );
 	text-shadow: 1px 1px 3px #484848;
-
-
-
+}
+.btn:focus{
+	outline: medium none;
 }
 /* / Boutons */
 footer{
