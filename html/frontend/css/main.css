@@ -239,9 +239,6 @@ footer{
 #courrielEnvoye{
 	display: none;
 }
-button[class=btn-home] {
-	min-width: 110px;
-}
 .btn-lien{
 	background: none transparent;
 	color: #222;
