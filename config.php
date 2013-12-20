@@ -22,4 +22,13 @@
 	
 	spl_autoload_register('mon_autoloader');
 	
+// Constantes 
+	//Base de donne
+	define("HOST","localhost");
+	define("USER","e1295805");
+	define("BD","e1295805");
+	define("PASS","50319801101");
+	
+	//
+
 ?>
