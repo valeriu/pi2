@@ -13,13 +13,11 @@
 class Modele {
 	
     
-	function __construct ()
-	{
+	function __construct ()	{
 		
 	}
 	
-	function __destruct ()
-	{
+	function __destruct ()	{
 		
 	}
 	
@@ -28,15 +26,8 @@ class Modele {
 	 * @access public
 	 * @return Array
 	 */
-	public function getData() 
-	{
-				
-		
-		
+	public function getData() 	{
+			
 	}
 }
-
-
-
-
 ?>

@@ -11,15 +11,13 @@
  * 
  */
 
-class Controler 
-{
+class Controler {
 	
 		/**
 		 * Traite la requête
 		 * @return void
 		 */
-		public function gerer()
-		{
+		public function gerer() {
 			
 			switch ($_GET['requete']) {
 				case 'accueil':
@@ -30,14 +28,12 @@ class Controler
 					break;
 			}
 		}
-		private function accueil()
-		{
+		private function accueil() {
 			$oVue = new Vue();
 			$oVue->afficheAccueil();
 		}
 		// Placer les méthodes du controleur.
-		
-		
+				
 }
 ?>
 

@@ -19,8 +19,7 @@
 	<body>
 			<?php 		
 				$oControleur = new Controler();	
-				$oControleur->gerer();
-				
+				$oControleur->gerer();	
 			?>
 			
 			<div id="footer">
