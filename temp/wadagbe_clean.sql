@@ -86,7 +86,6 @@ CREATE  TABLE IF NOT EXISTS `e1295805`.`wa_produits` (
   `puissance` INT NULL ,
   `voc` FLOAT NULL COMMENT 'voc -  la tension qui est présente lorsqu’il ne circule aucun courant' ,
   `vmp` FLOAT NULL COMMENT 'La tension Vmp (pour tension à puissance maximale)' ,
-  `produitscol` VARCHAR(45) NULL ,
   PRIMARY KEY (`id_produits`) ,
   INDEX `fk_produits_evaluation1_idx` (`evaluation_id_evaluation` ASC) ,
   INDEX `fk_produits_categorie1_idx` (`categorie_id_categorie` ASC) )
