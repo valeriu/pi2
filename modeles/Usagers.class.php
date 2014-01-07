@@ -11,29 +11,37 @@
  * @author valeriu
  */
 class Usagers {
-
-	public static function enregistrer ($nom_prenom, $courriel, $mot_passe) {
-		
-	} 
-	public static function connecter ($courriel, $mot_passe) {
-		
-	}
-	public static function modifier ($id){
-		
-	}
-	public static function afficher ($id) {
-		
+	private $bd;
+	
+	public function __construct(){
+		$this->bd = BD::getInstance();
 	}
 	
-	public static function afficherListe () {
-		
-	}
-	
-	public static function envoyerMotPasse ($courriel) {
+	public function enregistrer ($nom_prenom, $courriel, $mot_passe) {
 		
 	} 
 	
-	public static function modifierMotPasse ($courriel, $mot_passe1, $mot_passe2) {
+	public function connecter ($courriel, $mot_passe) {
+		
+	}
+	
+	public function modifier ($id){
+		
+	}
+	
+	public function afficher ($id) {
+		
+	}
+	
+	public function afficherListe () {
+		
+	}
+	
+	public function envoyerMotPasse ($courriel) {
+		
+	} 
+	
+	public function modifierMotPasse ($courriel, $mot_passe1, $mot_passe2) {
 		
 	}
 }

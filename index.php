@@ -9,15 +9,12 @@
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  * 
  */
+	session_start();
+ 
 	 /***************************************************/
     /** Fichier de configuration, contient l'autoloader **/
     /***************************************************/
-	require_once("./config.php");
-	
-	/***************************************************/
-    /** Informations de Base de donnes **/
-    /***************************************************/
-	require_once("./includes/connexion.inc.php");
+	require_once("./includes/config.php");
 	
    /***************************************************/
     /** Initialisation des variables **/
