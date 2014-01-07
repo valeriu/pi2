@@ -1,14 +1,13 @@
 <?php
 
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * MODÈLE USAGERS
  */
 
 /**
  * Description of Usagers
  *
- * @author valeriu
+ * @author Luc
  */
 class Usagers {
 	private $bd;
