@@ -16,13 +16,13 @@
 			<h1>Test: connecter() fonctionnel</h1>
 			<?php 
 				$usagers = new Usagers();
-				$rep = $usagers->connecter("per.inceptos@blandit.com", "pass");
+				$rep = $usagers->connecter("ex@ex.com", "pass");
 				var_dump($rep);
 			?>
-			<h1>Test: connecter() non-fonctionnel</h1>
+			<h1>Test: connecter() fonctionnel</h1>
 			<?php 
 				$usagers = new Usagers();
-				$rep = $usagers->connecter("test", "pass");
+				$rep = $usagers->connecter("tempor.lorem.eget@Curabiturvel.net", "ZYG98ZBO7EQ");
 				var_dump($rep);
 			?>
 			<h1>Test: connecter() non-fonctionnel</h1>
@@ -60,6 +60,19 @@
 			<?php 
 				$usagers = new Usagers();
 				$rep = $usagers->enregistrer('test@test.eu', 'pass', 'Luc, Mars');
+				var_dump($rep);
+			?>
+			<h1>Test: modifier() fonctionnel</h1>
+			<?php 
+				$usagers = new Usagers();
+				//$id_utilisateurs, $courriel, $mot_passe, $nom_prenom, $date_entree, $role, $cle_reactivation, $statut
+				$rep = $usagers->modifier('4', 'a@a.eu', 'pass', 'TEST', '1965-10-29 00:00:00', '1', null, '1');
+				var_dump($rep);
+			?>
+			<h1>Test: modifierMotPasse() fonctionnel</h1>
+			<?php 
+				$usagers = new Usagers();
+				$rep = $usagers->modifierMotPasse("ex@ex.com", "pass", "pass");
 				var_dump($rep);
 			?>
 		</div>
