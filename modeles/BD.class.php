@@ -23,6 +23,9 @@ class BD{
         return self::$instance;
     }
 
+	public function getBD(){
+		return $this->idbd;
+	}
     
 }
 
