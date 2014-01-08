@@ -1,12 +1,13 @@
-<?php
+ï»¿<?php
 /*
- * MODÈLE USAGERS
+ * MODÃˆLE USAGERS
  */
 
 /**
  * Description of Usagers
  *
  * @author Luc
+ *$idbd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
  */
 class Usagers {
 	private $bd;
@@ -17,7 +18,9 @@ class Usagers {
 		//var_dump($idbd);
 	}
 	
-	
+	/**
+	 * Enregistrer un nouvel usager
+	 */
 	public function enregistrer ($aDonnees = Array()) {
 		//$courriel, $mot_passe, $nom_prenom, $role=0
 		//$courriel = $aDonnees['courriel'];
@@ -32,20 +35,22 @@ class Usagers {
 			throw new Exception("Ce courriel est invalide");
 		}
 		
-		if(!Valider::estEntre($mot_passe, 6, 12)){
+		/*if(!Valider::estEntreString($mot_passe, 6, 12)){
 			throw new Exception("Mot de passe non conforme");
-		}
+		}*/
 		
 		if(!Valider::estAlphaNumerique($nom_prenom)){
-			throw new Exception("Mot de passe non conforme");
+			throw new Exception("Nom, PrÃ©nom non conforme");
 		}
 		
 		if(!Valider::estInt($role)){
-			throw new Exception("Entrez un chiffre valide pour le rôle Ex. 0, 1 ou 2 ");
+			throw new Exception("Entrez un chiffre valide pour le rÃ´le Ex. 0, 1 ou 2 ");
 		}
 		
+		$mot_passe = MD5($mot_passe);
+		
 		$idbd = $this->bd->getBD();
-		//Préparation de la requête
+		//PrÃ©paration de la requÃªte
 		$aujourdhui = date("Y-m-d H:i:s");
 		$req = $idbd->prepare(	"INSERT INTO wa_utilisateurs
 								(id_utilisateurs, courriel, mot_passe, nom_prenom, date_entree, role, cle_reactivation, statut)
@@ -57,30 +62,39 @@ class Usagers {
         $req->bindParam(3, $nom_prenom);
         $req->bindParam(4, $aujourdhui);
         $req->bindParam(5, $role);
-        return $req->execute();
+		
+		$reponse = $req->execute();
+		
+		if($reponse){
+			return $reponse;
+		}
+        else{
+			throw new Exception("Une erreur s'est produite lors de l'enregistrement, recommencez");
+		}
 		
 	} 
 	
+	/**
+	 * Connecter un usager
+	 */
 	public function connecter ($aDonnees = Array()) {
-		//$courriel, $mot_passe<
+		//$courriel, $mot_passe
 		(isset($aDonnees['courriel'])) ? $courriel = $aDonnees['courriel'] : $courriel = '';
 		(isset($aDonnees['mot_passe'])) ? $mot_passe = $aDonnees['mot_passe'] : $mot_passe = '';
 		
 		if(!Valider::estCourriel($courriel)){
 			throw new Exception("Ce courriel est invalide");
 		}
-		if($courriel = ''){
-			throw new Exception("Entrer votre courriel");
-		}
-		if(!Valider::estEntre($mot_passe, 6, 12)){
+		
+		if(!Valider::estEntreString($mot_passe, 4, 12)){
 			throw new Exception("Mot de passe non conforme");
 		}
-		if($mot_passe = ''){
-			throw new Exception("Entrer votre mot de passe");
-		}
+		
+		$mot_passe = MD5($mot_passe);
 		
 		$idbd = $this->bd->getBD();
-		//Préparation de la requête
+		//$idbd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		//PrÃ©paration de la requÃªte
 		$req = $idbd->prepare(	"SELECT *
                                 FROM wa_utilisateurs
                                 WHERE courriel = ?
@@ -92,27 +106,61 @@ class Usagers {
         $req->bindParam(1, $courriel);
         $req->bindParam(2, $mot_passe);
         $req->execute();
+		$obj = $req->fetch(PDO::FETCH_ASSOC);
 		
-		return $req->fetch(PDO::FETCH_ASSOC);
+		if($obj){
+			return $obj;
+		}
+        else{
+			throw new Exception("Courriel ou mot de passe invalide");
+		}
 	}
 	
+	/**
+	 * Modifier un usager
+	 */
 	public function modifier ($aDonnees = Array()){
 		//$aDonnees['id_utilisateurs'], $courriel, $mot_passe, $nom_prenom, $date_entree, $role, $cle_reactivation, $statut
-		$id_utilisateurs = $aDonnees['id_utilisateurs'];
-		$courriel = $aDonnees['courriel'];
-		$mot_passe = MD5($aDonnees['mot_passe']);
-		$nom_prenom = $aDonnees['nom_prenom'];
-		$date_entree = $aDonnees['date_entree'];
-		$role = $aDonnees['role'];
-		$cle_reactivation = $aDonnees['cle_reactivation'];
-		$statut = $aDonnees['statut'];
+		
+		(isset($aDonnees['id_utilisateurs'])) ? $id_utilisateurs = $aDonnees['id_utilisateurs'] : $id_utilisateurs = '';
 		(isset($aDonnees['courriel'])) ? $courriel = $aDonnees['courriel'] : $courriel = '';
 		(isset($aDonnees['mot_passe'])) ? $mot_passe = $aDonnees['mot_passe'] : $mot_passe = '';
 		(isset($aDonnees['nom_prenom'])) ? $nom_prenom = $aDonnees['nom_prenom'] : $nom_prenom = '';
+		$date_entree = date("Y-m-d H:i:s");
 		(isset($aDonnees['role'])) ? $role = $aDonnees['role'] : $role = 0;
+		(isset($aDonnees['cle_reactivation'])) ? $cle_reactivation = $aDonnees['cle_reactivation'] : $cle_reactivation = '';
+		(isset($aDonnees['statut'])) ? $statut = $aDonnees['statut'] : $statut = 1;
+		
+		if(!Valider::estInt($id_utilisateurs)){
+			throw new Exception("Id d'utilisateur non conforme");
+		}
+		
+		if(!Valider::estCourriel($courriel)){
+			throw new Exception("Ce courriel est invalide");
+		}
+		
+		/*if(!Valider::estEntreString($mot_passe, 6, 12)){
+			throw new Exception("Mot de passe non conforme");
+		}*/
+		
+		if(!Valider::estAlphaNumerique($nom_prenom)){
+			throw new Exception("Nom, PrÃ©nom non conforme");
+		}
+		
+		if(!Valider::estEntreInt($role, 0, 2)){
+			throw new Exception("Entrez un chiffre valide pour le rÃ´le Ex. 0, 1 ou 2 ");
+		}
+		
+		/*if(!Valider::estAlphaNumerique($cle_reactivation)){
+			throw new Exception("Entrez une clÃ© valide(lettre ou nombre)");
+		}*/
+		
+		/*if(!Valider::estEntreInt($statut, 0, 1)){
+			throw new Exception("Entrez un chiffre valide pour le statut Ex. 0 ou 1");
+		}*/
 		
 		$idbd = $this->bd->getBD();
-		//Préparation de la requête
+		//PrÃ©paration de la requÃªte
 		$req = $idbd->prepare(	"UPDATE wa_utilisateurs
 								SET courriel = ?, 
 									mot_passe = ?,
@@ -123,7 +171,7 @@ class Usagers {
 									statut = ?
 								WHERE id_utilisateurs = ?");
         
-		var_dump($req);
+		//var_dump($req);
         $req->bindParam(1, $courriel);
         $req->bindParam(2, $mot_passe);
         $req->bindParam(3, $nom_prenom);
@@ -133,49 +181,102 @@ class Usagers {
         $req->bindParam(7, $statut);
         $req->bindParam(8, $id_utilisateurs);
 
-        return $req->execute();
+		$reponse = $req->execute();
+		
+		if($reponse){
+			return $reponse;
+		}
+		else{
+			throw new Exception("Erreur lors de la modification, recommencez");
+		}
+        
 	}
 	
+	/**
+	 * Afficher un usager
+	 */
 	public function afficher ($aDonnees = Array()) {
 		//$id_utilisateurs
-		$id_utilisateurs = $aDonnees['id_utilisateurs'];
+		(isset($aDonnees['id_utilisateurs'])) ? $id_utilisateurs = $aDonnees['id_utilisateurs'] : $id_utilisateurs = '';
+		
+		if(!Valider::estInt($id_utilisateurs)){
+			throw new Exception("Id d'utilisateur non conforme");
+		}
+		
 		$idbd = $this->bd->getBD();
-		//Préparation de la requête
+		//PrÃ©paration de la requÃªte
 		$req = $idbd->prepare(	"SELECT *
                                 FROM wa_utilisateurs
                                 WHERE id_utilisateurs = :id_utilisateurs");
         
         $req->bindParam(":id_utilisateurs", $id_utilisateurs, PDO::PARAM_INT);
         $req->execute();
+		$obj = $req->fetch(PDO::FETCH_ASSOC);
 		
-		return $req->fetch(PDO::FETCH_ASSOC);
+		if($obj){
+			return $obj;
+		}
+		else{
+			throw new Exception("Id d'utilisateur inexistant");
+		}
 	}
 	
+	/**
+	 * Afficher la liste des usagers
+	 */
 	public function afficherListe () {
 		$idbd = $this->bd->getBD();
-		//Préparation de la requête
+		//PrÃ©paration de la requÃªte
 		$req = $idbd->prepare(	"SELECT *
                                 FROM wa_utilisateurs");
         
         $req->execute();
 		$aUtilisateurs = $req->fetchAll();
-		
-		return $aUtilisateurs;
+		if($aUtilisateurs){
+			return $aUtilisateurs;
+		}
+		else{
+			throw new Exception("Erreur lors de l'aquisition des donnÃ©es, recommencez");
+		}
 	}
 	
+	/**
+	 * Envoyer un mot de passe temporaire a un usager
+	 */
 	public function envoyerMotPasse ($aDonnees = Array()) {
 		//$courriel
 		
 	} 
 	
+	/**
+	 * Modifier le mot de passe d'un usager
+	 */
 	public function modifierMotPasse ($aDonnees = Array()) {
 		//$courriel, $mot_passe1, $mot_passe2
-		$courriel = $aDonnees['courriel'];
-		$mot_passe1 = MD5($aDonnees['mot_passe1']);
-		$mot_passe2 = MD5($aDonnees['mot_passe2']);
+		//$courriel = $aDonnees['courriel'];
+		//$mot_passe1 = MD5($aDonnees['mot_passe1']);
+		//$mot_passe2 = MD5($aDonnees['mot_passe2']);
+		
+		(isset($aDonnees['courriel'])) ? $courriel = $aDonnees['courriel'] : $courriel = '';
+		(isset($aDonnees['mot_passe1'])) ? $mot_passe1 = $aDonnees['mot_passe1'] : $mot_passe1 = '';
+		(isset($aDonnees['mot_passe2'])) ? $mot_passe2 = $aDonnees['mot_passe2'] : $mot_passe2 = '';
+		
+		if(!Valider::estCourriel($courriel)){
+			throw new Exception("Ce courriel est invalide");
+		}
+		
+		if(!Valider::estEntreString($mot_passe1, 4, 12)){
+			throw new Exception("Mot de passe (1) non conforme");
+		}
+		
+		if(!Valider::estEntreString($mot_passe2, 4, 12)){
+			throw new Exception("Mot de passe (2) non conforme");
+		}
+		
 		$idbd = $this->bd->getBD();
-		if($this->connecter($courriel, $mot_passe1)){
-			//Préparation de la requête
+		$val = array('courriel' => $courriel, 'mot_passe' => $mot_passe1);
+		if($this->connecter($val)){
+			//PrÃ©paration de la requÃªte
 			$mot_passe2 = MD5($mot_passe2);
 			$req = $idbd->prepare(	"UPDATE wa_utilisateurs
 									SET mot_passe = ?
@@ -184,12 +285,13 @@ class Usagers {
 			var_dump($req);
 	        $req->bindParam(1, $mot_passe2);
 	        $req->bindParam(2, $courriel);
-
-	        return $req->execute();
-
-		}
-		else{
-			return false;
+			
+			if($req->execute()){
+				return $req->execute();
+			}
+			else{
+				throw new Exception("Erreur lors de la modification, recommencez");
+			}
 		}
 	}
 }
