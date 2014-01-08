@@ -51,15 +51,20 @@
 <hr>
 				<h3>Test: estAlphaNumerique($valeur)</h3>
 			<?php 
-				$a = array(23, "23", 23.5, "23.5", null, true, false, 15, -11);
+			
+			echo Valider::estEntreString("test", 1, 2);
+				$valeur = "test";
+				$nb1 = array(0, 1, 2, 3, 4, 5, 6); 
+				$nb2 = array(6, 7, 8, 9, 10, 11, 12);
 				
-				foreach ($a as $k) {
-					if(Valider::estFloat($k)){
-						echo $k . " - true<br>";
+				for($i=0, $j=count($nb1); $i<$j; $i++ ){
+					if(Valider::estEntreString($valeur, $nb1[$i], $nb2[$i])){
+						echo $valeur." / ".$nb1[$i]." - ".$nb2[$i]." = true<br>";
 					} else {
-						echo $k . " - false<br>";
+						echo $valeur." / ".$nb1[$i]." - ".$nb2[$i]." = false<br>";
 					}
 				}
+				
 			?>				
 		</div>
 	</body>

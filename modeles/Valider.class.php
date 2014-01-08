@@ -59,7 +59,7 @@ abstract class Valider {
 	 * @return boolean
 	 */
 	public function estNegatif($valeur){
-		return ($valeur < 0 ? true : false);
+		return; ($valeur < 0 ? true : false);
 	}
 	
 	/**
@@ -72,8 +72,10 @@ abstract class Valider {
 	 * @return boolean
 	 */
 	public function estEntreString($valeur, $nb1, $nb2){
-		$valeur = strlen($valeur);
-		$valeurEntre = ((($nb1 >= $valeur) && ($valeur <= $nb2)) ? true : false);
+		$valeurLength = strlen($valeur);
+		if (($nb1 <= $valeurLength) && ($valeurLength <= $nb2))
+			return TRUE;
+		return FALSE;
 	}
 	
 	/**
