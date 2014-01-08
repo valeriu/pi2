@@ -49,10 +49,8 @@
 				}
 			?>			
 <hr>
-				<h3>Test: estAlphaNumerique($valeur)</h3>
+				<h3>Test: estEntreString($valeur)</h3>
 			<?php 
-			
-			echo Valider::estEntreString("test", 1, 2);
 				$valeur = "test";
 				$nb1 = array(0, 1, 2, 3, 4, 5, 6); 
 				$nb2 = array(6, 7, 8, 9, 10, 11, 12);
@@ -64,8 +62,22 @@
 						echo $valeur." / ".$nb1[$i]." - ".$nb2[$i]." = false<br>";
 					}
 				}
+			?>
+<hr>
+				<h3>Test: estEntreInt($valeur)</h3>
+			<?php 
+				$valeur = array(3, 7, 1, 4, 9, 4, 1); 
+				$nb1 = array(0, 1, 2, 3, 4, 5, 6); 
+				$nb2 = array(6, 7, 8, 9, 10, 11, 12);
 				
-			?>				
+				for($i=0, $j=count($nb1); $i<$j; $i++ ){
+					if(Valider::estEntreInt($valeur[$i], $nb1[$i], $nb2[$i])){
+						echo $valeur[$i]." / ".$nb1[$i]." - ".$nb2[$i]." = true<br>";
+					} else {
+						echo $valeur[$i]." / ".$nb1[$i]." - ".$nb2[$i]." = false<br>";
+					}
+				}
+			?>	
 		</div>
 	</body>
 </html>
