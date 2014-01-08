@@ -146,25 +146,26 @@
 				<h3>Test: estProvince($valeur)</h3>
 			<?php 
 				$a = array(
-						"ab" =>  array("fr" => "Alberta", "en" => "Alberta"),
-						"bc" =>  array("fr" => "Colombie-Britannique", "en" => "British Columbia"),
-						"mb" =>  array("fr" => "Manitoba", "en" => "Manitoba"),
-						"nb" =>  array("fr" => "Nouveau-Brunswick", "en" => "New Brunswick"),
-						"nl" =>  array("fr" => "Terre-Neuve-et-Labrador", "en" => "Newfoundland and Labrador"),
-						"ns" =>  array("fr" => "Nouvelle-Écosse", "en" => "Nova Scotia"),	
-						"nt" =>  array("fr" => "Territoires du Nord-Ouest", "en" => "Northwest Territories"),	
-						"nu" =>  array("fr" => "Nunavut", "en" => "Nunavut"),	
-						"on" =>  array("fr" => "Ontario", "en" => "Ontario"),
-						"pe" =>  array("fr" => "Île-du-Prince-Édouard", "en" => "Prince Edward Island"),
-						"qc" =>  array("fr" => "Québec", "en" => "Quebec"),
-						"sk" =>  array("fr" => "Saskatchewan", "en" => "Saskatchewan"),	
-						"sk" =>  array("fr" => "Yukon", "en" => "Yukon"));
-				
-				for($i=0, $j=count($a); $i<$j; $i++ ){ {
-					if(Valider::estProvince($a[$i])){
-						echo $a[$i] . " - true<br>";
+						13 =>  array("abb" => "oob", "fr" => "OoO", "en" => "Alberta"),
+						0 =>  array("abb" => "ab", "fr" => "Alberta", "en" => "Alberta"),
+						1 =>  array("abb" => "bc", "fr" => "Colombie-Britannique", "en" => "British Columbia"),
+						2 =>  array("abb" => "mb", "fr" => "Manitoba", "en" => "Manitoba"),
+						3 =>  array("abb" => "nb", "fr" => "Nouveau-Brunswick", "en" => "New Brunswick"),
+						4 =>  array("abb" => "nl", "fr" => "Terre-Neuve-et-Labrador", "en" => "Newfoundland and Labrador"),
+						5 =>  array("abb" => "ns", "fr" => "Nouvelle-Écosse", "en" => "Nova Scotia"),	
+						6 =>  array("abb" => "nt", "fr" => "Territoires du Nord-Ouest", "en" => "Northwest Territories"),	
+						7 =>  array("abb" => "nu", "fr" => "Nunavut", "en" => "Nunavut"),	
+						8 =>  array("abb" => "on", "fr" => "Ontario", "en" => "Ontario"),
+						9 =>  array("abb" => "pe", "fr" => "Île-du-Prince-Édouard", "en" => "Prince Edward Island"),
+						10 =>  array("abb" => "qc", "fr" => "Québec", "en" => "Quebec"),
+						11 =>  array("abb" => "sk", "fr" => "Saskatchewan", "en" => "Saskatchewan"),	
+						12 =>  array("abb" => "sk", "fr" => "Yukon", "en" => "Yukon"));
+								
+				for($i=0, $j=count($a); $i<$j; $i++ ){ 
+					if(Valider::estProvince($a[$i]["abb"])){
+						echo $a[$i]["abb"]." - " .$a[$i]["fr"]. " - true<br>";
 					} else {
-						echo $a[$i] . " - false<br>";
+						echo $a[$i]["abb"]." - " .$a[$i]["fr"]. " - false<br>";
 					}
 				}
 			?>	
