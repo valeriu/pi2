@@ -16,37 +16,43 @@
 			<h1>Test: connecter() fonctionnel</h1>
 			<?php 
 				$usagers = new Usagers();
-				$rep = $usagers->connecter("ex@ex.com", "pass");
+				$array = array("courriel" => "ex@ex.com", "mot_passe" => "pass");
+				$rep = $usagers->connecter($array);
 				var_dump($rep);
 			?>
 			<h1>Test: connecter() fonctionnel</h1>
 			<?php 
 				$usagers = new Usagers();
-				$rep = $usagers->connecter("tempor.lorem.eget@Curabiturvel.net", "ZYG98ZBO7EQ");
+				$array = array("courriel" => "tempor.lorem.eget@Curabiturvel.net", "mot_passe" => "ZYG98ZBO7EQ");
+				$rep = $usagers->connecter($array);
 				var_dump($rep);
 			?>
 			<h1>Test: connecter() non-fonctionnel</h1>
 			<?php 
 				$usagers = new Usagers();
-				$rep = $usagers->connecter("per.inceptos@blandit.com", "test");
+				$array = array("courriel" => "per.inceptos@blandit.com", "mot_passe" => "test");
+				$rep = $usagers->connecter($array);
 				var_dump($rep);
 			?>
 			<h1>Test: afficher() fonctionnel</h1>
 			<?php 
 				$usagers = new Usagers();
-				$rep = $usagers->afficher(1);
+				$array = array("id_utilisateurs" => 1);
+				$rep = $usagers->afficher($array);
 				var_dump($rep);
 			?>
 			<h1>Test: afficher() fonctionnel</h1>
 			<?php 
 				$usagers = new Usagers();
-				$rep = $usagers->afficher(8);
+				$array = array("id_utilisateurs" => 8);
+				$rep = $usagers->afficher($array);
 				var_dump($rep);
 			?>
 			<h1>Test: afficher() non-fonctionnel</h1>
 			<?php 
 				$usagers = new Usagers();
-				$rep = $usagers->afficher(5000);
+				$array = array("id_utilisateurs" => 5000);
+				$rep = $usagers->afficher($array);
 				var_dump($rep);
 			?>
 			<h1>Test: afficherListe() fonctionnel</h1>
@@ -56,23 +62,33 @@
 				//echo "<pre>";
 				//print_r($rep);
 			?>
-			<h1>Test: enregistrer() fonctionnel</h1>
+			<h1>Test: enregistrer() fonctionnel(sans role)</h1>
 			<?php 
 				$usagers = new Usagers();
-				$rep = $usagers->enregistrer('test@test.eu', 'pass', 'Luc, Mars');
+				$array = array("courriel" => "tempor.lorem.eget@Cu.com", "mot_passe" => "ZYG98ZBO7EQ", "nom_prenom" => "Luc, Mars");
+				$rep = $usagers->enregistrer($array);
+				var_dump($rep);
+			?>
+			<h1>Test: enregistrer() fonctionnel(avec role)</h1>
+			<?php 
+				$usagers = new Usagers();
+				$array = array("courriel" => "tempor.lorem.eget@Cura.ca", "mot_passe" => "ZYG98ZBO7EQ", "nom_prenom" => "Luc, Mars", "role" => 1);
+				$rep = $usagers->enregistrer($array);
 				var_dump($rep);
 			?>
 			<h1>Test: modifier() fonctionnel</h1>
 			<?php 
 				$usagers = new Usagers();
 				//$id_utilisateurs, $courriel, $mot_passe, $nom_prenom, $date_entree, $role, $cle_reactivation, $statut
-				$rep = $usagers->modifier('4', 'a@a.eu', 'pass', 'TEST', '1965-10-29 00:00:00', '1', null, '1');
+				$array = array("id_utilisateurs" => 4, "courriel" => "a@a.eu", "mot_passe" => "pass", "nom_prenom" => "TEST", "date_entree" => date("Y-m-d H:i:s"), "role" => 1, "cle_reactivation" => null, "statut" => 1);
+				$rep = $usagers->modifier($array);
 				var_dump($rep);
 			?>
 			<h1>Test: modifierMotPasse() fonctionnel</h1>
 			<?php 
 				$usagers = new Usagers();
-				$rep = $usagers->modifierMotPasse("ex@ex.com", "pass", "pass");
+				$array = array("courriel" => "per.inceptos@blandit.com", "mot_passe1" => "pass", "mot_passe1" => "pass");
+				$rep = $usagers->modifierMotPasse($array);
 				var_dump($rep);
 			?>
 		</div>

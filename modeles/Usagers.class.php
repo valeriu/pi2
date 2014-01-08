@@ -1,5 +1,4 @@
 <?php
-
 /*
  * MODÈLE USAGERS
  */
@@ -18,9 +17,34 @@ class Usagers {
 		//var_dump($idbd);
 	}
 	
-	public function enregistrer ($courriel, $mot_passe, $nom_prenom, $role=0) {
+	
+	public function enregistrer ($aDonnees = Array()) {
+		//$courriel, $mot_passe, $nom_prenom, $role=0
+		//$courriel = $aDonnees['courriel'];
+		//$mot_passe = MD5($aDonnees['mot_passe']);
+		//$nom_prenom = $aDonnees['nom_prenom'];
+		(isset($aDonnees['courriel'])) ? $courriel = $aDonnees['courriel'] : $courriel = '';
+		(isset($aDonnees['mot_passe'])) ? $mot_passe = $aDonnees['mot_passe'] : $mot_passe = '';
+		(isset($aDonnees['nom_prenom'])) ? $nom_prenom = $aDonnees['nom_prenom'] : $nom_prenom = '';
+		(isset($aDonnees['role'])) ? $role = $aDonnees['role'] : $role = 0;
+		
+		if(!Valider::estCourriel($courriel)){
+			throw new Exception("Ce courriel est invalide");
+		}
+		
+		if(!Valider::estEntre($mot_passe, 6, 12)){
+			throw new Exception("Mot de passe non conforme");
+		}
+		
+		if(!Valider::estAlphaNumerique($nom_prenom)){
+			throw new Exception("Mot de passe non conforme");
+		}
+		
+		if(!Valider::estInt($role)){
+			throw new Exception("Entrez un chiffre valide pour le rôle Ex. 0, 1 ou 2 ");
+		}
+		
 		$idbd = $this->bd->getBD();
-		$mot_passe = MD5($mot_passe);
 		//Préparation de la requête
 		$aujourdhui = date("Y-m-d H:i:s");
 		$req = $idbd->prepare(	"INSERT INTO wa_utilisateurs
@@ -34,13 +58,27 @@ class Usagers {
         $req->bindParam(4, $aujourdhui);
         $req->bindParam(5, $role);
         return $req->execute();
-
-		//return $req->fetch(PDO::FETCH_ASSOC);
 		
 	} 
 	
-	public function connecter ($courriel, $mot_passe) {
-		$mot_passe = MD5($mot_passe);
+	public function connecter ($aDonnees = Array()) {
+		//$courriel, $mot_passe<
+		(isset($aDonnees['courriel'])) ? $courriel = $aDonnees['courriel'] : $courriel = '';
+		(isset($aDonnees['mot_passe'])) ? $mot_passe = $aDonnees['mot_passe'] : $mot_passe = '';
+		
+		if(!Valider::estCourriel($courriel)){
+			throw new Exception("Ce courriel est invalide");
+		}
+		if($courriel = ''){
+			throw new Exception("Entrer votre courriel");
+		}
+		if(!Valider::estEntre($mot_passe, 6, 12)){
+			throw new Exception("Mot de passe non conforme");
+		}
+		if($mot_passe = ''){
+			throw new Exception("Entrer votre mot de passe");
+		}
+		
 		$idbd = $this->bd->getBD();
 		//Préparation de la requête
 		$req = $idbd->prepare(	"SELECT *
@@ -58,7 +96,21 @@ class Usagers {
 		return $req->fetch(PDO::FETCH_ASSOC);
 	}
 	
-	public function modifier ($id_utilisateurs, $courriel, $mot_passe, $nom_prenom, $date_entree, $role, $cle_reactivation, $statut){
+	public function modifier ($aDonnees = Array()){
+		//$aDonnees['id_utilisateurs'], $courriel, $mot_passe, $nom_prenom, $date_entree, $role, $cle_reactivation, $statut
+		$id_utilisateurs = $aDonnees['id_utilisateurs'];
+		$courriel = $aDonnees['courriel'];
+		$mot_passe = MD5($aDonnees['mot_passe']);
+		$nom_prenom = $aDonnees['nom_prenom'];
+		$date_entree = $aDonnees['date_entree'];
+		$role = $aDonnees['role'];
+		$cle_reactivation = $aDonnees['cle_reactivation'];
+		$statut = $aDonnees['statut'];
+		(isset($aDonnees['courriel'])) ? $courriel = $aDonnees['courriel'] : $courriel = '';
+		(isset($aDonnees['mot_passe'])) ? $mot_passe = $aDonnees['mot_passe'] : $mot_passe = '';
+		(isset($aDonnees['nom_prenom'])) ? $nom_prenom = $aDonnees['nom_prenom'] : $nom_prenom = '';
+		(isset($aDonnees['role'])) ? $role = $aDonnees['role'] : $role = 0;
+		
 		$idbd = $this->bd->getBD();
 		//Préparation de la requête
 		$req = $idbd->prepare(	"UPDATE wa_utilisateurs
@@ -84,7 +136,9 @@ class Usagers {
         return $req->execute();
 	}
 	
-	public function afficher ($id_utilisateurs) {
+	public function afficher ($aDonnees = Array()) {
+		//$id_utilisateurs
+		$id_utilisateurs = $aDonnees['id_utilisateurs'];
 		$idbd = $this->bd->getBD();
 		//Préparation de la requête
 		$req = $idbd->prepare(	"SELECT *
@@ -109,11 +163,16 @@ class Usagers {
 		return $aUtilisateurs;
 	}
 	
-	public function envoyerMotPasse ($courriel) {
+	public function envoyerMotPasse ($aDonnees = Array()) {
+		//$courriel
 		
 	} 
 	
-	public function modifierMotPasse ($courriel, $mot_passe1, $mot_passe2) {
+	public function modifierMotPasse ($aDonnees = Array()) {
+		//$courriel, $mot_passe1, $mot_passe2
+		$courriel = $aDonnees['courriel'];
+		$mot_passe1 = MD5($aDonnees['mot_passe1']);
+		$mot_passe2 = MD5($aDonnees['mot_passe2']);
 		$idbd = $this->bd->getBD();
 		if($this->connecter($courriel, $mot_passe1)){
 			//Préparation de la requête
