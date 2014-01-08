@@ -15,7 +15,7 @@ abstract class Valider {
 	 * @return boolean 
 	 */
 	public function estInt($valeur) {
-		is_int($valeur);
+		return is_int($valeur);
 	}
 	
 	/**
@@ -26,7 +26,7 @@ abstract class Valider {
 	 * @return boolean
 	 */
 	public function estFloat($valeur) {
-		is_float($valeur);
+		return is_float($valeur);
 	}
 	
 	/**
@@ -37,7 +37,7 @@ abstract class Valider {
 	 * @return boolean
 	 */
 	public function estAlphaNumerique($valeur){
-		ctype_alnum($valeur);
+		return ctype_alnum($valeur);
 	}
 	
 	/**
@@ -48,7 +48,7 @@ abstract class Valider {
 	 * @return boolean
 	 */
 	public function estString($valeur){
-		 is_string($valeur);
+		 return is_string($valeur);
 	}
 	
 	/**
@@ -59,7 +59,7 @@ abstract class Valider {
 	 * @return boolean
 	 */
 	public function estNegatif($valeur){
-		$valeurNegatif = ($valeur < 0 ? true : false);
+		return ($valeur < 0 ? true : false);
 	}
 	
 	/**
@@ -73,7 +73,7 @@ abstract class Valider {
 	 */
 	public function estEntreString($valeur, $nb1, $nb2){
 		$valeur = strlen($valeur);
-		$valeurEntre = ((($nb1 <= $valeur) && ($valeur <= $nb2)) ? true : false);
+		$valeurEntre = ((($nb1 >= $valeur) && ($valeur <= $nb2)) ? true : false);
 	}
 	
 	/**
