@@ -1,6 +1,6 @@
 <?php
 /**
- * Description of Valider
+ * Module Valider
  * Classe utilitaire avec qui nous pouvons valider les données
  *
  * @author Valeriu Tihai
@@ -71,9 +71,14 @@ abstract class Valider {
 	 * 
 	 * @return boolean
 	 */
-	public function estEntre($valeur, $nb1, $nb2){
+	public function estEntreString($valeur, $nb1, $nb2){
 		$valeur = strlen($valeur);
 		$valeurEntre = ((($nb1 <= $valeur) && ($valeur <= $nb2)) ? true : false);
+	}
+	
+	public function estEntreInt($valeur, $nb1, $nb2){
+		
+		$valeurEntre = ((($nb1 >= $valeur) && ($valeur <= $nb2)) ? true : false);
 	}
 
 	/**
@@ -101,8 +106,10 @@ abstract class Valider {
 	}
 	
 	/**
+	 * Vérifiez si la valeur est une adresse URL
 	 * 
 	 * @param type $valeur
+	 * 
 	 * @return boolean
 	 */
 	public function estURL($valeur) {
@@ -110,8 +117,10 @@ abstract class Valider {
 	}
 	
 	/**
+	 * Vérifiez si la valeur est une image
 	 * 
 	 * @param type $valeur
+	 * 
 	 * @return boolean
 	 */
 	public function estImage($valeur) {
