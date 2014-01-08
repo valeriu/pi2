@@ -24,6 +24,9 @@ if(isset($_GET['test'])){
 		case 'pagination':
 			require_once ("./test/gabarit.pagination.test.php");
 			break;
+		case 'valider':
+			require_once ("./test/gabarit.valider.test.php");
+			break;
 		case 'panier':
 			require_once ("./test/gabarit.panier.test.php");
 			break;	
@@ -39,6 +42,7 @@ else{
 				<li><a href='?test=menu'>MENU</a></li>
 				<li><a href='?test=pagination'>PAGINATION</a></li>
 				<li><a href='?test=panier'>PANIER</a></li>
+				<li><a href='?test=valider'>Valider</a></li>
 			</ul>";
 }	
 

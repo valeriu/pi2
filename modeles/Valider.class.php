@@ -76,8 +76,17 @@ abstract class Valider {
 		$valeurEntre = ((($nb1 <= $valeur) && ($valeur <= $nb2)) ? true : false);
 	}
 	
+	/**
+	 * Vérifiez si la $valeur est comprise entre $nb1 et $nb2
+	 * 
+	 * @param type $valeur
+	 * 
+	 * @param type $nb1
+	 * @param type $nb2
+	 * 
+	 *  @return boolean
+	 */
 	public function estEntreInt($valeur, $nb1, $nb2){
-		
 		$valeurEntre = ((($nb1 >= $valeur) && ($valeur <= $nb2)) ? true : false);
 	}
 
@@ -88,7 +97,7 @@ abstract class Valider {
 	 * @return boolean
 	 */
 	public function estCourriel ($valeur) {
-		filter_var($valeur, FILTER_VALIDATE_EMAIL);
+		return filter_var($valeur, FILTER_VALIDATE_EMAIL);
 	}
 	
 	/**
@@ -141,11 +150,15 @@ abstract class Valider {
 	
 	/**
 	 * 
+	 * 
+	 * http://en.wikipedia.org/wiki/Telephone_numbers_in_Canada
+	 * 
 	 * @param type $valeur
 	 * @return boolean
 	 */
 	public function estTel($valeur) {
-		return TRUE;
+		$pattern = "/^(800|844|855|866|877|888|900|403|587|780|250|604|778|236|204|431|506|709|902|782|226|249|289|343|416|519|613|647|705|807|905|418|438|450|514|579|581|819|873|306|639|867)\d{7}$/";
+		return preg_match($pattern, $valeur);
 	}
 	
 	/**
@@ -181,7 +194,8 @@ abstract class Valider {
 	 * @return boolean
 	 */
 	public function estCodePostal($valeur){
-		return TRUE;
+		$pattern = "/^[abceghjklmnprstvxy][0-9][abceghjklmnprstvwxyz][ ]?[0-9][[abceghjklmnprstvwxyz][0-9]$/i";
+		return preg_match($pattern, $valeur);
 	}
 	
 	/**
