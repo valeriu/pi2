@@ -244,7 +244,39 @@ class Usagers {
 	 * Envoyer un mot de passe temporaire a un usager
 	 */
 	public function envoyerMotPasse ($aDonnees = Array()) {
-		//$courriel
+		(isset($aDonnees['courriel'])) ? $courriel = $aDonnees['courriel'] : $courriel = '';
+		if(!Valider::estCourriel($courriel)){
+			throw new Exception("Ce courriel est invalide");
+		}
+		
+		$cle = MD5(rand(1000, 1000077777));
+		
+		$req = $idbd->prepare(	"UPDATE wa_utilisateurs
+								SET cle_reactivation = ?, 
+								WHERE courriel = ?");
+        
+		//var_dump($req);
+        $req->bindParam(1, $cle_reactivation);
+        $req->bindParam(2, $courriel);
+		
+		$reponse = $req->execute();
+		
+		if($reponse){
+			$to      = $courriel;
+			$subject = 'Réinitialisation de mot de passe';
+			$message = "Cliquez sur le lien suivant pour choisir un nouveau mot de passe:
+			http://1295805.webdev.cmaisonneuve.qc.ca/Projet_Luc/index.php?pass=$cle";
+			$headers = 'From: webmaster@wadagbe.com' . "\r\n" .
+				'Reply-To: webmaster@wadagbe.com' . "\r\n" .
+				'X-Mailer: PHP/' . phpversion();
+
+			mail($to, $subject, $message, $headers);
+			
+			return true;
+		}
+		else{
+			throw new Exception("Erreur lors de la modification, recommencez");
+		}	
 		
 	} 
 	
