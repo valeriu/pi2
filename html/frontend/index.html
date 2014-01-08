@@ -18,25 +18,45 @@
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 		<![endif]-->
+		<!-- JS -->
+		<script src="http://code.createjs.com/easeljs-0.6.0.min.js"></script>
+		<script src="http://code.createjs.com/tweenjs-0.4.0.min.js"></script>
+		<script src="http://code.createjs.com/movieclip-0.6.0.min.js"></script>
+		<script src="img/logo/animated_logo.js"></script>
+		<script>
+			var canvas, stage, exportRoot;
+
+			function init() {
+				canvas = document.getElementById("canvas-logo");
+				exportRoot = new lib.animated_logo();
+
+				stage = new createjs.Stage(canvas);
+				stage.addChild(exportRoot);
+				stage.update();
+
+				createjs.Ticker.setFPS(24);
+				createjs.Ticker.addEventListener("tick", stage);
+			}
+		</script>
 
 		<!-- Custom styles for this template -->
 		<link href="css/carousel.css" rel="stylesheet">
 		<link href="css/main.css" rel="stylesheet">
 		<link href="css/usager.css" rel="stylesheet">
 		<link href="css/panier.css" rel="stylesheet">
-		<link href="css/catalog.css" rel="stylesheet">
+		<link href="css/catalogue.css" rel="stylesheet">
 		<!-- GOOGLE FONTS -->
 		<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 	</head>
 <!-- NAVBAR
 ================================================== -->
-	<body>
+	<body onload="init();">
 		<!-- Header -->
 		<header class="container">
 			<article class="row"><!-- Une autre division pour le logo de la page -->
 				<article class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 					<a href="index.html">
-						<img class="img-responsive" src="img/Logo.png" alt="logo wadagbe">
+						<canvas id="canvas-logo" width="600" height="200"></canvas>
 					</a>
 				</article>
 				<article class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-12 pull-right">
