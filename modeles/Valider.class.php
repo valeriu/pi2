@@ -59,7 +59,9 @@ abstract class Valider {
 	 * @return boolean
 	 */
 	public function estNegatif($valeur){
-		return; ($valeur < 0 ? true : false);
+		if ($valeur < 0)
+			return TRUE;
+		return FALSE;
 	}
 	
 	/**
@@ -213,11 +215,47 @@ abstract class Valider {
 	
 	/**
 	 * 
+	 * 
+	 * http://en.wikipedia.org/wiki/Canadian_subnational_postal_abbreviations
+	 * AB	Alberta
+	 * BC	Colombie-Britannique
+	 * MB	Manitoba
+	 * NB	Nouveau-Brunswick
+	 * NL	Terre-Neuve-et-Labrador
+	 * NS	Nouvelle-Écosse
+	 * NT	Territoires du Nord-Ouest
+	 * NU	Nunavut
+	 * ON	Ontario
+	 * PE	Île-du-Prince-Édouard
+	 * QC	Québec
+	 * SK	Saskatchewan
+	 * YT	Yukon
+	 * 
+	 *   	
 	 * @param type $valeur
 	 * @return boolean
 	 */
 	public function estProvince($valeur){
-		return TRUE;
+		$abb = strtolower($valeur);
+			switch($abb) {
+				case "ab": 
+				case "bc": 
+				case "mb": 
+				case "nb": 
+				case "nl": 
+				case "ns":
+				case "nt":
+				case "nu":
+				case "on":
+				case "pe":
+				case "qc":
+				case "sk":
+				case "yt":
+					return TRUE;
+					break;
+				default :
+					return FALSE;
+			}
 	}
 }
 
