@@ -10,19 +10,19 @@
 
 	<body>
 		<div id="header">
-			<h1>Test - Modèles - Usagers</h1>
+			<h1>Test - Modèles - Catalogue</h1>
 		</div>
 		<div id="contenu">
-			<h1>Test: connecter() fonctionnel</h1>
+			<h1>Test: afficher() par specs</h1>
 			<?php 
-				$usagers = new Usagers();
-				$rep = $usagers->connecter("per.inceptos@blandit.com", "pass");
+				$catalogue = new Catalogue();
+				$rep = $catalogue->afficher("specs");
 				var_dump($rep);
 			?>
-			<h1>Test: connecter() non-fonctionnel</h1>
+			<h1>Test: afficher() par prix</h1>
 			<?php 
-				$usagers = new Usagers();
-				$rep = $usagers->connecter("test", "pass");
+				$catalogue = new Catalogue();
+				$rep = $catalogue->afficher("prix");
 				var_dump($rep);
 			?>
 		</div>
