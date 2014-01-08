@@ -63,6 +63,15 @@ abstract class Valider {
 	}
 	
 	/**
+	 * 
+	 * @param type $valeur
+	 * @return type
+	 */
+	public function estTableau($valeur){
+		return is_array($valeur);
+	}
+
+	/**
 	 * Vérifiez si la longueur du $valeur est comprise entre $nb1 et $nb2
 	 * 
 	 * @param type $valeur

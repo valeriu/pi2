@@ -78,6 +78,23 @@
 					}
 				}
 			?>	
-		</div>
+<hr>
+				<h3>Test: estTableau($valeur)</h3>
+			<?php 
+				$valeur = "array"; 
+				$nb1 = array(0, 1, 2, 3, 4, 5, 6); 
+				$nb2 = array(6, 7, 8, 9, 10, 11, 12);
+				$nb3 =2;
+				
+
+					if(Valider::estTableau($nb3)){
+						echo " = true<br>";
+					} else {
+						echo " = false<br>";
+					}
+
+			?>	
+				
+				</div>
 	</body>
 </html>
