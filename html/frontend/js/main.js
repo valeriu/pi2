@@ -23,6 +23,8 @@ var Catalogue = (function () {     /* ----- Module Pattern avec IIFE et Closure 
 /* Fonctionne qui gère l'ajoute des produits au panier */
     var _ajouterProduit = function(){
         /* Ici on verfie l'existence de produits dans le web storage */
+
+        console.log('ICI');
         if(localStorage.length != 0){
             var nbProduitsPanier = localStorage.length;
             $('#nbProducts').html(nbProduitsPanier);
