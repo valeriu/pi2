@@ -1,12 +1,6 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of Catalogue
+ * Modele Catalogue (class)
  *
  * @author Yan Boucher Bouchard
  */
@@ -18,6 +12,8 @@ class Catalogue {
 	// CONSTRUCTEUR
 	public function __construct(){
 		$this->bd = BD::getInstance();
+
+		// TODO : verif des categories selectionne pour mettre a jour $categories...
 	}
 
 	// METHODES
@@ -25,14 +21,17 @@ class Catalogue {
 		$idbd = $this->bd->getBD();
 		
 		switch ($mode) {
+			// tri par specifications
 			case 'specs':
 				return $this->categories;
 				break;
 
+			// tri par prix
 			case 'prix':
 				return $idbd;
 				break;
 			
+			// tri par default
 			default:
 				# code...
 				break;

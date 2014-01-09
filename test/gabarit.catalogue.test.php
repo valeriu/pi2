@@ -4,13 +4,13 @@
 
 	<head>
 
-		<title>Test unitaire</title>
+		<title>Tests unitaires - Catalogue</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	</head>
 
 	<body>
 		<div id="header">
-			<h1>Test - Modèles - Catalogue</h1>
+			<h1>Tests - Modèle - Catalogue</h1>
 		</div>
 		<div id="contenu">
 			<h1>Test: afficher() par specs</h1>
