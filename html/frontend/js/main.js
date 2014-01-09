@@ -1,45 +1,52 @@
-/* ==========================================================================
-*   Projet d'intégration II.
+ï»¿/* ==========================================================================
+*   Projet d'intÃ©gration II.
 *	Prof.	: Jonathan Martel
 *	Author	: Luis Felipe Rosas, Valeriu Tihai, Luc Cinq-Mars, Yan Boucher-Bouchard
    ========================================================================== */
 
 $(function(){
-
-    window.addEventListener('load', function()){
-    	"use strict";
-    	//
-	    try{
-	    	$('.ajouter').bind('click', function()){
-	    		Catalogue.ajouterProduit(); // Module qui contient la fonction pour ajouter un produit dans le panier
-	    	}
-	    }catch(e){
-	        $('#msgError').show(); // Affichage d'error
-	    }
+	try{
+		$('#msgError').hide();
+        Catalogue.demarre();  /* fonction qui demarre module */ // Module qui contient la fonction pour ajouter un produit dans le panier
+    }catch(e){
+       
     }
+    try{
+    	$('.ajouter').bind('click', function(){
+    		Catalogue.ajouterProduit;
+    	});
+    }catch(e){
+    	 $('#msgError').show(); // Affichage d'error
+    }    
+
 });
 
 var Catalogue = (function () {     /* ----- Module Pattern avec IIFE et Closure ----- */
-/* Fonctionne qui gère l'ajoute des produits au panier */
-    var _ajouterProduit = function(){
-        /* Ici on verfie l'existence de produits dans le web storage */
+	
+	var nbProduitsPanier = 0;
 
-        console.log('ICI');
+	var _demarre = function(){
+		/* Ici on verfie l'existence de produits dans le web storage */
         if(localStorage.length != 0){
-            var nbProduitsPanier = localStorage.length;
+            nbProduitsPanier = localStorage.length;
             $('#nbProducts').html(nbProduitsPanier);
+            console.log('ICI');
         }else{
-            var nbProduitsPanier = 0;
+            nbProduitsPanier = 0;
             $('#nbProducts').html('Vide');
         }
-        /* Désactivation de produits que sont déjà au panier */
+        console.log(nbProduitsPanier);
+        /* DÃ©sactivation de produits que sont dÃ©jÃ  au panier */
         for (var i = 0; i < localStorage.length; i++){
             var prodObject = JSON.parse(localStorage.getItem(localStorage.key(i)));
             $('#'+prodObject.idP).attr('disabled', 'disabled');
-            $('#'+prodObject.idP).html('Déjà ajouté');
+            $('#'+prodObject.idP).html('DÃ©jÃ  ajoutÃ©');
         }
-        /* Evenement qui sera reconstruit à chaque fois que une page du catalogue est chargé */
-        $('.ajouter').bind('click', function(){
+	}
+	/* Fonctionne qui gÃ¨re l'ajoute des produits au panier */
+    var _ajouterProduit = function(){  
+        /* Evenement qui sera reconstruit Ã  chaque fois que une page du catalogue est chargÃ© */
+        
             nbProduitsPanier++;
             $('#nbProducts').html(nbProduitsPanier);
             var produit    = new Object();
@@ -49,15 +56,17 @@ var Catalogue = (function () {     /* ----- Module Pattern avec IIFE et Closure 
             produit.descp  = $(this).siblings('.description').html();
             produit.quant  = 1;
             produit.prix   = $(this).siblings('.prix').children('.prix-valeur').html();
-            /* Désactivation du produit ajouté au panier */
+            /* DÃ©sactivation du produit ajoutÃ© au panier */
             $(this).attr('disabled', 'disabled');
-            $(this).html('Déjà ajouté');
+            $(this).html('DÃ©jÃ  ajoutÃ©');
 
-            //window.localStorage.setItem(produit.idP, JSON.stringify(produit));
-        });
+            window.localStorage.setItem(produit.idP, JSON.stringify(produit));
+        
+        console.log(nbProduitsPanier);
     }/* / */
 
- return { // Return des méthodes ou fonctions publiques
+ return { // Return des mÃ©thodes ou fonctions publiques
+ 		demarre : _demarre,
         ajouterProduit : _ajouterProduit
     }
 }());

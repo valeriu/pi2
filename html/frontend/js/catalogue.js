@@ -7,7 +7,6 @@ $(function() {
 
     //CONTROLE DES PANNEAUX DE DESCRIPTIONS DE PRODUITS
     $("td.clickable:not([colspan=7])").click(function(event) {
-        event.stopPropagation();
         var $target = $(event.target);
 
             //TOUS LES PANNEAUX SONT CACHE
