@@ -1,0 +1,25 @@
+﻿/* USAGERINFOS */
+#usagerInfos{
+	margin: 0 auto;
+}
+#usagerInfos h1{
+	font-size: 20px;
+}
+#usagerInfos .input-group {
+	width: 80%;
+	margin-right: 10%;
+	margin-left: 10%;
+	display: block;
+}
+#soumettre{
+	margin-top: 20px;
+}
+#usagerInfos button{
+	margin-left: 50%;
+	margin-right: 50%;
+}
+/* / FIN USAGERINFOS */
+
+
+
+
