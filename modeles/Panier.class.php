@@ -27,10 +27,10 @@ class Panier {
 
 	public function enregistrer ($aDonnees= array()) {
 		
-		(isset($aDonnees['id_utilisateur'])) ? $id_utilisateur = $aDonnees['id_utilisateur'] : $id_utilisateur = '';
-		(isset($aDonnees['adresse_utilisateur'])) ? $id_adresse = $aDonnees['adresse_utilisateur'] : $id_adresse = '';
-		(isset($aDonnees['quantite'])) ? $quantite = $aDonnees['quantite'] : $quantite = '';
-		(isset($aDonnees['produits'])) ? $produits = $aDonnees['produits'] : $produits = '';
+		$id_utilisateur = (!empty($aDonnees['id_utilisateur'])) ? $aDonnees['id_utilisateur'] : '';
+		$id_adresse = (!empty($aDonnees['adresse_utilisateur'])) ? $aDonnees['adresse_utilisateur'] : '';
+		$quantite = (!empty($aDonnees['quantite'])) ? $aDonnees['quantite'] : '';
+		$produits = (!empty($aDonnees['produits'])) ? $aDonnees['produits'] : '';
 
 		if(!Valider::estInt($id_utilisateur))
 			throw new Exception("Un id d'utilisateur doit exister comme nombre!.");
