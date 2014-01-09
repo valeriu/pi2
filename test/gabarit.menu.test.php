@@ -37,7 +37,7 @@
 					echo $e->getMessage();
 				}
 			?>
-			<h1>Test: enregistrer() fonctionnel</h1>
+			<h1>Test: enregistrer() non-fonctionnel</h1>
 			<?php 
 				try{
 				//id_menu	titre	description	url	parent	order	statut
@@ -49,7 +49,7 @@
 					echo $e->getMessage();
 				}
 			?>
-			<h1>Test: enregistrer() fonctionnel</h1>
+			<h1>Test: enregistrer() non-fonctionnel</h1>
 			<?php 
 				try{
 				//id_menu	titre	description	url	parent	order	statut
@@ -61,7 +61,18 @@
 					echo $e->getMessage();
 				}
 			?>
-			
+			<h1>Test: modifier() fonctionnel</h1>
+			<?php 
+				try{
+				//id_menu	titre	description	url	parent	order	statut
+				$menu = new Menu();
+				$rep = $menu->enregistrer(array('id_menu' => '19','titre' => 'Bravo', 'description' => '', 'url' => '', 'parent' => '', 'order' => '', 'statut' => ''));
+				var_dump($rep);
+				}
+				catch(Exception $e){
+					echo $e->getMessage();
+				}
+			?>
 		</div>
 		<div id="footer">
 

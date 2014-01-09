@@ -25,15 +25,11 @@ class Menu {
 		$this->bd = BD::getInstance();
 	}
 	
-	
-	public function enregistrer ($aDonnees = Array()) {
-		//id_menu	titre	description	url	parent	order	statut
-		$titre 			= (!empty($aDonnees['titre'])) ? $aDonnees['titre'] : '';
-		$description 	= (!empty($aDonnees['description'])) ? $aDonnees['description'] : null;
-		$url 			= (!empty($aDonnees['url'])) ? $aDonnees['url'] : '';
-		$parent 		= (!empty($aDonnees['parent'])) ? $aDonnees['parent'] : 0;
-		$ordre 			= (!empty($aDonnees['ordre'])) ? $aDonnees['ordre'] : 0;
-		$statut 		= (!empty($aDonnees['statut'])) ? $aDonnees['statut'] : 0;
+	/**
+	 * Vérifier l'existence d'item de menu
+	 */
+	public function verifier ($aDonnees = Array()) {
+		$titre = (!empty($aDonnees['titre'])) ? $aDonnees['titre'] : '';
 
 		if(!Valider::estString($titre)){
 			throw new Exception("Entrez un titre valide");
@@ -47,11 +43,33 @@ class Menu {
 		$req->bindParam(1, $titre);
 		$req->execute();
 		$obj = $req->fetch(PDO::FETCH_ASSOC);
-		//var_dump($obj);
+
 		if($obj){
+			return true;
+		}
+		else{
+			return false;
+		}
+		
+	}
+
+	/**
+	 * Enregistrer un nouvel item de menu
+	 */
+	public function enregistrer ($aDonnees = Array()) {
+		//id_menu	titre	description	url	parent	order	statut
+		$titre 			= (!empty($aDonnees['titre'])) ? $aDonnees['titre'] : '';
+		$description 	= (!empty($aDonnees['description'])) ? $aDonnees['description'] : null;
+		$url 			= (!empty($aDonnees['url'])) ? $aDonnees['url'] : '';
+		$parent 		= (!empty($aDonnees['parent'])) ? $aDonnees['parent'] : 0;
+		$ordre 			= (!empty($aDonnees['ordre'])) ? $aDonnees['ordre'] : 0;
+		$statut 		= (!empty($aDonnees['statut'])) ? $aDonnees['statut'] : 0;
+		
+		if($this->verifier($aDonnees)){
 			throw new Exception("Ce titre existe déjà");
 		}
         else{
+        	$idbd = $this->bd->getBD();
 			//Préparation de la requête
 			$reqInsertion = $idbd->prepare(	"INSERT INTO wa_menu
 									(titre, description, url, parent, ordre, statut)
@@ -79,8 +97,57 @@ class Menu {
 		
 	} 
 	
-	public function modifier ($id) {
-		$req_sql = "";
+	/**
+	 * Modifier un item de menu
+	 */
+	public function modifier ($aDonnees = Array()) {
+		$id_menu 		= (!empty($aDonnees['id_menu'])) ? $aDonnees['id_menu'] : '';
+		$titre 			= (!empty($aDonnees['titre'])) ? $aDonnees['titre'] : '';
+		$description 	= (!empty($aDonnees['description'])) ? $aDonnees['description'] : null;
+		$url 			= (!empty($aDonnees['url'])) ? $aDonnees['url'] : '';
+		$parent 		= (!empty($aDonnees['parent'])) ? $aDonnees['parent'] : 0;
+		$ordre 			= (!empty($aDonnees['ordre'])) ? $aDonnees['ordre'] : 0;
+		$statut 		= (!empty($aDonnees['statut'])) ? $aDonnees['statut'] : 0;
+
+		if(!Valider::estString($titre)){
+			throw new Exception("Entrez un titre valide");
+		}
+
+		if($this->verifier($aDonnees)){
+			throw new Exception("Ce titre existe déjà");
+		}
+		else{
+			$idbd = $this->bd->getBD();
+			//Préparation de la requête
+			$req = $idbd->prepare(	"UPDATE wa_menu
+											titre = ?,
+											description = ?,
+											url = ?,
+											parent = ?,
+											ordre = ?,
+											statut = ?
+									WHERE id_menu = ?");
+	        
+			
+			//var_dump($statut);
+	        $req->bindParam(1, $titre);
+	        $req->bindParam(2, $description);
+	        $req->bindParam(3, $url);
+	        $req->bindParam(4, $parent);
+	        $req->bindParam(5, $ordre);
+	        $req->bindParam(6, $statut);
+	        $req->bindParam(7, $id_menu);
+
+	        $reponse = $req->execute();
+
+	        if($reponse){
+				return $reponse;
+			}
+			else{
+				throw new Exception("Erreur lors de la modification, recommencez");
+			}
+		}
+		
 	}
 	
 	public function afficherListe ($id) {
