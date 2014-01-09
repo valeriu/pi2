@@ -13,6 +13,12 @@
 			<h1>Tests - Modèle - Catalogue</h1>
 		</div>
 		<div id="contenu">
+			<h1>Test: afficher() tous les produits</h1>
+			<?php 
+				$catalogue = new Catalogue();
+				$rep = $catalogue->afficher("tous");
+				var_dump($rep);
+			?>
 			<h1>Test: afficher() par specs</h1>
 			<?php 
 				$catalogue = new Catalogue();
