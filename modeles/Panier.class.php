@@ -11,6 +11,14 @@
  * @author Luis
  */
 class Panier {
+
+
+
+
+
+
+
+	
 	private $bd;
 	
 	public function __construct(){
@@ -108,6 +116,8 @@ class Panier {
 			return false;
 
 	}
+
+
 
 }
 
