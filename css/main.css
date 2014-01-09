@@ -1,0 +1,278 @@
+/* ==========================================================================
+*   
+	Orange  : #FF9029
+	Noir 	: #222222
+
+   ========================================================================== */
+
+/* background body*/
+body{
+	font-family: 'Roboto Slab', serif;
+	background: url("../img/greyzz.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+
+/*navigation principale*/
+.navbar-wrapper {
+	font-size: 120%;
+	font-weight: bold;
+} 
+
+/* background body*/
+/* Pour changer le couleur de liens*/
+a{
+	color:black;
+}
+a:hover, a:focus{
+	color:#5a5a5a;
+}
+/*/*/
+/* Alignation de texte justifié */
+p {
+	text-align:justify;
+}
+/*/*/
+/* bordeur y background-color au container*/
+.marketing{
+	background-color: rgba(255, 255, 255, 0.29);
+	border: 1px solid #DDDDDD;
+	padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+}/* / */
+/* logo */
+header .thumbnail {
+	background-color: transparent;
+	box-shadow:none;
+	border:none;
+	margin-bottom: auto;
+    margin-top: 15px;
+}
+header .thumbnail img{
+	max-width:400px;
+}
+/* / logo */
+
+/* Désactivation d'effect hover dans tous les lines*/
+a:focus{
+	outline:none;
+}/* /*/
+
+/* Input group display block */
+.input-group {
+	display: block;
+}
+/* / */
+/* Boutons */
+.btn-primary{
+	/*background-color: #F0AD4E;*/
+    border-color: #EEA236;
+    color: #fff;
+    background: #ffa73d;
+	background: -moz-linear-gradient(top,  #ffa73d 4%, #ff9532 51%, #ff9028 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(4%,#ffa73d), color-stop(51%,#ff9532), color-stop(100%,#ff9028));
+	background: -webkit-linear-gradient(top,  #ffa73d 4%,#ff9532 51%,#ff9028 100%);
+	background: -o-linear-gradient(top,  #ffa73d 4%,#ff9532 51%,#ff9028 100%);
+	background: -ms-linear-gradient(top,  #ffa73d 4%,#ff9532 51%,#ff9028 100%);
+	background: linear-gradient(to bottom,  #ffa73d 4%,#ff9532 51%,#ff9028 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffa73d', endColorstr='#ff9028',GradientType=0 );
+
+}
+.btn-primary:hover{
+	/*background-color: #F0AD4E;*/
+    border-color: #EEA236;
+    background: #ff9028;
+	background: -moz-linear-gradient(top,  #ff9028 0%, #ff9532 49%, #ffa73d 96%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff9028), color-stop(49%,#ff9532), color-stop(96%,#ffa73d));
+	background: -webkit-linear-gradient(top,  #ff9028 0%,#ff9532 49%,#ffa73d 96%);
+	background: -o-linear-gradient(top,  #ff9028 0%,#ff9532 49%,#ffa73d 96%);
+	background: -ms-linear-gradient(top,  #ff9028 0%,#ff9532 49%,#ffa73d 96%);
+	background: linear-gradient(to bottom,  #ff9028 0%,#ff9532 49%,#ffa73d 96%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff9028', endColorstr='#ffa73d',GradientType=0 );
+	text-shadow: 1px 1px 3px #484848;
+}
+.btn:focus{
+	outline: medium none;
+}
+/* / Boutons */
+footer{
+	margin-top: 40px;
+    min-height: 110px;
+}
+/* Shopping Cart */
+#shopping-cart{
+	margin-right: 27px;
+    padding-top: 25px;
+}
+#nbProducts{
+	display: inline;
+}
+/* / Shopping Cart */
+
+/* -------------- Menu --------------------*/
+.navbar-inverse{
+	background: none;
+}
+.navbar-wrapper .container{
+	padding-left:15px;
+	padding-right:15px;
+}
+/* Pour effacer la bordeur */
+.navbar-wrapper .navbar{
+	border-radius: 0;	
+}
+/* Color de police */
+.navbar-inverse .navbar-nav > li > a{
+	color: #999;
+}
+/* Color de police en hover*/
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+	background-color: transparent;
+	border-bottom: 4px solid #FF9029;
+    color: #080808;
+    padding-bottom: 5px;
+}
+.navbar-inverse .navbar-nav > .active > a {
+	border-bottom: 0;
+}
+/* Menu dropdown*/
+.navbar-inverse .navbar-nav > .dropdown > a:hover .caret{ /* Pour le petit triangle du dropdown*/
+	border-top-color:#080808;
+}
+/* Pour faire le ronde dans la partie dropdown du menu */
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus{
+	background-color: #FF9029;
+	border-bottom: 0;
+	padding-bottom:15px;
+}
+.dropdown-menu{
+	background-color: #EFEFEF;
+}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{
+	background-color: #080808;
+}
+/* Icon Menu pour les mobiles */
+.navbar-toggle{
+	background-color: #555;
+}
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus{
+	background-color:#FF9029;
+}
+/* / -------------- Menu --------------------*/
+
+/* Panier */
+.btn-panier {
+	color: #F4F4F4;
+	border: 2px solid #C8C8C8 ;
+	background: #ffa73d;
+	background: -moz-linear-gradient(top,  #ffa73d 4%, #ff7c00 50%, #ff7f04 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(4%,#ffa73d), color-stop(50%,#ff7c00), color-stop(100%,#ff7f04));
+	background: -webkit-linear-gradient(top,  #ffa73d 4%,#ff7c00 50%,#ff7f04 100%);
+	background: -o-linear-gradient(top,  #ffa73d 4%,#ff7c00 50%,#ff7f04 100%);
+	background: -ms-linear-gradient(top,  #ffa73d 4%,#ff7c00 50%,#ff7f04 100%);
+	background: linear-gradient(to bottom,  #ffa73d 4%,#ff7c00 50%,#ff7f04 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffa73d', endColorstr='#ff7f04',GradientType=0 );
+}
+.btn-panier:hover{
+	color:#fff;
+	box-shadow: 0 1px 0 1px #D2D2D2;
+	text-shadow: 2px 2px 2px #222222;
+}
+/* / Panier */
+
+/* ---------------- Carrousel ---------------*/
+.navbar-wrapper{
+	position: relative;
+}
+.carousel .item{
+	background-color: transparent; 	
+}
+.carousel-control.left, .carousel-control.right{
+	background: none;
+}
+/* ---------------- Jumbotrom ---------------*/
+.jumbotron {
+	background-color: transparent; /*color transparent*/
+}
+/* /---------------- Jumbotrom ---------------*/
+
+/* -----------------  USAGER ---------------- */
+#usager{
+	margin: 10px auto;
+	text-align: center;
+	width: 280px;
+}
+#usager h1{
+	font-size: 20px;
+	font-style: bold;
+}
+#connecterDiv, #enregistrerDiv, #motPasseOublieDiv {
+	margin-top: 5px;
+	padding: 15px;
+	background-color: lightgrey;
+	position: absolute;
+	z-index: 3000;
+}
+#connecterDiv {
+	display: none;
+}
+#enregistrerDiv {
+	display: none;
+}
+#connecterDiv a{
+	margin-top: 15px;
+}
+#motPasseOublieDiv {
+	display: none;
+}
+#connecterDiv .input-group, #enregistrerDiv .input-group{
+	margin: 0 auto;
+}
+#connecterDiv button, #enregistrerDiv button, #motPasseOublieDiv button{
+	margin-top: 15px;
+}
+#infosConnecter{
+	display: none;
+}
+#infosEnregistrer{
+	display: none;
+}
+#courrielEnvoye{
+	display: none;
+}
+.btn-lien{
+	background: none transparent;
+	color: #222;
+	text-decoration: underline;
+}
+.btn-lien:hover {
+	color: #FF9029;
+	text-decoration: underline;
+}
+/* -----------------  / USAGER ---------------- */
+
+/* ----------------- RESPONSIVE  ---------------- */
+@media (min-width: 768px) and (max-width: 992px) {
+	/* Modification du Carrousel pour que soit responsive avec les images*/
+	.carousel{
+		height: 294px;
+	}
+	.carousel .item{
+		height: 294px;	
+	}
+	.carousel-caption{
+		height:100%;
+	}
+	.carousel-inner > .item > img{
+		height:100%;
+	}
+	/* /---------------- Carrousel ---------------*/
+}
+/* ----------------- RESPONSIVE  ---------------- */
+
+/* ----------------- RESPONSIVE  ---------------- */
+@media (min-width: 320px) and (max-width: 750px) {
+	
+}
+/* ----------------- RESPONSIVE  ---------------- */
+
+

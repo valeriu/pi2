@@ -1,0 +1,86 @@
+﻿/* =====================================================
+  Panier
+========================================================*/
+#panier .row{
+  margin: 0 0;
+}
+/* Titres alignés au centre */
+#panier .titres h4 {
+  text-align: center;
+}
+/* Première ligne avec un bourdeur solide, le reste avec dotted */
+/*.panier .row:not(:first-of-type) {*/
+#panier #produits .row {
+  border-bottom: 1px dotted;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+#panier .row p {
+  margin: 0 0 10px;
+  position: relative;
+  top: 50%;
+}
+#panier .featurette-divider {
+  border-color:#777;
+}
+#panier .row p {
+  margin: 0 0 10px;
+  padding-top: 25px;
+  /*position: relative;*/
+  /*top: 50%;*/
+}
+#panier .featurette-divider {
+  border-color:#777;
+}
+#produits .thumbnail{
+  margin-bottom: 0;
+}
+#produits .thumbnail > img {
+  max-height: 60px;
+}
+/*
+hr:not(:first-of-type) {
+  border-style: dotted none none;
+  margin: 10px 0;
+}*/
+#panier .pPanier{
+  float: left;
+  text-align: center;
+  width: 30px;
+}
+#panier .btn-xs {
+  float: right;
+}
+#shipping > div > div, #totalProduits > div > div, #totalPrix > div > div {
+  border-bottom: 1px dotted #000;
+}
+/* Panel Footer */
+.panel-footer{
+  /*background-color: #FFFFFF;*/
+}
+/* / */
+
+/* Information Final du panier = Total Prix */
+.panier #infoPanier #totalPrix > div > div {
+  background-color:#d1d1d1;
+}
+/* / */
+
+/* Boutton connecter */
+#next, #pay {
+  float: right;
+}
+/* / */
+
+/* Shipping Address */
+
+#ShippingAddress #accordion .panel-collapse article{
+  border:1px solid #DDDDDD;
+  margin: 0 10px;
+  padding: 15px;
+}
+
+/* / Shipping Address */
+/* =====================================================
+  Fin Panier
+========================================================*/

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -108,7 +108,7 @@
 				</article>
 				<!-- Shopping Cart -->
 				<article id="shopping-cart" class="col-lg-4 pull-right text-right">
-					<a href="panier.html">
+					<a href="./panier/index.php?requete=panier">
 						<button type="button" class="btn btn-panier btn-lg">
 							 <span class="glyphicon glyphicon-shopping-cart"></span> Panier : <span id="nbProducts">Vide</span>
 						</button>
@@ -159,7 +159,7 @@
 			<!-- ======================= 
 					 *** BASE ***
 			=========================== -->
-			
+			<div id="msgError">Désolé, trop temps, essayez plus tard!</div><!-- Message d'error de télechargement -->
 			<div class="panel panel-default">
 				<!--TRI DU CATALOGUE-->
 			  <div class="panel-heading">
@@ -203,7 +203,7 @@
 			            <td class="clickable"><img src="img/Solar_cell.png"></td>
 			            <td class="clickable text-success text-pricing"><strong>99.99$</strong></td>
 			            <td>
-			              <button type="button" class="btn btn-primary btn-home"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Ajouter au panier</button>
+			              <button type="button" id="5" class="btn btn-primary btn-home ajouter"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Ajouter au panier</button>
 			            </td>
 			          </tr>
 			          <tr>
@@ -252,7 +252,7 @@
 			            <td class="clickable"><img src="img/Solar_cell.png"></td>
 			            <td class="clickable text-success text-pricing"><strong>99.99$</strong></td>
 			            <td>
-			              <button type="button" class="btn btn-primary btn-home"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Ajouter au panier</button>
+			              <button type="button" id="8" class="btn btn-primary btn-home ajouter"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Ajouter au panier</button>
 			            </td>
 			          </tr>
 			          <tr>
@@ -301,7 +301,7 @@
 			            <td class="clickable"><img src="img/Solar_cell.png"></td>
 			            <td class="clickable text-success text-pricing"><strong>99.99$</strong></td>
 			            <td>
-			              <button type="button" class="btn btn-primary btn-home"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Ajouter au panier</button>
+			              <button type="button" id="12" class="btn btn-primary btn-home ajouter"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Ajouter au panier</button>
 			            </td>
 			          </tr>
 			          <tr>
@@ -350,7 +350,7 @@
 			            <td class="clickable"><img src="img/Solar_cell.png"></td>
 			            <td class="clickable text-success text-pricing"><strong>99.99$</strong></td>
 			            <td>
-			              <button type="button" class="btn btn-primary btn-home"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Ajouter au panier</button>
+			              <button type="button" id="53" class="btn btn-primary btn-home ajouter"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Ajouter au panier</button>
 			            </td>
 			          </tr>
 			          <tr>
@@ -429,6 +429,7 @@
 		<script src="js/vendor/bootstrap.min.js"></script>
 		<script src="js/holder.js"></script>
 		<script src="js/usager.js"></script>
+		<script src="js/main.js"></script>
 		<script src="js/panier.js"></script>
 		<script src="js/catalogue.js"></script>
 	</body>
