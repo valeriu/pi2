@@ -12,10 +12,11 @@ $(function(){
        
     }
     try{
-    	$('.ajouter').bind('click', function(){
-    		Catalogue.ajouterProduit;
+    	$('.ajouter').bind('click', function(e){
+    		Catalogue.ajouterProduit(e);
     	});
     }catch(e){
+        console.log('ERROR');
     	 $('#msgError').show(); // Affichage d'error
     }    
 
@@ -35,7 +36,7 @@ var Catalogue = (function () {     /* ----- Module Pattern avec IIFE et Closure 
             nbProduitsPanier = 0;
             $('#nbProducts').html('Vide');
         }
-        console.log(nbProduitsPanier);
+        //console.log("ICI",nbProduitsPanier);
         /* Désactivation de produits que sont déjà au panier */
         for (var i = 0; i < localStorage.length; i++){
             var prodObject = JSON.parse(localStorage.getItem(localStorage.key(i)));
@@ -44,21 +45,30 @@ var Catalogue = (function () {     /* ----- Module Pattern avec IIFE et Closure 
         }
 	}
 	/* Fonctionne qui gère l'ajoute des produits au panier */
-    var _ajouterProduit = function(){  
+    var _ajouterProduit = function(e){  
         /* Evenement qui sera reconstruit à chaque fois que une page du catalogue est chargé */
-        
+            for (var i = 0; i < localStorage.length; i++){
+                var prodObject = JSON.parse(localStorage.getItem(localStorage.key(i)));
+                $('#'+prodObject.idP).attr('disabled', 'disabled');
+                $('#'+prodObject.idP).html('Déjà ajouté');
+            }
+
+            var idElement = e.target.id;
+
+            console.log(idElement);
+
             nbProduitsPanier++;
             $('#nbProducts').html(nbProduitsPanier);
             var produit    = new Object();
-            produit.idP     = this.id;
-            produit.nom    = $(this).siblings('.nom').html();
-            produit.image  = $(this).siblings().children().attr('src');
-            produit.descp  = $(this).siblings('.description').html();
+            produit.idP     = idElement;
+            produit.nom    = $(idElement).siblings('.nom').html();
+            produit.image  = $(idElement).siblings().children().attr('src');
+            produit.descp  = $(idElement).siblings('.description').html();
             produit.quant  = 1;
-            produit.prix   = $(this).siblings('.prix').children('.prix-valeur').html();
+            produit.prix   = $(idElement).siblings('.prix').children('.prix-valeur').html();
             /* Désactivation du produit ajouté au panier */
-            $(this).attr('disabled', 'disabled');
-            $(this).html('Déjà ajouté');
+            $(idElement).attr('disabled', 'disabled');
+            $(idElement).html('Déjà ajouté');
 
             window.localStorage.setItem(produit.idP, JSON.stringify(produit));
         

@@ -1,35 +1,5 @@
-<!--<!DOCTYPE html>
-<html lang="fr">
-	<head>
-		<title>Mon simple MVC</title>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width">
-		
-		<link rel="stylesheet" href="./css/normalize.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="./css/base_h5bp.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="./css/main.css" type="text/css" media="screen">
-		
-		<script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-		<script src="./js/plugins.js"></script>
-		<script src="./js/main.js"></script>
-	</head>
-
-	<body>
-			<?php 		
-				//$oControleur = new Controler();	
-				//$oControleur->gerer();	
-			?>
-			
-			<div id="footer">
-				<p>© Wadagbé 2014</p>
-			</div>
-		</div>	
-	</body>
-</html>-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -54,8 +24,7 @@
 		<link href="css/main.css" rel="stylesheet">
 		<link href="css/usager.css" rel="stylesheet">
 		<link href="css/panier.css" rel="stylesheet">
-		<link href="css/catalogue.css" rel="stylesheet">
-
+		<link href="css/catalog.css" rel="stylesheet">
 		<!-- GOOGLE FONTS -->
 		<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 	</head>
@@ -138,7 +107,7 @@
 				</article>
 				<!-- Shopping Cart -->
 				<article id="shopping-cart" class="col-lg-4 pull-right text-right">
-					<a href="./panier/index.php?requete=panier">
+					<a href="./index.php?requete=panier">
 						<button type="button" class="btn btn-panier btn-lg">
 							 <span class="glyphicon glyphicon-shopping-cart"></span> Panier : <span id="nbProducts">Vide</span>
 						</button>
@@ -161,8 +130,8 @@
 							</div>
 							<div class="navbar-collapse collapse"><!-- PLUGIN DROPDOWN BOOTSTRAP -->
 								<ul class="nav navbar-nav">
-									<li><a href="index.html">Accueil</a></li>
-									<li class="dropdown active">
+									<li class="active"><a href="index.html">Accueil</a></li>
+									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Produits<b class="caret"></b></a>
 										<ul class="dropdown-menu">
 											<li class="dropdown-header">Panneaux solaires</li>
@@ -189,255 +158,12 @@
 			<!-- ======================= 
 					 *** BASE ***
 			=========================== -->
-			<div id="msgError">Désolé, trop temps, essayez plus tard!</div><!-- Message d'error de télechargement -->
-			<div class="panel panel-default">
-				<!--TRI DU CATALOGUE-->
-			  <div class="panel-heading">
-			    <div>
-			       <label class="checkbox-inline">
-			        <input type="checkbox" id="inlineCheckbox1" value="option1"> Solar Panels
-			       </label>
-			       <label class="checkbox-inline">
-			         <input type="checkbox" id="inlineCheckbox2" value="option2"> Solar Kits
-			       </label>
-			       <label class="checkbox-inline">
-			         <input type="checkbox" id="inlineCheckbox3" value="option3"> LED Lamps
-			       </label>
-			    </div>
-			    <div class="pull-right">
-			      <button type="button" id="btn-filtres" class="btn btn-default">Ordonner</button>
-			    </div>
-			  </div>
-			  <div id="panel-filtres" class="panel-heading" hidden>
-			  	<label class="radio-inline">
-			        <input type="radio" id="inlineradio1" name="radio-filtres" value="option1"> Spécifications
-			       </label>
-			       <label class="radio-inline">
-			         <input type="radio" id="inlineradio2" name="radio-filtres" value="option2"> Catégories
-			       </label>
-			       <label class="radio-inline">
-			         <input type="radio" id="inlineradio3" name="radio-filtres" value="option3"> Prix
-			       </label>
-			  </div>
 
-			  <!--CATALOGUE-->
-			  <main class="panel-body">
-			  	<section class="table-responsive">
-			      <table class="table-hover col-sm-12">
-			        <tbody>
-			          <tr title="Click for details!">
-			            <td class="clickable">1</td>
-			            <td class="clickable"><h3>Kit panneau solaire</h3></td>
-			            <td class="clickable">65W</td>
-			            <td class="clickable">Panneaux solaire</td>
-			            <td class="clickable"><img src="img/Solar_cell.png"></td>
-			            <td class="clickable text-success text-pricing"><strong>99.99$</strong></td>
-			            <td>
-			              <button type="button" id="5" class="btn btn-primary btn-home ajouter"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Ajouter au panier</button>
-			            </td>
-			          </tr>
-			          <tr>
-			            <td colspan="7">
-			              <article class="product-details" hidden>
-			                <ul class="list-group col-md-9">
-			                  <li class="list-group-item">Panneau monocristallin 65W</li>
-			                  <li class="list-group-item">Contrôleur de charge de 10A EPRC-ST</li>
-			                  <li class="list-group-item">Câble 12AWG de 20Pi chacun avec connecteurs MC4</li>
-			                  <li class="list-group-item">Câble 12AWG de 7Pi chacun avec des pinces</li>
-			                  <li class="list-group-item">3.59A avec régulateur</li>
-			                  <li class="list-group-item">Il n'y a pas de supports ou de fusibles inclus dans ce kit</li>
-			                </ul> 
-			                <ul class="nav col-md-3">
-			                	<li>
-			                	  <span class="glyphicon glyphicon-star"></span>
-				                  <span class="glyphicon glyphicon-star"></span>
-				                  <span class="glyphicon glyphicon-star"></span>
-				                  <span class="glyphicon glyphicon-star-empty"></span>
-				                  <span class="glyphicon glyphicon-star-empty"></span>
-			                	</li>
-			                	<br>
-				                <li>
-				                   <aside class="panel panel-default">
-						            <div class="panel-heading">
-						              <h3 class="panel-title">Suggestions :</h3>
-						            </div>
-						            <div class="panel-body">
-						              <ul class="nav">
-						              	<li><a href="#">Produit 1</a></li>
-						              	<li><a href="#">Produit 2</a></li>
-						              	<li><a href="#">Produit 3</a></li>
-						              </ul>
-						            </div>
-						          </aside>
-				                </li>   
-			                </ul>
-			              </article>
-			            </td>
-			          </tr>
-			          <tr title="Click for details!">
-			            <td class="clickable">2</td>
-			            <td class="clickable"><h3>Kit panneau solaire</h3></td>
-			            <td class="clickable">65W</td>
-			            <td class="clickable">Panneaux solaire</td>
-			            <td class="clickable"><img src="img/Solar_cell.png"></td>
-			            <td class="clickable text-success text-pricing"><strong>99.99$</strong></td>
-			            <td>
-			              <button type="button" id="8" class="btn btn-primary btn-home ajouter"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Ajouter au panier</button>
-			            </td>
-			          </tr>
-			          <tr>
-			            <td colspan="7">
-			              <article class="product-details" hidden>
-			                <ul class="list-group col-md-9">
-			                  <li class="list-group-item">Panneau monocristallin 65W</li>
-			                  <li class="list-group-item">Contrôleur de charge de 10A EPRC-ST</li>
-			                  <li class="list-group-item">Câble 12AWG de 20Pi chacun avec connecteurs MC4</li>
-			                  <li class="list-group-item">Câble 12AWG de 7Pi chacun avec des pinces</li>
-			                  <li class="list-group-item">3.59A avec régulateur</li>
-			                  <li class="list-group-item">Il n'y a pas de supports ou de fusibles inclus dans ce kit</li>
-			                </ul> 
-			                <ul class="nav col-md-3">
-			                	<li>
-			                	  <span class="glyphicon glyphicon-star"></span>
-				                  <span class="glyphicon glyphicon-star"></span>
-				                  <span class="glyphicon glyphicon-star"></span>
-				                  <span class="glyphicon glyphicon-star-empty"></span>
-				                  <span class="glyphicon glyphicon-star-empty"></span>
-			                	</li>
-			                	<br>
-				                <li>
-				                   <aside class="panel panel-default">
-						            <div class="panel-heading">
-						              <h3 class="panel-title">Suggestions :</h3>
-						            </div>
-						            <div class="panel-body">
-						              <ul class="nav">
-						              	<li><a href="#">Produit 1</a></li>
-						              	<li><a href="#">Produit 2</a></li>
-						              	<li><a href="#">Produit 3</a></li>
-						              </ul>
-						            </div>
-						          </aside>
-				                </li>   
-			                </ul>
-			              </article>
-			            </td>
-			          </tr>
-			          <tr title="Click for details!">
-			            <td class="clickable">3</td>
-			            <td class="clickable"><h3>Kit panneau solaire</h3></td>
-			            <td class="clickable">65W</td>
-			            <td class="clickable">Panneaux solaire</td>
-			            <td class="clickable"><img src="img/Solar_cell.png"></td>
-			            <td class="clickable text-success text-pricing"><strong>99.99$</strong></td>
-			            <td>
-			              <button type="button" id="12" class="btn btn-primary btn-home ajouter"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Ajouter au panier</button>
-			            </td>
-			          </tr>
-			          <tr>
-			            <td colspan="7">
-			              <article class="product-details" hidden>
-			                <ul class="list-group col-md-9">
-			                  <li class="list-group-item">Panneau monocristallin 65W</li>
-			                  <li class="list-group-item">Contrôleur de charge de 10A EPRC-ST</li>
-			                  <li class="list-group-item">Câble 12AWG de 20Pi chacun avec connecteurs MC4</li>
-			                  <li class="list-group-item">Câble 12AWG de 7Pi chacun avec des pinces</li>
-			                  <li class="list-group-item">3.59A avec régulateur</li>
-			                  <li class="list-group-item">Il n'y a pas de supports ou de fusibles inclus dans ce kit</li>
-			                </ul> 
-			                <ul class="nav col-md-3">
-			                	<li>
-			                	  <span class="glyphicon glyphicon-star"></span>
-				                  <span class="glyphicon glyphicon-star"></span>
-				                  <span class="glyphicon glyphicon-star"></span>
-				                  <span class="glyphicon glyphicon-star-empty"></span>
-				                  <span class="glyphicon glyphicon-star-empty"></span>
-			                	</li>
-			                	<br>
-				                <li>
-				                   <aside class="panel panel-default">
-						            <div class="panel-heading">
-						              <h3 class="panel-title">Suggestions :</h3>
-						            </div>
-						            <div class="panel-body">
-						              <ul class="nav">
-						              	<li><a href="#">Produit 1</a></li>
-						              	<li><a href="#">Produit 2</a></li>
-						              	<li><a href="#">Produit 3</a></li>
-						              </ul>
-						            </div>
-						          </aside>
-				                </li>   
-			                </ul>
-			              </article>
-			            </td>
-			          </tr>
-			          <tr title="Click for details!">
-			            <td class="clickable">4</td>
-			            <td class="clickable"><h3>Kit panneau solaire</h3></td>
-			            <td class="clickable">65W</td>
-			            <td class="clickable">Panneaux solaire</td>
-			            <td class="clickable"><img src="img/Solar_cell.png"></td>
-			            <td class="clickable text-success text-pricing"><strong>99.99$</strong></td>
-			            <td>
-			              <button type="button" id="53" class="btn btn-primary btn-home ajouter"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Ajouter au panier</button>
-			            </td>
-			          </tr>
-			          <tr>
-			            <td colspan="7">
-			              <article class="product-details" hidden>
-			                <ul class="list-group col-md-9">
-			                  <li class="list-group-item">Panneau monocristallin 65W</li>
-			                  <li class="list-group-item">Contrôleur de charge de 10A EPRC-ST</li>
-			                  <li class="list-group-item">Câble 12AWG de 20Pi chacun avec connecteurs MC4</li>
-			                  <li class="list-group-item">Câble 12AWG de 7Pi chacun avec des pinces</li>
-			                  <li class="list-group-item">3.59A avec régulateur</li>
-			                  <li class="list-group-item">Il n'y a pas de supports ou de fusibles inclus dans ce kit</li>
-			                </ul> 
-			                <ul class="nav col-md-3">
-			                	<li>
-			                	  <span class="glyphicon glyphicon-star"></span>
-				                  <span class="glyphicon glyphicon-star"></span>
-				                  <span class="glyphicon glyphicon-star"></span>
-				                  <span class="glyphicon glyphicon-star-empty"></span>
-				                  <span class="glyphicon glyphicon-star-empty"></span>
-			                	</li>
-			                	<br>
-				                <li>
-				                   <aside class="panel panel-default">
-						            <div class="panel-heading">
-						              <h3 class="panel-title">Suggestions :</h3>
-						            </div>
-						            <div class="panel-body">
-						              <ul class="nav">
-						              	<li><a href="#">Produit 1</a></li>
-						              	<li><a href="#">Produit 2</a></li>
-						              	<li><a href="#">Produit 3</a></li>
-						              </ul>
-						            </div>
-						          </aside>
-				                </li>   
-			                </ul>
-			              </article>
-			            </td>
-			          </tr>
-			        </tbody>
-			      </table>
-			    </section>
-			  </main>
-			  <!--NAVIGATION CATALOGUE-->
-			  <nav class="panel-footer">
-			    <ul class="pagination">
-				<li class="disabled"><a href="#">&laquo;</a></li>
-				<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#">&raquo;</a></li>
-			</ul>
-			  </nav>
-			</div>
+			<?php 		
+				$oControleur = new Controler();	
+				$oControleur->gerer();	
+			?>			  
+			
 			<!-- ======================= 
 				 *** / FIN BASE ***
 			=========================== -->
@@ -446,8 +172,8 @@
 
 			<!-- FOOTER -->
 			<footer>
-				<p class="pull-right"><a href="#">Haut de la page</a></p>
-				<p class="auteur">&copy; 2013 Projet Intégration II</p>
+				<p class="pull-right btn-lien"><a href="#">Haut de la page</a></p>
+				<p class="auteur">&copy; © Wadagbé 2014 | Projet Intégration II</p>
 			</footer><!-- / FOOTER -->
 		</main>
 		<!-- /.container -->
@@ -461,6 +187,5 @@
 		<script src="js/usager.js"></script>
 		<script src="js/main.js"></script>
 		<script src="js/panier.js"></script>
-		<script src="js/catalogue.js"></script>
 	</body>
 </html>

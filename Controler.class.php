@@ -23,6 +23,9 @@ class Controler {
 				case 'accueil':
 					$this->accueil();
 					break;
+				case 'panier':
+					$this->panier();
+					break;
 				default:
 					$this->accueil();
 					break;
@@ -31,6 +34,11 @@ class Controler {
 		private function accueil() {
 			$oVue = new Vue();
 			$oVue->afficheAccueil();
+		}
+
+		private function panier(){
+			$vuePanier =  new VuePannier();
+			$vuePanier->affichePanier();
 		}
 		// Placer les méthodes du controleur.
 				
