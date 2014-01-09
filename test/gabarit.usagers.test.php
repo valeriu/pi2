@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
 
@@ -142,7 +142,7 @@
 				try{
 					$usagers = new Usagers();
 					//$id_utilisateurs, $courriel, $mot_passe, $nom_prenom, $date_entree, $role, $cle_reactivation, $statut
-					$array = array("id_utilisateurs" => 4, "courriel" => "a@a.eu", "mot_passe" => "pass", "nom_prenom" => "TEST", "date_entree" => date("Y-m-d H:i:s"), "role" => 1, "cle_reactivation" => null, "statut" => 1);
+					$array = array("id_utilisateurs" => 4, "courriel" => "a@a.eu", "mot_passe" => "password", "nom_prenom" => "TEST", "date_entree" => date("Y-m-d H:i:s"), "role" => 1, "cle_reactivation" => null, "statut" => 1);
 					$rep = $usagers->modifier($array);
 					var_dump($rep);
 				}

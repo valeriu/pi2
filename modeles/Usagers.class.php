@@ -35,9 +35,9 @@ class Usagers {
 			throw new Exception("Ce courriel est invalide");
 		}
 		
-		/*if(!Valider::estEntreString($mot_passe, 6, 12)){
+		if(!Valider::estEntreString($mot_passe, 6, 12)){
 			throw new Exception("Mot de passe non conforme");
-		}*/
+		}
 		
 		if(!Valider::estAlphaNumerique($nom_prenom)){
 			throw new Exception("Nom, Prénom non conforme");
@@ -139,9 +139,9 @@ class Usagers {
 			throw new Exception("Ce courriel est invalide");
 		}
 		
-		/*if(!Valider::estEntreString($mot_passe, 6, 12)){
+		if(!Valider::estEntreString($mot_passe, 6, 12)){
 			throw new Exception("Mot de passe non conforme");
-		}*/
+		}
 		
 		if(!Valider::estAlphaNumerique($nom_prenom)){
 			throw new Exception("Nom, Prénom non conforme");
@@ -151,13 +151,9 @@ class Usagers {
 			throw new Exception("Entrez un chiffre valide pour le rôle Ex. 0, 1 ou 2 ");
 		}
 		
-		/*if(!Valider::estAlphaNumerique($cle_reactivation)){
-			throw new Exception("Entrez une clé valide(lettre ou nombre)");
-		}*/
-		
-		/*if(!Valider::estEntreInt($statut, 0, 1)){
+		if(!Valider::estEntreInt($statut, 0, 1)){
 			throw new Exception("Entrez un chiffre valide pour le statut Ex. 0 ou 1");
-		}*/
+		}
 		
 		$idbd = $this->bd->getBD();
 		//Préparation de la requête
