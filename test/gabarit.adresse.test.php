@@ -65,7 +65,7 @@
 			<?php 
 				try{
 					$adresse = new Adresse();
-					$rep = $adresse->modifier(array('id_adresse' => '115', 'telephone' => '819',	'rue' => 'TEST',	'appartement' => '3',	'ville' => 'Montréal',	'code_postal' => 'Z9L8W8',	'province' => 'Qc'));
+					$rep = $adresse->modifier(array('id_adresse' => '113', 'telephone' => '819',	'rue' => 'TEST 2',	'appartement' => '3',	'ville' => 'Montréal',	'code_postal' => 'Z9L8W8',	'province' => 'Qc'));
 					var_dump($rep);
 				}
 				catch(Exception $e){
@@ -102,7 +102,7 @@
 				try{
 					$adresse = new Adresse();
 					$rep = $adresse->afficherListe();
-					var_dump($rep);
+					//var_dump($rep);
 				}
 				catch(Exception $e){
 					echo $e->getMessage();

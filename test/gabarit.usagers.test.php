@@ -115,7 +115,7 @@
 			<?php 
 				try{
 					$usagers = new Usagers();
-					$array = array("courriel" => "t@u.com", "mot_passe" => "luccinq", "nom_prenom" => "Pierre");
+					$array = array("courriel" => "e@e.com", "mot_passe" => "luccinq", "nom_prenom" => "Pierre");
 					$rep = $usagers->enregistrer($array);
 					var_dump($rep);
 				}
@@ -128,7 +128,7 @@
 			<?php 
 				try{
 					$usagers = new Usagers();
-					$array = array("courriel" => "t@ra.ca", "mot_passe" => "luccinq", "nom_prenom" => "Jean", "role" => 1);
+					$array = array("courriel" => "x@rx.ca", "mot_passe" => "luccinq", "nom_prenom" => "Jean", "role" => 1);
 					$rep = $usagers->enregistrer($array);
 					var_dump($rep);
 				}

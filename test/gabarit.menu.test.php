@@ -10,21 +10,58 @@
 
 	<body>
 		<div id="header">
-			<h1>Test - Modèles - Usagers</h1>
+			<h1>Test - Modèles - Menu</h1>
 		</div>
 		<div id="contenu">
-			<h1>Test: connecter() fonctionnel</h1>
+			<h1>Test: enregistrer() non-fonctionnel</h1>
 			<?php 
-				$usagers = new Usagers();
-				$rep = $usagers->connecter("per.inceptos@blandit.com", "pass");
+				try{
+				//id_menu	titre	description	url	parent	order	statut
+				$menu = new Menu();
+				$rep = $menu->enregistrer(array( 'description' => '', 'url' => '', 'parent' => '', 'order' => '', 'statut' => ''));
 				var_dump($rep);
+				}
+				catch(Exception $e){
+					echo $e->getMessage();
+				}
 			?>
-			<h1>Test: connecter() non-fonctionnel</h1>
+			<h1>Test: enregistrer() non-fonctionnel</h1>
 			<?php 
-				$usagers = new Usagers();
-				$rep = $usagers->connecter("test", "pass");
+				try{
+				//id_menu	titre	description	url	parent	order	statut
+				$menu = new Menu();
+				$rep = $menu->enregistrer(array('titre' => '', 'description' => '', 'url' => '', 'parent' => '', 'order' => '', 'statut' => ''));
 				var_dump($rep);
+				}
+				catch(Exception $e){
+					echo $e->getMessage();
+				}
 			?>
+			<h1>Test: enregistrer() fonctionnel</h1>
+			<?php 
+				try{
+				//id_menu	titre	description	url	parent	order	statut
+				$menu = new Menu();
+				$rep = $menu->enregistrer(array('titre' => 'Nouveau', 'description' => '', 'url' => '', 'parent' => '', 'order' => '', 'statut' => ''));
+				var_dump($rep);
+				}
+				catch(Exception $e){
+					echo $e->getMessage();
+				}
+			?>
+			<h1>Test: enregistrer() fonctionnel</h1>
+			<?php 
+				try{
+				//id_menu	titre	description	url	parent	order	statut
+				$menu = new Menu();
+				$rep = $menu->enregistrer(array('titre' => 'Autre', 'description' => '', 'url' => '', 'parent' => '', 'order' => '', 'statut' => ''));
+				var_dump($rep);
+				}
+				catch(Exception $e){
+					echo $e->getMessage();
+				}
+			?>
+			
 		</div>
 		<div id="footer">
 

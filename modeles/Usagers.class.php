@@ -4,10 +4,9 @@
  */
 
 /**
- * Description of Usagers
+ * Description de Usagers
  *
- * @author Luc
- *$idbd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+ * @author Luc Cinq-Mars
  */
 class Usagers {
 	private $bd;
@@ -22,14 +21,11 @@ class Usagers {
 	 * Enregistrer un nouvel usager
 	 */
 	public function enregistrer ($aDonnees = Array()) {
-		//$courriel, $mot_passe, $nom_prenom, $role=0
-		//$courriel = $aDonnees['courriel'];
-		//$mot_passe = MD5($aDonnees['mot_passe']);
-		//$nom_prenom = $aDonnees['nom_prenom'];
-		(isset($aDonnees['courriel'])) ? $courriel = $aDonnees['courriel'] : $courriel = '';
-		(isset($aDonnees['mot_passe'])) ? $mot_passe = $aDonnees['mot_passe'] : $mot_passe = '';
-		(isset($aDonnees['nom_prenom'])) ? $nom_prenom = $aDonnees['nom_prenom'] : $nom_prenom = '';
-		(isset($aDonnees['role'])) ? $role = $aDonnees['role'] : $role = 0;
+		$courriel 		= (!empty($aDonnees['courriel'])) ? $aDonnees['courriel'] : '';
+		$mot_passe 		= (!empty($aDonnees['mot_passe'])) ? $aDonnees['mot_passe'] : '';
+		$nom_prenom 	= (!empty($aDonnees['nom_prenom'])) ? $aDonnees['nom_prenom'] : '';
+		$role 			= (!empty($aDonnees['role'])) ? $aDonnees['role'] : 0;
+		//var_dump($courriel);
 		
 		if(!Valider::estCourriel($courriel)){
 			throw new Exception("Ce courriel est invalide");
@@ -43,9 +39,9 @@ class Usagers {
 			throw new Exception("Nom, Prénom non conforme");
 		}
 		
-		if(!Valider::estInt($role)){
+		/*if(!Valider::estInt($role)){
 			throw new Exception("Entrez un chiffre valide pour le rôle Ex. 0, 1 ou 2 ");
-		}
+		}*/
 		
 		$mot_passe = MD5($mot_passe);
 		
@@ -69,7 +65,7 @@ class Usagers {
 			return $reponse;
 		}
         else{
-			throw new Exception("Une erreur s'est produite lors de l'enregistrement, recommencez");
+			throw new Exception("Ce courriel est déjà utilisé");
 		}
 		
 	} 
@@ -79,8 +75,8 @@ class Usagers {
 	 */
 	public function connecter ($aDonnees = Array()) {
 		//$courriel, $mot_passe
-		(isset($aDonnees['courriel'])) ? $courriel = $aDonnees['courriel'] : $courriel = '';
-		(isset($aDonnees['mot_passe'])) ? $mot_passe = $aDonnees['mot_passe'] : $mot_passe = '';
+		$courriel 		= (!empty($aDonnees['courriel'])) ? $aDonnees['courriel'] : '';
+		$mot_passe 		= (!empty($aDonnees['mot_passe'])) ? $aDonnees['mot_passe'] : '';
 		
 		if(!Valider::estCourriel($courriel)){
 			throw new Exception("Ce courriel est invalide");
@@ -121,15 +117,15 @@ class Usagers {
 	 */
 	public function modifier ($aDonnees = Array()){
 		//$aDonnees['id_utilisateurs'], $courriel, $mot_passe, $nom_prenom, $date_entree, $role, $cle_reactivation, $statut
+		$id_utilisateurs 	= (!empty($aDonnees['id_utilisateurs'])) ? $aDonnees['id_utilisateurs'] : '';
+		$courriel 			= (!empty($aDonnees['courriel'])) ? $aDonnees['courriel'] : '';
+		$mot_passe 			= (!empty($aDonnees['mot_passe'])) ? $aDonnees['mot_passe'] : '';
+		$nom_prenom 		= (!empty($aDonnees['nom_prenom'])) ? $aDonnees['nom_prenom'] : '';
+		$date_entree 		= date("Y-m-d H:i:s");
+		$role 				= (!empty($aDonnees['role'])) ? $aDonnees['role'] : 0;
+		$cle_reactivation 	= (!empty($aDonnees['cle_reactivation'])) ? $aDonnees['cle_reactivation'] : '';
+		$statut 			= (!empty($aDonnees['statut'])) ? $aDonnees['statut'] : 1;
 		
-		(isset($aDonnees['id_utilisateurs'])) ? $id_utilisateurs = $aDonnees['id_utilisateurs'] : $id_utilisateurs = '';
-		(isset($aDonnees['courriel'])) ? $courriel = $aDonnees['courriel'] : $courriel = '';
-		(isset($aDonnees['mot_passe'])) ? $mot_passe = $aDonnees['mot_passe'] : $mot_passe = '';
-		(isset($aDonnees['nom_prenom'])) ? $nom_prenom = $aDonnees['nom_prenom'] : $nom_prenom = '';
-		$date_entree = date("Y-m-d H:i:s");
-		(isset($aDonnees['role'])) ? $role = $aDonnees['role'] : $role = 0;
-		(isset($aDonnees['cle_reactivation'])) ? $cle_reactivation = $aDonnees['cle_reactivation'] : $cle_reactivation = '';
-		(isset($aDonnees['statut'])) ? $statut = $aDonnees['statut'] : $statut = 1;
 		
 		if(!Valider::estInt($id_utilisateurs)){
 			throw new Exception("Id d'utilisateur non conforme");
@@ -193,7 +189,7 @@ class Usagers {
 	 */
 	public function afficher ($aDonnees = Array()) {
 		//$id_utilisateurs
-		(isset($aDonnees['id_utilisateurs'])) ? $id_utilisateurs = $aDonnees['id_utilisateurs'] : $id_utilisateurs = '';
+		$id_utilisateurs 	= (!empty($aDonnees['id_utilisateurs'])) ? $aDonnees['id_utilisateurs'] : '';
 		
 		if(!Valider::estInt($id_utilisateurs)){
 			throw new Exception("Id d'utilisateur non conforme");
@@ -240,7 +236,8 @@ class Usagers {
 	 * Envoyer un mot de passe temporaire a un usager
 	 */
 	public function envoyerMotPasse ($aDonnees = Array()) {
-		(isset($aDonnees['courriel'])) ? $courriel = $aDonnees['courriel'] : $courriel = '';
+		$courriel = (!empty($aDonnees['courriel'])) ? $aDonnees['courriel'] : '';
+
 		if(!Valider::estCourriel($courriel)){
 			throw new Exception("Ce courriel est invalide");
 		}
@@ -280,14 +277,11 @@ class Usagers {
 	 * Modifier le mot de passe d'un usager
 	 */
 	public function modifierMotPasse ($aDonnees = Array()) {
-		//$courriel, $mot_passe1, $mot_passe2
-		//$courriel = $aDonnees['courriel'];
-		//$mot_passe1 = MD5($aDonnees['mot_passe1']);
-		//$mot_passe2 = MD5($aDonnees['mot_passe2']);
 		
-		(isset($aDonnees['courriel'])) ? $courriel = $aDonnees['courriel'] : $courriel = '';
-		(isset($aDonnees['mot_passe1'])) ? $mot_passe1 = $aDonnees['mot_passe1'] : $mot_passe1 = '';
-		(isset($aDonnees['mot_passe2'])) ? $mot_passe2 = $aDonnees['mot_passe2'] : $mot_passe2 = '';
+		$courriel 		= (!empty($aDonnees['courriel'])) ? $aDonnees['courriel'] : '';
+		$mot_passe1 	= (!empty($aDonnees['mot_passe1'])) ? $aDonnees['mot_passe1'] : '';
+		$mot_passe2 	= (!empty($aDonnees['mot_passe2'])) ? $aDonnees['mot_passe2'] : '';
+
 		
 		if(!Valider::estCourriel($courriel)){
 			throw new Exception("Ce courriel est invalide");
@@ -310,7 +304,7 @@ class Usagers {
 									SET mot_passe = ?
 									WHERE courriel = ?");
 	        
-			var_dump($req);
+			//var_dump($req);
 	        $req->bindParam(1, $mot_passe2);
 	        $req->bindParam(2, $courriel);
 			

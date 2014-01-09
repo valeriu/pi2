@@ -1,14 +1,13 @@
 ﻿<?php
 
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * MODÈLE ADRESSE
  */
 
 /**
- * Description of Adresse
+ * Description de Adresse
  *
- * @author valeriu
+ * @author Luc Cinq-Mars
  */
 class Adresse {
 	private $bd;
@@ -22,12 +21,13 @@ class Adresse {
 	 */
 	public function verifier($aDonnees = Array()){
 		//telephone	rue	appartement	ville	code_postal	province
-		(isset($aDonnees['telephone'])) ? $telephone = $aDonnees['telephone'] : $telephone = '';
-		(isset($aDonnees['rue'])) ? $rue = $aDonnees['rue'] : $rue = '';
-		(isset($aDonnees['appartement'])) ? $appartement = $aDonnees['appartement'] : $appartement = '';
-		(isset($aDonnees['ville'])) ? $ville = $aDonnees['ville'] : $ville = '';
-		(isset($aDonnees['code_postal'])) ? $code_postal = $aDonnees['code_postal'] : $code_postal = '';
-		(isset($aDonnees['province'])) ? $province = $aDonnees['province'] : $province = '';
+
+		$telephone 		= (!empty($aDonnees['telephone'])) ? $aDonnees['telephone'] : '';
+		$rue 			= (!empty($aDonnees['rue'])) ? $aDonnees['rue'] : '';
+		$appartement 	= (!empty($aDonnees['appartement'])) ? $aDonnees['appartement'] : '';
+		$ville 			= (!empty($aDonnees['ville'])) ? $aDonnees['ville'] : '';
+		$code_postal 	= (!empty($aDonnees['code_postal'])) ? $aDonnees['code_postal'] : '';
+		$province 		= (!empty($aDonnees['province'])) ? $aDonnees['province'] : '';
 		
 		$idbd = $this->bd->getBD();
 		//Préparation de la requête
@@ -59,7 +59,7 @@ class Adresse {
 		if($obj){
 			return true;
 		}
-    else{
+    	else{
 			return false;
 		}
 
@@ -71,17 +71,37 @@ class Adresse {
 	public function enregistrer ($aDonnees = Array()) {
 		//var_dump($aDonnees);
 		if($this->verifier($aDonnees)){
-			//var_dump($aDonnees);
-			throw new Exception("Cette adresse existe déjà");
+			$idbd = $this->bd->getBD();
+
+			$adresse_id_adresse = $idbd->lastInsertId();
+			//var_dump($adresse_id_adresse);
+			//id_adresse_utilisateur	adresse_id_adresse	utilisateurs_id_utilisateurs
+			$reqAdrUtil = $idbd->prepare(	"INSERT INTO wa_adresse_utilisateur
+																		(adresse_id_adresse, utilisateurs_id_utilisateurs)
+																		VALUES (?, ?)");
+				
+			//var_dump($adresse_id_adresse);
+			//var_dump($id_utilisateurs);
+			$reqAdrUtil->bindParam(1, $adresse_id_adresse);
+			$reqAdrUtil->bindParam(2, $id_utilisateurs);
+			
+			$reponseAdrUtil = $reqAdrUtil->execute();
+			//var_dump($reponseAdrUtil);
+			if($reponseAdrUtil){
+				return $reponseAdrUtil;
+			}
+			else{
+				throw new Exception("Une erreur s'est produite lors de l'enregistrement, recommencez (adresse-utilisateurs)");
+			}
 		}
 		else{
-			(isset($aDonnees['id_utilisateurs'])) ? $id_utilisateurs = $aDonnees['id_utilisateurs'] : $id_utilisateurs = '';
-			(isset($aDonnees['telephone'])) ? $telephone = $aDonnees['telephone'] : $telephone = '';
-			(isset($aDonnees['rue'])) ? $rue = $aDonnees['rue'] : $rue = '';
-			(isset($aDonnees['appartement'])) ? $appartement = $aDonnees['appartement'] : $appartement = '';
-			(isset($aDonnees['ville'])) ? $ville = $aDonnees['ville'] : $ville = '';
-			(isset($aDonnees['code_postal'])) ? $code_postal = $aDonnees['code_postal'] : $code_postal = '';
-			(isset($aDonnees['province'])) ? $province = $aDonnees['province'] : $province = '';
+			$id_utilisateurs 	= (!empty($aDonnees['id_utilisateurs'])) ? $aDonnees['id_utilisateurs'] : '';
+			$telephone 			= (!empty($aDonnees['telephone'])) ? $aDonnees['telephone'] : '';
+			$rue 				= (!empty($aDonnees['rue'])) ? $aDonnees['rue'] : '';
+			$appartement 		= (!empty($aDonnees['appartement'])) ? $aDonnees['appartement'] : '';
+			$ville 				= (!empty($aDonnees['ville'])) ? $aDonnees['ville'] : '';
+			$code_postal 		= (!empty($aDonnees['code_postal'])) ? $aDonnees['code_postal'] : '';
+			$province 			= (!empty($aDonnees['province'])) ? $aDonnees['province'] : '';
 			
 			
 			$idbd = $this->bd->getBD();
@@ -133,26 +153,28 @@ class Adresse {
 	 * Modifier une adresse
 	*/
 	public function modifier ($aDonnees = Array()) {
-		(isset($aDonnees['id_adresse'])) ? $id_adresse = $aDonnees['id_adresse'] : $id_adresse = '';
-		(isset($aDonnees['telephone'])) ? $telephone = $aDonnees['telephone'] : $telephone = '';
-		(isset($aDonnees['rue'])) ? $rue = $aDonnees['rue'] : $rue = '';
-		(isset($aDonnees['appartement'])) ? $appartement = $aDonnees['appartement'] : $appartement = '';
-		(isset($aDonnees['ville'])) ? $ville = $aDonnees['ville'] : $ville = '';
-		(isset($aDonnees['code_postal'])) ? $code_postal = $aDonnees['code_postal'] : $code_postal = '';
-		(isset($aDonnees['province'])) ? $province = $aDonnees['province'] : $province = '';
+		$id_adresse 	= (!empty($aDonnees['id_adresse'])) ? $aDonnees['id_adresse'] : '';
+		$telephone 		= (!empty($aDonnees['telephone'])) ? $aDonnees['telephone'] : '';
+		$rue 			= (!empty($aDonnees['rue'])) ? $aDonnees['rue'] : '';
+		$appartement 	= (!empty($aDonnees['appartement'])) ? $aDonnees['appartement'] : '';
+		$ville 			= (!empty($aDonnees['ville'])) ? $aDonnees['ville'] : '';
+		$code_postal 	= (!empty($aDonnees['code_postal'])) ? $aDonnees['code_postal'] : '';
+		$province 		= (!empty($aDonnees['province'])) ? $aDonnees['province'] : '';
 		
-		var_dump($id_adresse);
+		//var_dump($id_adresse);
 		$idbd = $this->bd->getBD();
 		//Préparation de la requête
 		$req = $idbd->prepare(	"UPDATE wa_adresse
-                             SET 	telephone = ?,
-																	rue = ?,
-																	appartement = ?,
-																	ville = ?,
-																	code_postal = ?,
-																	province = ?
-														 WHERE id_adresse = ?");
-														 
+                             	SET 	telephone = ?,
+											rue = ?,
+											appartement = ?,
+											ville = ?,
+											code_postal = ?,
+											province = ?
+								 WHERE id_adresse = ?");
+		//var_dump($id_adresse);
+		//var_dump($telephone);
+
 		$req->bindParam(1, $telephone);
 		$req->bindParam(2, $rue);
 		$req->bindParam(3, $appartement);
@@ -167,7 +189,7 @@ class Adresse {
 			return true;
 		}
 		else{
-			throw new Exception("Une erreur s'est produite lors de l'enregistrement, recommencez (modif)");
+			throw new Exception("Une erreur s'est produite lors de l'enregistrement, ou aucune modification n'a été apportée");
 		}
 	}
 	
@@ -176,7 +198,7 @@ class Adresse {
 	*/
 	public function afficher ($aDonnees = Array()) {
 		//$id_adresse
-		(isset($aDonnees['id_adresse'])) ? $id_adresse = $aDonnees['id_adresse'] : $id_adresse = '';
+		$id_adresse 	= (!empty($aDonnees['id_adresse'])) ? $aDonnees['id_adresse'] : '';
 		
 		
 		$idbd = $this->bd->getBD();
@@ -206,7 +228,7 @@ class Adresse {
 		$req = $idbd->prepare(	"SELECT *
                               FROM wa_adresse");
         
-    $req->execute();
+    	$req->execute();
 		
 		$aAdresses = $req->fetchAll();
 		if($aAdresses){
