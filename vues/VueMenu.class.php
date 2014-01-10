@@ -8,7 +8,7 @@
  */
 
 
-class VuePages {
+class VueMenu {
 
 	/**
 	 * Affiche un page Front End 
