@@ -107,7 +107,20 @@ footer{
 	display: inline;
 }
 /* / Shopping Cart */
-
+/* Msg Error*/
+#msgError, #pasEnregistre{
+    clear: both;
+    background-color: #F16529;
+    border-radius: 9px;
+    color: #FFFFFF;
+    margin: 51px;
+    padding: 18px;
+    display: none;
+}
+#confirmer {
+    float: right;
+}
+/* / */
 /* -------------- Menu --------------------*/
 .navbar-inverse{
 	background: none;

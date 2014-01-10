@@ -18,7 +18,7 @@
 				try{
 				//id_menu	titre	description	url	parent	order	statut
 				$menu = new Menu();
-				$rep = $menu->enregistrer(array( 'description' => '', 'url' => '', 'parent' => '', 'order' => '', 'statut' => ''));
+				//$rep = $menu->enregistrer(array( 'description' => '', 'url' => '', 'parent' => '', 'order' => '', 'statut' => ''));
 				var_dump($rep);
 				}
 				catch(Exception $e){
@@ -30,7 +30,7 @@
 				try{
 				//id_menu	titre	description	url	parent	order	statut
 				$menu = new Menu();
-				$rep = $menu->enregistrer(array('titre' => '', 'description' => '', 'url' => '', 'parent' => '', 'order' => '', 'statut' => ''));
+				//$rep = $menu->enregistrer(array('titre' => '', 'description' => '', 'url' => '', 'parent' => '', 'order' => '', 'statut' => ''));
 				var_dump($rep);
 				}
 				catch(Exception $e){
@@ -42,7 +42,7 @@
 				try{
 				//id_menu	titre	description	url	parent	order	statut
 				$menu = new Menu();
-				$rep = $menu->enregistrer(array('titre' => 'Nouveau', 'description' => '', 'url' => '', 'parent' => '', 'order' => '', 'statut' => ''));
+				//$rep = $menu->enregistrer(array('titre' => 'Nouveau', 'description' => '', 'url' => '', 'parent' => '', 'order' => '', 'statut' => ''));
 				var_dump($rep);
 				}
 				catch(Exception $e){
@@ -54,7 +54,7 @@
 				try{
 				//id_menu	titre	description	url	parent	order	statut
 				$menu = new Menu();
-				$rep = $menu->enregistrer(array('titre' => 'Autre', 'description' => '', 'url' => '', 'parent' => '', 'order' => '', 'statut' => ''));
+				//$rep = $menu->enregistrer(array('titre' => 'Autre', 'description' => '', 'url' => '', 'parent' => '', 'order' => '', 'statut' => ''));
 				var_dump($rep);
 				}
 				catch(Exception $e){
@@ -66,8 +66,32 @@
 				try{
 				//id_menu	titre	description	url	parent	order	statut
 				$menu = new Menu();
-				$rep = $menu->enregistrer(array('id_menu' => '19','titre' => 'Bravo', 'description' => '', 'url' => '', 'parent' => '', 'order' => '', 'statut' => ''));
+				//$rep = $menu->enregistrer(array('id_menu' => '19','titre' => 'Bravo', 'description' => '', 'url' => '', 'parent' => '', 'order' => '', 'statut' => ''));
 				var_dump($rep);
+				}
+				catch(Exception $e){
+					echo $e->getMessage();
+				}
+			?>
+			<h1>Test: afficherMenu() fonctionnel</h1>
+			<?php 
+				try{
+				$menu = new Menu();
+				$rep = $menu->afficherMenu();
+				echo "<pre>";
+				print_r($rep);
+				}
+				catch(Exception $e){
+					echo $e->getMessage();
+				}
+			?>
+			<h1>Test: afficherMenuAdmin() fonctionnel</h1>
+			<?php 
+				try{
+				$menu = new Menu();
+				$rep = $menu->afficherMenuAdmin();
+				echo "<pre>";
+				print_r($rep);
 				}
 				catch(Exception $e){
 					echo $e->getMessage();

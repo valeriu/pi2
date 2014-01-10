@@ -37,7 +37,7 @@ class Controler {
 		}
 
 		private function panier(){
-			$vuePanier =  new VuePannier();
+			$vuePanier =  new VuePanier();
 			$vuePanier->affichePanier();
 		}
 		// Placer les méthodes du controleur.

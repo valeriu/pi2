@@ -101,6 +101,7 @@ var Panier = (function (){
     // Fonction qui enregistre la commande dans la base de données
     var passerCommande =  function(){
         try{
+            console.log('PASSER LA COMMANDE');
             var valEmail = $("input[name='email']").val();
             var adresse = $("input[name*='adresse']").val();
             var ville = $("input[name*='ville']").val();
@@ -115,7 +116,7 @@ var Panier = (function (){
                 var jsonString = JSON.stringify(produit);
                 $.ajax({
                     type: "POST",
-                    url: "ajaxController.php?requete=passerCommande",
+                    url: "ajaxControler.php?requete=passerCommande",
                     data: {
                         quantite : localStorage.length,
                         email : valEmail,

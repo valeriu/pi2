@@ -7,31 +7,30 @@
 $(function(){
 	try{
 		$('#msgError').hide();
-        Catalogue.demarre();  /* fonction qui demarre module */ // Module qui contient la fonction pour ajouter un produit dans le panier
+        Catalogue.demarre();  // fonction qui demarre module //
     }catch(e){
-       
+         $('#msgError').show(); // Affichage d'error
     }
+
     try{
     	$('.ajouter').bind('click', function(e){
+            //event.preventDefault();
     		Catalogue.ajouterProduit(e);
     	});
     }catch(e){
-        console.log('ERROR');
-    	 $('#msgError').show(); // Affichage d'error
+    	$('#msgError').show(); // Affichage d'error
     }    
 
 });
-
-var Catalogue = (function () {     /* ----- Module Pattern avec IIFE et Closure ----- */
-	
+/* ----- Module Pattern avec IIFE et Closure ----- */
+var Catalogue = (function () {  // Module qui contient la fonction pour ajouter un produit dans le panier	
 	var nbProduitsPanier = 0;
-
+    var prodObject;
 	var _demarre = function(){
 		/* Ici on verfie l'existence de produits dans le web storage */
         if(localStorage.length != 0){
             nbProduitsPanier = localStorage.length;
             $('#nbProducts').html(nbProduitsPanier);
-            console.log('ICI');
         }else{
             nbProduitsPanier = 0;
             $('#nbProducts').html('Vide');
@@ -39,7 +38,7 @@ var Catalogue = (function () {     /* ----- Module Pattern avec IIFE et Closure 
         //console.log("ICI",nbProduitsPanier);
         /* Désactivation de produits que sont déjà au panier */
         for (var i = 0; i < localStorage.length; i++){
-            var prodObject = JSON.parse(localStorage.getItem(localStorage.key(i)));
+            prodObject = JSON.parse(localStorage.getItem(localStorage.key(i)));
             $('#'+prodObject.idP).attr('disabled', 'disabled');
             $('#'+prodObject.idP).html('Déjà ajouté');
         }
@@ -48,32 +47,24 @@ var Catalogue = (function () {     /* ----- Module Pattern avec IIFE et Closure 
     var _ajouterProduit = function(e){  
         /* Evenement qui sera reconstruit à chaque fois que une page du catalogue est chargé */
             for (var i = 0; i < localStorage.length; i++){
-                var prodObject = JSON.parse(localStorage.getItem(localStorage.key(i)));
+                prodObject = JSON.parse(localStorage.getItem(localStorage.key(i)));
                 $('#'+prodObject.idP).attr('disabled', 'disabled');
                 $('#'+prodObject.idP).html('Déjà ajouté');
             }
-
             var idElement = e.target.id;
-
-            console.log(idElement);
-
             nbProduitsPanier++;
             $('#nbProducts').html(nbProduitsPanier);
             var produit    = new Object();
             produit.idP     = idElement;
-            produit.nom    = $(idElement).siblings('.nom').html();
-            produit.image  = $(idElement).siblings().children().attr('src');
-            produit.descp  = $(idElement).siblings('.description').html();
+            produit.nom    = $('#'+idElement).parent().siblings('.nom').children().html();
+            produit.image  = $('#'+idElement).parent().siblings('.img').children().attr('src');
             produit.quant  = 1;
-            produit.prix   = $(idElement).siblings('.prix').children('.prix-valeur').html();
-            /* Désactivation du produit ajouté au panier */
-            $(idElement).attr('disabled', 'disabled');
-            $(idElement).html('Déjà ajouté');
-
+            produit.prix   = $('#'+idElement).parent().siblings('.text-pricing').children().children('.prix-valeur').html();
             window.localStorage.setItem(produit.idP, JSON.stringify(produit));
-        
-        console.log(nbProduitsPanier);
-    }/* / */
+            /* Désactivation du produit ajouté au panier */
+            $('#'+idElement).attr('disabled', 'disabled');
+            $('#'+idElement).html('Déjà ajouté');
+    }
 
  return { // Return des méthodes ou fonctions publiques
  		demarre : _demarre,

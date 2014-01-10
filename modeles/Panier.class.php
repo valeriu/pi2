@@ -11,18 +11,86 @@
  * @author Luis
  */
 class Panier {
-
-
-
-
-
-
-
 	
 	private $bd;
 	
 	public function __construct(){
 		$this->bd = BD::getInstance();
+	}
+
+	// Methode de création d'une commande
+	public function etapeUnPanier($courriel='', $infoCommande='', $totalCommande=0, $produits=0){
+
+
+		if(empty($_POST['quantite']))
+		{
+			$_POST['quantite'] = '';
+		}
+		if(empty($_POST['email']))
+		{
+			$_POST['email'] = '';
+		}
+		if(empty($_POST['data']))
+		{
+			$_POST['data'] = '';
+		}
+
+		$infoCommande = json_decode($_POST['data']);
+		$details = $_POST['data'];
+		$totalCommande = '';
+		$nbProduits = intval($_POST['quantite']);
+
+
+		// Pour enregistrer le prix total de la commande
+		for($i = 0 ; $i < $_POST['quantite']; $i++){
+			$totalCommande += $infoCommande->{"$i"}->{"prix"} * $infoCommande->{"$i"}->{"quant"};
+		}
+		$panier = new Panier();
+		$resultatNewCommande = $panier->etapeUnPanier($_POST['email'], $details, round($totalCommande, 2), $nbProduits);
+		
+		//var_dump($_POST['quantite'], $_POST['email'], $_POST['data'], $nbProduits, $resultatNewCommande);
+		//return $resultatNewCommande;
+		echo $resultatNewCommande; // Réponse AJAX , pour la vérification de l'enregistrement
+
+
+
+
+
+		if(empty($courriel)) {
+			throw new Exception("Le courriel ne doit pas être vide", 1);
+		}
+		if(is_numeric($courriel)) {
+			throw new Exception("Le nom doit contenir des lettres", 1);
+		}
+		if(empty($infoCommande)) {
+			throw new Exception("Il n'y à pas informations sur la commande", 1);
+		}		
+		if(is_numeric($infoCommande)) {
+			throw new Exception("Erreurs dans les informations (INT)", 2);
+		}		
+		if(empty($totalCommande)) {
+			throw new Exception("Le total de la commande ne peut pas être 0", 1);
+		}
+		if(!is_numeric($totalCommande)) {
+			throw new Exception("Le total de la commande ne peut pas être vide (INT)", 2);
+		}
+		if(empty($produits)) {
+			throw new Exception("Il n'y à pas les informations suffisantes", 1);
+		}
+		if(!is_numeric($produits)) {
+			throw new Exception("Erreur dans l'informations (INT)", 2);
+		}	
+		// Création de la date actuelle de la commande
+		$dateCommande = date("Y-m-d H:i:s");
+
+		// Bonne insertion dans la BD :)
+		// Ajoute de htmlentities() et addslashes()
+		//$info = $this->maDB->executer("INSERT INTO infoCommandeTP3 (email, dateCommande, details, total, produits) values ('".htmlentities($courriel)."', '".$dateCommande."', '".addslashes($infoCommande)."', ".$totalCommande.", ".$produits." )");
+
+		$info = ''.$courriel.'-'.$infoCommande.'-'.$totalCommande.'-'.$produits.'-'.$dateCommande.'';
+
+		return $info;
+		
 	}
 
 	public function enregistrer ($aDonnees= array()) {
