@@ -54,7 +54,7 @@ class Controler {
 			$vue->afficherEntete();
 			// VueUsager::afficherFormes();
 			$vue->afficherBoutonPanier();
-			// VueMenu::afficherMenu();
+			VueMenu::afficherMenu();
 			VuePanier::affichePanier();
 			$vue->afficherFooter();
 		}
