@@ -10,29 +10,47 @@
 			<h1>Test - Modèles - Pages</h1>
 		</div>
 		<div id="contenu">
-			<h1>Test: ajouter ($titre, $description_meta, $contenu, $statut, $geo_long, $geo_lat) fonctionnel</h1>
+			<h3>Test: ajouter ($titre, $description_meta, $contenu, $statut, $geo_long, $geo_lat) fonctionnel</h3>
 			<?php 
+			$r = rand(1,1000);
+			try {
 				$page = new Pages();
-				$result = $page->ajouter ("titre", "description_meta", "contenu", 1, 22.55, 55.888);
+				$aDonnees = array("titre" => "Titlul".$r, "description_meta" => "sDescrierea", "contenu" => "Content", "statut" => 1, "geo_long" => "", "geo_lat" => "-6582.5");
+				$result = $page->ajouter ($aDonnees);
 
 				var_dump($result);
+				
+			} catch (Exception $e) {
+				echo $e->getMessage();
+			}	
 			?>
 
 			<h1>Test: modifier ($id_page, $titre, $description_meta, $contenu, $date, $statut, $geo_long, $geo_lat) fonctionnel</h1>
 			<?php 
+			$r = rand(1,1000);
+			try {
 				$page = new Pages();
-				$date = date("Y-m-d H:i:s");
-				$result = $page->modifier (110, "titre", "description_meta", "contenu", $date, 1, 22.55, 55.888);
+				$aDonnees = array("id_page" => 149, "titre" => "Titlul".$r, "description_meta" => $r." sDescrierea", "contenu" => "Content", "statut" => 1, "geo_long" => "", "geo_lat" => "-6582.5");
+				$result = $page->modifier ($aDonnees);
 
 				var_dump($result);
+				
+			} catch (Exception $e) {
+				echo $e->getMessage();
+			}	
 			?>
-		<h1>Test: afficher ($id_page) fonctionnel</h1>
+		<h3>Test: afficher ($id_page) fonctionnel</h3>
 		<pre>
 			<?php 
+			try {
 				$page = new Pages();
-				$result = $page->afficher (99);
+				$aDonnees = array("id_page" => 99);
+				$result = $page->afficher ($aDonnees);
 
 				var_dump($result);
+			} catch (Exception $e) {
+				echo $e->getMessage();
+			}		
 			?>	
 		</pre>
 		
@@ -40,13 +58,21 @@
 		<h1>Test: afficherListe() - fonctionnel</h1>
 		<pre>
 			<?php 
+			try {
 				$page = new Pages();
 				$result = $page->afficherListe();
 
 				var_dump($result);
+			} catch (Exception $e) {
+				echo $e->getMessage();
+			}		
 			?>	
 		</pre>		
 		
 		</div>
 	</body>
 </html>
+<?php 
+
+
+?>
