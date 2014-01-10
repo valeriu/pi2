@@ -98,7 +98,7 @@ class Vue {
 
 	public function afficherBoutonPanier() {
 ?>
-				<!-- Shopping Cart -->
+				</article><!-- Shopping Cart -->
 				<article id="shopping-cart" class="col-lg-4 pull-right text-right">
 					<a href="./index.php?requete=panier">
 						<button type="button" class="btn btn-panier btn-lg">
