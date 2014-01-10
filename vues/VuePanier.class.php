@@ -27,8 +27,7 @@ class VuePanier {
 				Panier.creerPanier();
 			});
 		</script>
-			<!-- Division du contenu principal -->
-		<main class="container marketing">
+
 			<div id="panier" class="">
 				<div class="panel panel-default">
 					<header class="panel-heading">
