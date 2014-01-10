@@ -12,7 +12,7 @@
 		<div id="header">
 			<h1>Tests - Modèle - Catalogue</h1>
 			<?php 
-				// array des categories celon les cases selectionne
+				// array des categories selon les cases selectionne
 				$aCategories = array(1=>true,2=>false,3=>false);
 			 ?>
 		</div>
@@ -33,6 +33,13 @@
 			<?php 
 				$catalogue = new Catalogue($aCategories);
 				$rep = $catalogue->afficher("prix");
+				var_dump($rep);
+			?>
+			<h1>Test: enregistrer() non-fonctionnel</h1>
+			<?php 
+				$catalogue = new Catalogue($aCategories);
+				$array = array();
+				$rep = $catalogue->enregistrer($array);
 				var_dump($rep);
 			?>
 		</div>
