@@ -24,7 +24,7 @@
 		<link href="css/main.css" rel="stylesheet">
 		<link href="css/usager.css" rel="stylesheet">
 		<link href="css/panier.css" rel="stylesheet">
-		<link href="css/catalog.css" rel="stylesheet">
+		<link href="css/catalogue.css" rel="stylesheet">
 		<!-- GOOGLE FONTS -->
 		<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 	</head>
@@ -42,67 +42,9 @@
 				<article class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-12 pull-right">
 				<!-- / Connexion Usagers -->
 					<section id="usager" class="pull-right">
-						<form class="form-signin">
-							<button name="enregistrer" id="enregistrer" class="btn btn-lien" type="button">S'enregistrer</button>
-							<button name="connecter" id="connecter" class="btn btn-lien" type="button">Connexion</button>
-						</form>
-						
-						<article id="connecterDiv">
-							<form class="form-signin" name="form-usager-connecter" action="usager_informations.html" method="post">
-								<div class="input-group input-group-sm">
-									Courriel :
-									<input name="courriel" type="email" class="form-control" required>
-								</div>
-								<div class="input-group input-group-sm">
-									Mot de passe :
-									<input name="password" type="password" class="form-control" required>
-								</div>
-								<a name="motPasseOublie" id="motPasseOublie" href="#">Mot de passe oublié</a>
-								<br>
-								<button name="connexion" id="connexion" class="btn btn-primary" type="submit">Connexion</button>
-								<br>
-							</form>
-							<div id="infosConnecter">
-								<h1>Bienvenue sur Wadagbé!</h1>
-								<a name="completerInfos" href="completerInfos.html">Compléter les informations</a>
-							</div>
-						</article>
-						
-						<article id="enregistrerDiv">
-							<form class="form-signin" name="form-usager-enregistrer">
-								<div class="input-group input-group-sm">
-									Nom, prénom:
-									<input name="nom" type="text" class="form-control"  required>
-								</div>
-								<div class="input-group input-group-sm">
-									Courriel:
-									<input name="courriel" type="email" class="form-control" required>
-								</div>
-								<div class="input-group input-group-sm">
-									Mot de passe:
-									<input name="password" type="password" class="form-control" required>
-								</div>
-								<button name="confirmer" id="confirmer" class="btn btn-primary" type="submit">Confirmer</button>
-								<br>
-							</form>
-							<div id="infosEnregistrer">
-								<h1>Bienvenue sur Wadagbé!</h1>
-								<a name="completerInfos" href="completerInfos.html">Compléter les informations</a>
-							</div>  
-						</article>
-						
-						<article id="motPasseOublieDiv">
-							<form class="form-signin" name="form-usager-oublie">
-								<div class="input-group input-group-sm">
-									Courriel:
-									<input name="courriel" type="email" class="form-control" required>
-								</div>
-								<button name="envoyer" id="envoyer" class="btn btn-primary" type="submit">Soumettre</button>
-							</form> 
-							<div id="courrielEnvoye">
-								<h1>Répondez à la question suivante: </h1>
-							</div>
-						</article>
+						<?php
+							// Gestion connexion usager
+						?>
 					</section><!-- / Connexion Usagers -->
 				</article>
 				<!-- Shopping Cart -->

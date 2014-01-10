@@ -12,7 +12,7 @@
  */
 
 
-class VuePannier {
+class VuePanier {
 
 	/**
 	 * Affiche la page d'accueil 
@@ -140,5 +140,19 @@ class VuePannier {
 <?php
 		
 	}
+
+	
+	public function affiche() {
+		?>
+		<article>
+			<h1>PANIER</h1>
+			<p>Information panier</p>
+		</article>
+		<?php
+		
+	}
+
+
+	
 }
 ?>
