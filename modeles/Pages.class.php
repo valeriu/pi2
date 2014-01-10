@@ -15,7 +15,7 @@
  * $idbd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
  * http://ca2.php.net/manual/en/pdo.constants.php
  */
-require_once 'Valider.class.php';
+	//require_once 'Valider.class.php';
 class Pages {
 
 	private $bd;
