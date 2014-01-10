@@ -20,35 +20,40 @@
 		case 'etapeUn':
 			etapeUn();
 			break;
-		case 'panier':
-			$this->panier();
+		case 'etapeDeux':
+			etapeDeux();
+			break;
+		case 'passerCommande':
+			enregistreCommande();
 			break;
 		default:
-			$this->accueil();
+			accueil();
 			break;
 	}
 
 	function etapeUn(){
-		$panier = new Panier();
-		$resultatNewCommande = $panier->etapeUnPanier();
+		$vuePanier =  new Panier();
+		$resultatNewCommande = $vuePanier->etapeUnPanier($_POST);
 		echo $resultatNewCommande; // Réponse AJAX , pour la vérification de l'enregistrement
 	}
 
-	function panier(){
+	function etapeDeux(){
 		$vuePanier =  new VuePanier();
 		$vuePanier->affichePanier();
-
 	}
-	
-	
 
+	function enregistreCommande(){
+		$vuePanier =  new VuePanier();
+		$vuePanier->enregistrePanier();
+	}
 
-	if($_GET['requete']== 'passerCommande')
-	{
-		
-		
-	}else {
+	function accueil() {
+		$oVue = new Vue();
+		$oVue->afficheAccueil();
+	}
+
+	/*else {
 		Vue::message('Erreur à l\'enregistrement de la commande, éssaie plus tard!');
-	}
+	}*/
 
 ?>

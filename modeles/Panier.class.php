@@ -19,67 +19,30 @@ class Panier {
 	}
 
 	// Methode de création d'une commande
-	public function etapeUnPanier($courriel='', $infoCommande='', $totalCommande=0, $produits=0){
+	public function etapeUnPanier($aDonnees = array()) { //$courriel='', $infoCommande='', $totalCommande=0, $produits=0
 
+		$courriel 		= (!empty($aDonnees['email'])) ? $aDonnees['email'] : '';
+		$quantite 		= (!empty($aDonnees['quantite'])) ? $aDonnees['quantite'] : '';
+		$data 	= (!empty($aDonnees['data'])) ? $aDonnees['data'] : '';
+		//var_dump($courriel);
+		
+		if(!Valider::estCourriel($courriel))
+			throw new Exception("Ce courriel est invalide");		
+		//if(!Valider::estTableau($data))
+			//throw new Exception("Les produits doivent être dans un tableau!.");
+		//if(!Valider::estInt($quantite))
+			//throw new Exception("Quantite, doit être un nombre");
 
-		if(empty($_POST['quantite']))
-		{
-			$_POST['quantite'] = '';
-		}
-		if(empty($_POST['email']))
-		{
-			$_POST['email'] = '';
-		}
-		if(empty($_POST['data']))
-		{
-			$_POST['data'] = '';
-		}
-
-		$infoCommande = json_decode($_POST['data']);
+		$infoCommande = json_decode($data);
 		$details = $_POST['data'];
 		$totalCommande = '';
 		$nbProduits = intval($_POST['quantite']);
 
 
 		// Pour enregistrer le prix total de la commande
-		for($i = 0 ; $i < $_POST['quantite']; $i++){
+		for($i = 0 ; $i < $quantite; $i++){
 			$totalCommande += $infoCommande->{"$i"}->{"prix"} * $infoCommande->{"$i"}->{"quant"};
 		}
-		$panier = new Panier();
-		$resultatNewCommande = $panier->etapeUnPanier($_POST['email'], $details, round($totalCommande, 2), $nbProduits);
-		
-		//var_dump($_POST['quantite'], $_POST['email'], $_POST['data'], $nbProduits, $resultatNewCommande);
-		//return $resultatNewCommande;
-		echo $resultatNewCommande; // Réponse AJAX , pour la vérification de l'enregistrement
-
-
-
-
-
-		if(empty($courriel)) {
-			throw new Exception("Le courriel ne doit pas être vide", 1);
-		}
-		if(is_numeric($courriel)) {
-			throw new Exception("Le nom doit contenir des lettres", 1);
-		}
-		if(empty($infoCommande)) {
-			throw new Exception("Il n'y à pas informations sur la commande", 1);
-		}		
-		if(is_numeric($infoCommande)) {
-			throw new Exception("Erreurs dans les informations (INT)", 2);
-		}		
-		if(empty($totalCommande)) {
-			throw new Exception("Le total de la commande ne peut pas être 0", 1);
-		}
-		if(!is_numeric($totalCommande)) {
-			throw new Exception("Le total de la commande ne peut pas être vide (INT)", 2);
-		}
-		if(empty($produits)) {
-			throw new Exception("Il n'y à pas les informations suffisantes", 1);
-		}
-		if(!is_numeric($produits)) {
-			throw new Exception("Erreur dans l'informations (INT)", 2);
-		}	
 		// Création de la date actuelle de la commande
 		$dateCommande = date("Y-m-d H:i:s");
 
@@ -93,7 +56,7 @@ class Panier {
 		
 	}
 
-	public function enregistrer ($aDonnees= array()) {
+	public function enregistrePanier($aDonnees= array()) {
 		
 		$id_utilisateur = (!empty($aDonnees['id_utilisateur'])) ? $aDonnees['id_utilisateur'] : '';
 		$id_adresse = (!empty($aDonnees['adresse_utilisateur'])) ? $aDonnees['adresse_utilisateur'] : '';

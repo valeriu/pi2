@@ -116,7 +116,7 @@ var Panier = (function (){
                 var jsonString = JSON.stringify(produit);
                 $.ajax({
                     type: "POST",
-                    url: "ajaxControler.php?requete=passerCommande",
+                    url: "ajaxControler.php?requete=etapeUn",
                     data: {
                         quantite : localStorage.length,
                         email : valEmail,

@@ -20,12 +20,15 @@ class VuePanier {
 	 * 
 	 */
 	public function affichePanier() {
+
 		?>
 		<script>
-				window.addEventListener('load', function () {
-					Panier.creerPanier();
-				});
-			</script>
+			window.addEventListener('load', function () {
+				Panier.creerPanier();
+			});
+		</script>
+			<!-- Division du contenu principal -->
+		<main class="container marketing">
 			<div id="panier" class="">
 				<div class="panel panel-default">
 					<header class="panel-heading">
