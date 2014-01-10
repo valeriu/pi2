@@ -22,8 +22,12 @@ class Controler {
 			switch ($_GET['requete']) {
 				case 'accueil':
 					$this->accueil();
+					//$this->page();
 					break;
 				case 'panier':
+					$this->panier();
+					break;
+				case 'page':
 					$this->panier();
 					break;
 				default:
@@ -33,12 +37,26 @@ class Controler {
 		}
 		private function accueil() {
 			$oVue = new Vue();
-			$oVue->afficheAccueil();
-		}
+			$oVue->afficherEntete();
+			// VueUsager::afficherFormes();
+			$oVue->afficherBoutonPanier();
+			$oVue->afficherAccueil();
+			$oVue->afficherFooter();
 
+		}
+		private function page() {
+
+			$oVue = new Vue();
+			$oVue->afficherPage($id);
+		}
 		private function panier(){
-			$vuePanier =  new VuePanier();
-			$vuePanier->affichePanier();
+			$vue =  new Vue();
+			$vue->afficherEntete();
+			// VueUsager::afficherFormes();
+			$vue->afficherBoutonPanier();
+			// VueMenu::afficherMenu();
+			VuePanier::affichePanier();
+			$vue->afficherFooter();
 		}
 		// Placer les méthodes du controleur.
 				

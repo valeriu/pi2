@@ -22,8 +22,9 @@
 	require_once("./var.init.php");
    
    /***************************************************/
-    /** Gabarit **/
+    /** Controleur
     /***************************************************/
-	require_once("./gabarit.projet.php");
+	$oControleur = new Controler();  
+  $oControleur->gerer();
 
 ?>
