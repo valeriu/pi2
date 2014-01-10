@@ -175,7 +175,7 @@ class Menu {
 		$req = $idbd->prepare(	"SELECT id_menu, titre, description, url, parent, ordre, statut 
 								FROM wa_menu
 								WHERE statut = 1
-								ORDER BY parent, titre");
+								ORDER BY parent, ordre");
         
     	$req->execute();
 		
@@ -211,11 +211,12 @@ class Menu {
 				//print_r($itemId);
 				if(!isset($menu['parents'][$itemId])){
 					$menuConstruit[$menu['items'][$itemId]['id_menu']] = array('id_menu' => $menu['items'][$itemId]['id_menu'], 'url' => $menu['items'][$itemId]['url'], 'titre' => $menu['items'][$itemId]['titre']);
+					$menuConstruit[$menu['items'][$itemId]['id_menu']]['enfants'] = 0;
 				}
 				if(isset($menu['parents'][$itemId])){
 					$menuConstruit[$menu['items'][$itemId]['id_menu']] = array('id_menu' => $menu['items'][$itemId]['id_menu'],'url' => $menu['items'][$itemId]['url'], 'titre' => $menu['items'][$itemId]['titre']);
 					//Création du sous-menu
-					$menuConstruit[$menu['items'][$itemId]['id_menu']]['enfants'] = $this->construireMenu($itemId, $menu);;
+					$menuConstruit[$menu['items'][$itemId]['id_menu']]['enfants'] = $this->construireMenu($itemId, $menu);
 				}
 			}
 		}
