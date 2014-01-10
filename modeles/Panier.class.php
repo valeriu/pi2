@@ -19,7 +19,7 @@ class Panier {
 	}
 
 	// Methode de création d'une commande
-	public function etapeUnPanier($aDonnees = array()) { //$courriel='', $infoCommande='', $totalCommande=0, $produits=0
+	public function etapeUnPanier($aDonnees, $info) { //$courriel='', $infoCommande='', $totalCommande=0, $produits=0
 
 		$courriel 		= (!empty($aDonnees['email'])) ? $aDonnees['email'] : '';
 		$quantite 		= (!empty($aDonnees['quantite'])) ? $aDonnees['quantite'] : '';
@@ -49,10 +49,11 @@ class Panier {
 		// Bonne insertion dans la BD :)
 		// Ajoute de htmlentities() et addslashes()
 		//$info = $this->maDB->executer("INSERT INTO infoCommandeTP3 (email, dateCommande, details, total, produits) values ('".htmlentities($courriel)."', '".$dateCommande."', '".addslashes($infoCommande)."', ".$totalCommande.", ".$produits." )");
+		//var_dump($infoCommande);
 
-		$info = ''.$courriel.'-'.$infoCommande.'-'.$totalCommande.'-'.$produits.'-'.$dateCommande.'';
+		//$info = ''.$courriel.'-'.$totalCommande.'-'.'-'.$dateCommande.' - DETAILS'.$details;
 
-		return $info;
+		return true;
 		
 	}
 

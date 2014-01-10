@@ -92,11 +92,11 @@ class VuePanier {
 				      	<div class="modal-body">
 							<div class="input-group input-group-sm">
 								Courriel :
-								<input name="email" type="text" class="form-control" required value=""/>
+								<input name="email" type="text" class="form-control" required value="luisf.rosas@hotmail.com"/>
 							</div>
 							<div class="input-group input-group-sm">
 								Adresse:
-								<input name="adresse" type="text" class="form-control" required value=""/>
+								<input name="adresse" type="text" class="form-control" required value="1884 De La SAlle"/>
 							</div>
 							<div class="input-group input-group-sm">
 								Ville:
