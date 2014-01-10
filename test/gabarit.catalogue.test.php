@@ -11,23 +11,27 @@
 	<body>
 		<div id="header">
 			<h1>Tests - Modèle - Catalogue</h1>
+			<?php 
+				// array des categories celon les cases selectionne
+				$aCategories = array(1=>true,2=>false,3=>false);
+			 ?>
 		</div>
 		<div id="contenu">
 			<h1>Test: afficher() tous les produits</h1>
-			<?php 
-				$catalogue = new Catalogue();
-				$rep = $catalogue->afficher("tous");
+			<?php
+				$catalogue 	 = new Catalogue($aCategories);
+				$rep 		 = $catalogue->afficher("tous");
 				var_dump($rep);
 			?>
 			<h1>Test: afficher() par specs</h1>
 			<?php 
-				$catalogue = new Catalogue();
-				$rep = $catalogue->afficher("specs");
+				$catalogue = new Catalogue($aCategories);
+				$rep 	   = $catalogue->afficher("specs");
 				var_dump($rep);
 			?>
 			<h1>Test: afficher() par prix</h1>
 			<?php 
-				$catalogue = new Catalogue();
+				$catalogue = new Catalogue($aCategories);
 				$rep = $catalogue->afficher("prix");
 				var_dump($rep);
 			?>
