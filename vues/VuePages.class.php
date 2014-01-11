@@ -14,7 +14,7 @@ class VuePages {
 	 * Affiche un page Front End 
 	 * 
 	 */
-	public function affichrPage() {	?>
+	public function afficherPage() {	?>
 		o pagina
 	<?php }
 	
