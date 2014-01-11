@@ -36,11 +36,17 @@ class Controler {
 			}
 		}
 		private function accueil() {
+			$form = (isset($_POST['form'])) ? $_POST['form'] : '';
 			$oVue = new Vue();
 			$oVue->afficherEntete();
-			// VueUsager::afficherFormes();
+			if(!isset($_SESSION['usager'])){
+				VueUsagers::afficherFormUsagers();
+			}
+			else{
+				VueUsagers::afficherFormDeconnexion();
+			}
 			$oVue->afficherBoutonPanier();
-			$oVue->afficherAccueil();
+			$oVue->afficherAccueil($form);
 			$oVue->afficherFooter();
 
 		}
@@ -52,7 +58,12 @@ class Controler {
 		private function panier(){
 			$vue =  new Vue();
 			$vue->afficherEntete();
-			// VueUsager::afficherFormes();
+			if(!isset($_SESSION['usager'])){
+				VueUsagers::afficherFormUsagers();
+			}
+			else{
+				VueUsagers::afficherFormDeconnexion();
+			}
 			$vue->afficherBoutonPanier();
 			VueMenu::afficherMenu();
 			VuePanier::affichePanier();

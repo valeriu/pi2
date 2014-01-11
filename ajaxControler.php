@@ -2,7 +2,7 @@
 
 /**
  * Controlleur AJAX. Ce fichier est la porte d'entrée des requêtes AJAX (XHR)
- * @author Luis Rosas
+ * @author Luis Rosas, Luc Cinq-Mars
  * @version 1.0
  * @update 09-01-2014
  * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
@@ -26,6 +26,24 @@
 		case 'passerCommande':
 			enregistreCommande();
 			break;
+		case 'formConnecter':
+			formConnecter();
+			break;
+		case 'formEnregistrer':
+			formEnregistrer();
+			break;	
+		case 'connecter':
+			connecter();
+			break;
+		case 'deconnecter':
+			deconnecter();
+			break;	
+		case 'enregistrer':
+			enregistrer();
+			break;
+		case 'motpasse':
+			motpasse();
+			break;				
 		default:
 			accueil();
 			break;
@@ -59,6 +77,63 @@
 	function enregistreCommande(){
 		$vuePanier =  new VuePanier();
 		$vuePanier->enregistrePanier();
+	}
+
+	function formConnecter(){
+		//return 'formConnecter';
+		//VueUsagers::afficherModalConnexion();
+	}
+
+	function formEnregistrer(){
+		//return 'formEnregistrer';
+		$html = VueUsagers::afficherModalEnregistrer();
+		//echo $html;
+		?>
+			<script>
+				var xhr = new XMLHttpRequest();
+				//console.log(<?php echo $html; ?>);
+				xhr.open("POST", "index.php?requete=accueil", true);	
+				xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+				var requete = "form=" + <?php echo htmlentities($html); ?>;
+				//console.log(requete);
+				xhr.onreadystatechange = function() {
+					if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
+						/*clearTimeout(timeout);
+						console.log(xhr.responseText);
+						var rep = JSON.parse(xhr.responseText);
+						$('[name="modal-content"]').html(rep);
+						$('#myModal').modal('show');*/
+					}
+				};
+				xhr.send(requete);
+			</script>
+		<?php
+	}
+
+	function deconnecter(){
+		session_destroy();
+	}
+
+	function connecter(){
+		try{
+			$usager = new Usagers();
+			$usager->connecter($_POST);
+			$_SESSION['usager'] = $_POST['courriel'];
+		}
+		catch(Exception $e){
+			$e->getMessage();
+		}
+	}
+
+	function enregistrer(){
+		try{
+			$usager = new Usagers();
+			$usager->enregistrer($_POST);
+			$_SESSION['usager'] = $_POST['courriel'];
+		}
+		catch(Exception $e){
+			$e->getMessage();
+		}
 	}
 
 	function accueil() {

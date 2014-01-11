@@ -111,7 +111,7 @@ class Vue {
 
 	}
 
-	public function afficherAccueil() {
+	public function afficherAccueil($form = '') {
 		
 		?>
 		<article>
@@ -119,6 +119,9 @@ class Vue {
 			<p>Simple MVC Structure  n'est pas un framework, mais seulement une structure de base qui permet de monter un MVC rapidement en php. 
 				Il suffit de forker le <a href="#">dépot Github</a> et de dupliquer les classes vues et modele afin d'en disposer à votre convenance.</p>
 		</article>
+		<div name="modal-content">
+			<?php echo $form; ?>
+		</div>
 		<?php
 		
 	}
