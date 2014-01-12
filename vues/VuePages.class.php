@@ -14,7 +14,10 @@ class VuePages {
 	 * Affiche un page Front End 
 	 * 
 	 */
-	public function afficherPage($data) {	?>
+	public function afficherPage($data) {	
+		if($data["statut"] != 1)
+			throw new Exception("Page introuvable");
+		?>
 		<h1><?php echo $data["titre"];?></h1>
 		<div class="pagecontent">
 			<?php echo $data["contenu"];?>
