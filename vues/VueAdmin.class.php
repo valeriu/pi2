@@ -54,6 +54,9 @@ class VueAdmin {
 	   </div> <!-- /container -->
 	   <!-- Bootstrap core JavaScript
 	   ================================================== -->
+		<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script src="js/vendor/bootstrap.min.js"></script>
+		<script src="js/adminka.js"></script>
 	 </body>
    </html>
 	
