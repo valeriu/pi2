@@ -19,13 +19,10 @@ class ControlerAdmin {
 				case 'connexion':
 					$this->connexion();
 					break;
-				case 'panier':
-					$this->panier();
-					break;
 				case 'page':
 					$this->page();
 					break;
-				case 'page_ajouter':
+				case 'page_edition':
 					$this->pageAjouter();
 					break;				
 				default:
@@ -44,8 +41,9 @@ class ControlerAdmin {
 			$oVueAdmin->afficherEntete();
 			$oVueAdmin->afficherToolbar();
 			$oVueAdmin->afficherNavigation();
-			VuePages::afficherListAdmin();
-			$oVueAdmin->afficherPagination();
+			$nb1 = (!empty($_GET['partir'])) ? $_GET['partir'] : 0;
+			$nb2 = (!empty($_GET['fin'])) ? $_GET['fin'] : 20;		
+			VuePages::afficherListAdmin($nb1, $nb2);
 			$oVueAdmin->afficherFinContent();
 			$oVueAdmin->afficherFooter();
 		}
@@ -54,8 +52,9 @@ class ControlerAdmin {
 			$oVueAdmin->afficherEntete();
 			$oVueAdmin->afficherToolbar();
 			$oVueAdmin->afficherNavigation();
-			VuePages::ajouterPageAdmin();
-			$oVueAdmin->afficherPagination();
+			$nb1 = (!empty($_GET['page_id'])) ? $_GET['page_id'] : 0;
+			$aDonnees = array("id_page" => $nb1);
+			VuePages::ajouterPageAdmin($aDonnees);
 			$oVueAdmin->afficherFinContent();
 			$oVueAdmin->afficherFooter();
 		}		
@@ -72,18 +71,3 @@ class ControlerAdmin {
 				
 }
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
