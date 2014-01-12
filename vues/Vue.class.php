@@ -21,18 +21,19 @@ class Vue {
 	 */
 
 	public function afficherEntete($aDonnees = array()) {
-?>
+		
+?>	
 		<!DOCTYPE html>
 		<html lang="fr">
 			<head>
 				<meta charset="utf-8">
 				<meta http-equiv="X-UA-Compatible" content="IE=edge">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<meta name="description" content="<?php // (isset($aDonnees['metaDescription'])? $aDonnees['metaDescription'] : 'Wadagbé' ?>">
+				<meta name="description" content="<?php  echo $titre = (isset($aDonnees["description_meta"])) ? $aDonnees["description_meta"] : 'Wadagbé'; ?>">
 				<meta name="author" content="">
 				<link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
-				<title><?php //(isset($aDonnees['titre'])? $aDonnees['titre'] : 'Wadagbé' ?></title>
+				<title><?php  echo $titre = (isset($aDonnees["titre"])) ? $aDonnees["titre"] : 'Wadagbé'; ?></title>
 			 
 				<!-- Bootstrap core CSS -->
 				<link href="css/bootstrap.css" rel="stylesheet">
