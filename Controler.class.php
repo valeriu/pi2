@@ -58,8 +58,8 @@ class Controler {
 			$oVue = new Vue();
 			$oPage = new Pages();
 			$courentPage = $oPage->afficher($aDonnees);
-			
 			$oVue->afficherEntete($courentPage);
+			
 			if(!isset($_SESSION['usager'])){
 				VueUsagers::afficherFormUsagers();
 			} else {

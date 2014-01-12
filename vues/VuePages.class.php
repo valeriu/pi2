@@ -44,14 +44,8 @@ class VuePages {
 		?>
 	<?php }
 	
-	public function ajouterPageAdmin($data) {	
-		$oPage = new Pages();
-		print_r($data);
-		$courentPage = $oPage->afficher($data);
-		
-		print_r($courentPage);
-		
-		
+	public function ajouterPageAdmin($data) {
+		//print_r($data);
 		?>
 		
 		<div class="panel panel-default">
@@ -62,34 +56,34 @@ class VuePages {
 				<form role="form">
 					<div class="form-group">
 						<label for="page-title">Titre</label>
-						<input type="text" class="form-control" id="page-title" placeholder="Enter Title" value="<?php echo $courentPage["titre"] ;?>">
+						<input type="text" class="form-control" id="page-title" placeholder="Enter Title" value="<?php echo $data["titre"] ;?>">
 					</div>
 					<div class="form-group">
 						<label for="page-description">Description</label>
-						<textarea class="form-control" rows="3" id="page-description" placeholder="Meta Description"><?php echo $courentPage["description_meta"] ;?></textarea>
+						<textarea class="form-control" rows="3" id="page-description" placeholder="Meta Description"><?php echo $data["description_meta"] ;?></textarea>
 						<p class="help-block">Description du lien, celle-ci apparaît souvent dans les recherches Google. <code>&lt;meta name="description" content=""&gt;</code></p>
 					</div>
 					<div class="form-group">
 						<label for="page-contenu">Contenu</label>
-						<textarea class="form-control" rows="18" id="page-contenu" placeholder="Page contenu"><?php echo $courentPage["contenu"] ;?></textarea>
+						<textarea class="form-control" rows="18" id="page-contenu" placeholder="Page contenu"><?php echo $data["contenu"] ;?></textarea>
 					</div>
 					<div class="form-group">
 						<label for="page-contenu">Statut de la page</label>
 						<div class="radio">
 							<label>
-								<input type="radio" name="optionsRadios" id="optionsRadios1" value="1" <?php echo $nb1 = ($courentPage["statut"]==1) ? "checked" : "";?>>
+								<input type="radio" name="optionsRadios" id="optionsRadios1" value="1" <?php echo $nb1 = ($data["statut"]==1) ? "checked" : "";?>>
 								<span class="label label-success">Publié</span>
 							</label>
 						</div>
 						<div class="radio">
 							<label>
-								<input type="radio" name="optionsRadios" id="optionsRadios2" value="0" <?php echo $nb1 = ($courentPage["statut"]==0) ? "checked" : "";?>>
+								<input type="radio" name="optionsRadios" id="optionsRadios2" value="0" <?php echo $nb1 = ($data["statut"]==0) ? "checked" : "";?>>
 								<span class="label label-warning">Brouillon</span>
 							</label>
 						</div>
 						<div class="radio">
 							<label>
-								<input type="radio" name="optionsRadios" id="optionsRadios3" value="2" <?php echo $nb1 = ($courentPage["statut"]==2) ? "checked" : "";?>>
+								<input type="radio" name="optionsRadios" id="optionsRadios3" value="2" <?php echo $nb1 = ($data["statut"]==2) ? "checked" : "";?>>
 								<span class="label label-danger">Privé</span>
 							</label>
 						</div>
@@ -103,17 +97,17 @@ class VuePages {
 					<div id="pagemap">
 						<div class="form-group">
 							<label for="page-latitudes">Latitudes</label>
-							<input value="<?php echo $courentPage["geo_lat"];?>" type="text" class="form-control" id="page-latitudes" placeholder="Enter Latitudes">
+							<input value="<?php echo $data["geo_lat"];?>" type="text" class="form-control" id="page-latitudes" placeholder="Enter Latitudes">
 						</div>
 						<div class="form-group">
 							<label for="page-longitudes">Longitudes</label>
-							<input  value="<?php echo $courentPage["geo_long"];?>" type="text" class="form-control" id="page-longitudes" placeholder="Enter Longitudes">
+							<input  value="<?php echo $data["geo_long"];?>" type="text" class="form-control" id="page-longitudes" placeholder="Enter Longitudes">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="page-date">Date</label>
-						<input type="hidden" id="page-date" value="<?php echo $courentPage["date_modif"];?>">
-						<input type="text" class="form-control" id="page-date-human" value="<?php echo date("l, d F  Y H:i:s",strtotime($courentPage["date_modif"]));?>" disabled>
+						<input type="hidden" id="page-date" value="<?php echo $data["date_modif"];?>">
+						<input type="text" class="form-control" id="page-date-human" value="<?php echo date("l, d F  Y H:i:s",strtotime($data["date_modif"]));?>" disabled>
 					</div>
 					<div class="form-group">
 						<button type="submit" class="btn btn-primary" data-loading-text="Sauvegardez...">Soumettre</button>
@@ -124,22 +118,16 @@ class VuePages {
 			</div><!--end panel-->
 		  </div>
 	<?php }
-	public function afficherListAdmin($partir, $fin) {	?>
+	public function afficherListAdmin($aDonneesPages, $aDonneesPaginator, $partir, $fin) {	?>
 		<?php
-			$oPage = new Pages();
-			$tousPages = $oPage->afficherListe();
-			$nomberPages = count($tousPages);
+
+			$nomberPages = count($aDonneesPages);
+			//print_r($data);
 			$htmlPage = "";
 			$htmlPagination = "";
 			
-			//pagination
-			$pagePagination = new Pagination();
-			$aDonnees = array("aTousElements" => $tousPages);
-			$pages = $pagePagination->paginate($aDonnees);
-			$data = $pagePagination->voirResultats();
-
 			$htmlPagination .= "<!--Pagination-->	<ul class=\"pagination\">";
-				foreach($pages as $page){
+				foreach($aDonneesPaginator as $page){
 					$htmlPagination .= "<li><a href='adminka.php?requete=page&partir={$page["partir"]}&fin={$page["fin"]}'>{$page["page"]}</a></li>";
 				}
 			$htmlPagination .= "</ul>";
@@ -148,10 +136,12 @@ class VuePages {
 			
 			for ($i=$partir, $j=$fin; $i<$j; $i++){
 				$htmlPage .= "<tr>\r\n";
-					$htmlPage .= "<td><a href=\"../frontend/page-static.html\" target=\"_blank\" title=\"Preview - {$tousPages[$i]["titre"]}\">{$tousPages[$i]["id_page"]}</a></td>\r\n";
-					$htmlPage .= "<td><a href=\"adminka.php?requete=page_edition&page_id={$tousPages[$i]["id_page"]}\" title=\"Edit: {$tousPages[$i]["titre"]}\">{$tousPages[$i]["titre"]}</a></td>\r\n";
-					$htmlPage .= "<td>{$tousPages[$i]["date_modif"]}</td>";
-					switch ($tousPages[$i]["statut"]) {
+					$htmlPage .= "<td><a href=\"index.php?requete=page&page_id={$aDonneesPages[$i]["id_page"]}\" target=\"_blank\" title=\"Preview - {$aDonneesPages[$i]["titre"]}\">{$aDonneesPages[$i]["id_page"]}</a></td>\r\n";
+					$htmlPage .= "<td><a href=\"adminka.php?requete=page_edition&page_id={$aDonneesPages[$i]["id_page"]}\" title=\"Edit: {$aDonneesPages[$i]["titre"]}\">{$aDonneesPages[$i]["titre"]}</a></td>\r\n";
+					$dateFormatLisible = date("l, d F Y",strtotime($aDonneesPages[$i]["date_modif"]));
+					$heureFormatLisible = date("H:i:s",strtotime($aDonneesPages[$i]["date_modif"]));
+					$htmlPage .= "<td><abbr title=\"{$heureFormatLisible}\">{$dateFormatLisible}</abbr></td>";
+					switch ($aDonneesPages[$i]["statut"]) {
 						case 0:
 							$htmlPage .= "<td><span class=\"label label-warning\">Brouillon</span></td>";
 							break;
