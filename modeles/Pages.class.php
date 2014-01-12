@@ -184,7 +184,7 @@ class Pages {
 	 * @return type array - Retourne un tableau contenant tous les champs de la page
 	 */
 	public function afficher ($aDonnees = array()) {
-		$id_page			= $aDonnees['id_page'];
+		$id_page			= intval($aDonnees['id_page']);
 		
 		if(!Valider::estInt($id_page)){
 			throw new Exception("Id page non conforme");
