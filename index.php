@@ -24,7 +24,11 @@
    /***************************************************/
     /** Controleur
     /***************************************************/
-	$oControleur = new Controler();  
-  $oControleur->gerer();
+	try {
+		$oControleur = new Controler();  
+		$oControleur->gerer();
+	} catch (Exception $e) {
+				echo $e->getMessage();
+	}	
 
 ?>
