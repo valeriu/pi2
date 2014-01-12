@@ -101,26 +101,12 @@ class VueAdmin {
 				<a href="#" class="list-group-item active">Panneau d'administration</a>
 				<a href="commandes.html" class="list-group-item"><span class="badge">414</span>Commandes</a>
 				<a href="produits.html" class="list-group-item"><span class="badge">85</span>Produits</a>
-				<a href="pages.html" class="list-group-item"><span class="badge">8</span>Pages</a>
+				<a href="adminka.php?requete=page" class="list-group-item"><span class="badge">8</span>Pages</a>
 				<a href="usager_back.html" class="list-group-item"><span class="badge">309</span>Usagers</a>
 				<a href="menu.html" class="list-group-item"><span class="badge">4</span>Menu</a>
 			</div>
 		  </div>
 	<div class="col-lg-10 col-md-10">
-	<?php }
-	
-	public function afficherPagination() { ?>
-		<!--Pagination-->
-				<ul class="pagination">
-					<li class="disabled"><a href="#">&laquo;</a></li>
-					<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#">&raquo;</a></li>
-				</ul>
-	
 	<?php }
 	
 	public function afficherFinContent() { ?>
