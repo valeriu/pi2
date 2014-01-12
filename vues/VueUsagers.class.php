@@ -14,8 +14,8 @@ class VueUsagers {
 ?>
 			<section id="usager" class="pull-right">
 				<form class="form-signin" method="post">
-					<a  name="formEnregistrer" id="formEnregistrer" class="btn btn-lg btn-lien" type="button">S'enregistrer</a>
-					<a  name="formConnecter" id="formConnecter" class="btn btn-lg btn-lien" type="button">Se connecter</a>
+					<a  name="formEnregistrer" id="formEnregistrer" class="btn btn-md btn-lien" type="button">S'enregistrer</a>
+					<a  name="formConnecter" id="formConnecter" class="btn btn-md btn-lien" type="button">Se connecter</a>
 				</form>			
 			</section>
 		</article>
