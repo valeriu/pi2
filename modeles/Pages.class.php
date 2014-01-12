@@ -140,13 +140,7 @@ class Pages {
 		if (!empty($statut) && !Valider::estEntreInt($statut, 0, 2)){
 			throw new Exception("Statut, doit être un nombre entre 0 et 2");
 		}
-		if (!empty($geo_long) && !Valider::estString($geo_long)){
-			throw new Exception("Coordonner de longitude, doit être un float");
-		}
-		if (!empty($geo_lat) && !Valider::estString($geo_lat)){
-			throw new Exception("Coordonner de latitude, doit être un float");
-		}
-		
+	
 		$idbd = $this->bd->getBD();
 		$idbd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$sql = "UPDATE wa_pages SET 

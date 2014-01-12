@@ -44,28 +44,40 @@ class VuePages {
 		?>
 	<?php }
 	
-	public function ajouterPageAdmin($data) {
-		//print_r($data);
+	public function modifierPageAdmin($data, $result) {
+		//print_r($result);
 		?>
 		
 		<div class="panel panel-default">
 			<!-- Default panel contents -->
 			<div class="panel-heading">Ajouter ou modifier une page</div>
 			<div class="panel-body">
+			<?php
+				switch ($result) {
+					case 1:
+						echo "<div class=\"alert alert-success\"><strong>Bien fait!</strong> Vous insérez cette page dans la base de données avec succès.</div>";
+						break;
+					case 0:
+						echo "<div class=\"alert alert-danger\"><strong>Oh rupture!</strong> Changer quelques choses et essayer à nouveau soumission.</div>";
+						break;
+					default:
+						break;
+				}
+			?>
 			<!-- Form Edit pages-->
-				<form role="form">
+			<form role="form" method="POST" action="<?php echo $_SERVER['REQUEST_URI'];?>">
 					<div class="form-group">
 						<label for="page-title">Titre</label>
-						<input type="text" class="form-control" id="page-title" placeholder="Enter Title" value="<?php echo $data["titre"] ;?>">
+						<input type="text" class="form-control" name="page-title" placeholder="Enter Title" value="<?php echo $data["titre"] ;?>">
 					</div>
 					<div class="form-group">
 						<label for="page-description">Description</label>
-						<textarea class="form-control" rows="3" id="page-description" placeholder="Meta Description"><?php echo $data["description_meta"] ;?></textarea>
+						<textarea class="form-control" rows="3" name="page-description" placeholder="Meta Description"><?php echo $data["description_meta"] ;?></textarea>
 						<p class="help-block">Description du lien, celle-ci apparaît souvent dans les recherches Google. <code>&lt;meta name="description" content=""&gt;</code></p>
 					</div>
 					<div class="form-group">
 						<label for="page-contenu">Contenu</label>
-						<textarea class="form-control" rows="18" id="page-contenu" placeholder="Page contenu"><?php echo $data["contenu"] ;?></textarea>
+						<textarea class="form-control" rows="18" name="page-contenu" placeholder="Page contenu"><?php echo $data["contenu"] ;?></textarea>
 					</div>
 					<div class="form-group">
 						<label for="page-contenu">Statut de la page</label>
@@ -89,28 +101,29 @@ class VuePages {
 						</div>
 					</div>
 
-					<div class="checkbox">
-						<label>
-							<input type="checkbox">Page aura une carte.
+					<div class="checkbox" >
+						<label id="pagemap-toogle">
+							Page aura une carte.
 						</label>
 					</div>
 					<div id="pagemap">
 						<div class="form-group">
 							<label for="page-latitudes">Latitudes</label>
-							<input value="<?php echo $data["geo_lat"];?>" type="text" class="form-control" id="page-latitudes" placeholder="Enter Latitudes">
+							<input value="<?php echo $data["geo_lat"];?>" type="text" class="form-control" name="page-latitudes" placeholder="Enter Latitudes">
 						</div>
 						<div class="form-group">
 							<label for="page-longitudes">Longitudes</label>
-							<input  value="<?php echo $data["geo_long"];?>" type="text" class="form-control" id="page-longitudes" placeholder="Enter Longitudes">
+							<input  value="<?php echo $data["geo_long"];?>" type="text" class="form-control" name="page-longitudes" placeholder="Enter Longitudes">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="page-date">Date</label>
-						<input type="hidden" id="page-date" value="<?php echo $data["date_modif"];?>">
+						<input type="hidden" name="page-date" value="<?php echo $data["date_modif"];?>">
+						<input type="hidden" name="page-id" value="<?php echo $data["id_page"];?>">
 						<input type="text" class="form-control" id="page-date-human" value="<?php echo date("l, d F  Y H:i:s",strtotime($data["date_modif"]));?>" disabled>
 					</div>
 					<div class="form-group">
-						<button type="submit" class="btn btn-primary" data-loading-text="Sauvegardez...">Soumettre</button>
+						<button name="page-modifier" type="submit" class="btn btn-primary" data-loading-text="Sauvegardez...">Soumettre</button>
 					</div>
 					<div class="btn-group" data-toggle="buttons">
 				</form>		<!-- /Form Edit pages-->
@@ -137,7 +150,7 @@ class VuePages {
 			for ($i=$partir, $j=$fin; $i<$j; $i++){
 				$htmlPage .= "<tr>\r\n";
 					$htmlPage .= "<td><a href=\"index.php?requete=page&page_id={$aDonneesPages[$i]["id_page"]}\" target=\"_blank\" title=\"Preview - {$aDonneesPages[$i]["titre"]}\">{$aDonneesPages[$i]["id_page"]}</a></td>\r\n";
-					$htmlPage .= "<td><a href=\"adminka.php?requete=page_edition&page_id={$aDonneesPages[$i]["id_page"]}\" title=\"Edit: {$aDonneesPages[$i]["titre"]}\">{$aDonneesPages[$i]["titre"]}</a></td>\r\n";
+					$htmlPage .= "<td><a href=\"adminka.php?requete=page_modifier&page_id={$aDonneesPages[$i]["id_page"]}\" title=\"Edit: {$aDonneesPages[$i]["titre"]}\">{$aDonneesPages[$i]["titre"]}</a></td>\r\n";
 					$dateFormatLisible = date("l, d F Y",strtotime($aDonneesPages[$i]["date_modif"]));
 					$heureFormatLisible = date("H:i:s",strtotime($aDonneesPages[$i]["date_modif"]));
 					$htmlPage .= "<td><abbr title=\"{$heureFormatLisible}\">{$dateFormatLisible}</abbr></td>";
