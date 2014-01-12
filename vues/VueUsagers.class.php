@@ -217,12 +217,28 @@ class VueUsagers {
 							Courriel:
 							<input name="courriel" type="email" class="form-control" required>
 						</div>
-						<button name="motpasse" id="motpasse" class="btn btn-primary" type="submit">Soumettre</button>
+						<button name="motpasse" id="motpasse" class="btn btn-primary" type="button">Soumettre</button>
 						<br>	
 					</form>
 		      	</div>
 			    <div class="modal-footer">
-			    </div>';
+			    </div>
+			    <script>
+			    	//Envoie d un nouveau mot de passe
+			    	$("#adresse").on("click", function(){
+						var xhr = new XMLHttpRequest();
+						xhr.open("GET", "ajaxControler.php?requete=motpasse, true);	
+						xhr.onreadystatechange = function() {
+							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
+								/*clearTimeout(timeout);*/
+								console.log(xhr.responseText);
+								$(\'[name="modal-content"]\').html(xhr.responseText);
+								$(\'#myModal\').modal(\'show\');
+							}
+						};
+						xhr.send();
+					});
+			    <script>';	
 	}
 
 	
