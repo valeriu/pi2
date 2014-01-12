@@ -60,8 +60,8 @@ class Vue {
 				<header class="container">
 					<article class="row"><!-- Une autre division pour le logo de la page -->
 						<article class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-							<a href="index.php">
-								<img class="img-responsive" src="img/Logo.png" alt="logo wadagbe">
+							<a class="thumbnail" href="index.php">
+								<img id="logo" class="img-responsive" src="img/Logo.png" alt="logo wadagbe">
 							</a>
 						</article>
 						<article class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-12 pull-right">
