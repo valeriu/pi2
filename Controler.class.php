@@ -46,6 +46,7 @@ class Controler {
 				VueUsagers::afficherFormDeconnexion();
 			}
 			$oVue->afficherBoutonPanier();
+			VueMenu::afficherMenu();
 			$oVue->afficherAccueil($form);
 			$oVue->afficherFooter();
 
