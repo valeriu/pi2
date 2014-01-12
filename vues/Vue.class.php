@@ -31,7 +31,7 @@ class Vue {
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
 				<meta name="description" content="<?php  echo $titre = (isset($aDonnees["description_meta"])) ? $aDonnees["description_meta"] : 'Wadagbé'; ?>">
 				<meta name="author" content="">
-				<link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+				<link rel="shortcut icon" href="img/favicon.png">
 
 				<title><?php  echo $titre = (isset($aDonnees["titre"])) ? $aDonnees["titre"] : 'Wadagbé'; ?></title>
 			 
@@ -60,7 +60,7 @@ class Vue {
 				<header class="container">
 					<article class="row"><!-- Une autre division pour le logo de la page -->
 						<article class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-							<a href="index.html">
+							<a href="index.php">
 								<img class="img-responsive" src="img/Logo.png" alt="logo wadagbe">
 							</a>
 						</article>
@@ -115,11 +115,55 @@ class Vue {
 	public function afficherAccueil($form = '') {
 		
 		?>
-		<article>
-			<h1>Bienvenue sur Simple MVC Structure </h1>
-			<p>Simple MVC Structure  n'est pas un framework, mais seulement une structure de base qui permet de monter un MVC rapidement en php. 
-				Il suffit de forker le <a href="#">dépot Github</a> et de dupliquer les classes vues et modele afin d'en disposer à votre convenance.</p>
-		</article>
+  <!-- Carousel -->
+                        <div class="row hidden-xs">
+                                <div class="col-lg-12"><!-- configuration pour les différents écrans -->
+                                  <!-- Carousel au milieu du page, pas visible dans les petits écrans -->
+                                  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                        <!-- Indicators -->
+                                        <ol class="carousel-indicators">
+                                          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                          <li data-target="#myCarousel" data-slide-to="1"></li>
+                                          <li data-target="#myCarousel" data-slide-to="2"></li>
+                                        </ol>
+                                        <div class="carousel-inner">
+                                                <div class="item active">
+                                                        <img src="img/slider03.jpg" alt="">
+                                                </div>
+                                                <div class="item">
+                                                        <img src="img/slider02.jpg" alt="">
+                                                </div>
+                                                <div class="item">
+                                                        <img src="img/slider01.jpg" alt="">
+                                                </div>
+                                        </div>
+                                        <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                                        <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                                  </div>
+                                </div>
+                        </div><!-- / Carousel -->
+                        
+                        <!-- Trois colonnes de texte en dessous du carrousel -->
+                        <div class="row">
+                                <div class="col-lg-4 col-md-4">
+                                  <img class="img-thumbnail" src="img/produit_promo.jpg" alt="Generic placeholder image">
+                                  <h2>Panneaux solaires</h2>
+                                  <p>Nous faisons vos rêves reels! Nos artisans sont capables de reproduire toutes sortes de créations à votre demande. Si vous n'avez pas un modelé à vous, nous mettons la meilleure équipe d’experts créateurs à votre service.</p>
+                                  <p><a class="btn btn-default" href="catalogue.html" role="button">En savoir plus &raquo;</a></p>
+                                </div><!-- /.col-lg-4 -->
+                                <div class="col-lg-4 col-md-4">
+                                  <img class="img-thumbnail" src="img/LED_lamp.jpg" alt="Generic placeholder image">
+                                  <h2>Lampes DEL</h2>
+                                  <p>Les plus fines bagues de mariage pour ce moment si spécial. Célébrez votre amour avec des bagues de mariage fait spécialement pour vous.</p>
+                                  <p><a class="btn btn-default" href="catalogue.html" role="button">En savoir plus &raquo;</a></p>
+                                </div><!-- /.col-lg-4 -->
+                                <div class="col-lg-4 col-md-4">
+                                  <img class="img-thumbnail" src="img/solar_kit.jpg" alt="Generic placeholder image">
+                                  <h2>Ensemble</h2>
+                                  <p>Le mariage parfait entre modernité et élégance. Vous aimerez notre ample collection de bijoux contemporains. Dessin exclusif de Fabio Villalba!</p>
+                                  <p><a class="btn btn-default" href="catalogue.html" role="button">En savoir plus &raquo;</a></p>
+                                </div><!-- /.col-lg-4 -->
+                        </div><!-- /.row -->
 		<div name="modal-content">
 			<?php echo $form; ?>
 		</div>
