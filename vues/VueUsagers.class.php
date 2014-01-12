@@ -64,12 +64,12 @@ class VueUsagers {
 			    	//Mot de passe oublie
 			    	$("#motPasseOublie").on("click", function(){
 						var xhr = new XMLHttpRequest();
-						xhr.open("GET", "ajaxControler.php?requete=motpasse, true);	
+						xhr.open("GET", "ajaxControler.php?requete=motpasse", true);	
 						xhr.onreadystatechange = function() {
 							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
-								/*clearTimeout(timeout);*/
+								//clearTimeout(timeout);
 								console.log(xhr.responseText);
-								$(\'[name="modal-content"]\').html(xhr.responseText);
+								$(\'.modal-content\').html(xhr.responseText);
 							}
 						};
 						xhr.send();
@@ -77,17 +77,17 @@ class VueUsagers {
 					//Connexion
 					$("#connexion").on("click", function(){
 						var xhr = new XMLHttpRequest();
-						xhr.open("GET", "ajaxControler.php?requete=connecter, true);	
+						xhr.open("GET", "ajaxControler.php?requete=connecter", true);	
 						xhr.onreadystatechange = function() {
 							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
-								/*clearTimeout(timeout);*/
+								//clearTimeout(timeout);
 								console.log(xhr.responseText);
-								$(\'[name="modal-content"]\').html(xhr.responseText);
+								$(\'.modal-content\').html(xhr.responseText);
 							}
 						};
 						xhr.send();
 					});
-			    <script>';	
+			    </script>';	
 
 		return $html;
 		
@@ -126,7 +126,7 @@ class VueUsagers {
 			    	//Enregistrement
 			    	$("#enregistrer").on("click", function(){
 						var xhr = new XMLHttpRequest();
-						xhr.open("GET", "ajaxControler.php?requete=enregistrer, true);	
+						xhr.open("GET", "ajaxControler.php?requete=enregistrer", true);	
 						xhr.onreadystatechange = function() {
 							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
 								/*clearTimeout(timeout);*/
@@ -136,7 +136,7 @@ class VueUsagers {
 						};
 						xhr.send();
 					});
-			    <script>';	
+			    </script>';	
 
 		return $html;	
 	}
@@ -185,7 +185,7 @@ class VueUsagers {
 			    	//Enregistrement de l adresse
 			    	$("#adresse").on("click", function(){
 						var xhr = new XMLHttpRequest();
-						xhr.open("GET", "ajaxControler.php?requete=adresse, true);	
+						xhr.open("GET", "ajaxControler.php?requete=adresse", true);	
 						xhr.onreadystatechange = function() {
 							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
 								/*clearTimeout(timeout);*/
@@ -195,7 +195,7 @@ class VueUsagers {
 						};
 						xhr.send();
 					});
-			    <script>';	
+			    </script>';	
 
 		return $html;	    
 		
@@ -232,7 +232,7 @@ class VueUsagers {
 						};
 						xhr.send();
 					});
-			    <script>';	
+			    </script>';	
 	}
 
 	

@@ -13,111 +13,123 @@
 			<h1>Test - Modèles - Panier</h1>
 		</div>
 		<div id="contenu">
-			<h2>1) Test: enregistrer() non-fonctionnel</h2>
+                        <h2>1) Test: enregistrePanier() non-fonctionnel</h2>
+                        <h2>Donnees Objets Json par Ajax</h2>
+			<?php
+				try{
+					$array = array("id_utilisateur" => "98", "adresse_utilisateur" => 21, "quantite" => 2 , "produits" => "{"idP":"5","nom":"Kit panneau solaire","image":"img/Solar_cell.png","quant":5,"prix":"99.99"}" );
+					$panier = new Panier();					
+					$rep = $panier->enregistrePanier($array);
+					var_dump($rep);
+				}catch(Exception $e){
+					echo $e->getMessage();
+				}
+			?>
+			<h2>1) Test: enregistrePanier() non-fonctionnel</h2>
 			<?php
 				try{
 					$array = array("id_utilisateur" => "98", "adresse_utilisateur" => 21, "quantite" => 2 , "produits" => array( array("id_produits" => 8 , "quantite" => 2), array("id_produits" => 68 , "quantite" => 6)));
 					$panier = new Panier();					
-					$rep = $panier->enregistrer($array);
+					$rep = $panier->enregistrePanier($array);
 					var_dump($rep);
 				}catch(Exception $e){
 					echo $e->getMessage();
 				}
 			?>
-			<h2>2) Test: enregistrer() non-fonctionnel</h2>
+			<h2>2) Test: enregistrePanier() non-fonctionnel</h2>
 			<?php
 				try{
-					$array = array("id_utilisateur" => 98, "adresse_utilisateur" => "21", "quantite" => 2 , "produits" => array( array("id_produits" => 8 , "quantite" => 2), array("id_produits" => 68 , "quantite" => 6)));
+                                        $array = array("id_utilisateur" => 98, "adresse_utilisateur" => "21", "quantite" => 2 , "produits" => array( array("id_produits" => 8 , "quantite" => 2), array("id_produits" => 68 , "quantite" => 6)));
 					$panier = new Panier();					
-					$rep = $panier->enregistrer($array);
+					$rep = $panier->enregistrePanier($array);
 					var_dump($rep);
 				}catch(Exception $e){
 					echo $e->getMessage();
 				}
 			?>
-			<h2>3) Test: enregistrer() non-fonctionnel</h2>
+			<h2>3) Test: enregistrePanier() non-fonctionnel</h2>
 			<?php
 				try{
 					$array = array("id_utilisateur" => 98, "adresse_utilisateur" => 21, "quantite" => "2" , "produits" => array( array("id_produits" => 8 , "quantite" => 2), array("id_produits" => 68 , "quantite" => 6)));
 					$panier = new Panier();					
-					$rep = $panier->enregistrer($array);
+					$rep = $panier->enregistrePanier($array);
 					var_dump($rep);
 				}catch(Exception $e){
 					echo $e->getMessage();
 				}
 			?>
-			<h2>4) Test: enregistrer() non-fonctionnel</h2>
+			<h2>4) Test: enregistrePanier() non-fonctionnel</h2>
 			<?php
 				try{
 					$array = array("id_utilisateur" => 98, "adresse_utilisateur" => 21, "quantite" => 2 , "produits" => 2);
 					$panier = new Panier();					
-					$rep = $panier->enregistrer($array);
+					$rep = $panier->enregistrePanier($array);
 					var_dump($rep);
 				}catch(Exception $e){
 					echo $e->getMessage();
 				}
 			?>
-			<h2>5) Test: enregistrer() non-fonctionnel</h2>
+			<h2>5) Test: enregistrePanier() non-fonctionnel</h2>
 			<?php
 				try{
 					$array = array("id_utilisateur" => 98, "adresse_utilisateur" => 21, "quantite" => 2 , "produits" => "2");
 					$panier = new Panier();					
-					$rep = $panier->enregistrer($array);
+					$rep = $panier->enregistrePanier($array);
 					var_dump($rep);
 				}catch(Exception $e){
 					echo $e->getMessage();
 				}
 			?>
-			<h2>6) Test: enregistrer() non-fonctionnel</h2>
+			<h2>6) Test: enregistrePanier() non-fonctionnel</h2>
 			<?php
 				try{
 					$array = array("id_utilisateur" => 98, "adresse_utilisateur" => 21, "quantite" => 2 , "produits" => array( array("id_produits" => "8" , "quantite" => 2), array("id_produits" => 68 , "quantite" => 6)));
 					$panier = new Panier();					
-					$rep = $panier->enregistrer($array);
+					$rep = $panier->enregistrePanier($array);
 					var_dump($rep);
 				}catch(Exception $e){
 					echo $e->getMessage();
 				}
 			?>
-			<h2>7) Test: enregistrer() non-fonctionnel</h2>
+			<h2>7) Test: enregistrePanier() non-fonctionnel</h2>
 			<?php
 				try{
 					$array = array("id_utilisateur" => 98, "adresse_utilisateur" => 21, "quantite" => 2 , "produits" => array( array("id_produits" => 8 , "quantite" => "2"), array("id_produits" => 68 , "quantite" => 6)));
 					$panier = new Panier();					
-					$rep = $panier->enregistrer($array);
+					$rep = $panier->enregistrePanier($array);
 					var_dump($rep);
 				}catch(Exception $e){
 					echo $e->getMessage();
 				}
 			?>
-			<h2>8) Test: enregistrer() non-fonctionnel</h2>
+			<h2>8) Test: enregistrePanier() non-fonctionnel</h2>
 			<?php
 				try{
 					$array = array("id_utilisateur" => 98, "quantite" => 2 , "produits" => array( array("id_produits" => 8 , "quantite" => 2), array("id_produits" => 68 , "quantite" => 6)));
 					$panier = new Panier();					
-					$rep = $panier->enregistrer($array);
+					$rep = $panier->enregistrePanier($array);
 					var_dump($rep);
 				}catch(Exception $e){
 					echo $e->getMessage();
 				}
 			?>
-			<h1>9) Test: enregistrer() non-fonctionnel</h1>
+			<h2>9) Test: enregistrePanier() non-fonctionnel</h2>
 			<?php
 				try{
 					$array = array("id_utilisateur" => 98, "adresse_utilisateur" => 150, "quantite" => 2 , "produits" => array( array("id_produits" => 8 , "quantite" => 2), array("id_produits" => 68 , "quantite" => 6)));
 					$panier = new Panier();					
-					$rep = $panier->enregistrer($array);
+					$rep = $panier->enregistrePanier($array);
 					var_dump($rep);
 				}catch(Exception $e){
 					echo $e->getMessage();
 				}
 			?>
-			<h1>11) Test: enregistrer() fonctionnel</h1>
+			<h1>11) Test: enregistrePanier() fonctionnel</h1>
 			<?php
 				try{
 					$array = array("id_utilisateur" => 98, "adresse_utilisateur" => 21, "quantite" => 2 , "produits" => array( array("id_produits" => 5 , "quantite" => 2), array("id_produits" => 9 , "quantite" => 3)));
 					$panier = new Panier();					
-					$rep = $panier->enregistrer($array);
+					$rep = $panier->enregistrePanier($array);
 					var_dump($rep);
 				}catch(Exception $e){
 					echo $e->getMessage();
