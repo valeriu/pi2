@@ -16,3 +16,6 @@
 .adminka h1 .label  {
 	font-size:50%;
 }
+.adminka #pagemap {
+	display: none;
+}
