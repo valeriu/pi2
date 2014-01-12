@@ -127,8 +127,4 @@
 		echo $html;
 	}
 
-	/*else {
-		Vue::message('Erreur à l\'enregistrement de la commande, éssaie plus tard!');
-	}*/
-
 ?>
