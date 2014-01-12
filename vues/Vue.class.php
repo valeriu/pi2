@@ -78,7 +78,7 @@ class Vue {
 				<!-- FOOTER -->
 				<footer>
 					<p class="pull-right btn-lien"><a href="#">Haut de la page</a></p>
-					<p class="auteur">&copy; © Wadagbé 2014 | Projet Intégration II</p>
+					<p class="auteur">&copy; Wadagbé 2014 | Projet Intégration II</p>
 				</footer><!-- / FOOTER -->
 			</main>
 			<!-- /.container -->
