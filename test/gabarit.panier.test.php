@@ -13,11 +13,11 @@
 			<h1>Test - Modèles - Panier</h1>
 		</div>
 		<div id="contenu">
-                        <h2>1) Test: enregistrePanier() non-fonctionnel</h2>
-                        <h2>Donnees Objets Json par Ajax</h2>
+            <h2>1) Test: enregistrePanier() non-fonctionnel</h2>
+            <h2>Donnees Objets Json par Ajax</h2>
 			<?php
 				try{
-					$array = array("id_utilisateur" => "98", "adresse_utilisateur" => 21, "quantite" => 2 , "produits" => "{"idP":"5","nom":"Kit panneau solaire","image":"img/Solar_cell.png","quant":5,"prix":"99.99"}" );
+					$array = array("id_utilisateur" => 98, "adresse_utilisateur" => 21, "quantite" => 2 , "produits" => '{"idP":"5","nom":"Kit panneau solaire","image":"img/Solar_cell.png","quant":5,"prix":"99.99"}' );
 					$panier = new Panier();					
 					$rep = $panier->enregistrePanier($array);
 					var_dump($rep);
@@ -25,7 +25,7 @@
 					echo $e->getMessage();
 				}
 			?>
-			<h2>1) Test: enregistrePanier() non-fonctionnel</h2>
+			<h2>1.1) Test: enregistrePanier() non-fonctionnel</h2>
 			<?php
 				try{
 					$array = array("id_utilisateur" => "98", "adresse_utilisateur" => 21, "quantite" => 2 , "produits" => array( array("id_produits" => 8 , "quantite" => 2), array("id_produits" => 68 , "quantite" => 6)));

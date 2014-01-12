@@ -49,11 +49,11 @@ class Panier {
 		// Bonne insertion dans la BD :)
 		// Ajoute de htmlentities() et addslashes()
 		//$info = $this->maDB->executer("INSERT INTO infoCommandeTP3 (email, dateCommande, details, total, produits) values ('".htmlentities($courriel)."', '".$dateCommande."', '".addslashes($infoCommande)."', ".$totalCommande.", ".$produits." )");
-		//var_dump($infoCommande);
+		var_dump($infoCommande);
 
-		//$info = ''.$courriel.'-'.$totalCommande.'-'.'-'.$dateCommande.' - DETAILS'.$details;
+		$info = ''.$courriel.'-'.$totalCommande.'-'.'-'.$dateCommande.' - DETAILS'.$details;
 
-		return true;
+		return $info;
 		
 	}
 

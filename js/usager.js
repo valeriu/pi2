@@ -21,7 +21,7 @@ $(function(){
 		xhr.onreadystatechange = function() {
 			if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
 				//clearTimeout(timeout);
-				console.log(xhr.responseText);
+				//console.log(xhr.responseText);
 				$('.modal-content').html(xhr.responseText);
 				$('#myModal').modal('show');
 			}

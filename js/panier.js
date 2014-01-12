@@ -102,16 +102,15 @@ var Panier = (function (){
     var passerCommande =  function(){
         try{
             console.log('PASSER LA COMMANDE');
-            var valEmail = $("input[name='email']").val();
+            var valEmail = $("input[name='courriel']").val();
             var adresse = $("input[name*='adresse']").val();
-            var ville = $("input[name*='ville']").val();
-            var province = $("input[name*='province']").val();
 
             if(valEmail != "" && adresse != ""){ // Vérification de Champs
                 var produit = new Object();
                 for (var i = 0; i < localStorage.length; i++){
                     produit[i] = JSON.parse(localStorage.getItem(localStorage.key(i)));
                 }
+                console.log(valEmail,adresse);
                 // Source : http://stackoverflow.com/questions/9001526/send-array-with-ajax-to-php-script
                 var jsonString = JSON.stringify(produit);
                 $.ajax({
