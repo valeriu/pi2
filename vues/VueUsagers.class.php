@@ -53,14 +53,44 @@ class VueUsagers {
 							Mot de Passe:
 							<input name="mot_passe" type="password" class="form-control" required>
 						</div>
-						<a name="motPasseOublie" id="motPasseOublie" href="ajaxControler.php?requete=motpasse">Mot de passe oublié?</a>
+						<button name="motPasseOublie" id="motPasseOublie" type="button">Mot de passe oublié</a>
 						<br>
-						<button name="Connexion" id="Connexion" class="btn btn-primary" type="submit">Connexion</button>
+						<button name="connexion" id="connexion" class="btn btn-primary" type="button">Connexion</button>
 						<br>
 					</form>
 		      	</div>
 			    <div class="modal-footer">
-			    </div>';	
+			    </div>
+			    <script>
+			    	//Mot de passe oublie
+			    	$("#motPasseOublie").on("click", function(){
+						var xhr = new XMLHttpRequest();
+						xhr.open("GET", "ajaxControler.php?requete=motpasse, true);	
+						xhr.onreadystatechange = function() {
+							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
+								/*clearTimeout(timeout);*/
+								console.log(xhr.responseText);
+								$(\'[name="modal-content"]\').html(xhr.responseText);
+								$(\'#myModal\').modal(\'show\');
+							}
+						};
+						xhr.send();
+					});
+					//Connexion
+					$("#connexion").on("click", function(){
+						var xhr = new XMLHttpRequest();
+						xhr.open("GET", "ajaxControler.php?requete=connecter, true);	
+						xhr.onreadystatechange = function() {
+							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
+								/*clearTimeout(timeout);*/
+								console.log(xhr.responseText);
+								$(\'[name="modal-content"]\').html(xhr.responseText);
+								$(\'#myModal\').modal(\'show\');
+							}
+						};
+						xhr.send();
+					});
+			    <script>';	
 
 		return $html;
 		
@@ -94,7 +124,23 @@ class VueUsagers {
 					</form>
 		      	</div>
 			    <div class="modal-footer">
-			    </div>';
+			    </div>
+			    <script>
+			    	//Enregistrement
+			    	$("#enregistrer").on("click", function(){
+						var xhr = new XMLHttpRequest();
+						xhr.open("GET", "ajaxControler.php?requete=enregistrer, true);	
+						xhr.onreadystatechange = function() {
+							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
+								/*clearTimeout(timeout);*/
+								console.log(xhr.responseText);
+								$(\'[name="modal-content"]\').html(xhr.responseText);
+								$(\'#myModal\').modal(\'show\');
+							}
+						};
+						xhr.send();
+					});
+			    <script>';	
 
 		return $html;	
 	}
@@ -104,7 +150,7 @@ class VueUsagers {
 	
 		$html = '<div class="modal-header">	
 			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			        <h4 class="modal-title" id="myModalLabel">Complétez les informations suivantes</h4>
+			        <h4 class="modal-title" id="myModalLabel">Complétez toutes les informations suivantes</h4>
 			    </div>
 		      	<div class="modal-body">
 					<form class="form-signin" name="form-usager-adresse" action="ajaxControler.php?requete=enregistrer">
@@ -133,12 +179,28 @@ class VueUsagers {
 							Code postal:
 							<input name="codePostal" type="text" class="form-control" required>
 						</div>
-						<button name="soumettre" id="soumettre" class="btn btn-primary" type="submit">Soumettre</button>
+						<button name="adresse" id="adresse" class="btn btn-primary" type="button">Soumettre</button>
 						<br>	
 					</form>
 		      	</div>
 			    <div class="modal-footer">
-			    </div>';
+			    </div>
+			    <script>
+			    	//Enregistrement de l adresse
+			    	$("#adresse").on("click", function(){
+						var xhr = new XMLHttpRequest();
+						xhr.open("GET", "ajaxControler.php?requete=adresse, true);	
+						xhr.onreadystatechange = function() {
+							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
+								/*clearTimeout(timeout);*/
+								console.log(xhr.responseText);
+								$(\'[name="modal-content"]\').html(xhr.responseText);
+								$(\'#myModal\').modal(\'show\');
+							}
+						};
+						xhr.send();
+					});
+			    <script>';	
 
 		return $html;	    
 		

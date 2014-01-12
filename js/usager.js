@@ -15,8 +15,7 @@ $(function(){
 		}
 	}*/
 
-	$('#formEnregistrer').on('click', function(){
-		//console.log('ICI');
+	$("#formEnregistrer").on("click", function(){
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", "ajaxControler.php?requete=formEnregistrer", true);	
 		xhr.onreadystatechange = function() {
