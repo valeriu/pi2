@@ -122,7 +122,7 @@
 		$oVue->afficheAccueil();
 	}
 
-	function motepasse(){
+	function motpasse(){
 		$html = VueUsagers::afficherModalMotPasse();
 		echo $html;
 	}

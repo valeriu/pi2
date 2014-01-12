@@ -38,13 +38,12 @@ class VueUsagers {
 
 	
 	public function afficherModalConnexion() {
-
 		$html =	'<div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			        <h4 class="modal-title" id="myModalLabel">Se connecter</h4>
 			    </div>
 		      	<div class="modal-body">
-					<form class="form-signin" name="form-usager-connecter" action="ajaxControler.php?requete=connecter">
+					<form class="form-signin" name="form-usager-connecter">
 						<div class="input-group input-group-sm">
 							Courriel:
 							<input name="courriel" type="email" class="form-control" required>
@@ -71,7 +70,6 @@ class VueUsagers {
 								/*clearTimeout(timeout);*/
 								console.log(xhr.responseText);
 								$(\'[name="modal-content"]\').html(xhr.responseText);
-								$(\'#myModal\').modal(\'show\');
 							}
 						};
 						xhr.send();
@@ -85,7 +83,6 @@ class VueUsagers {
 								/*clearTimeout(timeout);*/
 								console.log(xhr.responseText);
 								$(\'[name="modal-content"]\').html(xhr.responseText);
-								$(\'#myModal\').modal(\'show\');
 							}
 						};
 						xhr.send();
@@ -105,7 +102,7 @@ class VueUsagers {
 			        <h4 class="modal-title" id="myModalLabel">Entrez les informations suivantes</h4>
 			    </div>
 		      	<div class="modal-body">
-					<form class="form-signin" name="form-usager-enregistrer" action="ajaxControler.php?requete=enregistrer">
+					<form class="form-signin" name="form-usager-enregistrer" >
 						<div class="input-group input-group-sm">
 							Nom, Prénom:
 							<input name="nom" type="text" class="form-control"  required>
@@ -119,7 +116,7 @@ class VueUsagers {
 							<input name="mot_passe" type="password" class="form-control" required>
 						</div>
 						<br>
-						<button name="enregistrer" id="enregistrer" class="btn btn-primary" type="submit">Confirmer</button>
+						<button name="enregistrer" id="enregistrer" class="btn btn-primary" type="button">Confirmer</button>
 						<br>
 					</form>
 		      	</div>
@@ -135,7 +132,6 @@ class VueUsagers {
 								/*clearTimeout(timeout);*/
 								console.log(xhr.responseText);
 								$(\'[name="modal-content"]\').html(xhr.responseText);
-								$(\'#myModal\').modal(\'show\');
 							}
 						};
 						xhr.send();
@@ -153,7 +149,7 @@ class VueUsagers {
 			        <h4 class="modal-title" id="myModalLabel">Complétez toutes les informations suivantes</h4>
 			    </div>
 		      	<div class="modal-body">
-					<form class="form-signin" name="form-usager-adresse" action="ajaxControler.php?requete=enregistrer">
+					<form class="form-signin" name="form-usager-adresse" >
 						<!-- telephone	rue	appartement	ville	code_postal	province -->
 						<div class="input-group input-group-sm">
 							Téléphone
@@ -195,7 +191,6 @@ class VueUsagers {
 								/*clearTimeout(timeout);*/
 								console.log(xhr.responseText);
 								$(\'[name="modal-content"]\').html(xhr.responseText);
-								$(\'#myModal\').modal(\'show\');
 							}
 						};
 						xhr.send();
@@ -212,7 +207,7 @@ class VueUsagers {
 			        <h4 class="modal-title" id="myModalLabel">Se connecter</h4>
 			    </div>
 		      	<div class="modal-body">
-					<form class="form-signin" name="form-usager-connecter" action="ajaxControler.php?requete=connecter">
+					<form class="form-signin" name="form-usager-connecter" >
 						<div class="input-group input-group-sm">
 							Courriel:
 							<input name="courriel" type="email" class="form-control" required>
@@ -233,7 +228,6 @@ class VueUsagers {
 								/*clearTimeout(timeout);*/
 								console.log(xhr.responseText);
 								$(\'[name="modal-content"]\').html(xhr.responseText);
-								$(\'#myModal\').modal(\'show\');
 							}
 						};
 						xhr.send();
