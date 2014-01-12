@@ -166,7 +166,7 @@ class Vue {
                         </div><!-- /.row -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">                
-				<div name="modal-content">
+				<div class="modal-content">
 				<?php echo $form; ?>
 				</div>
 			</div>

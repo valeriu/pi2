@@ -23,7 +23,7 @@ $(function(){
 			if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
 				/*clearTimeout(timeout);*/
 				console.log(xhr.responseText);
-				$('[name="modal-content"]').html(xhr.responseText);
+				$('.modal-content').html(xhr.responseText);
 				$('#myModal').modal('show');
 			}
 		};
@@ -37,7 +37,7 @@ $(function(){
 			if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
 				/*clearTimeout(timeout);*/
 				//console.log(xhr.responseText);
-				$('[name="modal-content"]').html(xhr.responseText);
+				$('.modal-content').html(xhr.responseText);
 				$('#myModal').modal('show');
 			}
 		};
