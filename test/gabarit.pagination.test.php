@@ -20,7 +20,7 @@
                                 
                                 $aDonnees = array("aTousElements" => $allpageBD, "parPage" => 20, "pageCourante" => 1);
                                 $pages = $page->paginate($aDonnees);
-                                $data = $page->voirRsultats();
+                                $data = $page->voirResultats();
                                 
 
                                 foreach($pages as $page){
