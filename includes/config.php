@@ -29,6 +29,6 @@
 	define("BD","e1295805");
 	define("PASS","50319801101");
 	
-	//
-
+// Google Maps API
+	define("GOOOGLEMAPAPI", "AIzaSyDyww0kT3sGjHybCQdvUB1vIOeelhxZtao");
 ?>
