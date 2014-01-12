@@ -37,24 +37,39 @@ class ControlerAdmin {
 			$oVueAdmin->afficherFooter();
 		}
 		private function page() {
+			$nb1 = (!empty($_GET['partir'])) ? $_GET['partir'] : 0;
+			$nb2 = (!empty($_GET['fin'])) ? $_GET['fin'] : 20;	
+			
 			$oVueAdmin	= new VueAdmin();
+			$oPage = new Pages();
+			$tousPages = $oPage->afficherListe();
+			
+			$pagePagination = new Pagination();
+			$aDonnees = array("aTousElements" => $tousPages);
+			$pagesPaginator = $pagePagination->paginate($aDonnees);
+			$datas = $pagePagination->voirResultats();
+			
 			$oVueAdmin->afficherEntete();
 			$oVueAdmin->afficherToolbar();
 			$oVueAdmin->afficherNavigation();
-			$nb1 = (!empty($_GET['partir'])) ? $_GET['partir'] : 0;
-			$nb2 = (!empty($_GET['fin'])) ? $_GET['fin'] : 20;		
-			VuePages::afficherListAdmin($nb1, $nb2);
+	
+			VuePages::afficherListAdmin($tousPages, $pagesPaginator, $nb1, $nb2);
 			$oVueAdmin->afficherFinContent();
 			$oVueAdmin->afficherFooter();
 		}
 		private function pageAjouter() {
+			$page_id = (!empty($_GET['page_id'])) ? $_GET['page_id'] : 0;
+			$aDonnees = array("id_page" => $page_id);
+			
 			$oVueAdmin	= new VueAdmin();
+			$oPage = new Pages();
+			$courentPage = $oPage->afficher($aDonnees);
+			
 			$oVueAdmin->afficherEntete();
 			$oVueAdmin->afficherToolbar();
 			$oVueAdmin->afficherNavigation();
-			$nb1 = (!empty($_GET['page_id'])) ? $_GET['page_id'] : 0;
-			$aDonnees = array("id_page" => $nb1);
-			VuePages::ajouterPageAdmin($aDonnees);
+
+			VuePages::ajouterPageAdmin($courentPage);
 			$oVueAdmin->afficherFinContent();
 			$oVueAdmin->afficherFooter();
 		}		
