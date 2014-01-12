@@ -24,7 +24,7 @@ $(function(){
 				/*clearTimeout(timeout);*/
 				console.log(xhr.responseText);
 				$('[name="modal-content"]').html(xhr.responseText);
-				//$('#myModal').modal('show');
+				$('#myModal').modal('show');
 			}
 		};
 		xhr.send();
@@ -36,9 +36,9 @@ $(function(){
 		xhr.onreadystatechange = function() {
 			if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
 				/*clearTimeout(timeout);*/
-				console.log(xhr.responseText);
+				//console.log(xhr.responseText);
 				$('[name="modal-content"]').html(xhr.responseText);
-				//$('#myModal').modal('show');
+				$('#myModal').modal('show');
 			}
 		};
 		xhr.send();

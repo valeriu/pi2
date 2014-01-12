@@ -81,33 +81,14 @@
 
 	function formConnecter(){
 		//return 'formConnecter';
-		//VueUsagers::afficherModalConnexion();
+		$html = VueUsagers::afficherModalConnexion();
+		echo $html;
 	}
 
 	function formEnregistrer(){
 		//return 'formEnregistrer';
 		$html = VueUsagers::afficherModalEnregistrer();
-		//echo $html;
-		?>
-			<script>
-				var xhr = new XMLHttpRequest();
-				//console.log(<?php echo $html; ?>);
-				xhr.open("POST", "index.php?requete=accueil", true);	
-				xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-				var requete = "form=" + <?php echo htmlentities($html); ?>;
-				//console.log(requete);
-				xhr.onreadystatechange = function() {
-					if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
-						/*clearTimeout(timeout);
-						console.log(xhr.responseText);
-						var rep = JSON.parse(xhr.responseText);
-						$('[name="modal-content"]').html(rep);
-						$('#myModal').modal('show');*/
-					}
-				};
-				xhr.send(requete);
-			</script>
-		<?php
+		echo $html;
 	}
 
 	function deconnecter(){

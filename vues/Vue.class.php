@@ -164,8 +164,12 @@ class Vue {
                                   <p><a class="btn btn-default" href="catalogue.html" role="button">En savoir plus &raquo;</a></p>
                                 </div><!-- /.col-lg-4 -->
                         </div><!-- /.row -->
-		<div name="modal-content">
-			<?php echo $form; ?>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">                
+				<div name="modal-content">
+				<?php echo $form; ?>
+				</div>
+			</div>
 		</div>
 		<?php
 		

@@ -101,47 +101,46 @@ class VueUsagers {
 
 
 	public function afficherModalAdresse() {
-?>
 	
-    	<div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	        <h4 class="modal-title" id="myModalLabel">Complétez les informations suivantes</h4>
-	    </div>
-      	<div class="modal-body">
-			<form class="form-signin" name="form-usager-adresse" action="ajaxControler.php?requete=enregistrer">
-				<!-- telephone	rue	appartement	ville	code_postal	province -->
-				<div class="input-group input-group-sm">
-					Téléphone
-					<input name="tel" type="tel" class="form-control" required>
-				</div>
-				<div class="input-group input-group-sm">
-					Rue:
-					<input name="rue" type="text" class="form-control" required>
-				</div>
-				<div class="input-group input-group-sm">
-					Appartement:
-					<input name="appartement" type="text" class="form-control">
-				</div>
-				<div class="input-group input-group-sm">
-					Ville:
-					<input name="ville" type="text" class="form-control" required>
-				</div>
-				<div class="input-group input-group-sm">
-					Province:
-					<input name="province" type="text" class="form-control" required>
-				</div>
-				<div class="input-group input-group-sm">
-					Code postal:
-					<input name="codePostal" type="text" class="form-control" required>
-				</div>
-				<button name="soumettre" id="soumettre" class="btn btn-primary" type="submit">Soumettre</button>
-				<br>	
-			</form>
-      	</div>
-	    <div class="modal-footer">
-	    </div>
-		    		
-<?php
+		$html = '<div class="modal-header">	
+			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			        <h4 class="modal-title" id="myModalLabel">Complétez les informations suivantes</h4>
+			    </div>
+		      	<div class="modal-body">
+					<form class="form-signin" name="form-usager-adresse" action="ajaxControler.php?requete=enregistrer">
+						<!-- telephone	rue	appartement	ville	code_postal	province -->
+						<div class="input-group input-group-sm">
+							Téléphone
+							<input name="tel" type="tel" class="form-control" required>
+						</div>
+						<div class="input-group input-group-sm">
+							Rue:
+							<input name="rue" type="text" class="form-control" required>
+						</div>
+						<div class="input-group input-group-sm">
+							Appartement:
+							<input name="appartement" type="text" class="form-control">
+						</div>
+						<div class="input-group input-group-sm">
+							Ville:
+							<input name="ville" type="text" class="form-control" required>
+						</div>
+						<div class="input-group input-group-sm">
+							Province:
+							<input name="province" type="text" class="form-control" required>
+						</div>
+						<div class="input-group input-group-sm">
+							Code postal:
+							<input name="codePostal" type="text" class="form-control" required>
+						</div>
+						<button name="soumettre" id="soumettre" class="btn btn-primary" type="submit">Soumettre</button>
+						<br>	
+					</form>
+		      	</div>
+			    <div class="modal-footer">
+			    </div>';
+
+		return $html;	    
 		
 	}	
 
