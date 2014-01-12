@@ -28,7 +28,7 @@ class Controler {
 					$this->panier();
 					break;
 				case 'page':
-					$this->panier();
+					$this->page();
 					break;
 				default:
 					$this->accueil();
@@ -51,9 +51,24 @@ class Controler {
 
 		}
 		private function page() {
-
+			$pageID = (isset($_GET['page_id'])) ? $_GET['page_id'] : '';
+			$aDonnees = array("id_page" => $pageID);
+			
 			$oVue = new Vue();
-			$oVue->afficherPage($id);
+			$oPage = new Pages();
+			$courentPage = $oPage->afficher($aDonnees);
+			
+			$oVue->afficherEntete($courentPage);
+			if(!isset($_SESSION['usager'])){
+				VueUsagers::afficherFormUsagers();
+			} else {
+				VueUsagers::afficherFormDeconnexion();
+			}
+			$oVue->afficherBoutonPanier();
+			VueMenu::afficherMenu();
+			
+			VuePages::afficherPage($courentPage);
+			$oVue->afficherFooter();
 		}
 		private function panier(){
 			$vue =  new Vue();
@@ -73,18 +88,3 @@ class Controler {
 				
 }
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
