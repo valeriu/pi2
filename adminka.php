@@ -5,7 +5,7 @@
  * @author Valeriu Tihai
  */
 	session_start();
- 
+
 	 /***************************************************/
     /** Fichier de configuration, contient l'autoloader **/
     /***************************************************/
@@ -15,11 +15,10 @@
     /** Initialisation des variables **/
     /***************************************************/
 	require_once("./var.init.php");
-   
+
    /***************************************************/
     /** Controleur Admin
     /***************************************************/
 	$oControleur = new ControlerAdmin();  
 	$oControleur->gerer();
-
 ?>
