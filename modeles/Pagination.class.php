@@ -11,7 +11,7 @@
 	public function paginate($aDonnees = Array()){ 
 		
 		$aTousElements	= $aDonnees['aTousElements'];
-		$parPage		= (!empty($aDonnees['parPage'])) ? $aDonnees['parPage'] : 10;
+		$parPage		= (!empty($aDonnees['parPage'])) ? $aDonnees['parPage'] : 20;
 		$pageCourante	= (!empty($aDonnees['pageCourante'])) ? $aDonnees['pageCourante'] : 1;
 			
 		if (!empty($aTousElements) && !Valider::estTableau($aTousElements)){
@@ -30,12 +30,17 @@
 		$this->pages = array_slice($aTousElements, $offset, $parPage);
 
 		for($i=1; $i<=$nbPages; $i++){
-			$nombre[] = $i;
+			$nombre[$i]["page"] = $i;
+			$nombre[$i]["partir"] = $i*$parPage-$parPage;
+			$nombre[$i]["fin"] = $i*$parPage;
 		}
+		
+		//print_r($nombre);
 		return $nombre;
+		
 	}
 
-	public function voirRsultats(){
+	public function voirResultats(){
 			$voirRsultats = $this->pages;
 			return $voirRsultats;
 	}
