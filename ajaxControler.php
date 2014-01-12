@@ -33,6 +33,7 @@
 			formEnregistrer();
 			break;	
 		case 'connecter':
+			//var_dump($_POST);
 			connecter();
 			break;
 		case 'deconnecter':
@@ -97,12 +98,13 @@
 
 	function connecter(){
 		try{
+			//var_dump($_POST);
 			$usager = new Usagers();
 			$usager->connecter($_POST);
 			$_SESSION['usager'] = $_POST['courriel'];
 		}
 		catch(Exception $e){
-			$e->getMessage();
+			echo $e->getMessage();
 		}
 	}
 

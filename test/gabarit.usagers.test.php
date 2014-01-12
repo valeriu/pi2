@@ -17,7 +17,7 @@
 			<?php 
 				try{
 					$usagers = new Usagers();
-					$array = array("courriel" => "ex@ex.com", "mot_passe" => "password");
+					$array = array("courriel" => "a@a.eu", "mot_passe" => "password");
 					$rep = $usagers->connecter($array);
 					var_dump($rep);
 				}

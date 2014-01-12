@@ -75,18 +75,20 @@ class Usagers {
 	 */
 	public function connecter ($aDonnees = Array()) {
 		//$courriel, $mot_passe
+		//var_dump($aDonnees['courriel']);
+		//var_dump($aDonnees['mot_passe']);
 		$courriel 		= (!empty($aDonnees['courriel'])) ? $aDonnees['courriel'] : '';
 		$mot_passe 		= (!empty($aDonnees['mot_passe'])) ? $aDonnees['mot_passe'] : '';
 		
-		if(!Valider::estCourriel($courriel)){
+		/*if(!Valider::estCourriel($courriel)){
 			throw new Exception("Ce courriel est invalide");
-		}
+		}*/
 		
-		if(!Valider::estEntreString($mot_passe, 4, 12)){
+		/*if(!Valider::estEntreString($mot_passe, 4, 12)){
 			throw new Exception("Mot de passe non conforme");
-		}
+		}*/
 		
-		$mot_passe = MD5($mot_passe);
+		//$mot_passe = MD5($mot_passe);
 		
 		$idbd = $this->bd->getBD();
 		//$idbd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

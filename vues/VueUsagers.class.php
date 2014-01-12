@@ -46,11 +46,11 @@ class VueUsagers {
 					<form class="form-signin" name="form-usager-connecter">
 						<div class="input-group input-group-sm">
 							Courriel:
-							<input name="courriel" type="email" class="form-control" required>
+							<input name="courriel" id="courriel" type="email" class="form-control" required>
 						</div>
 						<div class="input-group input-group-sm">
 							Mot de Passe:
-							<input name="mot_passe" type="password" class="form-control" required>
+							<input name="mot_passe" id="mot_passe" type="password" class="form-control" required>
 						</div>
 						<button name="motPasseOublie" id="motPasseOublie" type="button">Mot de passe oublié</a>
 						<br>
@@ -77,7 +77,10 @@ class VueUsagers {
 					//Connexion
 					$("#connexion").on("click", function(){
 						var xhr = new XMLHttpRequest();
-						xhr.open("GET", "ajaxControler.php?requete=connecter", true);	
+						var m = $(\'#courriel\').val();
+						var p = $(\'#mot_passe\').val();
+						xhr.open("POST", "ajaxControler.php?requete=connecter", true);	
+						var req = "courriel=" + m + "&mot_passe=" + p;
 						xhr.onreadystatechange = function() {
 							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
 								//clearTimeout(timeout);
@@ -85,7 +88,7 @@ class VueUsagers {
 								$(\'.modal-content\').html(xhr.responseText);
 							}
 						};
-						xhr.send();
+						xhr.send(req);
 					});
 			    </script>';	
 
@@ -233,6 +236,8 @@ class VueUsagers {
 						xhr.send();
 					});
 			    </script>';	
+
+		return $html;	    
 	}
 
 	
