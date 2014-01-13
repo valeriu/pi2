@@ -13,12 +13,12 @@ class VueUsagers {
 	public function afficherFormUsagers() {
 ?>
 			<section id="usager" class="pull-right">
-				<form class="form-signin" method="post">
+				<form class="form-signin form-usager" method="post">
 					<a  name="formEnregistrer" id="formEnregistrer" class="btn btn-md btn-lien" type="button">S'enregistrer</a>
 					<a  name="formConnecter" id="formConnecter" class="btn btn-md btn-lien" type="button">Se connecter</a>
 				</form>			
 			</section>
-		</article>
+		
 		
 		
 		
@@ -28,11 +28,11 @@ class VueUsagers {
 	public function afficherFormDeconnexion() {
 ?>
 			<section id="usager" class="pull-right">
-				<form class="form-signin" action="index.php?requete=deconnecter" method="post">
-					<a name="deconnecter" id="deconnecter" class="btn btn-lg btn-lien" type="button">Déconnexion</a>
+				<form class="form-signin form-usager" action="index.php?requete=deconnecter" method="post">
+					<a name="deconnecter" id="deconnecter" class="btn btn-md btn-lien" type="button">Déconnexion</a>
 				</form>			
 			</section>
-		</article>
+		
 <?php
 	}
 
@@ -68,8 +68,8 @@ class VueUsagers {
 						xhr.onreadystatechange = function() {
 							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
 								//clearTimeout(timeout);
-								console.log(xhr.responseText);
-								$(\'.modal-content\').html(xhr.responseText);
+								//console.log(xhr.responseText);
+								$(".modal-content").html(xhr.responseText);
 							}
 						};
 						xhr.send();
@@ -77,17 +77,19 @@ class VueUsagers {
 					//Connexion
 					$("#connexion").on("click", function(){
 						var xhr = new XMLHttpRequest();
-						var m = $(\'#courriel\').val();
-						var p = $(\'#mot_passe\').val();
-						xhr.open("POST", "ajaxControler.php?requete=connecter", true);	
+						var m = $("#courriel").val();
+						var p = $("#mot_passe").val();
+						xhr.open("POST", "ajaxControler.php?requete=connecter", true);
 						var req = "courriel=" + m + "&mot_passe=" + p;
 						xhr.onreadystatechange = function() {
 							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
 								//clearTimeout(timeout);
-								console.log(xhr.responseText);
-								$(\'.modal-content\').html(xhr.responseText);
+								$("#usager").replaceWith(xhr.responseText);
+								$("#deconnecter").on("click", clickDeconnecter);
+								$("#myModal").modal("hide");
 							}
 						};
+						xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 						xhr.send(req);
 					});
 			    </script>';	
@@ -129,15 +131,21 @@ class VueUsagers {
 			    	//Enregistrement
 			    	$("#enregistrer").on("click", function(){
 						var xhr = new XMLHttpRequest();
-						xhr.open("GET", "ajaxControler.php?requete=enregistrer", true);	
+						var n = $("#nom").val();
+						var m = $("#courriel").val();
+						var p = $("#mot_passe").val();
+						xhr.open("POST", "ajaxControler.php?requete=connecter", true);
+						var req = "courriel=" + m + "&mot_passe=" + p + "&nom_prenom" + n;
 						xhr.onreadystatechange = function() {
 							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
-								/*clearTimeout(timeout);*/
-								console.log(xhr.responseText);
-								$(\'[name="modal-content"]\').html(xhr.responseText);
+								//clearTimeout(timeout);
+								$("#usager").replaceWith(xhr.responseText);
+								$("#deconnecter").on("click", clickDeconnecter);
+								$("#myModal").modal("hide");
 							}
 						};
-						xhr.send();
+						xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+						xhr.send(req);
 					});
 			    </script>';	
 

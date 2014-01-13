@@ -1,47 +1,56 @@
 $(function(){ 
-	/* Bind click sur les boutons 
-	$('[name="connecter"], [name="enregistrer"], [name="motPasseOublie"]').bind('click', ouvrirDiv);
+	/* Bind click sur les boutons */
+
+
+	$("#formEnregistrer").on("click", clickEnregistrer);
+
+	$('#formConnecter').on('click', clickConnecter);
 	
-	function ouvrirDiv(e){
-		var name = '#' + e.target.name + 'Div';
-		var divs = ['#connecterDiv', '#enregistrerDiv', '#motPasseOublieDiv'];
-		for(var i = 0; i < divs.length; i++){
-			if(name != divs[i]){
-				$(divs[i]).hide();
-			}
-			else{
-				$(name).slideToggle();
-			}
-		}
-	}*/
-
-	$("#formEnregistrer").on("click", function(){
-		var xhr = new XMLHttpRequest();
-		xhr.open("GET", "ajaxControler.php?requete=formEnregistrer", true);	
-		xhr.onreadystatechange = function() {
-			if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
-				//clearTimeout(timeout);
-				//console.log(xhr.responseText);
-				$('.modal-content').html(xhr.responseText);
-				$('#myModal').modal('show');
-			}
-		};
-		xhr.send();
-	});
-
-	$('#formConnecter').on('click', function(){
-		var xhr = new XMLHttpRequest();
-		xhr.open("GET", "ajaxControler.php?requete=formConnecter", true);	
-		xhr.onreadystatechange = function() {
-			if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
-				//clearTimeout(timeout);
-				//console.log(xhr.responseText);
-				$('.modal-content').html(xhr.responseText);
-				$('#myModal').modal('show');
-			}
-		};
-		xhr.send();
-		
-	});
+	$('#deconnecter').on('click', clickDeconnecter);
 
 });
+
+function clickDeconnecter(){
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "ajaxControler.php?requete=deconnecter", true);	
+	xhr.onreadystatechange = function() {
+		if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
+			//clearTimeout(timeout);
+			//console.log(xhr.responseText);
+			$("#usager").replaceWith(xhr.responseText);
+			$('#myModal').modal('hide');
+		}
+	};
+	xhr.send();
+	
+};
+
+function clickEnregistrer(){
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "ajaxControler.php?requete=formEnregistrer", true);	
+	xhr.onreadystatechange = function() {
+		if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
+			//clearTimeout(timeout);
+			//console.log(xhr.responseText);
+			$('.modal-content').html(xhr.responseText);
+			$('#myModal').modal('show');
+		}
+	};
+	xhr.send();
+};
+
+
+function clickConnecter(){
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "ajaxControler.php?requete=formConnecter", true);	
+	xhr.onreadystatechange = function() {
+		if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
+			//clearTimeout(timeout);
+			//console.log(xhr.responseText);
+			$('.modal-content').html(xhr.responseText);
+			$('#myModal').modal('show');
+		}
+	};
+	xhr.send();
+	
+};

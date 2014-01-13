@@ -9,6 +9,7 @@
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  * 
  */
+	session_start();
 
 	require_once("./includes/config.php");
 
@@ -94,6 +95,7 @@
 
 	function deconnecter(){
 		session_destroy();
+		echo VueUsagers::afficherFormUsagers();
 	}
 
 	function connecter(){
@@ -102,6 +104,7 @@
 			$usager = new Usagers();
 			$usager->connecter($_POST);
 			$_SESSION['usager'] = $_POST['courriel'];
+			echo VueUsagers::afficherFormDeconnexion();
 		}
 		catch(Exception $e){
 			echo $e->getMessage();
@@ -113,15 +116,16 @@
 			$usager = new Usagers();
 			$usager->enregistrer($_POST);
 			$_SESSION['usager'] = $_POST['courriel'];
+			echo VueUsagers::afficherFormDeconnexion();
 		}
 		catch(Exception $e){
-			$e->getMessage();
+			echo $e->getMessage();
 		}
 	}
 
 	function accueil() {
 		$oVue = new Vue();
-		$oVue->afficheAccueil();
+		$oVue->afficherAccueil();
 	}
 
 	function motpasse(){
