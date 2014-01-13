@@ -32,7 +32,10 @@
 			break;
 		case 'formEnregistrer':
 			formEnregistrer();
-			break;	
+			break;
+		case 'formMotPasse':
+			formMotPasse();
+			break;
 		case 'connecter':
 			//var_dump($_POST);
 			connecter();
@@ -45,7 +48,10 @@
 			break;
 		case 'motpasse':
 			motpasse();
-			break;				
+			break;			
+		case 'adresse':
+			adresse();
+			break;					
 		default:
 			accueil();
 			break;
@@ -92,6 +98,11 @@
 		$html = VueUsagers::afficherModalEnregistrer();
 		echo $html;
 	}
+	
+	function formMotPasse(){
+		$html = VueUsagers::afficherModalMotPasse();
+		echo $html;
+	}
 
 	function deconnecter(){
 		session_destroy();
@@ -129,8 +140,25 @@
 	}
 
 	function motpasse(){
-		$html = VueUsagers::afficherModalMotPasse();
-		echo $html;
+		try{
+			$usager = new Usagers();
+			$usager->envoyerMotPasse($_POST);
+			echo "Un courriel avec la marche à suivre vous a été envoyé";
+		}
+		catch(Exception $e){
+			echo $e->getMessage();
+		}
+	}
+	
+	function adresse(){
+		try{
+			$adresse = new Adresse();
+			$adresse->enregistrer($_POST);
+			echo "Nouvelle adresse enregistrée";
+		}
+		catch(Exception $e){
+			echo $e->getMessage();
+		}
 	}
 
 ?>
