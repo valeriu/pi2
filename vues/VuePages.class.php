@@ -54,16 +54,16 @@ public function ajouterPageAdmin($result) {
 			<?php
 				switch ($result) {
 					case 1:
-						echo "<div class=\"alert alert-success\"><strong>Bien fait!</strong> Vous insérez cette page dans la base de données avec succès.</div>";
+						echo "<div class=\"alert alert-success\"><strong>Bien fait!</strong> Vous insérez cette page dans la base de données avec succès.<br />
+							Vous voulez  <a href=\"adminka.php?requete=page_ajouter\" class=\"alert-link\">ajouter</a> une autre page?
+							</div>";
 						break;
 					case 0:
 						echo "<div class=\"alert alert-danger\"><strong>Oh rupture!</strong> Changer quelques choses et essayer à nouveau soumission.</div>";
 						break;
 					default:
-						break;
-				}
-			?>
-			<!-- Form Edit pages-->
+						?>
+					<!-- Form Edit pages-->
 			<form role="form" method="POST" action="<?php echo $_SERVER['REQUEST_URI'];?>">
 					<div class="form-group">
 						<label for="page-title">Titre</label>
@@ -127,6 +127,11 @@ public function ajouterPageAdmin($result) {
 			</div>
 			</div><!--end panel-->
 		  </div>
+						<?php
+						break;
+				}
+			?>
+		
 	<?php }
 	
 	public function modifierPageAdmin($data, $result) {
@@ -235,7 +240,8 @@ public function ajouterPageAdmin($result) {
 			for ($i=$partir, $j=$fin; $i<$j; $i++){
 				$htmlPage .= "<tr>\r\n";
 					$htmlPage .= "<td><a href=\"index.php?requete=page&page_id={$aDonneesPages[$i]["id_page"]}\" target=\"_blank\" title=\"Preview - {$aDonneesPages[$i]["titre"]}\">{$aDonneesPages[$i]["id_page"]}</a></td>\r\n";
-					$htmlPage .= "<td><a href=\"adminka.php?requete=page_modifier&page_id={$aDonneesPages[$i]["id_page"]}\" title=\"Edit: {$aDonneesPages[$i]["titre"]}\">{$aDonneesPages[$i]["titre"]}</a></td>\r\n";
+					$titre = (!empty($aDonneesPages[$i]["titre"])) ? $aDonneesPages[$i]["titre"] : "Sans titre";
+					$htmlPage .= "<td><a href=\"adminka.php?requete=page_modifier&page_id={$aDonneesPages[$i]["id_page"]}\" title=\"Edit: {$aDonneesPages[$i]["titre"]}\">{$titre}</a></td>\r\n";
 					$dateFormatLisible = date("l, d F Y",strtotime($aDonneesPages[$i]["date_modif"]));
 					$heureFormatLisible = date("H:i:s",strtotime($aDonneesPages[$i]["date_modif"]));
 					$htmlPage .= "<td><abbr title=\"{$heureFormatLisible}\">{$dateFormatLisible}</abbr></td>";
