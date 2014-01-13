@@ -43,6 +43,91 @@ class VuePages {
 			}
 		?>
 	<?php }
+public function ajouterPageAdmin($result) {
+		//print_r($result);
+		?>
+		
+		<div class="panel panel-default">
+			<!-- Default panel contents -->
+			<div class="panel-heading">Ajouter ou modifier une page</div>
+			<div class="panel-body">
+			<?php
+				switch ($result) {
+					case 1:
+						echo "<div class=\"alert alert-success\"><strong>Bien fait!</strong> Vous insérez cette page dans la base de données avec succès.</div>";
+						break;
+					case 0:
+						echo "<div class=\"alert alert-danger\"><strong>Oh rupture!</strong> Changer quelques choses et essayer à nouveau soumission.</div>";
+						break;
+					default:
+						break;
+				}
+			?>
+			<!-- Form Edit pages-->
+			<form role="form" method="POST" action="<?php echo $_SERVER['REQUEST_URI'];?>">
+					<div class="form-group">
+						<label for="page-title">Titre</label>
+						<input type="text" class="form-control" name="page-title" placeholder="Enter Title">
+					</div>
+					<div class="form-group">
+						<label for="page-description">Description</label>
+						<textarea class="form-control" rows="3" name="page-description" placeholder="Meta Description"></textarea>
+						<p class="help-block">Description du lien, celle-ci apparaît souvent dans les recherches Google. <code>&lt;meta name="description" content=""&gt;</code></p>
+					</div>
+					<div class="form-group">
+						<label for="page-contenu">Contenu</label>
+						<textarea class="form-control" rows="18" name="page-contenu" placeholder="Page contenu"></textarea>
+					</div>
+					<div class="form-group">
+						<label for="page-contenu">Statut de la page</label>
+						<div class="radio">
+							<label>
+								<input type="radio" name="optionsRadios" id="optionsRadios1" value="1" checked>
+								<span class="label label-success">Publié</span>
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name="optionsRadios" id="optionsRadios2" value="0">
+								<span class="label label-warning">Brouillon</span>
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name="optionsRadios" id="optionsRadios3" value="2">
+								<span class="label label-danger">Privé</span>
+							</label>
+						</div>
+					</div>
+
+					<div class="checkbox" >
+						<label id="pagemap-toogle">
+							Page aura une carte.
+						</label>
+					</div>
+					<div id="pagemap">
+						<div class="form-group">
+							<label for="page-latitudes">Latitudes</label>
+							<input type="text" class="form-control" name="page-latitudes" placeholder="Enter Latitudes">
+						</div>
+						<div class="form-group">
+							<label for="page-longitudes">Longitudes</label>
+							<input type="text" class="form-control" name="page-longitudes" placeholder="Enter Longitudes">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="page-date">Date</label>
+						<input type="text" class="form-control" id="page-date-human" value="<?php echo date("l, d F  Y H:i:s");?>" disabled>
+					</div>
+					<div class="form-group">
+						<button name="page-ajouter" type="submit" class="btn btn-primary" data-loading-text="Sauvegardez...">Soumettre</button>
+					</div>
+					<div class="btn-group" data-toggle="buttons">
+				</form>		<!-- /Form Edit pages-->
+			</div>
+			</div><!--end panel-->
+		  </div>
+	<?php }
 	
 	public function modifierPageAdmin($data, $result) {
 		//print_r($result);
@@ -173,7 +258,7 @@ class VuePages {
 				 
 		<div class="panel panel-default">
 			<!-- Default panel contents -->
-			<div class="panel-heading">Toutes les pages<span class="badge pull-right"><?php echo $nomberPages;?></span><div> <a href="adminka.php?requete=page_edition">Ajouter une page</a></div></div>
+			<div class="panel-heading">Toutes les pages<span class="badge pull-right"><?php echo $nomberPages;?></span><div> <a href="adminka.php?requete=page_ajouter">Ajouter une page</a></div></div>
 			<div class="panel-body">
 			<p>Les pages offrent en générale des informations intemporelles sur le site, en plus des pages habituelles comme "Contact" ou "À Propos" on y retrouve souvent  des ppages comme "Droits d'auteur", "Informations sur la compagnie" ou "Conditions d'utilisations".</p>
 			</div>
