@@ -7,4 +7,10 @@
 	if(empty($_GET['requete']))	{
 		$_GET['requete'] = '';
 	}
+
+
+	// ADMINISTRATION
+	/*if(empty($_GET['requete']))	{
+		$_GET['requete'] = '';
+	}*/
 ?>
