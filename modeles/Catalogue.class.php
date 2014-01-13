@@ -105,10 +105,10 @@ class Catalogue {
 		if(!Valider::estImage($imgProduit)){
 			throw new Exception("Image du produit non conforme");
 		}
-		if(!Valider::estEntreInt($statutProduit,0,2)){
+		if(!Valider::estInt($statutProduit)){
 			throw new Exception("Statut produit non conforme");
 		}
-		if(!Valider::estEntreInt($typeProduit,0,2)){
+		if(!Valider::estInt($typeProduit)){
 			throw new Exception("Type produit non conforme");
 		}
 		if(!Valider::estStringValide($suppProduit)){
@@ -168,7 +168,8 @@ class Catalogue {
 		if($reponse){
 			return $reponse;
 		}
-        else{
+        else {
+        	print_r($req->errorInfo());
 			throw new Exception("Erreur lors de l'ajout du produit...");
 		}
 
@@ -221,7 +222,7 @@ class Catalogue {
 		if(!Valider::estStringValide($suppProduit)){
 			throw new Exception("Fournisseur du produit non conforme");
 		}
-		if(!Valider::estAlphaNumerique($suppIdProduit)){
+		if(!Valider::estStringValide($suppIdProduit)){
 			throw new Exception("ID du produit au fournisseur non conforme");
 		}
 		if(!Valider::estFloat($poidsProduit)){
@@ -265,7 +266,7 @@ class Catalogue {
 									evaluation_id_evaluation = ?, 
 									categorie_id_categorie = ?, 
 									puissance = ?
-								WHERE id_utilisateurs = ?");
+								WHERE id_produits = ?");
         
 		//var_dump($req);
         $req->bindParam(1, $nomProduit);
@@ -292,6 +293,7 @@ class Catalogue {
 			return $reponse;
 		}
 		else{
+			print_r($req->errorInfo());
 			throw new Exception("Erreur lors de la modification du produit...");
 		}
 	}
