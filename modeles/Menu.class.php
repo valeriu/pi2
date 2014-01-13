@@ -97,22 +97,20 @@ class Menu {
 	 * Modifier un item de menu
 	 */
 	public function modifier ($aDonnees = Array()) {
-		$id_menu 		= (!empty($aDonnees['id_menu'])) ? $aDonnees['id_menu'] : '';
-		$titre 			= (!empty($aDonnees['titre'])) ? $aDonnees['titre'] : '';
-		$description 	= (!empty($aDonnees['description'])) ? $aDonnees['description'] : null;
-		$url 			= (!empty($aDonnees['url'])) ? $aDonnees['url'] : '';
+		$id_menu 		= $aDonnees['id_menu'];
+		$titre 			= $aDonnees['titre'];
+		$description 	= $aDonnees['description'];
+		$url 			= $aDonnees['url'];
 		$parent 		= (!empty($aDonnees['parent'])) ? $aDonnees['parent'] : 0;
 		$ordre 			= (!empty($aDonnees['ordre'])) ? $aDonnees['ordre'] : 0;
 		$statut 		= (!empty($aDonnees['statut'])) ? $aDonnees['statut'] : 0;
 
-		if(!Valider::estString($titre)){
-			throw new Exception("Entrez un titre valide");
-		}
+		
 
 		
 		$idbd = $this->bd->getBD();
 		//Préparation de la requête
-		$req = $idbd->prepare(	"UPDATE wa_menu
+		$req = $idbd->prepare(	"UPDATE wa_menu SET
 										titre = ?,
 										description = ?,
 										url = ?,
@@ -162,7 +160,27 @@ class Menu {
 			throw new Exception("Erreur lors de l'aquisition des données, recommencez");
 		}
 	}
-	
+	/**
+	 * Affichage du menu pour les ADMIN
+	 */
+	public function afficherMenuAdminID ($aDonnees = array()) {
+		$id_menu			= intval($aDonnees['id_menu']);
+		
+		if(!Valider::estInt($id_menu)){
+			throw new Exception("Id page non conforme");
+		}
+		
+		$idbd = $this->bd->getBD();
+		$req = $idbd->prepare ("SELECT * FROM  `wa_menu` WHERE  `id_menu` = :id_menu");
+		$req->bindParam(":id_menu", $id_menu, PDO::PARAM_INT);
+        
+		$reponse = $req->execute();
+		
+		if($reponse){
+				return $req->fetch(PDO::FETCH_ASSOC);
+			throw new Exception("Erreur lors de la modification, recommencez");
+		}
+	}
 	/**
 	 * Affichage du menu frontend
 	 * Fonction tirée en partie du site suivant et modifier par Luc Cinq-Mars
