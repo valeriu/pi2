@@ -25,7 +25,7 @@ class Usagers {
 		$mot_passe 		= (!empty($aDonnees['mot_passe'])) ? $aDonnees['mot_passe'] : '';
 		$nom_prenom 	= (!empty($aDonnees['nom_prenom'])) ? $aDonnees['nom_prenom'] : '';
 		$role 			= (!empty($aDonnees['role'])) ? $aDonnees['role'] : 0;
-		//var_dump($courriel);
+		var_dump($_POST);
 		
 		if(!Valider::estCourriel($courriel)){
 			throw new Exception("Ce courriel est invalide");
@@ -35,9 +35,9 @@ class Usagers {
 			throw new Exception("Mot de passe non conforme");
 		}
 		
-		if(!Valider::estAlphaNumerique($nom_prenom)){
+		/*if(!Valider::estAlphaNumerique($nom_prenom)){
 			throw new Exception("Nom, Prénom non conforme");
-		}
+		}*/
 		
 		/*if(!Valider::estInt($role)){
 			throw new Exception("Entrez un chiffre valide pour le rôle Ex. 0, 1 ou 2 ");
@@ -239,10 +239,12 @@ class Usagers {
 	 */
 	public function envoyerMotPasse ($aDonnees = Array()) {
 		$courriel = (!empty($aDonnees['courriel'])) ? $aDonnees['courriel'] : '';
-
+		var_dump($courriel);
 		if(!Valider::estCourriel($courriel)){
 			throw new Exception("Ce courriel est invalide");
 		}
+		
+		$idbd = $this->bd->getBD();
 		
 		$cle = MD5(rand(1000, 1000077777));
 		
@@ -251,7 +253,7 @@ class Usagers {
 								WHERE courriel = ?");
         
 		//var_dump($req);
-        $req->bindParam(1, $cle_reactivation);
+        $req->bindParam(1, $cle);
         $req->bindParam(2, $courriel);
 		
 		$reponse = $req->execute();

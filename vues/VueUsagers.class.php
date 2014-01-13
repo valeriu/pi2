@@ -18,10 +18,11 @@ class VueUsagers {
 					<a  name="formConnecter" id="formConnecter" class="btn btn-md btn-lien" type="button">Se connecter</a>
 				</form>			
 			</section>
-		
-		
-		
-		
+			<script>
+				$("#formEnregistrer").on("click", clickEnregistrer);
+
+				$('#formConnecter').on('click', clickConnecter);
+			</script>
 <?php
 	}
 
@@ -64,11 +65,9 @@ class VueUsagers {
 			    	//Mot de passe oublie
 			    	$("#motPasseOublie").on("click", function(){
 						var xhr = new XMLHttpRequest();
-						xhr.open("GET", "ajaxControler.php?requete=motpasse", true);	
+						xhr.open("GET", "ajaxControler.php?requete=formMotPasse", true);	
 						xhr.onreadystatechange = function() {
 							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
-								//clearTimeout(timeout);
-								//console.log(xhr.responseText);
 								$(".modal-content").html(xhr.responseText);
 							}
 						};
@@ -110,15 +109,15 @@ class VueUsagers {
 					<form class="form-signin" name="form-usager-enregistrer" >
 						<div class="input-group input-group-sm">
 							Nom, Prénom:
-							<input name="nom" type="text" class="form-control"  required>
+							<input id="nom" name="nom" type="text" class="form-control"  required>
 						</div>
 						<div class="input-group input-group-sm">
 							Courriel:
-							<input name="courriel" type="email" class="form-control" required>
+							<input id="courriel" name="courriel" type="email" class="form-control" required>
 						</div>
 						<div class="input-group input-group-sm">
 							Mot de Passe:
-							<input name="mot_passe" type="password" class="form-control" required>
+							<input id="mot_passe" name="mot_passe" type="password" class="form-control" required>
 						</div>
 						<br>
 						<button name="enregistrer" id="enregistrer" class="btn btn-primary" type="button">Confirmer</button>
@@ -134,8 +133,8 @@ class VueUsagers {
 						var n = $("#nom").val();
 						var m = $("#courriel").val();
 						var p = $("#mot_passe").val();
-						xhr.open("POST", "ajaxControler.php?requete=connecter", true);
-						var req = "courriel=" + m + "&mot_passe=" + p + "&nom_prenom" + n;
+						xhr.open("POST", "ajaxControler.php?requete=enregistrer", true);
+						var req = "courriel=" + m + "&mot_passe=" + p + "&nom_prenom=" + n;
 						xhr.onreadystatechange = function() {
 							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
 								//clearTimeout(timeout);
@@ -164,27 +163,27 @@ class VueUsagers {
 						<!-- telephone	rue	appartement	ville	code_postal	province -->
 						<div class="input-group input-group-sm">
 							Téléphone
-							<input name="tel" type="tel" class="form-control" required>
+							<input id="tel" name="tel" type="tel" class="form-control" required>
 						</div>
 						<div class="input-group input-group-sm">
 							Rue:
-							<input name="rue" type="text" class="form-control" required>
+							<input id="rue" name="rue" type="text" class="form-control" required>
 						</div>
 						<div class="input-group input-group-sm">
 							Appartement:
-							<input name="appartement" type="text" class="form-control">
+							<input id="appartement" name="appartement" type="text" class="form-control">
 						</div>
 						<div class="input-group input-group-sm">
 							Ville:
-							<input name="ville" type="text" class="form-control" required>
+							<input id="ville" name="ville" type="text" class="form-control" required>
 						</div>
 						<div class="input-group input-group-sm">
 							Province:
-							<input name="province" type="text" class="form-control" required>
+							<input id="province" name="province" type="text" class="form-control" required>
 						</div>
 						<div class="input-group input-group-sm">
 							Code postal:
-							<input name="codePostal" type="text" class="form-control" required>
+							<input id="codePostal" name="codePostal" type="text" class="form-control" required>
 						</div>
 						<button name="adresse" id="adresse" class="btn btn-primary" type="button">Soumettre</button>
 						<br>	
@@ -196,15 +195,23 @@ class VueUsagers {
 			    	//Enregistrement de l adresse
 			    	$("#adresse").on("click", function(){
 						var xhr = new XMLHttpRequest();
-						xhr.open("GET", "ajaxControler.php?requete=adresse", true);	
+						var t = $("#tel").val();
+						var r = $("#rue").val();
+						var a = $("#appartement").val();
+						var v = $("#ville").val();
+						var p = $("#province").val();
+						var cp = $("#codePostal").val();
+						xhr.open("POST", "ajaxControler.php?requete=adresse", true);
+						//telephone	rue	appartement	ville	code_postal	province
+						var req = "telephone=" + t + "&rue=" + r + "&appartement=" + a + "&ville=" + v + "&province=" + p + "&code_postal=" + cp;
 						xhr.onreadystatechange = function() {
 							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
-								/*clearTimeout(timeout);*/
-								console.log(xhr.responseText);
-								$(\'[name="modal-content"]\').html(xhr.responseText);
+								//clearTimeout(timeout);
+								$(".modal-content").html(xhr.responseText);
 							}
 						};
-						xhr.send();
+						xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+						xhr.send(req);
 					});
 			    </script>';	
 
@@ -221,7 +228,7 @@ class VueUsagers {
 					<form class="form-signin" name="form-usager-connecter" >
 						<div class="input-group input-group-sm">
 							Courriel:
-							<input name="courriel" type="email" class="form-control" required>
+							<input id="courriel" name="courriel" type="email" class="form-control" required>
 						</div>
 						<button name="motpasse" id="motpasse" class="btn btn-primary" type="button">Soumettre</button>
 						<br>	
@@ -231,17 +238,25 @@ class VueUsagers {
 			    </div>
 			    <script>
 			    	//Envoie d un nouveau mot de passe
-			    	$("#adresse").on("click", function(){
+			    	$("#motpasse").on("click", function(){
 						var xhr = new XMLHttpRequest();
-						xhr.open("GET", "ajaxControler.php?requete=motpasse, true);	
+						var m = $("#courriel").val();
+						xhr.open("POST", "ajaxControler.php?requete=motpasse", true);
+						var req = "courriel=" + m;
 						xhr.onreadystatechange = function() {
 							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
-								/*clearTimeout(timeout);*/
-								console.log(xhr.responseText);
-								$(\'[name="modal-content"]\').html(xhr.responseText);
+								if(xhr.responseText == "Un courriel avec la marche à suivre vous a été envoyé"){
+									$(".modal-content").html(xhr.responseText);
+								}
+								else{
+									var p = "<p>" + xhr.responseText + "</p>";
+									$(".modal-body").prepend(p);
+								}
+								
 							}
 						};
-						xhr.send();
+						xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+						xhr.send(req);
 					});
 			    </script>';	
 
