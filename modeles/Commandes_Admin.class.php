@@ -8,7 +8,7 @@
 /**
  * Description of Commandes_Admin
  *
- * @author valeriu
+ * @author Luis Rosas
  */
 class Commandes_Admin {
 	private $bd;
@@ -22,14 +22,14 @@ class Commandes_Admin {
 	}
 
 	/**
-	 * Méthode afficher() - Afficher une page en fonction de ID
+	 * Méthode afficher() - Afficher une commande en fonction de ID
 	 * 
-	 * @param type $id_page - Page ID
+	 * @param type $id_commande - Commande ID
 	 * 
-	 * @return type array - Retourne un tableau contenant tous les champs de la page
+	 * @return type array - Retourne un tableau contenant tous les champs de la commande
 	 */
 	public function afficher ($aDonnees = array()) {
-		$id_commande			= intval($aDonnees['id_commande']);
+		$id_commande = intval($aDonnees['id_commande']);
 		
 		if(!Valider::estInt($id_commande)){
 			throw new Exception("Id commande ne pas valide");
@@ -63,48 +63,44 @@ class Commandes_Admin {
 		}
 	}
 
-	public function modifier ($aDonnees = Array())  {
-		$id_commande		= $aDonnees['id_commande'];
-		$commentaire	= $aDonnees['commentaire'];
-		$statut 			= (!empty($aDonnees['statut'])) ? $aDonnees['statut'] : 1;
-		
-		if(!Valider::estInt($id_commande)){
+	/**
+	 * Méthode modifier() - Modifier une commande spécifique
+	 * 
+	 * @return type Array - Retourne un tableau des tableau qui contient l'information de la commande et ses modifications
+	 */
+	public function modifier ($aDonnees = array()) {
+
+		if(isset($_POST["commande-modifier"])){
+			$id_commandes		= intval($_POST["commande_id"]);
+			$commentaires		= $_POST["commande-commentaires"];
+			$statut				= intval($_POST["optionsRadios"]);
+		}
+		if(!Valider::estInt($id_commandes)){
 			throw new Exception("Id commande non conforme");
 		}
-		if (!empty($titre) && !Valider::estString($commentaire)){
+		if (!empty($commentaires) && !Valider::estString($commentaires)){
 			throw new Exception("Le commentaire, doit être un string");
 		}
 		if (!empty($statut) && !Valider::estEntreInt($statut, 0, 3)){
-			throw new Exception("Statut, doit être un nombre entre 0 et 2");
+			throw new Exception("Statut, doit être un nombre entre 0 et 3");
 		}
-	
+		
 		$idbd = $this->bd->getBD();
 		$idbd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = "UPDATE wa_commandes SET 
-									titre = :titre, 
-									description_meta = :description_meta, 
-									contenu = :contenu,  
-									date_modif = :date_modif,  
-									statut = :statut,
-									geo_long = :geo_long,
-									geo_lat = :geo_lat 
-									WHERE id_page = :id_page";
-		$req = $idbd->prepare($sql);   
-		$req->bindParam(':id_page', $id_page, PDO::PARAM_INT);  
-		$req->bindParam(':titre', $titre, PDO::PARAM_STR);       
-		$req->bindParam(':description_meta', $description_meta, PDO::PARAM_STR);    
-		$req->bindParam(':contenu', $contenu, PDO::PARAM_STR);
-		$req->bindParam(':date_modif', $date_modif, PDO::PARAM_STR);
-		$req->bindParam(':statut', $statut, PDO::PARAM_INT);
-		$req->bindParam(':geo_long', $geo_long, PDO::PARAM_STR);   
-		$req->bindParam(':geo_lat', $geo_lat, PDO::PARAM_STR);   
+		$sql = "UPDATE wa_commandes SET
+									commentaires = :commentaires,
+									statut = :statut
+									WHERE id_commandes = :id_commandes";
+		$req = $idbd->prepare($sql);  
+		$req->bindParam(':id_commandes', $id_commandes, PDO::PARAM_INT);  
+		$req->bindParam(':commentaires', $commentaires, PDO::PARAM_STR);       
+		$req->bindParam(':statut', $statut, PDO::PARAM_INT);  
 		
 		$reponse = $req->execute();
 		
-		if($reponse){
-				return $reponse;
+		if($reponse)
+			return $reponse;
 			throw new Exception("Erreur lors de la modification, recommencez");
-		}
 	}
 	
 }

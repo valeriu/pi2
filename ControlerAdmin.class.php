@@ -40,9 +40,15 @@ class ControlerAdmin {
 				case 'commandes':
 					$this->commandes();
 					break;
-				case 'details_commandes':
-					$this->detailsCommandes();
-					break;	
+				case 'details_commande':
+					$this->detailsCommande();
+					break;
+				case 'modifier_commande':
+					$this->modifierCommande();
+					break;
+				case 'usagers':
+					//$this->modifierCommande();
+					break;//usagers
 				default:
 					$this->connexion();
 					break;
@@ -274,38 +280,55 @@ class ControlerAdmin {
 			$oVueAdmin->afficherFooter();
 		}
 
-		public function detailsCommandes() {
-			if(isset($_POST["details_commandes"])){
+		public function detailsCommande() {
 			$commande_id = (!empty($_GET['commande_id'])) ? $_GET['commande_id'] : 0;
 			$aDonnees = array("id_commande" => $commande_id);
-			if(isset($_POST["commande-modifier"])){
-				$id_commande		= intval($_POST["commande-id"]);
-				$commentaire		= $_POST["commande-commentaire"];
-				$statut				= intval($_POST["optionsRadios"]);
-				
-				//$page = new Pages();
-				$aDonneesPOST = array(	"id_commande" => $id_page, 
-										"commentaire" => $commentaire,
-										"statut" => $statut
-									);
-				$oCommande = new Commandes_Admin();
-				$result = $oPage->modifier($aDonneesPOST);
-				$courentCommande = $oCommande->afficher($aDonnees);
-			} else {
+			try{
 				$oCommande = new Commandes_Admin();
 				$courentCommande = $oCommande->afficher($aDonnees);
 				$result = "2";
 			}
-			
-			$oVueAdmin	= new VueCommandes();			
+			catch(Exception $e){
+				echo $e->getMessage();
+			}
+			$oVueAdmin	= new VueAdmin();		
 			$oVueAdmin->afficherEntete();
 			$oVueAdmin->afficherToolbar();
 			$oVueAdmin->afficherNavigation();
-			VueCommandes::modifierCommandesAdmin($courentCommande, $result);
+			VueCommandes::detailsCommandesAdmin($courentCommande, $result);
 			$oVueAdmin->afficherFinContent();
 			$oVueAdmin->afficherFooter();
+			//*/
+				
+			//}		
+		}
 
+		public function modifierCommande() {
+			$commande_id = (!empty($_GET['commande_id'])) ? $_GET['commande_id'] : 0;
+			$aDonnees = array("id_commande" => $commande_id);
+			
+			//var_dump($_POST);
+			try{
+				$oCommande = new Commandes_Admin();
+				$result = $oCommande->modifier($_POST);
+				//var_dump($result);
+				$courentCommande = $oCommande->afficher($aDonnees);
 			}
+			catch(Exception $e){
+				echo $e->getMessage();
+			}
+			
+			$oVueAdmin	= new VueAdmin();			
+			$oVueAdmin->afficherEntete();
+			$oVueAdmin->afficherToolbar();
+			$oVueAdmin->afficherNavigation();
+			VueCommandes::detailsCommandesAdmin($courentCommande, $result);
+			$oVueAdmin->afficherFinContent();
+			$oVueAdmin->afficherFooter();
+			//*/
+				
+			//}*/		
+
 		}
 
 		/*private function panier(){

@@ -33,10 +33,10 @@ class VueCommandes {
 			
 			for ($i=$partir, $j=$fin; $i<$j; $i++){
 				$htmlPage .= "<tr>\r\n";
-					$htmlPage .= "<td>{$aDonneesCommandes[$i]["id_commandes"]}</td>\r\n";
+					$htmlPage .= "<td><a href=\"adminka.php?requete=details_commande&commande_id={$aDonneesCommandes[$i]["id_commandes"]}\" title=\"Edit: {$aDonneesCommandes[$i]["date_commande"]}\">{$aDonneesCommandes[$i]["id_commandes"]}</a></td>\r\n";
 					
-					$htmlPage .= "<td><a href=\"adminka.php?requete=details_commandes&commande_id={$aDonneesCommandes[$i]["id_commandes"]}\" title=\"Edit: {$aDonneesCommandes[$i]["date_commande"]}\">{$aDonneesCommandes[$i]["date_commande"]}</a></td>\r\n";
-					$htmlPage .= "<td>{$aDonneesCommandes[$i]["utilisateurs_id_utilisateurs"]}</td>\r\n";
+					$htmlPage .= "<td>{$aDonneesCommandes[$i]["date_commande"]}</td>\r\n";
+					$htmlPage .= "<td><a href=\"adminka.php?requete=usagers&usager_id={$aDonneesCommandes[$i]["utilisateurs_id_utilisateurs"]}\" title=\"Edit: {$aDonneesCommandes[$i]["utilisateurs_id_utilisateurs"]}\">{$aDonneesCommandes[$i]["utilisateurs_id_utilisateurs"]}</a></td>\r\n";
 					/*$dateFormatLisible = date("l, d F Y",strtotime($aDonneesCommandes[$i]["date_modif"]));
 					$heureFormatLisible = date("H:i:s",strtotime($aDonneesCommandes[$i]["date_modif"]));
 					$htmlPage .= "<td><abbr title=\"{$heureFormatLisible}\">{$dateFormatLisible}</abbr></td>";*/
@@ -63,10 +63,10 @@ class VueCommandes {
 				 
 		<div class="panel panel-default">
 			<!-- Default panel contents -->
-			<div class="panel-heading">Toutes les pages<span class="badge pull-right"><?php echo $nomberCommandes;?></span>
+			<div class="panel-heading">Liste de toutes les Commande<span class="badge pull-right"><?php echo $nomberCommandes;?></span>
 			</div>
 			<div class="panel-body">
-			Liste de toutes le commandes
+				Vous pouvez regarder le détails de la commande et aussi le cliente qui a accheté la commande.
 			</div>
 			<!-- Table pages-->
 			<table class="table table-hover">
@@ -90,92 +90,111 @@ class VueCommandes {
 			
 	<?php }
 
-	public function modifierCommandeAdmin($data, $result) {
+	public function detailsCommandesAdmin($data, $result) {
 		//print_r($result);
 		?>
 		
 		<div class="panel panel-default">
 			<!-- Default panel contents -->
-			<div class="panel-heading">Ajouter ou modifier une page</div>
+			<div class="panel-heading">Ajouter un commentaire ou modifier le status de la commande</div>
 			<div class="panel-body">
 			<?php
 				switch ($result) {
 					case 1:
-						echo "<div class=\"alert alert-success\"><strong>Bien fait!</strong> Vous insérez cette page dans la base de données avec succès.</div>";
+						echo "<div class=\"alert alert-success\"><strong>Bien fait!</strong> Vous avez inséré le détails de la commande dans la base de données avec succès.</div>";
 						break;
 					case 0:
-						echo "<div class=\"alert alert-danger\"><strong>Oh rupture!</strong> Changer quelques choses et essayer à nouveau soumission.</div>";
+						echo "<div class=\"alert alert-danger\"><strong>Oh rupture!</strong> Il y a eu un problèmme, essayer de nouveau soumission.</div>";
 						break;
 					default:
 						break;
 				}
 			?>
-			<!-- Form Edit pages-->
-			<form role="form" method="POST" action="<?php echo $_SERVER['REQUEST_URI'];?>">
-					<div class="form-group">
-						<label for="page-title">Titre</label>
-						<input type="text" class="form-control" name="page-title" placeholder="Enter Title" value="<?php echo $data["titre"] ;?>">
+				<!-- Form Edit Commande-->
+				<form role="form" method="POST" action="./adminka.php?requete=modifier_commande&commande_id=<?php echo $data["id_commandes"]?>">
+					<!-- CODE -->
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="col-sm-2">id</div>
+									<div class="col-sm-2">Date</div>
+									<div class="col-sm-2">id Client</div>
+									<div class="col-sm-3">Statut</div>
+									<div class="col-sm-2">Prix total</div>
+								</div>
+							</div>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-sm-12">
+									<input type="hidden" name="commande_id" value="<?php echo $data["id_commandes"] ;?>">
+									<div class="col-sm-2"><?php echo $data["id_commandes"] ;?></div>
+									<div class="col-sm-2"><?php echo $data["date_commande"] ;?></div>
+									<div class="col-sm-2"><?php echo $data["utilisateurs_id_utilisateurs"] ;?></div>
+									<div class="col-sm-3"><?php
+										$htmlPage = '';
+										switch ($data["statut"]) {
+											case 0: // En traitement
+												$htmlPage .= "<td><span class=\"label label-warning\">En-traitement</span></td>";
+												break;
+											case 1: // Back-order
+												$htmlPage .= "<td><span class=\"label label-danger\">Back-order</span></td>";
+												break;
+											case 2: // Expedié
+												$htmlPage .= "<td><span class=\"label label-success\">Expedié</span></td>";
+												break;
+											case 3: // Anullé
+												$htmlPage .= "<td><span class=\"label label-danger\">Anullé</span></td>";
+												break;
+										}
+										echo $htmlPage;
+										?>
+									</div>
+									<div class="col-sm-2"><?php echo $data["total_commande"] ;?></div>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="form-group">
-						<label for="page-description">Description</label>
-						<textarea class="form-control" rows="3" name="page-description" placeholder="Meta Description"><?php echo $data["description_meta"] ;?></textarea>
-						<p class="help-block">Description du lien, celle-ci apparaît souvent dans les recherches Google. <code>&lt;meta name="description" content=""&gt;</code></p>
+						<label for="product-details">Notes sur la commande</label>
+						<textarea class="form-control" rows="12" name="commande-commentaires" placeholder="Commentaires"><?php echo $data["commentaires"] ;?></textarea>
 					</div>
 					<div class="form-group">
-						<label for="page-contenu">Contenu</label>
-						<textarea class="form-control" rows="18" name="page-contenu" placeholder="Page contenu"><?php echo $data["contenu"] ;?></textarea>
-					</div>
-					<div class="form-group">
-						<label for="page-contenu">Statut de la page</label>
+						<label for="product-status">Statut de la commande</label>
 						<div class="radio">
 							<label>
-								<input type="radio" name="optionsRadios" id="optionsRadios1" value="1" <?php echo $nb1 = ($data["statut"]==1) ? "checked" : "";?>>
-								<span class="label label-success">Publié</span>
+								<input type="radio" name="optionsRadios" id="optionsRadios1" value="2" <?php echo $nb1 = ($data["statut"]==2) ? "checked" : "";?>>
+								<span class="label label-success">Expedié</span>
 							</label>
 						</div>
 						<div class="radio">
 							<label>
 								<input type="radio" name="optionsRadios" id="optionsRadios2" value="0" <?php echo $nb1 = ($data["statut"]==0) ? "checked" : "";?>>
-								<span class="label label-warning">Brouillon</span>
+								<span class="label label-warning">En-traitement</span>
 							</label>
 						</div>
 						<div class="radio">
 							<label>
-								<input type="radio" name="optionsRadios" id="optionsRadios3" value="2" <?php echo $nb1 = ($data["statut"]==2) ? "checked" : "";?>>
-								<span class="label label-danger">Privé</span>
+								<input type="radio" name="optionsRadios" id="optionsRadios3" value="1" <?php echo $nb1 = ($data["statut"]==1) ? "checked" : "";?>>
+								<span class="label label-danger">Back-order</span>
 							</label>
 						</div>
-					</div>
-
-					<div class="checkbox" >
-						<label id="pagemap-toogle">
-							Page aura une carte.
-						</label>
-					</div>
-					<div id="pagemap">
-						<div class="form-group">
-							<label for="page-latitudes">Latitudes</label>
-							<input value="<?php echo $data["geo_lat"];?>" type="text" class="form-control" name="page-latitudes" placeholder="Enter Latitudes">
+						<div class="radio">
+							<label>
+								<input type="radio" name="optionsRadios" id="optionsRadios3" value="3" <?php echo $nb1 = ($data["statut"]==3) ? "checked" : "";?>>
+								<span class="label label-danger">Anullé</span>
+							</label>
 						</div>
-						<div class="form-group">
-							<label for="page-longitudes">Longitudes</label>
-							<input  value="<?php echo $data["geo_long"];?>" type="text" class="form-control" name="page-longitudes" placeholder="Enter Longitudes">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="page-date">Date</label>
-						<input type="hidden" name="page-date" value="<?php echo $data["date_modif"];?>">
-						<input type="hidden" name="page-id" value="<?php echo $data["id_page"];?>">
-						<input type="text" class="form-control" id="page-date-human" value="<?php echo date("l, d F  Y H:i:s",strtotime($data["date_modif"]));?>" disabled>
 					</div>
 					<div class="form-group">
 						<button name="commande-modifier" type="submit" class="btn btn-primary" data-loading-text="Sauvegardez...">Soumettre</button>
 					</div>
 					<div class="btn-group" data-toggle="buttons">
-				</form>		<!-- /Form Edit pages-->
+					<!-- / FIN CODE -->
+				</form><!-- /Form Edit Commande-->
 			</div>
-			</div><!--end panel-->
-		  </div>
+		</div><!--end panel-->
 	<?php }
 }
 ?>
