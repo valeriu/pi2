@@ -19,7 +19,13 @@ $(function(){
     	});
     }catch(e){
     	$('#msgError').show(); // Affichage d'error
-    }    
+    }
+
+
+    //Initialisation du logo anime
+    $( document ).ready(function() {
+        initLogo();
+    }); 
 
 });
 /* ----- Module Pattern avec IIFE et Closure ----- */

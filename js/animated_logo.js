@@ -208,3 +208,16 @@ p.nominalBounds = new cjs.Rectangle(0,0,76.3,36.4);
 
 })(lib = lib||{}, images = images||{}, createjs = createjs||{});
 var lib, images, createjs;
+var canvas, stage, exportRoot;
+
+function initLogo() {
+	canvas = document.getElementById("canvasLogo");
+	exportRoot = new lib.animated_logo();
+
+	stage = new createjs.Stage(canvas);
+	stage.addChild(exportRoot);
+	stage.update();
+
+	createjs.Ticker.setFPS(24);
+	createjs.Ticker.addEventListener("tick", stage);
+}

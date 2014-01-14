@@ -61,7 +61,7 @@ class Vue {
 					<article class="row"><!-- Une autre division pour le logo de la page -->
 						<article class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 							<a class="thumbnail" href="index.php">
-								<img id="logo" class="img-responsive" src="img/Logo.png" alt="logo wadagbe">
+								<canvas id="canvasLogo" width="600" height="200"></canvas>
 							</a>
 						</article>
 						<article class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-12 pull-right">
@@ -86,12 +86,16 @@ class Vue {
 			<!-- Bootstrap core JavaScript
 			================================================== -->
 			<!-- Placed at the end of the document so the pages load faster -->
-			<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+			<script src="js/vendor/jquery-1.10.2.min.js"></script>
 			<script src="js/vendor/bootstrap.min.js"></script>
+			<script src="js/vendor/easeljs-0.6.0.min.js"></script>
+			<script src="js/vendor/tweenjs-0.4.0.min.js"></script>
+			<script src="js/vendor/movieclip-0.6.0.min.js"></script>
 			<script src="js/holder.js"></script>
 			<script src="js/usager.js"></script>
 			<script src="js/main.js"></script>
 			<script src="js/panier.js"></script>
+			<script src="js/animated_logo.js"></script>
 		</body>
 	</html>
 <?php
