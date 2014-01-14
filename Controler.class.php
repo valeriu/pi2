@@ -33,6 +33,9 @@ class Controler {
 				case 'adresseCommande':
 					$this->adresseCommande();
 					break;
+				case 'produits':
+					$this->produits();
+					break;
 				default:
 					$this->accueil();
 					break;
@@ -105,6 +108,25 @@ class Controler {
 				VueAdresse::afficherAdrese($data);
 				$vue->afficherFooter();
 			}
+		}
+
+		private function produits() {
+			if(empty($_GET['mode']))
+				//default : tous les produits
+				$_GET['mode'] = "tous";
+			$oCatalogue = new Catalogue();
+			$aProduits = $oCatalogue->afficher($_GET['mode']);
+			Vue::afficherEntete();
+			if(!isset($_SESSION['usager'])){
+				VueUsagers::afficherFormUsagers();
+			}
+			else{
+				VueUsagers::afficherFormDeconnexion();
+			}
+			Vue::afficherBoutonPanier();
+			VueMenu::afficherMenu();
+			VueCatalogue::afficherCatalogue($aProduits);
+			Vue::afficherFooter();
 		}
 		// Placer les méthodes du controleur.
 				

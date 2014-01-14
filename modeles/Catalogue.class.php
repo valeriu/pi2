@@ -7,11 +7,11 @@
 class Catalogue {
 	// PARAMS
 	private $bd;
-	private $aCategories = array(1=>true,2=>true,3=>true);
-	private $sWhere 	 = "WHERE ";
+	private $aCategories;
+	private $sWhere = "WHERE ";
 
 	// CONSTRUCTEUR
-	public function __construct($aCategories){
+	public function __construct($aCategories=array(1=>true,2=>true,3=>true)){
 		$this->aCategories = $aCategories;
 		$this->bd 		   = BD::getInstance();
 

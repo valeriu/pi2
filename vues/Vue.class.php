@@ -96,6 +96,7 @@ class Vue {
 			<script src="js/usager.js"></script>
 			<script src="js/main.js"></script>
 			<script src="js/panier.js"></script>
+			<script src="js/catalogue.js"></script>
 			<script src="js/animated_logo.js"></script>
 		</body>
 	</html>
