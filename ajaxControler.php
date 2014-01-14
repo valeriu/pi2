@@ -113,8 +113,16 @@
 	}
 
 	function deconnecter(){
+		//var_dump($_SERVER['QUERY_STRING']);
+		//var_dump($_SERVER['HTTP_REFERER']);
 		session_destroy();
-		echo VueUsagers::afficherFormUsagers();
+		if($_SERVER['HTTP_REFERER'] == "http://e1295805.webdev.cmaisonneuve.qc.ca/Projet_Luc/index.php?requete=adresseCommande"){
+			//header('Location: index.php?requete=accueil');
+		}
+		else{
+			echo VueUsagers::afficherFormUsagers();
+		}
+		
 	}
 
 	function connecter(){
@@ -161,8 +169,13 @@
 	function adresse(){
 		try{
 			$adresse = new Adresse();
-			$adresse->enregistrer($_POST);
-			echo "Nouvelle adresse enregistrée";
+			var_dump($_POST);
+			var_dump($_SESSION['usager']);
+			$adresse->enregistrer($_SESSION['usager'], $_POST);
+			$adresse = new Adresse();
+			$courriel = array("courriel" => $_SESSION['usager']);
+			$data = $adresse->afficherAdresseUsager($courriel);
+			VueAdresse::afficherAdrese($data);
 		}
 		catch(Exception $e){
 			echo $e->getMessage();

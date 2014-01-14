@@ -68,9 +68,9 @@ class Adresse {
 	/**
 	 * Enregistrer une nouvelle adresse
 	*/
-	public function enregistrer ($aDonnees = Array()) {
+	public function enregistrer ($courriel, $aDonnees = Array()) {
 		//var_dump($aDonnees);
-		if($this->verifier($aDonnees)){
+		/*if($this->verifier($aDonnees)){
 			$idbd = $this->bd->getBD();
 
 			$adresse_id_adresse = $idbd->lastInsertId();
@@ -94,59 +94,79 @@ class Adresse {
 				throw new Exception("Une erreur s'est produite lors de l'enregistrement, recommencez (adresse-utilisateurs)");
 			}
 		}
-		else{
-			$id_utilisateurs 	= (!empty($aDonnees['id_utilisateurs'])) ? $aDonnees['id_utilisateurs'] : '';
-			$telephone 			= (!empty($aDonnees['telephone'])) ? $aDonnees['telephone'] : '';
-			$rue 				= (!empty($aDonnees['rue'])) ? $aDonnees['rue'] : '';
-			$appartement 		= (!empty($aDonnees['appartement'])) ? $aDonnees['appartement'] : '';
-			$ville 				= (!empty($aDonnees['ville'])) ? $aDonnees['ville'] : '';
-			$code_postal 		= (!empty($aDonnees['code_postal'])) ? $aDonnees['code_postal'] : '';
-			$province 			= (!empty($aDonnees['province'])) ? $aDonnees['province'] : '';
+		else{*/
+			//var_dump($aDonnees);
+			$courriel				 	= (!empty($courriel)) ? $courriel : '';
+			$telephone 				= (!empty($aDonnees['telephone'])) ? $aDonnees['telephone'] : '';
+			$rue 							= (!empty($aDonnees['rue'])) ? $aDonnees['rue'] : '';
+			$appartement 			= (!empty($aDonnees['appartement'])) ? $aDonnees['appartement'] : '';
+			$ville 						= (!empty($aDonnees['ville'])) ? $aDonnees['ville'] : '';
+			$code_postal 			= (!empty($aDonnees['code_postal'])) ? $aDonnees['code_postal'] : '';
+			$province 				= (!empty($aDonnees['province'])) ? $aDonnees['province'] : '';
 			
-			
-			$idbd = $this->bd->getBD();
-			//Préparation de la requête
-			//id_adresse	telephone	rue	appartement	ville	code_postal	province
-			$req = $idbd->prepare(	"INSERT INTO wa_adresse
-															(id_adresse, telephone, rue, appartement, ville, code_postal, province)
-															VALUES (null, ?, ?, ?, ?, ?, ?)");
-					
-			//var_dump($req);
-			$req->bindParam(1, $telephone);
-			$req->bindParam(2, $rue);
-			$req->bindParam(3, $appartement);
-			$req->bindParam(4, $ville);
-			$req->bindParam(5, $code_postal);
-			$req->bindParam(6, $province);
-			
-			$reponse = $req->execute();
-			
-			if($reponse){
-				$adresse_id_adresse = $idbd->lastInsertId();
-				//var_dump($adresse_id_adresse);
-				//id_adresse_utilisateur	adresse_id_adresse	utilisateurs_id_utilisateurs
-				$reqAdrUtil = $idbd->prepare(	"INSERT INTO wa_adresse_utilisateur
-																			(adresse_id_adresse, utilisateurs_id_utilisateurs)
-																			VALUES (?, ?)");
-					
-				//var_dump($adresse_id_adresse);
-				//var_dump($id_utilisateurs);
-				$reqAdrUtil->bindParam(1, $adresse_id_adresse);
-				$reqAdrUtil->bindParam(2, $id_utilisateurs);
-				
-				$reponseAdrUtil = $reqAdrUtil->execute();
-				//var_dump($reponseAdrUtil);
-				if($reponseAdrUtil){
-					return $reponseAdrUtil;
-				}
-				else{
-					throw new Exception("Une erreur s'est produite lors de l'enregistrement, recommencez (adresse-utilisateurs)");
-				}
+			if(Valider::estVide($courriel) || Valider::estVide($telephone) || Valider::estVide($rue) || Valider::estVide($ville) || Valider::estVide($code_postal) || Valider::estVide($province)){
+				throw new Exception("Tous les champs sont obligatiore");
 			}
 			else{
-				throw new Exception("Une erreur s'est produite lors de l'enregistrement, recommencez (adresse)");
-			}
-		}	
+				$idbd = $this->bd->getBD();
+				
+				$reqID = $idbd->prepare(	"SELECT id_utilisateurs
+																		FROM wa_utilisateurs
+																		WHERE courriel = ?");
+     
+				$reqID->bindParam(1, $courriel);
+				$reqID->execute();
+				
+				$id_utilisateurs = $reqID->fetch(PDO::FETCH_ASSOC);
+				
+				if($id_utilisateurs){
+					//Préparation de la requête
+					//id_adresse	telephone	rue	appartement	ville	code_postal	province
+					$req = $idbd->prepare(	"INSERT INTO wa_adresse
+																	(id_adresse, telephone, rue, appartement, ville, code_postal, province)
+																	VALUES (null, ?, ?, ?, ?, ?, ?)");
+							
+					//var_dump($req);
+					$req->bindParam(1, $telephone);
+					$req->bindParam(2, $rue);
+					$req->bindParam(3, $appartement);
+					$req->bindParam(4, $ville);
+					$req->bindParam(5, $code_postal);
+					$req->bindParam(6, $province);
+					
+					$req->execute();
+				
+					if($req->rowCount() > 0){
+						$adresse_id_adresse = $idbd->lastInsertId();
+						//var_dump($adresse_id_adresse);
+						//id_adresse_utilisateur	adresse_id_adresse	utilisateurs_id_utilisateurs
+						$reqAdrUtil = $idbd->prepare(	"INSERT INTO wa_adresse_utilisateur
+																					(adresse_id_adresse, utilisateurs_id_utilisateurs)
+																					VALUES (?, ?)");
+							
+						//var_dump($adresse_id_adresse);
+						//var_dump($id_utilisateurs);
+						$reqAdrUtil->bindParam(1, $adresse_id_adresse);
+						$reqAdrUtil->bindParam(2, $id_utilisateurs['id_utilisateurs']);
+						
+						$reponseAdrUtil = $reqAdrUtil->execute();
+						//var_dump($reponseAdrUtil);
+						if($reponseAdrUtil){
+							return $reponseAdrUtil;
+						}
+						else{
+							throw new Exception("Une erreur s'est produite lors de l'enregistrement, recommencez (adresse-utilisateurs)");
+						}
+					}
+					else{
+						throw new Exception("Une erreur s'est produite lors de l'enregistrement, recommencez (adresse)");
+					}
+				}
+				else{
+					throw new Exception("Une erreur s'est produite lors de la requête (id_utilisateur)");
+				}
+		}
+				
 	}
 	
 	/**
