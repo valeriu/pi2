@@ -121,7 +121,7 @@ class Pages {
 		$titre				= $aDonnees['titre'];
 		$description_meta	= $aDonnees['description_meta'];
 		$contenu			= $aDonnees['contenu'];
-		$statut 			= (!empty($aDonnees['statut'])) ? $aDonnees['statut'] : 1;
+		$statut 			= (!empty($aDonnees['statut'])) ? $aDonnees['statut'] : 0;
 		$geo_long 			= (!empty($aDonnees['geo_long'])) ? $aDonnees['geo_long'] : NULL;
 		$geo_lat			= (!empty($aDonnees['geo_lat'])) ? $aDonnees['geo_lat'] : NULL;
 		
