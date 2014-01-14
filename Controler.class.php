@@ -100,8 +100,9 @@ class Controler {
 				$vue->afficherBoutonPanier();
 				VueMenu::afficherMenu();
 				$adresse = new Adresse();
-				$adresse->afficherAdresseUsager($_SESSION['usager']);
-				VueAdresse::afficherAdrese();
+				$courriel = array("courriel" => $_SESSION['usager']);
+				$data = $adresse->afficherAdresseUsager($courriel);
+				VueAdresse::afficherAdrese($data);
 				$vue->afficherFooter();
 			}
 		}

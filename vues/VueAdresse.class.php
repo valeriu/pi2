@@ -10,7 +10,7 @@
 class VueAdresse {
 
 	
-	public function afficherAdrese() {
+	public function afficherAdrese($data) {
 
 		?>
 		<script>
@@ -22,6 +22,7 @@ class VueAdresse {
 			<form id="ShippingAddress" method="POST" action="#">
 				<div class="panel-group" id="accordion">
 					<div class="panel panel-default">
+						
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
@@ -29,10 +30,27 @@ class VueAdresse {
 								</a>
 							</h4>
 						</div>
+						
 						<div id="collapseOne" class="panel-collapse collapse in">
 							<div class="panel-body">
 								<div class="row">
-									<article class="col-lg-3">
+								<?php
+									for($i = 0; $i < count($data); $i++){
+										?>
+											<article class="col-lg-3">
+												<p><?php echo $data[$i]['rue']; ?> App.<?php echo $data[$i]['appartement']; ?></p>
+												<p><?php echo $data[$i]['ville']; ?>, <?php echo $data[$i]['province']; ?> &nbsp;<?php echo $data[$i]['code_postal']; ?></p>
+												<div class="input-group">
+													<label for="<?php echo $data[$i]['id_adresse']; ?>" class="form-control">Addresse <?php echo $i+1; ?></label> 
+													<span class="input-group-addon">
+														<input type="radio" id="<?php echo $data[$i]['id_adresse']; ?>" name="shippingAddress" value="<?php echo $data[$i]['id_adresse']; ?>">
+													</span>
+												</div><!-- /input-group -->
+											</article>
+										<?php
+									}
+								?>		
+								<!--<article class="col-lg-3">
 										<p>2650 Desjardins App.4</p>
 										<p>Montreal, Québec &nbsp;H1V 2H7</p>
 										<div class="input-group">
@@ -40,7 +58,7 @@ class VueAdresse {
 											<span class="input-group-addon">
 												<input type="radio" id="address1" name="shippingAddress" value="20">
 											</span>
-										</div><!-- /input-group -->
+										</div><!-- /input-group 
 									</article>
 									<article class="col-lg-3">
 										<p>1936 Martial App. 9</p>
@@ -50,8 +68,8 @@ class VueAdresse {
 											<span class="input-group-addon">
 												<input type="radio" id="address2" name="shippingAddress" value="20">
 											</span>
-										</div><!-- /input-group -->
-									</article>
+										</div><!-- /input-group
+									</article>-->
 								</div>
 							</div>
 						</div>

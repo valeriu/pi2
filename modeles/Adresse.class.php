@@ -265,20 +265,22 @@ class Adresse {
 			$idAdresses = $reqAdresses->fetchAll();
 			//var_dump($idAdresses);
 			if($idAdresses){
-				foreach($idAdresses['adresse_id_adresse'] as $val){
+				//var_dump($idAdresses[0]['adresse_id_adresse']);
+				for($i = 0; $i < count($idAdresses); $i++){
 					$reqAdresse = $idbd->prepare(	" SELECT *
 																					FROM wa_adresse
 																					WHERE id_adresse = ?");
 			 
-					$reqAdresse->bindParam(1, $idUtilisateur);
+					$reqAdresse->bindParam(1, $idAdresses[$i]['adresse_id_adresse']);
 					$reqAdresse->execute();
 					
-					$idUtilisateur = $reqAdresse->fetchAll();
+					$adressesUtilisateur[] = $reqAdresse->fetch(PDO::FETCH_ASSOC);
 				}
+				return $adressesUtilisateur;
 			}
 			else{
 				return false;
-			}*/
+			}
 		}
 		else{
 			throw new Exception("Cet utilisateur n'existe pas");

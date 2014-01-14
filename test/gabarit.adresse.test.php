@@ -114,7 +114,7 @@
 			<?php 
 				try{
 					$adresse = new Adresse();
-					$rep = $adresse->afficherAdresseUsager(array("courriel" => "tempor.lorem.eget@Curabiturvel.net"));
+					$rep = $adresse->afficherAdresseUsager(array("courriel" => "a@a.eu"));
 					var_dump($rep);
 				}
 				catch(Exception $e){

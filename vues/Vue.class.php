@@ -34,7 +34,7 @@ class Vue {
 				<link rel="shortcut icon" href="img/favicon.png">
 
 				<title><?php  echo $titre = (isset($aDonnees["titre"])) ? $aDonnees["titre"] : 'Wadagbé'; ?></title>
-			 
+				
 				<!-- Bootstrap core CSS -->
 				<link href="css/bootstrap.css" rel="stylesheet">
 
@@ -52,6 +52,7 @@ class Vue {
 				<link href="css/catalogue.css" rel="stylesheet">
 				<!-- GOOGLE FONTS -->
 				<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+				<script src="js/vendor/jquery-1.10.2.min.js"></script>
 			</head>
 		<!-- NAVBAR
 		================================================== -->

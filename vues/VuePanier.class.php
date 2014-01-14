@@ -27,7 +27,46 @@ class VuePanier {
 				Panier.creerPanier();
 			});
 		</script>
-
+		<?php
+					if(!isset($_SESSION['usager'])){
+				?>	
+						<script>
+							//CONNECTER
+							window.addEventListener('load', function () {
+								$("#confirmer").on("click", function(){
+									var xhr = new XMLHttpRequest();
+									xhr.open("GET", "ajaxControler.php?requete=formConnecter", true);	
+									xhr.onreadystatechange = function() {
+										if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
+											//$(".modal-content").html(xhr.responseText);
+											var str = xhr.responseText;
+											if(str.length > 100){
+												window.location("index.php?requete=adresseCommande");
+											}
+											else{
+												$("#myModal").html(xhr.responseText);
+												$('#myModal').modal('show');
+											}
+										}
+									};
+										xhr.send();
+								});
+							})
+						</script>
+				<?php	
+					}
+					else{
+						?>
+						<script>
+							window.addEventListener('load', function () {
+								$("#confirmer").on("click", function(){
+									window.location.assign("index.php?requete=adresseCommande");
+								});
+							})	
+						</script>	
+						<?php		
+					}
+				?>	
 			<div id="panier" class="">
 				<div class="panel panel-default">
 					<header class="panel-heading">
@@ -79,7 +118,7 @@ class VuePanier {
 				  	</article>
 				</div>
 				<a href="../index.html"><button name="retourner" id="back" class="btn btn-lg btn-primary" type="button">Retour au catalogue</button></a>
-				<button id="confirmer" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal" data-backdrop="false">Passer la commande</button>
+				<button id="confirmer" class="btn btn-lg btn-primary" >Passer la commande</button>
 				<!-- Modal -->
 				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				  <div class="modal-dialog">
@@ -88,31 +127,7 @@ class VuePanier {
 		      	</div><!-- /.modal-content -->
 				  </div><!-- /.modal-dialog -->
 				</div>
-				<?php
-					if(!isset($_SESSION['usager'])){
-						<script>
-							//CONNECTER
-							$("#confirmer").on("click", function(){
-								var xhr = new XMLHttpRequest();
-								xhr.open("GET", "ajaxControler.php?requete=formConnecter", true);	
-								xhr.onreadystatechange = function() {
-									if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
-										//$(".modal-content").html(xhr.responseText);
-										var str = xhr.responseText;
-										if(str.length > 100){
-											window.location("index.php?requete=adresseCommande");
-										}
-										else{
-											$("#modal-erreur").html(xhr.responseText);
-										}
-									}
-								};
-									xhr.send();
-							});
-						</script>
-					}
-					
-				?>
+
 			</div>
 			<div id="panierVide"><!-- Message de panier Vide -->
 				<div class="alert alert-danger">
