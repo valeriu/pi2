@@ -83,40 +83,36 @@ class VuePanier {
 				<!-- Modal -->
 				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				  <div class="modal-dialog">
-				    <div ame="modal-content" class="modal-content">
-				    	<div class="modal-header">
-					        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					        <h4 class="modal-title" id="myModalLabel">Informations à completer</h4>
-					    </div>
-				      	<div class="modal-body">
-							<div class="input-group input-group-sm">
-								Courriel :
-								<input name="email" type="text" class="form-control" required value="luisf.rosas@hotmail.com"/>
-							</div>
-							<div class="input-group input-group-sm">
-								Adresse:
-								<input name="adresse" type="text" class="form-control" required value="1884 De La SAlle"/>
-							</div>
-							<div class="input-group input-group-sm">
-								Ville:
-								<input name="ville" type="text" class="form-control" required value=""/>
-							</div>
-							<div class="input-group input-group-sm">
-								Province:
-								<input name="province" type="text" class="form-control" required value=""/>
-							</div>
-							<br>
-							<div id="champsVides" class="alert alert-danger">
-								<p>Il faut remplir tous les champs!</p>
-							</div>
-				      	</div>
-					    <div class="modal-footer">
-					        <button type="button" class="btn btn-default" data-dismiss="modal">Retourner au panier</button>
-					        <button type="submit" class="btn btn-primary" id="etape2">Confirmer</button>
-					    </div>
-				    </div><!-- /.modal-content -->
+				    <div name="modal-content" class="modal-content">
+				    	
+		      	</div><!-- /.modal-content -->
 				  </div><!-- /.modal-dialog -->
-				</div><!-- /.modal -->
+				</div>
+				<?php
+					if(!isset($_SESSION['usager'])){
+						<script>
+							//CONNECTER
+							$("#confirmer").on("click", function(){
+								var xhr = new XMLHttpRequest();
+								xhr.open("GET", "ajaxControler.php?requete=formConnecter", true);	
+								xhr.onreadystatechange = function() {
+									if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
+										//$(".modal-content").html(xhr.responseText);
+										var str = xhr.responseText;
+										if(str.length > 100){
+											window.location("index.php?requete=adresseCommande");
+										}
+										else{
+											$("#modal-erreur").html(xhr.responseText);
+										}
+									}
+								};
+									xhr.send();
+							});
+						</script>
+					}
+					
+				?>
 			</div>
 			<div id="panierVide"><!-- Message de panier Vide -->
 				<div class="alert alert-danger">
@@ -140,66 +136,6 @@ class VuePanier {
 				</div>
 			</div>
 <?php
-		
-	}
-
-
-	public function afficherModalConnexion() {
-		$html =	'<div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			        <h4 class="modal-title" id="myModalLabel">Se connecter</h4>
-			    </div>
-		      	<div class="modal-body">
-					<form class="form-signin" name="form-usager-connecter">
-						<div class="input-group input-group-sm">
-							Courriel:
-							<input name="courriel" id="courriel" type="email" class="form-control" required>
-						</div>
-						<div class="input-group input-group-sm">
-							Mot de Passe:
-							<input name="mot_passe" id="mot_passe" type="password" class="form-control" required>
-						</div>
-						<button name="motPasseOublie" id="motPasseOublie" type="button">Mot de passe oublié</a>
-						<br>
-						<button name="connexion" id="connexion" class="btn btn-primary" type="button">Connexion</button>
-						<br>
-					</form>
-		      	</div>
-			    <div class="modal-footer">
-			    </div>
-			    <script>
-			    	//Mot de passe oublie
-			    	$("#motPasseOublie").on("click", function(){
-						var xhr = new XMLHttpRequest();
-						xhr.open("GET", "ajaxControler.php?requete=motpasse", true);	
-						xhr.onreadystatechange = function() {
-							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
-								//clearTimeout(timeout);
-								console.log(xhr.responseText);
-								$(\'.modal-content\').html(xhr.responseText);
-							}
-						};
-						xhr.send();
-					});
-					//Connexion
-					$("#connexion").on("click", function(){
-						var xhr = new XMLHttpRequest();
-						var m = $(\'#courriel\').val();
-						var p = $(\'#mot_passe\').val();
-						xhr.open("POST", "ajaxControler.php?requete=connecter", true);	
-						var req = "courriel=" + m + "&mot_passe=" + p;
-						xhr.onreadystatechange = function() {
-							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
-								//clearTimeout(timeout);
-								console.log(xhr.responseText);
-								$(\'.modal-content\').html(xhr.responseText);
-							}
-						};
-						xhr.send(req);
-					});
-			    </script>';	
-
-		return $html;
 		
 	}
 

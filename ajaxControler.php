@@ -36,6 +36,9 @@
 		case 'formMotPasse':
 			formMotPasse();
 			break;
+		case 'formAdresse':
+			formAdresse();
+			break;	
 		case 'connecter':
 			//var_dump($_POST);
 			connecter();
@@ -101,6 +104,11 @@
 	
 	function formMotPasse(){
 		$html = VueUsagers::afficherModalMotPasse();
+		echo $html;
+	}
+	
+	function formAdresse(){
+		$html = VueUsagers::afficherModalAdresse();
 		echo $html;
 	}
 

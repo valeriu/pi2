@@ -25,7 +25,7 @@ class Usagers {
 		$mot_passe 		= (!empty($aDonnees['mot_passe'])) ? $aDonnees['mot_passe'] : '';
 		$nom_prenom 	= (!empty($aDonnees['nom_prenom'])) ? $aDonnees['nom_prenom'] : '';
 		$role 			= (!empty($aDonnees['role'])) ? $aDonnees['role'] : 0;
-		var_dump($_POST);
+		//var_dump($_POST);
 		
 		if(!Valider::estCourriel($courriel)){
 			throw new Exception("Ce courriel est invalide");
@@ -34,14 +34,6 @@ class Usagers {
 		if(!Valider::estEntreString($mot_passe, 6, 12)){
 			throw new Exception("Mot de passe non conforme");
 		}
-		
-		/*if(!Valider::estAlphaNumerique($nom_prenom)){
-			throw new Exception("Nom, Prénom non conforme");
-		}*/
-		
-		/*if(!Valider::estInt($role)){
-			throw new Exception("Entrez un chiffre valide pour le rôle Ex. 0, 1 ou 2 ");
-		}*/
 		
 		$mot_passe = MD5($mot_passe);
 		
@@ -80,15 +72,16 @@ class Usagers {
 		$courriel 		= (!empty($aDonnees['courriel'])) ? $aDonnees['courriel'] : '';
 		$mot_passe 		= (!empty($aDonnees['mot_passe'])) ? $aDonnees['mot_passe'] : '';
 		
-		/*if(!Valider::estCourriel($courriel)){
+		if(!Valider::estCourriel($courriel)){
 			throw new Exception("Ce courriel est invalide");
-		}*/
+		}
 		
-		/*if(!Valider::estEntreString($mot_passe, 4, 12)){
+		if(!Valider::estEntreString($mot_passe, 4, 12)){
 			throw new Exception("Mot de passe non conforme");
-		}*/
-		
-		//$mot_passe = MD5($mot_passe);
+		}
+		//var_dump($courriel);
+		//var_dump($mot_passe);
+		$mot_passe = MD5($mot_passe);
 		
 		$idbd = $this->bd->getBD();
 		//$idbd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -109,7 +102,7 @@ class Usagers {
 		if($obj){
 			return $obj;
 		}
-        else{
+    else{
 			throw new Exception("Courriel ou mot de passe invalide");
 		}
 	}
@@ -239,40 +232,54 @@ class Usagers {
 	 */
 	public function envoyerMotPasse ($aDonnees = Array()) {
 		$courriel = (!empty($aDonnees['courriel'])) ? $aDonnees['courriel'] : '';
-		var_dump($courriel);
+		//var_dump($courriel);
 		if(!Valider::estCourriel($courriel)){
 			throw new Exception("Ce courriel est invalide");
 		}
 		
 		$idbd = $this->bd->getBD();
 		
-		$cle = MD5(rand(1000, 1000077777));
-		
-		$req = $idbd->prepare(	"UPDATE wa_utilisateurs
-								SET cle_reactivation = ?, 
-								WHERE courriel = ?");
+		$idbd = $this->bd->getBD();
+		//Préparation de la requête
+		$reqCourriel	= $idbd->prepare(	"SELECT *
+																		FROM wa_utilisateurs
+																		WHERE courriel = ?");
         
-		//var_dump($req);
-        $req->bindParam(1, $cle);
-        $req->bindParam(2, $courriel);
+		$reqCourriel->bindParam(1, $courriel);
+		$reqCourriel->execute();
+		$obj = $reqCourriel->fetch(PDO::FETCH_ASSOC);
 		
-		$reponse = $req->execute();
-		
-		if($reponse){
-			$to      = $courriel;
-			$subject = 'Réinitialisation de mot de passe';
-			$message = "Cliquez sur le lien suivant pour choisir un nouveau mot de passe:
-			http://1295805.webdev.cmaisonneuve.qc.ca/Projet_Luc/index.php?pass=$cle";
-			$headers = 'From: webmaster@wadagbe.com' . "\r\n" .
-				'Reply-To: webmaster@wadagbe.com' . "\r\n" .
-				'X-Mailer: PHP/' . phpversion();
-
-			mail($to, $subject, $message, $headers);
+		if($obj){
+			$cle = MD5(rand(1000, 1000077777));
+			$req = $idbd->prepare(	"UPDATE wa_utilisateurs
+									SET cle_reactivation = ? 
+									WHERE courriel = ?");
+					
+			//var_dump($req);
+			$req->bindParam(1, $cle);
+			$req->bindParam(2, $courriel);
 			
-			return true;
+			$req->execute();
+			//var_dump($req->rowCount());
+			if($req->rowCount() > 0){
+				$to      = $courriel;
+				$subject = 'Réinitialisation de mot de passe';
+				$message = "Cliquez sur le lien suivant pour choisir un nouveau mot de passe:
+				http://1295805.webdev.cmaisonneuve.qc.ca/Projet_Luc/index.php?pass=$cle";
+				$headers = 'From: webmaster@wadagbe.com' . "\r\n" .
+					'Reply-To: webmaster@wadagbe.com' . "\r\n" .
+					'X-Mailer: PHP/' . phpversion();
+
+				mail($to, $subject, $message, $headers);
+				
+				return true;
+			}
+			else{
+				throw new Exception("Erreur lors de la modification, recommencez");
+			}			
 		}
 		else{
-			throw new Exception("Erreur lors de la modification, recommencez");
+			throw new Exception("Ce courriel n'existe pas");
 		}	
 		
 	} 

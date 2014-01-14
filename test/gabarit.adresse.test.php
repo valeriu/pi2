@@ -110,6 +110,19 @@
 				
 			?>
 			
+			<h1>Test: afficherAdresseUsager() fonctionnel</h1>
+			<?php 
+				try{
+					$adresse = new Adresse();
+					$rep = $adresse->afficherAdresseUsager(array("courriel" => "tempor.lorem.eget@Curabiturvel.net"));
+					var_dump($rep);
+				}
+				catch(Exception $e){
+					echo $e->getMessage();
+				}
+				
+			?>
+			
 		</div>
 		<div id="footer">
 

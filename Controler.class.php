@@ -30,6 +30,9 @@ class Controler {
 				case 'page':
 					$this->page();
 					break;
+				case 'adresseCommande':
+					$this->adresseCommande();
+					break;
 				default:
 					$this->accueil();
 					break;
@@ -84,6 +87,23 @@ class Controler {
 			VueMenu::afficherMenu();
 			VuePanier::affichePanier();
 			$vue->afficherFooter();
+		}
+		
+		private function adresseCommande(){
+			if(!isset($_SESSION['usager'])){
+				$this->accueil();
+			}
+			else{
+				$vue =  new Vue();
+				$vue->afficherEntete();
+				VueUsagers::afficherFormDeconnexion();
+				$vue->afficherBoutonPanier();
+				VueMenu::afficherMenu();
+				$adresse = new Adresse();
+				$adresse->afficherAdresseUsager($_SESSION['usager']);
+				VueAdresse::afficherAdrese();
+				$vue->afficherFooter();
+			}
 		}
 		// Placer les méthodes du controleur.
 				

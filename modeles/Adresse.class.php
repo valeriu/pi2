@@ -239,6 +239,52 @@ class Adresse {
 		}
 	}
 	
+	public function afficherAdresseUsager ($aDonnees = Array()) {
+		$courriel 	= (!empty($aDonnees['courriel'])) ? $aDonnees['courriel'] : '';
+		$idbd = $this->bd->getBD();
+		//Préparation de la requête
+		$reqID = $idbd->prepare(	"SELECT id_utilisateurs
+                              FROM wa_utilisateurs
+															WHERE courriel = ?");
+     
+		$reqID->bindParam(1, $courriel);
+    $reqID->execute();
+		
+		$idUtilisateur = $reqID->fetch(PDO::FETCH_ASSOC);
+		//var_dump($idUtilisateur);
+		
+		if($idUtilisateur){
+			
+			$reqAdresses = $idbd->prepare(	" SELECT adresse_id_adresse
+																				FROM wa_adresse_utilisateur
+																				WHERE utilisateurs_id_utilisateurs = ?");
+     
+			$reqAdresses->bindParam(1, $idUtilisateur["id_utilisateurs"]);
+			$reqAdresses->execute();
+			
+			$idAdresses = $reqAdresses->fetchAll();
+			//var_dump($idAdresses);
+			if($idAdresses){
+				foreach($idAdresses['adresse_id_adresse'] as $val){
+					$reqAdresse = $idbd->prepare(	" SELECT *
+																					FROM wa_adresse
+																					WHERE id_adresse = ?");
+			 
+					$reqAdresse->bindParam(1, $idUtilisateur);
+					$reqAdresse->execute();
+					
+					$idUtilisateur = $reqAdresse->fetchAll();
+				}
+			}
+			else{
+				return false;
+			}*/
+		}
+		else{
+			throw new Exception("Cet utilisateur n'existe pas");
+		}
+	}
+	
 	
 }
 

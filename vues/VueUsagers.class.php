@@ -44,6 +44,7 @@ class VueUsagers {
 			        <h4 class="modal-title" id="myModalLabel">Se connecter</h4>
 			    </div>
 		      	<div class="modal-body">
+						<p id="modal-erreur"></p>
 					<form class="form-signin" name="form-usager-connecter">
 						<div class="input-group input-group-sm">
 							Courriel:
@@ -68,7 +69,14 @@ class VueUsagers {
 						xhr.open("GET", "ajaxControler.php?requete=formMotPasse", true);	
 						xhr.onreadystatechange = function() {
 							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
-								$(".modal-content").html(xhr.responseText);
+								//$(".modal-content").html(xhr.responseText);
+								var str = xhr.responseText;
+								if(str.length > 100){
+									$(".modal-content").html(xhr.responseText);
+								}
+								else{
+									$("#modal-erreur").html(xhr.responseText);
+								}
 							}
 						};
 						xhr.send();
@@ -82,10 +90,15 @@ class VueUsagers {
 						var req = "courriel=" + m + "&mot_passe=" + p;
 						xhr.onreadystatechange = function() {
 							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
-								//clearTimeout(timeout);
-								$("#usager").replaceWith(xhr.responseText);
-								$("#deconnecter").on("click", clickDeconnecter);
-								$("#myModal").modal("hide");
+								var str = xhr.responseText;
+								if(str.length > 100){
+									$("#usager").replaceWith(xhr.responseText);
+									$("#deconnecter").on("click", clickDeconnecter);
+									$("#myModal").modal("hide");
+								}
+								else{
+									$("#modal-erreur").html(xhr.responseText);
+								}
 							}
 						};
 						xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -99,25 +112,24 @@ class VueUsagers {
 
 
 	public function afficherModalEnregistrer() {
-
-		
 		$html =	'<div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			        <h4 class="modal-title" id="myModalLabel">Entrez les informations suivantes</h4>
 			    </div>
 		      	<div class="modal-body">
+						<p id="modal-erreur"></p>
 					<form class="form-signin" name="form-usager-enregistrer" >
 						<div class="input-group input-group-sm">
 							Nom, Prénom:
-							<input id="nom" name="nom" type="text" class="form-control"  required>
+							<input id="nom" name="nom" type="text" class="form-control"  required placeholder="Nom, Prénom">
 						</div>
 						<div class="input-group input-group-sm">
 							Courriel:
-							<input id="courriel" name="courriel" type="email" class="form-control" required>
+							<input id="courriel" name="courriel" type="email" class="form-control" required placeholder="Ex@ex.com">
 						</div>
 						<div class="input-group input-group-sm">
 							Mot de Passe:
-							<input id="mot_passe" name="mot_passe" type="password" class="form-control" required>
+							<input id="mot_passe" name="mot_passe" type="password" class="form-control" required placeholder="Entre 6 et 12 caractère">
 						</div>
 						<br>
 						<button name="enregistrer" id="enregistrer" class="btn btn-primary" type="button">Confirmer</button>
@@ -138,9 +150,16 @@ class VueUsagers {
 						xhr.onreadystatechange = function() {
 							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
 								//clearTimeout(timeout);
-								$("#usager").replaceWith(xhr.responseText);
-								$("#deconnecter").on("click", clickDeconnecter);
-								$("#myModal").modal("hide");
+								var str = xhr.responseText;
+								//console.log(str.length);
+								if(str.length > 100){
+									$("#usager").replaceWith(xhr.responseText);
+									$("#deconnecter").on("click", clickDeconnecter);
+									$("#myModal").modal("hide");
+								}
+								else{
+									$("#modal-erreur").html(xhr.responseText);
+								}
 							}
 						};
 						xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -159,31 +178,71 @@ class VueUsagers {
 			        <h4 class="modal-title" id="myModalLabel">Complétez toutes les informations suivantes</h4>
 			    </div>
 		      	<div class="modal-body">
+						<p id="modal-erreur"></p>
 					<form class="form-signin" name="form-usager-adresse" >
 						<!-- telephone	rue	appartement	ville	code_postal	province -->
 						<div class="input-group input-group-sm">
 							Téléphone
-							<input id="tel" name="tel" type="tel" class="form-control" required>
-						</div>
+							<input id="tel" name="tel" type="tel" class="form-control" required placeholder="xxx-xxx-xxxx">
 						<div class="input-group input-group-sm">
-							Rue:
-							<input id="rue" name="rue" type="text" class="form-control" required>
+							No. civique et Rue:
+							<input id="rue" name="rue" type="text" class="form-control" required placeholder="123 rue exemple">
 						</div>
 						<div class="input-group input-group-sm">
 							Appartement:
-							<input id="appartement" name="appartement" type="text" class="form-control">
+							<input id="appartement" name="appartement" type="text" class="form-control" placeholder="#3">
 						</div>
 						<div class="input-group input-group-sm">
 							Ville:
-							<input id="ville" name="ville" type="text" class="form-control" required>
+							<input id="ville" name="ville" type="text" class="form-control" required placeholder="Exemple">
 						</div>
 						<div class="input-group input-group-sm">
 							Province:
-							<input id="province" name="province" type="text" class="form-control" required>
-						</div>
+							<div class="btn-group row " data-toggle="buttons">
+								<label class="btn btn-default" title="Québec">
+									<input type="radio" name="province" id="option1" value="qc"> Qc
+								</label>
+								<label class="btn btn-default" title="Ontario">
+									<input type="radio" name="province" id="option2" value="on"> On
+								</label>
+								<label class="btn btn-default" title="Manitoba">
+									<input type="radio" name="province" id="option3" value="mn"> Mn
+								</label>
+								<label class="btn btn-default" title="Saskatchewan">
+									<input type="radio" name="province" id="option4" value="sk"> Sk
+								</label>
+								<label class="btn btn-default" title="Colombie-Britannique">
+									<input type="radio" name="province" id="option5" value="cb"> Cb
+								</label>
+								<label class="btn btn-default" title="Nouveau-Brunswick">
+									<input type="radio" name="province" id="option6" value="nb"> Nb
+								</label>
+								<label class="btn btn-default" title="Nouvelle-Écosse">
+									<input type="radio" name="province" id="option7" value="ne"> Ne
+								</label>
+								<label class="btn btn-default" title="Île-du-Prince-Édouard">
+									<input type="radio" name="province" id="option7" value="ie"> Ie
+								</label>
+								<label class="btn btn-default" title="Alberta">
+									<input type="radio" name="province" id="option8" value="al"> Al
+								</label>
+								<label class="btn btn-default" title="Terre-Neuve">
+									<input type="radio" name="province" id="option9" value="tn"> Tn
+								</label>
+								<label class="btn btn-default" title="Territoire du Nord-Ouest">
+									<input type="radio" name="province" id="option9" value="no"> No
+								</label>
+								<label class="btn btn-default" title="Yukon">
+									<input type="radio" name="province" id="option10" value="yk"> Yk
+								</label>
+								<label class="btn btn-default" title="Nunavut">
+									<input type="radio" name="province" id="option11" value="nv"> Nv
+								</label>
+							</div>
+						</div>	
 						<div class="input-group input-group-sm">
 							Code postal:
-							<input id="codePostal" name="codePostal" type="text" class="form-control" required>
+							<input id="codePostal" name="codePostal" type="text" class="form-control" required placeholder="X1X 1X1">
 						</div>
 						<button name="adresse" id="adresse" class="btn btn-primary" type="button">Soumettre</button>
 						<br>	
@@ -206,8 +265,12 @@ class VueUsagers {
 						var req = "telephone=" + t + "&rue=" + r + "&appartement=" + a + "&ville=" + v + "&province=" + p + "&code_postal=" + cp;
 						xhr.onreadystatechange = function() {
 							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
-								//clearTimeout(timeout);
-								$(".modal-content").html(xhr.responseText);
+								if(xhr.responseText == "Nouvelle adresse enregistrée"){
+									$(".modal-content").html(xhr.responseText);
+								}
+								else{
+									$("#modal-erreur").html(xhr.responseText);
+								}
 							}
 						};
 						xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -225,6 +288,7 @@ class VueUsagers {
 			        <h4 class="modal-title" id="myModalLabel">Se connecter</h4>
 			    </div>
 		      	<div class="modal-body">
+						<p id="modal-erreur"></p>
 					<form class="form-signin" name="form-usager-connecter" >
 						<div class="input-group input-group-sm">
 							Courriel:
@@ -249,8 +313,8 @@ class VueUsagers {
 									$(".modal-content").html(xhr.responseText);
 								}
 								else{
-									var p = "<p>" + xhr.responseText + "</p>";
-									$(".modal-body").prepend(p);
+									var erreur = "<p>" + xhr.responseText + "</p>";
+									$("#modal-erreur").html(erreur);
 								}
 								
 							}
