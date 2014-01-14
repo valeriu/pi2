@@ -34,12 +34,12 @@ class VueCommandes {
 			for ($i=$partir, $j=$fin; $i<$j; $i++){
 				$htmlPage .= "<tr>\r\n";
 					$htmlPage .= "<td><a href=\"adminka.php?requete=details_commande&commande_id={$aDonneesCommandes[$i]["id_commandes"]}\" title=\"Edit: {$aDonneesCommandes[$i]["date_commande"]}\">{$aDonneesCommandes[$i]["id_commandes"]}</a></td>\r\n";
-					
-					$htmlPage .= "<td>{$aDonneesCommandes[$i]["date_commande"]}</td>\r\n";
+					// Format heure
+					$dateFormatLisible = date("l, d F Y",strtotime($aDonneesCommandes[$i]["date_commande"]));
+					$heureFormatLisible = date("H:i:s",strtotime($aDonneesCommandes[$i]["date_commande"]));
+
+					$htmlPage .= "<td><abbr title=\"{$heureFormatLisible}\">{$dateFormatLisible}</abbr></td>\r\n";
 					$htmlPage .= "<td><a href=\"adminka.php?requete=usagers&usager_id={$aDonneesCommandes[$i]["utilisateurs_id_utilisateurs"]}\" title=\"Edit: {$aDonneesCommandes[$i]["utilisateurs_id_utilisateurs"]}\">{$aDonneesCommandes[$i]["utilisateurs_id_utilisateurs"]}</a></td>\r\n";
-					/*$dateFormatLisible = date("l, d F Y",strtotime($aDonneesCommandes[$i]["date_modif"]));
-					$heureFormatLisible = date("H:i:s",strtotime($aDonneesCommandes[$i]["date_modif"]));
-					$htmlPage .= "<td><abbr title=\"{$heureFormatLisible}\">{$dateFormatLisible}</abbr></td>";*/
 					switch ($aDonneesCommandes[$i]["statut"]) {
 						case 0: // En traitement
 							$htmlPage .= "<td><span class=\"label label-warning\">En-traitement</span></td>";
@@ -109,6 +109,11 @@ class VueCommandes {
 					default:
 						break;
 				}
+
+				// Format heure
+					$dateFormatLisible = date("l, d F Y",strtotime($data["date_commande"]));
+					$heureFormatLisible = date("H:i:s",strtotime($data["date_commande"]));
+					$dateEtHeure = "<abbr title=\"{$heureFormatLisible}\">{$dateFormatLisible}</abbr>";
 			?>
 				<!-- Form Edit Commande-->
 				<form role="form" method="POST" action="./adminka.php?requete=modifier_commande&commande_id=<?php echo $data["id_commandes"]?>">
@@ -129,8 +134,8 @@ class VueCommandes {
 							<div class="row">
 								<div class="col-sm-12">
 									<input type="hidden" name="commande_id" value="<?php echo $data["id_commandes"] ;?>">
-									<div class="col-sm-2"><?php echo $data["id_commandes"] ;?></div>
-									<div class="col-sm-2"><?php echo $data["date_commande"] ;?></div>
+									<div class="col-sm-1"><?php echo $data["id_commandes"] ;?></div>
+									<div class="col-sm-3"><?php echo $dateEtHeure ;?></div>
 									<div class="col-sm-2"><?php echo $data["utilisateurs_id_utilisateurs"] ;?></div>
 									<div class="col-sm-3"><?php
 										$htmlPage = '';
