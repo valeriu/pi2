@@ -51,31 +51,68 @@ class VueCatalogue {
 		for($i=0,$c=count($aProduits);$i<$c;$i++) {
 ?>
 
-			  <tr title="Cliquez pour description!">
-	            <td class="clickable"><?php echo $aProduits[$i]["id_produits"]; ?></td>
-	            <td class="clickable"><h3><?php echo $aProduits[$i]["nom"]; ?></h3></td>
-	            <td class="clickable"><?php echo $aProduits[$i]["puissance"]; ?>W</td>
-	            <td class="clickable"><?php echo $aCategories[$aProduits[$i]["categorie_id_categorie"]]; ?></td>
-	            <td class="clickable"><img src="img/products/<?php echo $aProduits[$i]["image"]; ?>.jpg"></td>
-	            <td class="clickable text-success text-pricing"><strong><?php echo $aProduits[$i]["prix"]; ?></strong></td>
-	            <td>
-	              <button type="button" id="5" class="btn btn-primary btn-home ajouter"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Ajouter au panier</button>
-	            </td>
-	          </tr>
-
+					  <tr title="Cliquez pour description!">
+			            <td class="clickable"><?php echo $aProduits[$i]["id_produits"]; ?></td>
+			            <td class="clickable"><h3><?php echo $aProduits[$i]["nom"]; ?></h3></td>
+			            <td class="clickable"><?php echo $aProduits[$i]["puissance"]; ?>W</td>
+			            <td class="clickable"><?php echo $aCategories[$aProduits[$i]["categorie_id_categorie"]]; ?></td>
+			            <td class="clickable"><img src="img/products/<?php echo $aProduits[$i]["image"]; ?>.jpg"></td>
+			            <td class="clickable text-success text-pricing"><strong><?php echo $aProduits[$i]["prix"]; ?>$</strong></td>
+			            <td>
+			              <button type="button" id="<?php echo $aProduits[$i]["id_produits"]; ?>" class="btn btn-primary btn-home ajouter"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Ajouter au panier</button>
+			            </td>
+			          </tr>
+					  <tr>
+			            <td colspan="7">
+			              <article class="product-details" hidden>
+			                <ul class="list-group col-md-9">
+<?php 
+							//decoupage de la liste des specifications en liste
+							$aSpecs = explode(",", $aProduits[$i]["specification"]);
+							for($j=0,$d=count($aSpecs);$j<$d;$j++) {
+?>
+								<li class="list-group-item"><?php echo $aSpecs[$j]; ?></li>
+<?php
+							}
+ ?>
+			                </ul> 
+			                <ul class="nav col-md-3">
+			                	<li>
+			                	  <span class="glyphicon glyphicon-star"></span>
+				                  <span class="glyphicon glyphicon-star"></span>
+				                  <span class="glyphicon glyphicon-star"></span>
+				                  <span class="glyphicon glyphicon-star-empty"></span>
+				                  <span class="glyphicon glyphicon-star-empty"></span>
+			                	</li>
+			                	<br>
+				                <li>
+				                   <aside class="panel panel-default">
+						            <div class="panel-heading">
+						              <h3 class="panel-title">Suggestions :</h3>
+						            </div>
+						            <div class="panel-body">
+						              <ul class="nav">
+						              	<li><a href="#">Produit 1</a></li>
+						              	<li><a href="#">Produit 2</a></li>
+						              	<li><a href="#">Produit 3</a></li>
+						              </ul>
+						            </div>
+						          </aside>
+				                </li>   
+			                </ul>
+			              </article>
+			            </td>
+			          </tr>
+					
 <?php
 		}
 ?>
-
 					</tbody>
 			      </table>
 			    </section>
 			  </main>
 			</div>
-
 <?php
 	}
-
 }
-
 ?>
