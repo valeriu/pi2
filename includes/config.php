@@ -30,5 +30,5 @@
 	define("PASS","50319801101");
 	
 // Google Maps API
-	define("GOOOGLEMAPAPI", "AIzaSyDyww0kT3sGjHybCQdvUB1vIOeelhxZtao");
+	define("GOOOGLEMAPAPI", "AIzaSyA65H6gOhP5ozo4DKYu0woD0tT7k2yKu78");
 ?>
