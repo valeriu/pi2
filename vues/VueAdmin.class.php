@@ -62,17 +62,15 @@ class VueAdmin {
 	
 	<?php }
 
-	public function afficherConnexion() { ?>
+	public function afficherConnexion($msg='') { ?>
 		<div class="container">
-		<form class="form-signin" action="http://e1295805.webdev.cmaisonneuve.qc.ca/valeriu/adminka.php?requete=page" method="GET">
-			<h2 class="form-signin-heading">Wadagbé administration</h2>
-			<input type="text" class="form-control" placeholder="Adresse courriel" required autofocus>
-			<input type="password" class="form-control" placeholder="Mot de passe" required>
-			<label class="checkbox">
-			  <input type="checkbox" value="remember-me">Se souvenir de moi
-			</label>
-			<button class="btn btn-lg btn-primary" type="submit">Se connecter</button>
-		  </form>
+			<form class="form-signin" action="adminka.php?requete=connexion" method="post">
+				<h2 class="form-signin-heading">Wadagbé administration</h2>
+				<span><?php echo $msg; ?></span>
+				<input type="text" name="courriel" class="form-control" placeholder="Adresse courriel" required autofocus>
+				<input type="password" name="mot_passe" class="form-control" placeholder="Mot de passe" required>
+				<button class="btn btn-lg btn-primary" type="submit">Se connecter</button>
+			 </form>
 		</div> <!-- /container -->
 	
 	<?php }
@@ -87,7 +85,7 @@ class VueAdmin {
 				</div>
 				<div class="navbar-collapse">
 				  <ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="./">Déconnexion</a></li>
+					<li class="active"><a href="adminka.php?requete=deconnexion">Déconnexion</a></li>
 				  </ul>
 				</div><!--/.nav-collapse -->
 			  </div>

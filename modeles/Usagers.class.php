@@ -107,6 +107,54 @@ class Usagers {
 		}
 	}
 	
+	
+	/**
+	 * Connecter un usager ADMIN
+	 */
+	public function connecterAdmin ($aDonnees = Array()) {
+		//$courriel, $mot_passe
+		//var_dump($aDonnees['courriel']);
+		//var_dump($aDonnees['mot_passe']);
+		$courriel 		= (!empty($aDonnees['courriel'])) ? $aDonnees['courriel'] : '';
+		$mot_passe 		= (!empty($aDonnees['mot_passe'])) ? $aDonnees['mot_passe'] : '';
+		
+		if(!Valider::estCourriel($courriel)){
+			throw new Exception("Ce courriel est invalide");
+		}
+		
+		if(!Valider::estEntreString($mot_passe, 4, 12)){
+			throw new Exception("Mot de passe non conforme");
+		}
+		//var_dump($courriel);
+		//var_dump($mot_passe);
+		$mot_passe = MD5($mot_passe);
+		
+		$idbd = $this->bd->getBD();
+		//$idbd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		//Préparation de la requête
+		$req = $idbd->prepare(	"	SELECT *
+                              FROM wa_utilisateurs
+                              WHERE courriel = ?
+															AND mot_passe = ?
+															AND (role = 1 OR role = 2)");
+
+		//var_dump($req);
+		//var_dump($courriel);
+		//var_dump($mot_passe);
+		$req->bindParam(1, $courriel);
+		$req->bindParam(2, $mot_passe);
+		$req->execute();
+		
+		$obj = $req->fetch(PDO::FETCH_ASSOC);
+		//var_dump($obj);
+		if($obj){
+			return true;
+		}
+    else{
+			throw new Exception("Courriel ou mot de passe invalide");
+		}
+	}
+	
 	/**
 	 * Modifier un usager
 	 */

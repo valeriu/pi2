@@ -328,5 +328,168 @@ class VueUsagers {
 	}
 
 	
+	public function afficherListeUsagersAdmin($aDonneesUsagers, $aDonneesPaginator, $partir, $fin) {	
+			//var_dump($aDonneesUsagers);
+			$nomberUsager = count($aDonneesUsagers);
+			//print_r($data);
+			$htmlPage = "";
+			$htmlPagination = "";
+			
+			$htmlPagination .= "<!--Pagination-->	<ul class=\"pagination\">";
+				foreach($aDonneesPaginator as $page){
+					$htmlPagination .= "<li><a href='adminka.php?requete=liste_usagers&partir={$page["partir"]}&fin={$page["fin"]}'>{$page["page"]}</a></li>";
+				}
+			$htmlPagination .= "</ul>";
+			
+			$fin = min($fin, $nomberUsager);
+			
+			for ($i=$partir, $j=$fin; $i<$j; $i++){
+				$htmlPage .= "<tr>\r\n";
+					//ID
+					$htmlPage .= "<td>{$aDonneesUsagers[$i]["id_utilisateurs"]}</td>\r\n";
+					//NOM
+					$htmlPage .= "<td><a href='adminka.php?requete=details_usager&id_utilisateurs={$aDonneesUsagers[$i]["id_utilisateurs"]}'>{$aDonneesUsagers[$i]["nom_prenom"]}</a></td>\r\n";
+					//COURRIEL
+					$htmlPage .= "<td>{$aDonneesUsagers[$i]["courriel"]}</td>\r\n";
+					//STATUT
+					switch ($aDonneesUsagers[$i]["statut"]) {
+						case 1: // Actif
+							$htmlPage .= "<td><span class=\"label label-success\">Actif</span></td>";
+							break;
+						case 2: // Supprimé
+							$htmlPage .= "<td><span class=\"label label-danger\">Supprimé</span></td>";
+							break;
+					}
+				$htmlPage .= "</tr>\r\n";
+			}
+				//var_dump($tousPages);
+
+		?>
+				 
+		<div class="panel panel-default">
+			<!-- Default panel contents -->
+			<div class="panel-heading">Liste des usagers<span class="badge pull-right"><?php echo $nomberUsager;?></span>
+			</div>
+			<div class="panel-body">
+				Vous pouvez regarder le détails d'un usager en cliquant sur son nom.
+			</div>
+			<!-- Table pages-->
+			<table class="table table-hover">
+				<thead>
+				  <tr>
+						<th>Id</th>
+						<th>Nom, Prénom</th>
+						<th>Courriel</th>
+						<th>Statut</th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <?php echo $htmlPage; ?>
+				</tbody>
+			  </table><!-- end table-->
+			</div><!--end panel-->
+			
+			
+			<?php echo $htmlPagination; ?>
+			
+	<?php 
+	}
+
+	public function detailsUsagerAdmin($aUsager, $aAdresses, $result = '') {
+		//print_r($result);
+		?>
+		
+		<div class="panel panel-default">
+			<!-- Default panel contents -->
+			<div class="panel-heading">Modifier les informations d'un usager</div>
+			<div class="panel-body">
+			<?php
+				switch ($result) {
+					case 1:
+						echo "<div class=\"alert alert-success\"><strong>Bien fait!</strong> Vous avez inséré le détails de la commande dans la base de données avec succès.</div>";
+						break;
+					case '':
+						break;
+					default:
+						echo "<div class=\"alert alert-danger\"><strong>Oh rupture!</strong> Il y a eu un problèmme, essayer de nouveau soumission.</div>";
+						break;
+				}
+
+				/*Format heure
+					$dateFormatLisible = date("l, d F Y",strtotime($data["date_commande"]));
+					$heureFormatLisible = date("H:i:s",strtotime($data["date_commande"]));
+					$dateEtHeure = "<abbr title=\"{$heureFormatLisible}\">{$dateFormatLisible}</abbr>";*/
+			?>
+				<!-- Form modif USAGERS-->
+				<!-- Form Edit pages-->
+				<form role="form">
+					<div class="form-group">
+						<label for="page-title">Nom, Prénom</label>
+						<input type="text" class="form-control" name="nom_prenom" value="<?php echo $aUsager['nom_prenom']; ?>">
+					</div>
+					<div class="form-group">
+						<label for="page-title">Courriel</label>
+						<input type="text" class="form-control" name="courriel" value="<?php echo $aUsager['courriel']; ?>">
+					</div>
+			<?php		
+					for($i = 0; $i < count($aAdresses); $i++){
+			?>
+						<div class="panel panel-default">
+							<div class="panel-heading">Adresse 1 (id: <?php echo $aAdresses[$i]['id_adresse']; ?>)
+							</div>
+							<div class="panel-body">
+								<p>2650 Desjardins</p>
+								<p>appartement 4</p>
+								<p>Montreal, Québec</p>
+								<p>H1V 2H7</p>
+							</div>
+						</div>
+			<?php			
+					}
+			?>		
+					
+					<div class="panel panel-default">
+						<div class="panel-heading">Adresse 2 (id: 45)
+						</div>
+						<div class="panel-body">
+							<p>5250 Viau</p>
+							<p>appartement 4</p>
+							<p>Montreal, Québec</p>
+							<p>H1V 2H7</p>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">Changer le statut
+						</div>
+						<div class="panel-body">
+							<div class="radio">
+								<label>
+									<input type="radio" name="optionsRadios" id="optionsRadios1" value="active" checked>
+									<span class="label label-success">Actif</span>
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="optionsRadios" id="optionsRadios2" value="desabled">
+									<span class="label label-danger">Supprimé</span>
+								</label>
+							</div>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="page-date">Date</label>
+						<input type="text" class="form-control" id="page-date" value="Jeudi 11 octobre 2013, 16:03" disabled>
+					</div>
+					
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary" data-loading-text="Sauvegardez...">Soumettre les changements</button>
+					</div>
+				</form>		<!-- /Form Edit pages-->
+			</div><!--end panel-body -->	
+		</div>
+	<?php }
+	
+	
 }
 ?>

@@ -14,51 +14,90 @@ class ControlerAdmin {
 		 * @return void
 		 */
 		public function gerer() {
-			
-			switch ($_GET['requete']) {
-				case 'connexion':
-					$this->connexion();
-					break;
-				case 'page':
-					$this->page();
-					break;
-				case 'page_modifier':
-					$this->modifierPage();
-					break;				
-				case 'page_ajouter':
-					$this->ajouterPage();
-					break;
-				case 'menu':
-					$this->menu();
-					break;
-				case 'menu_modifier':
-					$this->modifierMenu();
-					break;				
-				case 'menu_ajouter':
-					$this->ajouterMenu();
-					break;		
-				case 'commandes':
-					$this->commandes();
-					break;
-				case 'details_commande':
-					$this->detailsCommande();
-					break;
-				case 'modifier_commande':
-					$this->modifierCommande();
-					break;
-				case 'usagers':
-					//$this->modifierCommande();
-					break;//usagers
-				default:
-					$this->connexion();
-					break;
+			if(isset($_SESSION['usager'])){
+				switch ($_GET['requete']) {
+					case 'connexion':
+						$this->connexion();
+						break;
+					case 'deconnexion':
+						$this->deconnexion();
+						break;	
+					case 'page':
+						$this->page();
+						break;
+					case 'page_modifier':
+						$this->modifierPage();
+						break;				
+					case 'page_ajouter':
+						$this->ajouterPage();
+						break;
+					case 'menu':
+						$this->menu();
+						break;
+					case 'menu_modifier':
+						$this->modifierMenu();
+						break;				
+					case 'menu_ajouter':
+						$this->ajouterMenu();
+						break;		
+					case 'commandes':
+						$this->commandes();
+						break;
+					case 'details_commande':
+						$this->detailsCommande();
+						break;
+					case 'modifier_commande':
+						$this->modifierCommande();
+						break;
+					case 'liste_usagers':
+						$this->liste_usagers();
+						break;
+					case 'details_usager':
+						$this->details_usager();
+						break;	
+					default:
+						$this->connexion();
+						break;
+				}
+			}
+			else{
+				$this->connexion();
 			}
 		}
 		private function connexion() {
-			$oVueAdmin	= new VueAdmin();
-			$oVueAdmin->afficherEntete();
-			$oVueAdmin->afficherConnexion();
-			$oVueAdmin->afficherFooter();
+			//var_dump($_POST);
+			//var_dump($_SESSION['usager']);
+			if(isset($_SESSION['usager'])){
+				$this->commandes();
+			}
+			else{
+				if(isset($_POST['courriel']) && isset($_POST['courriel'])){
+					try{
+						//var_dump($_POST);
+						$usager = new Usagers();
+						$usager->connecterAdmin($_POST);
+						$_SESSION['usager'] = $_POST['courriel'];
+						$this->commandes();
+					}
+					catch(Exception $e){
+						$oVueAdmin	= new VueAdmin();
+						$oVueAdmin->afficherEntete();
+						$oVueAdmin->afficherConnexion($e->getMessage());
+						$oVueAdmin->afficherFooter();
+					}
+				}
+				else{
+					$oVueAdmin	= new VueAdmin();
+					$oVueAdmin->afficherEntete();
+					$oVueAdmin->afficherConnexion();
+					$oVueAdmin->afficherFooter();
+				}
+			}
+		}
+		
+		private function deconnexion(){
+			session_destroy();
+			header('Location: adminka.php');
 		}
 		/**
 		 * Pages
@@ -256,6 +295,31 @@ class ControlerAdmin {
 		}
 		
 		/**
+		 * Liste Usagers
+		 */
+		private function liste_usagers(){
+			$nb1 = (!empty($_GET['partir'])) ? $_GET['partir'] : 0;
+			$nb2 = (!empty($_GET['fin'])) ? $_GET['fin'] : 20;	
+		
+			$oVueAdmin	= new VueAdmin();
+			$oUsagers = new Usagers();
+			$listeUsagers = $oUsagers->afficherListe();
+			
+			$pagePagination = new Pagination();
+			$aDonnees = array("aTousElements" => $listeUsagers);
+			$pagesPaginator = $pagePagination->paginate($aDonnees);
+			$datas = $pagePagination->voirResultats();
+			
+			$oVueAdmin->afficherEntete();
+			$oVueAdmin->afficherToolbar();
+			$oVueAdmin->afficherNavigation();
+			
+			VueUsagers::afficherListeUsagersAdmin($listeUsagers, $pagesPaginator, $nb1, $nb2);
+			$oVueAdmin->afficherFinContent();
+			$oVueAdmin->afficherFooter();
+		}
+		
+		/**
 		 * Commandes
 		 */
 		private function commandes() {
@@ -330,17 +394,33 @@ class ControlerAdmin {
 			//}*/		
 
 		}
+		
+		public function details_usager(){
+			$id_utilisateurs = (!empty($_GET['id_utilisateurs'])) ? $_GET['id_utilisateurs'] : '';
+			$aDonnees = array("id_utilisateurs" => $id_utilisateurs);
+			
+			//var_dump($_POST);
+			try{
+				$oUsagers = new Usagers();
+				$aUsager = $oUsagers->afficher($aDonnees);
+				$oAdresse = new Adresse();
+				$aAdresses = $oAdresse->afficherAdresseUsager(array('courriel' => $aUsager['courriel']));
+				//var_dump($result);
+			}
+			catch(Exception $e){
+				echo $e->getMessage();
+			}
+			
+			$oVueAdmin	= new VueAdmin();			
+			$oVueAdmin->afficherEntete();
+			$oVueAdmin->afficherToolbar();
+			$oVueAdmin->afficherNavigation();
+			VueUsagers::detailsUsagerAdmin($aUsager, $aAdresses);
+			$oVueAdmin->afficherFinContent();
+			$oVueAdmin->afficherFooter();
+		}
 
-		/*private function panier(){
-			$vue =  new Vue();
-			$vue->afficherEntete();
-			// VueUsager::afficherFormes();
-			$vue->afficherBoutonPanier();
-			VueMenu::afficherMenu();
-			VuePanier::affichePanier();
-			$vue->afficherFooter();
-		}*/
-		// Placer les méthodes du controleur.
+		
 				
 }
 ?>
