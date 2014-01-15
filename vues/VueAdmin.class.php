@@ -103,7 +103,7 @@ class VueAdmin {
 				<a href="adminka.php?requete=commandes" class="list-group-item"><span class="badge">414</span>Commandes</a>
 				<a href="produits.html" class="list-group-item"><span class="badge">85</span>Produits</a>
 				<a href="adminka.php?requete=page" class="list-group-item"><span class="badge">8</span>Pages</a>
-				<a href="usager_back.html" class="list-group-item"><span class="badge">309</span>Usagers</a>
+				<a href="adminka.php?requete=liste_usagers" class="list-group-item"><span class="badge">309</span>Usagers</a>
 				<a href="adminka.php?requete=menu" class="list-group-item"><span class="badge">4</span>Menu</a>
 			</div>
 		  </div>

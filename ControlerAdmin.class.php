@@ -55,6 +55,9 @@ class ControlerAdmin {
 					case 'details_usager':
 						$this->details_usager();
 						break;	
+					case 'modifier_usager':
+						$this->modifier_usager();
+						break;		
 					default:
 						$this->connexion();
 						break;
@@ -399,7 +402,8 @@ class ControlerAdmin {
 			$id_utilisateurs = (!empty($_GET['id_utilisateurs'])) ? $_GET['id_utilisateurs'] : '';
 			$aDonnees = array("id_utilisateurs" => $id_utilisateurs);
 			
-			//var_dump($_POST);
+			//var_dump($id_utilisateurs);
+			//var_dump($aDonnees);
 			try{
 				$oUsagers = new Usagers();
 				$aUsager = $oUsagers->afficher($aDonnees);
@@ -420,6 +424,39 @@ class ControlerAdmin {
 			$oVueAdmin->afficherFooter();
 		}
 
+		public function modifier_usager(){
+			$id_utilisateurs = (!empty($_GET['id_utilisateurs'])) ? $_GET['id_utilisateurs'] : '';
+			$aId = array("id_utilisateurs" => $id_utilisateurs);
+			
+			var_dump($_POST);
+			try{
+				$oUsagers = new Usagers();
+				$aUsager = $oUsagers->modifier($aId, $_POST);
+				$aUsager = $oUsagers->afficher($aId);
+				$oAdresse = new Adresse();
+				$aAdresses = $oAdresse->afficherAdresseUsager(array('courriel' => $aUsager['courriel']));
+				//var_dump($result);
+			}
+			catch(Exception $e){
+				echo $e->getMessage();
+				$oVueAdmin	= new VueAdmin();			
+				$oVueAdmin->afficherEntete();
+				$oVueAdmin->afficherToolbar();
+				$oVueAdmin->afficherNavigation();
+				VueUsagers::detailsUsagerAdmin($aUsager, $aAdresses, $e->getMessage());
+				$oVueAdmin->afficherFinContent();
+				$oVueAdmin->afficherFooter();
+			}
+			
+			$oVueAdmin	= new VueAdmin();			
+			$oVueAdmin->afficherEntete();
+			$oVueAdmin->afficherToolbar();
+			$oVueAdmin->afficherNavigation();
+			VueUsagers::detailsUsagerAdmin($aUsager, $aAdresses);
+			$oVueAdmin->afficherFinContent();
+			$oVueAdmin->afficherFooter();
+			
+		}
 		
 				
 }

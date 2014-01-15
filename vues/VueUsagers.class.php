@@ -415,62 +415,54 @@ class VueUsagers {
 						break;
 				}
 
-				/*Format heure
-					$dateFormatLisible = date("l, d F Y",strtotime($data["date_commande"]));
-					$heureFormatLisible = date("H:i:s",strtotime($data["date_commande"]));
-					$dateEtHeure = "<abbr title=\"{$heureFormatLisible}\">{$dateFormatLisible}</abbr>";*/
 			?>
 				<!-- Form modif USAGERS-->
-				<!-- Form Edit pages-->
-				<form role="form">
+				<form role="form" action="adminka.php?requete=modifier_usager&id_utilisateurs=<?php echo $aUsager['id_utilisateurs']; ?>" method="post">
 					<div class="form-group">
-						<label for="page-title">Nom, Prénom</label>
+						<label for="nom_prenom">Nom, Prénom</label>
 						<input type="text" class="form-control" name="nom_prenom" value="<?php echo $aUsager['nom_prenom']; ?>">
 					</div>
 					<div class="form-group">
-						<label for="page-title">Courriel</label>
+						<label for="courriel">Courriel</label>
 						<input type="text" class="form-control" name="courriel" value="<?php echo $aUsager['courriel']; ?>">
+					</div>
+					<div class="form-group">
+						<label for="courriel">Role(0->usager, 1->admin, 2->super admin)</label>
+						<input type="text" class="form-control" name="role" value="<?php echo $aUsager['role']; ?>">
 					</div>
 			<?php		
 					for($i = 0; $i < count($aAdresses); $i++){
 			?>
 						<div class="panel panel-default">
-							<div class="panel-heading">Adresse 1 (id: <?php echo $aAdresses[$i]['id_adresse']; ?>)
+							<div class="panel-heading">Adresse <?php echo $i+1; ?> (id: <?php echo $aAdresses[$i]['id_adresse']; ?>)
 							</div>
 							<div class="panel-body">
-								<p>2650 Desjardins</p>
-								<p>appartement 4</p>
-								<p>Montreal, Québec</p>
-								<p>H1V 2H7</p>
+								<p>Téléphone: <?php echo $aAdresses[$i]['telephone']; ?></p>
+								<p>Adresse: <?php echo $aAdresses[$i]['rue']; ?><?php echo $app = (isset($aAdresses[$i]['appartement'])) ? " App.".$aAdresses[$i]['appartement'] : ''; ?></p>
+								<p>Ville: <?php echo $aAdresses[$i]['ville']; ?></p>
+								<p>Province: <?php echo $aAdresses[$i]['province']; ?></p>
+								<p>Code Postal: <?php echo $aAdresses[$i]['code_postal']; ?></p>
 							</div>
 						</div>
 			<?php			
 					}
+					$date = new DateTime();
+						
 			?>		
 					
-					<div class="panel panel-default">
-						<div class="panel-heading">Adresse 2 (id: 45)
-						</div>
-						<div class="panel-body">
-							<p>5250 Viau</p>
-							<p>appartement 4</p>
-							<p>Montreal, Québec</p>
-							<p>H1V 2H7</p>
-						</div>
-					</div>
 					<div class="panel panel-default">
 						<div class="panel-heading">Changer le statut
 						</div>
 						<div class="panel-body">
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios1" value="active" checked>
+									<input type="radio" name="statut" id="1" value="1" <?php echo $nb1 = ($aUsager['statut']==1) ? "checked" : "";?>>
 									<span class="label label-success">Actif</span>
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios2" value="desabled">
+									<input type="radio" name="statut" id="2" value="2" <?php echo $nb1 = ($aUsager['statut']==2) ? "checked" : "";?>>
 									<span class="label label-danger">Supprimé</span>
 								</label>
 							</div>
@@ -479,13 +471,13 @@ class VueUsagers {
 					
 					<div class="form-group">
 						<label for="page-date">Date</label>
-						<input type="text" class="form-control" id="page-date" value="Jeudi 11 octobre 2013, 16:03" disabled>
+						<input type="text" class="form-control" id="page-date" value="<?php echo $aUsager['date_entree']; ?>" disabled>
 					</div>
 					
 					<div class="form-group">
-						<button type="submit" class="btn btn-primary" data-loading-text="Sauvegardez...">Soumettre les changements</button>
+						<button type="submit" class="btn btn-primary" >Soumettre les changements</button>
 					</div>
-				</form>		<!-- /Form Edit pages-->
+				</form>		<!-- /Form Edit USAGERS-->
 			</div><!--end panel-body -->	
 		</div>
 	<?php }

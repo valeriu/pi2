@@ -158,68 +158,63 @@ class Usagers {
 	/**
 	 * Modifier un usager
 	 */
-	public function modifier ($aDonnees = Array()){
+	public function modifier ($aId, $aDonnees = Array()){
 		//$aDonnees['id_utilisateurs'], $courriel, $mot_passe, $nom_prenom, $date_entree, $role, $cle_reactivation, $statut
-		$id_utilisateurs 	= (!empty($aDonnees['id_utilisateurs'])) ? $aDonnees['id_utilisateurs'] : '';
+		$id_utilisateurs 	= (!empty($aId['id_utilisateurs'])) ? $aId['id_utilisateurs'] : '';
 		$courriel 			= (!empty($aDonnees['courriel'])) ? $aDonnees['courriel'] : '';
-		$mot_passe 			= (!empty($aDonnees['mot_passe'])) ? $aDonnees['mot_passe'] : '';
+		//$mot_passe 			= (!empty($aDonnees['mot_passe'])) ? $aDonnees['mot_passe'] : '';
 		$nom_prenom 		= (!empty($aDonnees['nom_prenom'])) ? $aDonnees['nom_prenom'] : '';
 		$date_entree 		= date("Y-m-d H:i:s");
 		$role 				= (!empty($aDonnees['role'])) ? $aDonnees['role'] : 0;
-		$cle_reactivation 	= (!empty($aDonnees['cle_reactivation'])) ? $aDonnees['cle_reactivation'] : '';
 		$statut 			= (!empty($aDonnees['statut'])) ? $aDonnees['statut'] : 1;
 		
 		
-		if(!Valider::estInt($id_utilisateurs)){
+		/*if(!Valider::estInt($id_utilisateurs)){
 			throw new Exception("Id d'utilisateur non conforme");
-		}
+		}*/
 		
 		if(!Valider::estCourriel($courriel)){
 			throw new Exception("Ce courriel est invalide");
 		}
 		
-		if(!Valider::estEntreString($mot_passe, 6, 12)){
+		/*if(!Valider::estEntreString($mot_passe, 6, 12)){
 			throw new Exception("Mot de passe non conforme");
-		}
+		}*/
 		
-		if(!Valider::estAlphaNumerique($nom_prenom)){
+		/*if(!Valider::estAlphaNumerique($nom_prenom)){
 			throw new Exception("Nom, Prénom non conforme");
-		}
+		}*/
 		
-		if(!Valider::estEntreInt($role, 0, 2)){
+		/*if(!Valider::estEntreInt($role, 0, 2)){
 			throw new Exception("Entrez un chiffre valide pour le rôle Ex. 0, 1 ou 2 ");
-		}
+		}*/
 		
-		if(!Valider::estEntreInt($statut, 0, 1)){
+		/*if(!Valider::estEntreInt($statut, 0, 1)){
 			throw new Exception("Entrez un chiffre valide pour le statut Ex. 0 ou 1");
-		}
+		}*/
 		
 		$idbd = $this->bd->getBD();
 		//Préparation de la requête
 		$req = $idbd->prepare(	"UPDATE wa_utilisateurs
 								SET courriel = ?, 
-									mot_passe = ?,
 									nom_prenom = ?, 
 									date_entree = ?, 
 									role = ?, 
-									cle_reactivation = ?, 
 									statut = ?
 								WHERE id_utilisateurs = ?");
         
 		//var_dump($req);
         $req->bindParam(1, $courriel);
-        $req->bindParam(2, $mot_passe);
-        $req->bindParam(3, $nom_prenom);
-        $req->bindParam(4, $date_entree);
-        $req->bindParam(5, $role);
-        $req->bindParam(6, $cle_reactivation);
-        $req->bindParam(7, $statut);
-        $req->bindParam(8, $id_utilisateurs);
+        $req->bindParam(2, $nom_prenom);
+        $req->bindParam(3, $date_entree);
+        $req->bindParam(4, $role);
+        $req->bindParam(5, $statut);
+        $req->bindParam(6, $id_utilisateurs);
 
-		$reponse = $req->execute();
+		$req->execute();
 		
-		if($reponse){
-			return $reponse;
+		if($req->rowCount() > 0){
+			return true;
 		}
 		else{
 			throw new Exception("Erreur lors de la modification, recommencez");
@@ -233,18 +228,18 @@ class Usagers {
 	public function afficher ($aDonnees = Array()) {
 		//$id_utilisateurs
 		$id_utilisateurs 	= (!empty($aDonnees['id_utilisateurs'])) ? $aDonnees['id_utilisateurs'] : '';
-		
-		if(!Valider::estInt($id_utilisateurs)){
+		//var_dump($id_utilisateurs);
+		/*if(!Valider::estInt($id_utilisateurs)){
 			throw new Exception("Id d'utilisateur non conforme");
-		}
+		}*/
 		
 		$idbd = $this->bd->getBD();
 		//Préparation de la requête
 		$req = $idbd->prepare(	"SELECT *
                                 FROM wa_utilisateurs
-                                WHERE id_utilisateurs = :id_utilisateurs");
+                                WHERE id_utilisateurs = ?");
         
-        $req->bindParam(":id_utilisateurs", $id_utilisateurs, PDO::PARAM_INT);
+        $req->bindParam(1, $id_utilisateurs);
         $req->execute();
 		$obj = $req->fetch(PDO::FETCH_ASSOC);
 		
