@@ -67,6 +67,7 @@ a:focus{
 	/*background-color: #F0AD4E;*/
     border-color: #EEA236;
     color: #fff;
+    margin: 8px 5px;
     background: #ffa73d;
 	background: -moz-linear-gradient(top,  #ffa73d 4%, #ff9532 51%, #ff9028 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(4%,#ffa73d), color-stop(51%,#ff9532), color-stop(100%,#ff9028));
@@ -209,7 +210,7 @@ footer{
 /* /---------------- Jumbotrom ---------------*/
 
 /* -----------------  USAGER ---------------- */
-#usager{
+/*#usager{
 	margin: 10px auto;
 	text-align: center;
 	width: 280px;
@@ -260,7 +261,7 @@ footer{
 .btn-lien:hover {
 	color: #FF9029;
 	text-decoration: underline;
-}
+}*/
 /* -----------------  / USAGER ---------------- */
 
 /* ----------------- RESPONSIVE  ---------------- */

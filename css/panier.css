@@ -73,14 +73,32 @@ hr:not(:first-of-type) {
 /* / */
 
 /* Shipping Address */
-
-#ShippingAddress #accordion .panel-collapse article{
+/* -----------------  PAGE ADRESSE ---------------- */
+#ShippingAddress #accordion .panel-collapse .adresses article{
   border:1px solid #DDDDDD;
-  margin: 0 10px;
+  margin: 10px;
   padding: 15px;
+  position: relative;
+  min-height: 150px;
 }
 
+#ShippingAddress #accordion .panel-collapse .adresses article .input-group {
+  bottom: 6px;
+  position: absolute;
+  width: 85%;
+}
+.provinces{
+  display: inline;
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  #ShippingAddress #accordion .panel-collapse .adresses article{
+    min-height: 190px;
+  }
+}
+
+/* -----------------  / PAGE ADRESSE ---------------- */
 /* / Shipping Address */
+
 /* =====================================================
   Fin Panier
 ========================================================*/
