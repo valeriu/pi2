@@ -95,27 +95,26 @@ var Panier = (function () {
     }
 
     // Fonction qui enregistre la commande dans la base de données
-    var _passerCommande =  function(){
+    var _passerCommande =  function(id){
         try{
-            console.log('PASSER LA COMMANDE');
-            var adresse = $("input[name='courriel']").val();
-            var valEmail = $("input[name='courriel']").val();
-            var adresse = $("input[name*='adresse']").val();
+            console.log('PASSER LA COMMANDE', id);
+            var courriel = $("input[name='courriel']").val();
 
-            if(valEmail != "" && adresse != ""){ // Vérification de Champs
+            if(id != "" && courriel != ""){ // Vérification de Champs
                 var produit = new Object();
                 for (var i = 0; i < localStorage.length; i++){
                     produit[i] = JSON.parse(localStorage.getItem(localStorage.key(i)));
                 }
-                console.log(valEmail,adresse);
+                console.log(courriel,adresse);
                 // Source : http://stackoverflow.com/questions/9001526/send-array-with-ajax-to-php-script
                 var jsonString = JSON.stringify(produit);
                 $.ajax({
                     type: "POST",
-                    url: "ajaxControler.php?requete=etapeUn",
+                    url: "ajaxControler.php?requete=confirmation_adresse",
                     data: {
-                        quantite : localStorage.length,
-                        email : valEmail,
+                        nb_produit : localStorage.length,
+                        email : courriel,
+                        id_adresse : id,
                         data : jsonString
                     },
                     cache: false,
@@ -157,7 +156,7 @@ var Panier = (function () {
 
 $(function(){
 
-    //window.addEventListener('load', function () {
+    window.addEventListener('load', function () {
         "use strict";
         // Déclaration de variables
         var targetClickUp, targetClickDown, targetClickRemove;
@@ -171,7 +170,7 @@ $(function(){
             targetClickDown[i].addEventListener('click', down.eTarget);
             targetClickRemove[i].addEventListener('click', remove.eTarget);
         }
-    //});
+    });
 
     $('#panierConfirmation').hide();
 

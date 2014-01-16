@@ -19,10 +19,11 @@ class Panier {
 	}
 
 	// Methode de création d'une commande
-	public function etapeUnPanier($aDonnees, $info) { //$courriel='', $infoCommande='', $totalCommande=0, $produits=0
+	public function confirmationAdresse($aDonnees, $info) { //$courriel='', $infoCommande='', $totalCommande=0, $produits=0
 
 		$courriel 		= (!empty($aDonnees['email'])) ? $aDonnees['email'] : '';
-		$quantite 		= (!empty($aDonnees['quantite'])) ? $aDonnees['quantite'] : '';
+		$nb_produit		= (!empty($aDonnees['nb_produit'])) ? $aDonnees['nb_produit'] : '';
+		$id_adresse		= (!empty($aDonnees['id_adresse'])) ? $aDonnees['id_adresse'] : '';
 		$data 	= (!empty($aDonnees['data'])) ? $aDonnees['data'] : '';
 		//var_dump($courriel);
 		
@@ -36,11 +37,11 @@ class Panier {
 		$infoCommande = json_decode($data);
 		$details = $_POST['data'];
 		$totalCommande = '';
-		$nbProduits = intval($_POST['quantite']);
+		$nb_produit = intval($nb_produit);
 
 
 		// Pour enregistrer le prix total de la commande
-		for($i = 0 ; $i < $quantite; $i++){
+		for($i = 0 ; $i < $nb_produit; $i++){
 			$totalCommande += $infoCommande->{"$i"}->{"prix"} * $infoCommande->{"$i"}->{"quant"};
 		}
 		// Création de la date actuelle de la commande
@@ -51,7 +52,7 @@ class Panier {
 		//$info = $this->maDB->executer("INSERT INTO infoCommandeTP3 (email, dateCommande, details, total, produits) values ('".htmlentities($courriel)."', '".$dateCommande."', '".addslashes($infoCommande)."', ".$totalCommande.", ".$produits." )");
 		var_dump($infoCommande);
 
-		$info = ''.$courriel.'-'.$totalCommande.'-'.'-'.$dateCommande.' - DETAILS'.$details;
+		$info = ''.$courriel.'-'.$nb_produit.'-'.$id_adresse.'-'.$totalCommande.'-'.'-'.$dateCommande.' - DETAILS'.$details;
 
 		return $info;
 		

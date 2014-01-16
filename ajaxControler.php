@@ -18,8 +18,8 @@
 	}
 
 	switch ($_GET['requete']) {
-		case 'etapeUn':
-			etapeUn();
+		case 'confirmation_adresse':
+			confirmationAdresse();
 			break;
 		case 'etapeDeux':
 			etapeDeux();
@@ -60,7 +60,7 @@
 			break;
 	}
 
-	function etapeUn(){
+	function confirmationAdresse(){
 		if(empty($_POST['data']))
 		{
 			$_POST['data'] = '';
@@ -68,7 +68,7 @@
 		$info = json_decode($_POST['data']);
 
 		$vuePanier =  new Panier();
-		$resultatNewCommande = $vuePanier->etapeUnPanier($_POST, $info);
+		$resultatNewCommande = $vuePanier->confirmationAdresse($_POST, $info);
 		echo $resultatNewCommande; // Réponse AJAX , pour la vérification de l'enregistrement
 
 		/*$commande = new Commande();

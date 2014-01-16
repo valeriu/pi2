@@ -16,10 +16,11 @@ class VueAdresse {
 		<script>
 			$(function(){
 			//window.addEventListener('load', function () {
-				$('input[name="shippingAddress"]').on('change', function(){
+				$('input[name="shippingAddress"]').on('change', function(e){
+					var idTarget = e.target.id;
 					$('#confirmationAdresses').removeAttr('disabled');
 					$('#confirmationAdresses').on('click', function(){
-		               Panier.passerCommande();
+		               Panier.passerCommande(idTarget);
 		            });
 
 				});
