@@ -62,11 +62,11 @@ class VueAdresse {
 						
 						<div id="collapseOne" class="panel-collapse collapse in">
 							<div class="panel-body">
-								<div class="row">
+								<div class="row adresses">
 								<?php
 									for($i = 0; $i < count($data); $i++){
 										?>
-											<article class="col-lg-3">
+											<article class="col-lg-3 col-sm-3">
 												<p><?php echo $data[$i]['rue']; ?> <?php echo "App.".$data[$i]['appartement']; ?></p>
 												<p><?php echo $data[$i]['ville']; ?>, <?php echo $data[$i]['province']; ?> &nbsp;<?php echo $data[$i]['code_postal']; ?></p>
 												<div class="input-group">
@@ -136,7 +136,7 @@ class VueAdresse {
 											<div class="input-group input-group-sm">
 												Province:
 												<br>
-												<div class="btn-group row "  data-toggle="buttons">
+												<div class="btn-group row provinces"  data-toggle="buttons">
 													<label class="btn btn-default" title="Québec">
 														<input type="radio" name="choixProvince" id="qc"> Qc
 													</label>
