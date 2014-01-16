@@ -53,11 +53,11 @@ class VueCatalogue {
 
 					  <tr title="Cliquez pour description!">
 			            <td class="clickable"><?php echo $aProduits[$i]["id_produits"]; ?></td>
-			            <td class="clickable"><h3><?php echo $aProduits[$i]["nom"]; ?></h3></td>
+			            <td class="clickable nom"><h3><?php echo $aProduits[$i]["nom"]; ?></h3></td>
 			            <td class="clickable"><?php echo $aProduits[$i]["puissance"]; ?>W</td>
 			            <td class="clickable"><?php echo $aCategories[$aProduits[$i]["categorie_id_categorie"]]; ?></td>
-			            <td class="clickable"><img src="img/products/<?php echo $aProduits[$i]["image"]; ?>.jpg"></td>
-			            <td class="clickable text-success text-pricing"><strong><?php echo $aProduits[$i]["prix"]; ?>$</strong></td>
+			            <td class="clickable img"><img src="img/products/<?php echo $aProduits[$i]["image"]; ?>.jpg"></td>
+			            <td class="clickable text-success text-pricing"><strong><span class="prix-valeur"><?php echo $aProduits[$i]["prix"]; ?></span>$</strong></td>
 			            <td>
 			              <button type="button" id="<?php echo $aProduits[$i]["id_produits"]; ?>" class="btn btn-primary btn-home ajouter"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Ajouter au panier</button>
 			            </td>
