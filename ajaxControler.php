@@ -171,10 +171,10 @@
 	function adresse(){
 		try{
 			$adresse = new Adresse();
-			var_dump($_POST);
-			var_dump($_SESSION['usager']);
+			//var_dump($_POST);
+			//var_dump($_SESSION['usager']);
 			$adresse->enregistrer($_SESSION['usager'], $_POST);
-			$adresse = new Adresse();
+			//$adresse = new Adresse();
 			$courriel = array("courriel" => $_SESSION['usager']);
 			$data = $adresse->afficherAdresseUsager($courriel);
 			VueAdresse::afficherAdrese($data);

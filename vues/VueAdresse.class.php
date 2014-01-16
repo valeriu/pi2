@@ -14,10 +14,19 @@ class VueAdresse {
 
 		?>
 		<script>
-			window.addEventListener('load', function () {
+			$(function(){
+			//window.addEventListener('load', function () {
+				$('input[name="shippingAddress"]').on('change', function(){
+					$('#confirmationAdresses').removeAttr('disabled');
+					$('#confirmationAdresses').on('click', function(){
+		               Panier.passerCommande();
+		            });
+
+				});
 				//Pour la province
 				$('input[name="choixProvince"]').on('change', function(){
 					$('#province').val(this.id);
+
 				});
 				
 				$("#adresse").on("click", function(){
@@ -34,11 +43,14 @@ class VueAdresse {
 					xhr.onreadystatechange = function() {
 						if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
 							var str = xhr.responseText;
-							if(str > 100){
-								$('#ShippingAddress').replaceWith(xhr.responseText);
+							if(str == 'Tous les champs sont obligatiore'){
+								//$('#ShippingAddress').html();
+								$("#adresse-erreur").html(xhr.responseText);
+								$('#msgError').show();
 							}
 							else{
-								$("#adresse-erreur").html(xhr.responseText);
+								$('#msgError').hide();
+								$('#ShippingAddress').html(xhr.responseText);
 							}
 						}
 					};
@@ -51,13 +63,20 @@ class VueAdresse {
 			<form id="ShippingAddress" method="POST" action="#">
 				<div class="panel-group" id="accordion">
 					<div class="panel panel-default">
-						
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
 									Options d'adresses de livraison
 								</a>
 							</h4>
+							<?php 
+								if(isset($_SESSION['usager'])) {
+									echo '<input name="courriel" type="hidden" value="'.$_SESSION['usager'].'">';
+								}
+								else{
+									echo '<input name="courriel" type="hidden" value="invalide">';
+								}
+								?>
 						</div>
 						
 						<div id="collapseOne" class="panel-collapse collapse in">
@@ -115,7 +134,11 @@ class VueAdresse {
 							<div class="panel-body">
 								<div class="row">
 									<article class="col-lg-8">
-										<span id="adresse-erreur"></span>
+										<div id="msgError"><!-- Message d'error de télechargement ou autre -->
+											<div class="alert alert-danger">
+												<span id="adresse-erreur"></span>
+											</div>
+										</div>
 										<form class="form-signin" name="form-usager-adresse" >
 											<!-- telephone	rue	appartement	ville	code_postal	province -->
 											<div class="input-group input-group-sm">
@@ -193,8 +216,9 @@ class VueAdresse {
 					</div>
 					<hr class="featurette-divider">
 					<a href="index.php?requete=panier"><button name="back" id="back" class="btn btn-lg btn-primary" type="button">Retour</button></a>
-					<a href="index.php?requete=panier_confirmation"><button name="pay" id="pay" class="btn btn-lg btn-primary" type="button">Payer</button></a>
-					<!--<button name="pay" id="pay" class="btn btn-lg btn-primary" type="submit">Pay</button>-->
+					<!--<a href="index.php?requete=panier_confirmation">-->
+					<button name="pay" id="confirmationAdresses" class="btn btn-lg btn-primary" type="button" disabled="disabled">Continuer</button>
+					<!--</a>-->
 				</div>
 			</form>
 <?php

@@ -47,7 +47,6 @@ class Vue {
 				<!-- Custom styles for this template -->
 				<link href="css/carousel.css" rel="stylesheet">
 				<link href="css/main.css" rel="stylesheet">
-				<link href="css/usager.css" rel="stylesheet">
 				<link href="css/panier.css" rel="stylesheet">
 				<link href="css/catalogue.css" rel="stylesheet">
 				<!-- GOOGLE FONTS -->
@@ -92,7 +91,6 @@ class Vue {
 			<script src="js/vendor/tweenjs-0.4.0.min.js"></script>
 			<script src="js/vendor/movieclip-0.6.0.min.js"></script>
 			<script src="js/holder.js"></script>
-			<script src="js/usager.js"></script>
 			<script src="js/main.js"></script>
 			<script src="js/panier.js"></script>
 			<script src="js/catalogue.js"></script>

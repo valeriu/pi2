@@ -88,7 +88,7 @@ hr:not(:first-of-type) {
   width: 85%;
 }
 .provinces{
-  display: inline;
+  margin-left: 0px;
 }
 @media (min-width: 768px) and (max-width: 992px) {
   #ShippingAddress #accordion .panel-collapse .adresses article{

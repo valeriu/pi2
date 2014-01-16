@@ -263,7 +263,7 @@ class VueUsagers {
 			    </div>
 			    <script>
 			    	//Enregistrement de l adresse
-			    	$("#adresse").on("click", function(){
+			    	/*$("#adresse").on("click", function(){
 						var xhr = new XMLHttpRequest();
 						var t = $("#tel").val();
 						var r = $("#rue").val();
@@ -286,7 +286,7 @@ class VueUsagers {
 						};
 						xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 						xhr.send(req);
-					});
+					});*/
 			    </script>';	
 
 		return $html;	    

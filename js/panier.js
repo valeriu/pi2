@@ -5,7 +5,7 @@
 /***********************************************
         Testé en FIREFOX et  Google Chrome
     *******************************/
-var Panier = (function (){
+var Panier = (function () {
     var _creerPanier = function(){
         var htmlProduits = '';
         /* Condition d'existence de produits dans le web storage */
@@ -58,10 +58,6 @@ var Panier = (function (){
             _totalProduitsPanier();
             _totalPrix();
 
-            $('#confirmerCommande').bind('click', function(){
-                passerCommande();
-            });
-
         }else{
             $('#panier').remove();
             $('#panierVide').show(); // Afficher un message de Panier Vide au utilisateur
@@ -99,9 +95,10 @@ var Panier = (function (){
     }
 
     // Fonction qui enregistre la commande dans la base de données
-    var passerCommande =  function(){
+    var _passerCommande =  function(){
         try{
             console.log('PASSER LA COMMANDE');
+            var adresse = $("input[name='courriel']").val();
             var valEmail = $("input[name='courriel']").val();
             var adresse = $("input[name*='adresse']").val();
 
@@ -152,14 +149,15 @@ var Panier = (function (){
     return {
         creerPanier : _creerPanier,
         totalProduitsPanier : _totalProduitsPanier,
-        totalPrix : _totalPrix
+        totalPrix : _totalPrix,
+        passerCommande : _passerCommande
     };
 
 }());
 
 $(function(){
 
-    window.addEventListener('load', function () {
+    //window.addEventListener('load', function () {
         "use strict";
         // Déclaration de variables
         var targetClickUp, targetClickDown, targetClickRemove;
@@ -173,7 +171,7 @@ $(function(){
             targetClickDown[i].addEventListener('click', down.eTarget);
             targetClickRemove[i].addEventListener('click', remove.eTarget);
         }
-    });
+    //});
 
     $('#panierConfirmation').hide();
 

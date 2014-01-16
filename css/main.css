@@ -109,7 +109,7 @@ footer{
 }
 /* / Shopping Cart */
 /* Msg Error*/
-#msgError, #pasEnregistre{
+/*#msgError, #pasEnregistre{
     clear: both;
     background-color: #F16529;
     border-radius: 9px;
@@ -117,8 +117,11 @@ footer{
     margin: 51px;
     padding: 18px;
     display: none;
+}*/
+#pasEnregistre{
+	display: none;
 }
-#confirmer {
+#confirmer, #confirmationAdresses {
     float: right;
 }
 /* / */
