@@ -33,6 +33,7 @@ class VuePanier {
 						<script>
 							//CONNECTER
 							window.addEventListener('load', function () {
+								$("#confirmer").off("click", confirmerCommande);
 								$("#confirmer").on("click", function(){
 									var xhr = new XMLHttpRequest();
 									xhr.open("GET", "ajaxControler.php?requete=formConnecter", true);	
@@ -43,13 +44,7 @@ class VuePanier {
 
 											$(".modal-content").html(xhr.responseText);
 											$('#myModal').modal('show');
-											/*if(str.length > 100){
-												//window.location.assign("index.php?requete=adresseCommande");
-											} 
-											else{
-												$("#myModal").html(xhr.responseText);
-												$('#myModal').modal('show');
-											}*/
+											
 										}
 									};
 										xhr.send();
@@ -62,11 +57,8 @@ class VuePanier {
 						?>
 						<script>							
 							window.addEventListener('load', function () {
-								$("#confirmer").on("click", function(){
-									//console.log(<?= $_SESSION['usager'] ?>);
-									window.location.assign("index.php?requete=adresseCommande");
-								});
-							})	
+								$("#confirmer").on("click", confirmerCommande);
+							});	
 						</script>	
 						<?php		
 					}

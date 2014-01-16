@@ -14,35 +14,18 @@ class VueUsagers {
 ?>
 			<section id="usager" class="pull-right">
 				<form class="form-signin form-usager" method="post">
-					<a  name="formEnregistrer" id="formEnregistrer" class="btn btn-md btn-lien" type="button">S'enregistrer</a>
-					<a  name="formConnecter" id="formConnecter" class="btn btn-md btn-lien" type="button">Se connecter</a>
+					<a  name="formEnregistrer"  id="formEnregistrer" class="btn btn-md btn-lien" type="button">S'enregistrer</a>
+					<a  name="formConnecter"  id="formConnecter" class="btn btn-md btn-lien" type="button">Se connecter</a>
 				</form>			
 			</section>
 			<script>
-				$("#formEnregistrer").on("click", clickEnregistrer);
-				$('#formConnecter').on('click', clickConnecter);
-
-				$("#confirmer").on("click", function(){
-					var xhr = new XMLHttpRequest();
-					xhr.open("GET", "ajaxControler.php?requete=formConnecter", true);	
-					xhr.onreadystatechange = function() {
-						if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
-							//$(".modal-content").html(xhr.responseText);
-							var str = xhr.responseText;
-
-							$(".modal-content").html(xhr.responseText);
-							$('#myModal').modal('show');
-							/*if(str.length > 100){
-								//window.location.assign("index.php?requete=adresseCommande");
-							} 
-							else{
-								$("#myModal").html(xhr.responseText);
-								$('#myModal').modal('show');
-							}*/
-						}
-					};
-						xhr.send();
+				$(function(){
+					$("#formEnregistrer").on("click", clickEnregistrer);
+					$("#formConnecter").on("click", clickConnecter);
+				//Si on est dans le panier et non-connecté
+					$("#confirmer").on("click", clickConnecter); 
 				});
+			
 			</script>
 <?php
 	}
@@ -55,9 +38,11 @@ class VueUsagers {
 				</form>			
 			</section>
 			<script>
-				$("#confirmer").on("click", function(){
-					window.location.assign("index.php?requete=adresseCommande");	
-				});
+				$(function(){
+					$("#confirmer").off("click", clickConnecter);
+					$("#deconnecter").on("click", clickDeconnecter);
+					$("#confirmer").on("click", confirmerCommande);
+				});	
 			</script>
 		
 <?php
@@ -74,11 +59,11 @@ class VueUsagers {
 					<form class="form-signin" name="form-usager-connecter">
 						<div class="input-group input-group-sm">
 							Courriel:
-							<input name="courriel" id="courriel" type="email" class="form-control" required>
+							<input name="courriel" value="a@a.eu" id="courriel" type="email" class="form-control" required>
 						</div>
 						<div class="input-group input-group-sm">
 							Mot de Passe:
-							<input name="mot_passe" id="mot_passe" type="password" class="form-control" required>
+							<input name="mot_passe" value="password" id="mot_passe" type="password" class="form-control" required>
 						</div>
 						<button name="motPasseOublie" id="motPasseOublie" type="button">Mot de passe oublié</a>
 						<br>

@@ -23,12 +23,12 @@ $(function(){
 
     // Modals de connexion
 
-    $("#formEnregistrer").on("click", clickEnregistrer);
+    /*$("#formEnregistrer").on("click", clickEnregistrer);
 
     $('#formConnecter').on('click', clickConnecter);
     
     $('#deconnecter').on('click', clickDeconnecter);
-
+*/
 
     //Initialisation du logo anime
     $( document ).ready(function() {
@@ -123,6 +123,7 @@ function clickDeconnecter(){
 
 
 function clickConnecter(){
+		console.log('clickConnecter');
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "ajaxControler.php?requete=formConnecter", true);   
     xhr.onreadystatechange = function() {
@@ -135,5 +136,10 @@ function clickConnecter(){
     };
     xhr.send();
     
+};
+
+function confirmerCommande(){
+	//console.log(<?= $_SESSION['usager'] ?>);
+	window.location.assign("index.php?requete=adresseCommande");
 };
 
