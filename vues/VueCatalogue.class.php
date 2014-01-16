@@ -9,6 +9,72 @@
 
 class VueCatalogue { 
 
+	public function afficherListAdmin($aDonnees, $aDonneesPaginator, $partir, $fin) {
+		
+			$nbProduits = count($aDonnees);
+			$htmlPage = "";
+			$htmlPagination = "";
+			
+			$htmlPagination .= "<!--Pagination-->	<ul class=\"pagination\">";
+				foreach($aDonneesPaginator as $page){
+					$htmlPagination .= "<li><a href='adminka.php?requete=produits&partir={$page["partir"]}&fin={$page["fin"]}'>{$page["page"]}</a></li>";
+				}
+			$htmlPagination .= "</ul>";
+			
+			$fin = min($fin, $nbProduits);
+
+			for ($i=$partir, $j=$fin; $i<$j; $i++){
+				$htmlPage .= "<tr>\r\n";
+					$htmlPage .= "<td><a href=\"adminka.php?requete=details_produits&produit_id={$aDonnees[$i]["id_produits"]}\" title=\"Editer: {$aDonnees[$i]["nom"]}\">{$aDonnees[$i]["id_produits"]}</a></td>\r\n";
+					$htmlPage .= "<td><abbr title=\"{$aDonnees[$i]["fournisseur"]}\">{$aDonnees[$i]["fournisseur"]}</abbr></td>\r\n";
+					$htmlPage .= "<td>{$aDonnees[$i]["nom"]}</td>\r\n";
+					switch ($aDonnees[$i]["statut"]) {
+						case 0: // Inactif
+							$htmlPage .= "<td><span class=\"label label-warning\">Inactif</span></td>";
+							break;
+						case 1: // Actif
+							$htmlPage .= "<td><span class=\"label label-success\">Actif</span></td>";
+							break;
+						case 2: // Supprimé
+							$htmlPage .= "<td><span class=\"label label-danger\">Supprimé</span></td>";
+							break;
+					}
+				$htmlPage .= "<td>{$aDonnees[$i]["prix"]}$</td>\r\n";
+				$htmlPage .= "</tr>\r\n";
+			}
+
+?>
+
+			<div class="panel panel-default">
+			<!-- Default panel contents -->
+			<div class="panel-heading">Liste de tous les produits<span class="badge pull-right"><?php echo $nbProduits;?></span>
+			</div>
+			<div class="panel-body">
+				Vous pouvez modifier et ajouter des produits du catalogue.
+			</div>
+			<!-- Table pages-->
+			<table class="table table-hover">
+				<thead>
+				  <tr>
+					<th>Id</th>
+					<th>Fournisseur</th>
+					<th>Nom</th>
+					<th>Statut</th>
+					<th>Prix</th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <?php echo $htmlPage; ?>
+				</tbody>
+			  </table><!-- end table-->
+			</div><!--end panel-->
+			
+			
+<?php 
+			echo $htmlPagination;
+			
+	}
+
 	public function afficherCatalogue($aProduits) {
 		$aCategories = array(1=>"Panneaux solaires",2=>"Kits Solaires",3=>"Lampes DEL");
 ?>

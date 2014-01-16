@@ -15,9 +15,8 @@ class VueCommandes {
 	 * 
 	 */
 	
-	public function afficherListAdmin($aDonneesCommandes, $aDonneesPaginator, $partir, $fin) {	?>
-		<?php
-
+	public function afficherListAdmin($aDonneesCommandes, $aDonneesPaginator, $partir, $fin) {
+		
 			$nomberCommandes = count($aDonneesCommandes);
 			//print_r($data);
 			$htmlPage = "";

@@ -57,7 +57,10 @@ class ControlerAdmin {
 						break;	
 					case 'modifier_usager':
 						$this->modifier_usager();
-						break;		
+						break;
+					case 'produits':
+						$this->produits();
+						break;	
 					default:
 						$this->connexion();
 						break;
@@ -456,6 +459,31 @@ class ControlerAdmin {
 			$oVueAdmin->afficherFinContent();
 			$oVueAdmin->afficherFooter();
 			
+		}
+
+		/**
+		 * Produits
+		 */
+		private function produits() {
+			$nb1 = (!empty($_GET['partir'])) ? $_GET['partir'] : 0;
+			$nb2 = (!empty($_GET['fin'])) ? $_GET['fin'] : 20;	
+			
+			$oVueAdmin	= new VueAdmin();
+			$oProduits = new Catalogue();
+			$aProduits = $oProduits->afficher("tous");
+			
+			$pagePagination = new Pagination();
+			$aDonnees = array("aTousElements" => $aProduits);
+			$pagesPaginator = $pagePagination->paginate($aDonnees);
+			$datas = $pagePagination->voirResultats();
+			
+			$oVueAdmin->afficherEntete();
+			$oVueAdmin->afficherToolbar();
+			$oVueAdmin->afficherNavigation();
+	
+			VueCatalogue::afficherListAdmin($aProduits, $pagesPaginator, $nb1, $nb2);
+			$oVueAdmin->afficherFinContent();
+			$oVueAdmin->afficherFooter();
 		}
 		
 				
