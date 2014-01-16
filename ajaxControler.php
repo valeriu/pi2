@@ -116,12 +116,14 @@
 		//var_dump($_SERVER['QUERY_STRING']);
 		//var_dump($_SERVER['HTTP_REFERER']);
 		session_destroy();
-		if($_SERVER['HTTP_REFERER'] == "http://e1295805.webdev.cmaisonneuve.qc.ca/Projet_Luc/index.php?requete=adresseCommande"){
+		echo VueUsagers::afficherFormUsagers();
+		/*if($_SERVER['HTTP_REFERER'] == "http://e1295805.webdev.cmaisonneuve.qc.ca/Projet_Luc/index.php?requete=adresseCommande"){
 			//header('Location: index.php?requete=accueil');
+
 		}
 		else{
 			echo VueUsagers::afficherFormUsagers();
-		}
+		}*/
 		
 	}
 

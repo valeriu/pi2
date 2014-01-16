@@ -40,13 +40,16 @@ class VuePanier {
 										if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
 											//$(".modal-content").html(xhr.responseText);
 											var str = xhr.responseText;
-											if(str.length > 100){
-												window.location.assign("index.php?requete=adresseCommande");
-											}
+
+											$(".modal-content").html(xhr.responseText);
+											$('#myModal').modal('show');
+											/*if(str.length > 100){
+												//window.location.assign("index.php?requete=adresseCommande");
+											} 
 											else{
 												$("#myModal").html(xhr.responseText);
 												$('#myModal').modal('show');
-											}
+											}*/
 										}
 									};
 										xhr.send();
@@ -57,9 +60,10 @@ class VuePanier {
 					}
 					else{
 						?>
-						<script>
+						<script>							
 							window.addEventListener('load', function () {
 								$("#confirmer").on("click", function(){
+									//console.log(<?= $_SESSION['usager'] ?>);
 									window.location.assign("index.php?requete=adresseCommande");
 								});
 							})	
@@ -124,7 +128,7 @@ class VuePanier {
 				  <div class="modal-dialog">
 				    <div name="modal-content" class="modal-content">
 				    	
-		      	</div><!-- /.modal-content -->
+		      		</div><!-- /.modal-content -->
 				  </div><!-- /.modal-dialog -->
 				</div>
 

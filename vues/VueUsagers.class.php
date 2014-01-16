@@ -19,9 +19,30 @@ class VueUsagers {
 				</form>			
 			</section>
 			<script>
-				//$("#formEnregistrer").on("click", clickEnregistrer);
+				$("#formEnregistrer").on("click", clickEnregistrer);
+				$('#formConnecter').on('click', clickConnecter);
 
-				//$('#formConnecter').on('click', clickConnecter);
+				$("#confirmer").on("click", function(){
+					var xhr = new XMLHttpRequest();
+					xhr.open("GET", "ajaxControler.php?requete=formConnecter", true);	
+					xhr.onreadystatechange = function() {
+						if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
+							//$(".modal-content").html(xhr.responseText);
+							var str = xhr.responseText;
+
+							$(".modal-content").html(xhr.responseText);
+							$('#myModal').modal('show');
+							/*if(str.length > 100){
+								//window.location.assign("index.php?requete=adresseCommande");
+							} 
+							else{
+								$("#myModal").html(xhr.responseText);
+								$('#myModal').modal('show');
+							}*/
+						}
+					};
+						xhr.send();
+				});
 			</script>
 <?php
 	}
@@ -33,6 +54,11 @@ class VueUsagers {
 					<a name="deconnecter" id="deconnecter" class="btn btn-md btn-lien" type="button">Déconnexion</a>
 				</form>			
 			</section>
+			<script>
+				$("#confirmer").on("click", function(){
+					window.location.assign("index.php?requete=adresseCommande");	
+				});
+			</script>
 		
 <?php
 	}

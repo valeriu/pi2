@@ -35,19 +35,7 @@ $(function(){
         initLogo();
     }); 
 
-    function clickEnregistrer(){
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "ajaxControler.php?requete=formEnregistrer", true); 
-    xhr.onreadystatechange = function() {
-        if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
-            //clearTimeout(timeout);
-            console.log(xhr.responseText);
-            $('.modal-content').html(xhr.responseText);
-            $('#myModal').modal('show');
-        }
-    };
-    xhr.send();
-};
+   
 
 });
 /* ----- Module Pattern avec IIFE et Closure ----- */
@@ -100,6 +88,19 @@ var Catalogue = (function () {  // Module qui contient la fonction pour ajouter 
     }
 }());
 
+function clickEnregistrer(){
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "ajaxControler.php?requete=formEnregistrer", true); 
+    xhr.onreadystatechange = function() {
+        if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
+            //clearTimeout(timeout);
+            console.log(xhr.responseText);
+            $('.modal-content').html(xhr.responseText);
+            $('#myModal').modal('show');
+        }
+    };
+    xhr.send();
+};
 
 function clickDeconnecter(){
     var xhr = new XMLHttpRequest();

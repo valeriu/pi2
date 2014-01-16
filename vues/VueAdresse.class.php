@@ -192,8 +192,8 @@ class VueAdresse {
 						</div>
 					</div>
 					<hr class="featurette-divider">
-					<a href="panier.html"><button name="back" id="back" class="btn btn-lg btn-primary" type="button">Retour</button></a>
-					<a href="panier_confirmation.html"><button name="pay" id="pay" class="btn btn-lg btn-primary" type="button">Payer</button></a>
+					<a href="index.php?requete=panier"><button name="back" id="back" class="btn btn-lg btn-primary" type="button">Retour</button></a>
+					<a href="index.php?requete=panier_confirmation"><button name="pay" id="pay" class="btn btn-lg btn-primary" type="button">Payer</button></a>
 					<!--<button name="pay" id="pay" class="btn btn-lg btn-primary" type="submit">Pay</button>-->
 				</div>
 			</form>
