@@ -10,12 +10,6 @@
 
 class VueAdmin {
 
-	/**
-	 * Affiche la page d'accueil 
-	 * @access public
-	 * 
-	 */
-
 	public function afficherEntete() { ?>
 	<!DOCTYPE html>
 	<html lang="fr">
@@ -100,11 +94,11 @@ class VueAdmin {
 		  <div class="col-lg-2 col-md-2">
 			<div class="list-group">
 				<a href="#" class="list-group-item active">Panneau d'administration</a>
-				<a href="adminka.php?requete=commandes" class="list-group-item"><span class="badge">414</span>Commandes</a>
-				<a href="adminka.php?requete=produits" class="list-group-item"><span class="badge">85</span>Produits</a>
-				<a href="adminka.php?requete=page" class="list-group-item"><span class="badge">8</span>Pages</a>
-				<a href="adminka.php?requete=liste_usagers" class="list-group-item"><span class="badge">309</span>Usagers</a>
-				<a href="adminka.php?requete=menu" class="list-group-item"><span class="badge">4</span>Menu</a>
+				<a href="adminka.php?requete=commandes" class="list-group-item">Commandes</a>
+				<a href="adminka.php?requete=produits" class="list-group-item">Produits</a>
+				<a href="adminka.php?requete=page" class="list-group-item">Pages</a>
+				<a href="adminka.php?requete=liste_usagers" class="list-group-item">Usagers</a>
+				<a href="adminka.php?requete=menu" class="list-group-item">Menu</a>
 			</div>
 		  </div>
 	<div class="col-lg-10 col-md-10">
@@ -114,7 +108,6 @@ class VueAdmin {
 			  </div>
 		</div>
     </div><!-- end content -->
-	
 	<?php }
 }
 ?>
