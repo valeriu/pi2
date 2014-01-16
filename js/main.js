@@ -21,11 +21,33 @@ $(function(){
     	$('#msgError').show(); // Affichage d'error
     }
 
+    // Modals de connexion
+
+    $("#formEnregistrer").on("click", clickEnregistrer);
+
+    $('#formConnecter').on('click', clickConnecter);
+    
+    $('#deconnecter').on('click', clickDeconnecter);
+
 
     //Initialisation du logo anime
     $( document ).ready(function() {
         initLogo();
     }); 
+
+    function clickEnregistrer(){
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "ajaxControler.php?requete=formEnregistrer", true); 
+    xhr.onreadystatechange = function() {
+        if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
+            //clearTimeout(timeout);
+            console.log(xhr.responseText);
+            $('.modal-content').html(xhr.responseText);
+            $('#myModal').modal('show');
+        }
+    };
+    xhr.send();
+};
 
 });
 /* ----- Module Pattern avec IIFE et Closure ----- */
@@ -77,4 +99,40 @@ var Catalogue = (function () {  // Module qui contient la fonction pour ajouter 
         ajouterProduit : _ajouterProduit
     }
 }());
+
+
+function clickDeconnecter(){
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "ajaxControler.php?requete=deconnecter", true); 
+
+    console.log('deconnecter');
+    xhr.onreadystatechange = function() {
+        if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
+            //clearTimeout(timeout);
+            console.log(xhr.responseText);
+            $("#usager").replaceWith(xhr.responseText);
+            $('#myModal').modal('hide');
+        }
+    };
+    xhr.send();
+    
+};
+
+
+
+
+function clickConnecter(){
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "ajaxControler.php?requete=formConnecter", true);   
+    xhr.onreadystatechange = function() {
+        if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
+            //clearTimeout(timeout);
+            //console.log(xhr.responseText);
+            $('.modal-content').html(xhr.responseText);
+            $('#myModal').modal('show');
+        }
+    };
+    xhr.send();
+    
+};
 

@@ -87,7 +87,6 @@ class Vue {
 			<!-- Bootstrap core JavaScript
 			================================================== -->
 			<!-- Placed at the end of the document so the pages load faster -->
-			<script src="js/vendor/jquery-1.10.2.min.js"></script>
 			<script src="js/vendor/bootstrap.min.js"></script>
 			<script src="js/vendor/easeljs-0.6.0.min.js"></script>
 			<script src="js/vendor/tweenjs-0.4.0.min.js"></script>

@@ -1,5 +1,7 @@
-$(function(){ 
-	/* Bind click sur les boutons */
+console.log('USAGER.js');
+
+/*$(function(){ 
+	// Bind click sur les boutons 
 
 
 	$("#formEnregistrer").on("click", clickEnregistrer);
@@ -53,4 +55,4 @@ function clickConnecter(){
 	};
 	xhr.send();
 	
-};
+};*/

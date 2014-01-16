@@ -290,7 +290,7 @@ $(function(){
     }());
 
 });
-
+/*
 $(function(){
     $('#etape2').on('click', function(){
         var xhr = new XMLHttpRequest();
@@ -306,4 +306,4 @@ $(function(){
         xhr.send();
         
     });
-});
+});*/

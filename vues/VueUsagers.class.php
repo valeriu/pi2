@@ -19,9 +19,9 @@ class VueUsagers {
 				</form>			
 			</section>
 			<script>
-				$("#formEnregistrer").on("click", clickEnregistrer);
+				//$("#formEnregistrer").on("click", clickEnregistrer);
 
-				$('#formConnecter').on('click', clickConnecter);
+				//$('#formConnecter').on('click', clickConnecter);
 			</script>
 <?php
 	}

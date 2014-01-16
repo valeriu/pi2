@@ -41,7 +41,7 @@ class VuePanier {
 											//$(".modal-content").html(xhr.responseText);
 											var str = xhr.responseText;
 											if(str.length > 100){
-												window.location("index.php?requete=adresseCommande");
+												window.location.assign("index.php?requete=adresseCommande");
 											}
 											else{
 												$("#myModal").html(xhr.responseText);
@@ -118,7 +118,7 @@ class VuePanier {
 				  	</article>
 				</div>
 				<a href="../index.html"><button name="retourner" id="back" class="btn btn-lg btn-primary" type="button">Retour au catalogue</button></a>
-				<button id="confirmer" class="btn btn-lg btn-primary" >Passer la commande</button>
+				<button id="confirmer" class="btn btn-lg btn-primary" >Continuer</button>
 				<!-- Modal -->
 				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				  <div class="modal-dialog">
