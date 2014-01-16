@@ -30,7 +30,27 @@ class Catalogue {
 	}
 
 	// METHODES
-		// afficher les produits
+
+		// afficher 1 seul produit
+	public function afficherProduit($id) {
+		$idbd = $this->bd->getBD();
+
+		// requete SQL
+		$req = $idbd->prepare(	"SELECT *
+                                FROM wa_produits WHERE categorie_id_categorie=".$id.";");
+		$req->execute();
+		//var_dump($req);
+		$aProduit = $req->fetchAll();
+		
+		if($aProduits){
+			return $aProduit;
+		}
+		else{
+			throw new Exception("Erreur lors du chargement du produit...");
+		}
+	}
+
+	// afficher les produits
 	public function afficher($mode) {
 		$idbd = $this->bd->getBD();
 		
@@ -68,7 +88,6 @@ class Catalogue {
 		else{
 			throw new Exception("Erreur lors du chargement des produits...");
 		}
-		break;
 	}
 
 		// ajouter un nouveau produit

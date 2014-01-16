@@ -47,7 +47,7 @@ class VueCatalogue {
 
 			<div class="panel panel-default">
 			<!-- Default panel contents -->
-			<div class="panel-heading">Liste de tous les produits<span class="badge pull-right"><?php echo $nbProduits;?></span>
+			<div class="panel-heading">Tous les produits<span class="badge pull-right"><?php echo $nbProduits;?></span><div> <a href="adminka.php?requete=produits_ajouter">Ajouter un produit</a></div>
 			</div>
 			<div class="panel-body">
 				Vous pouvez modifier et ajouter des produits du catalogue.
