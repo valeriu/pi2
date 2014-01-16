@@ -19,7 +19,7 @@ class Panier {
 	}
 
 	// Methode de création d'une commande
-	public function confirmationAdresse($aDonnees, $info) { //$courriel='', $infoCommande='', $totalCommande=0, $produits=0
+	public function confirmationAdresse($aDonnees) { //$courriel='', $infoCommande='', $totalCommande=0, $produits=0
 
 		$courriel 		= (!empty($aDonnees['email'])) ? $aDonnees['email'] : '';
 		$nb_produit		= (!empty($aDonnees['nb_produit'])) ? $aDonnees['nb_produit'] : '';
@@ -28,33 +28,85 @@ class Panier {
 		//var_dump($courriel);
 		
 		if(!Valider::estCourriel($courriel))
-			throw new Exception("Ce courriel est invalide");		
+			throw new Exception("Ce courriel est invalide");
+		if(!Valider::estInt(intval($nb_produit)))
+			throw new Exception("Quantite de produtis doit être un nombre");
+		if(!Valider::estInt(intval($id_adresse)))
+			throw new Exception("L'id de l'adresse doit éxister!");
 		//if(!Valider::estTableau($data))
 			//throw new Exception("Les produits doivent être dans un tableau!.");
-		//if(!Valider::estInt($quantite))
-			//throw new Exception("Quantite, doit être un nombre");
 
 		$infoCommande = json_decode($data);
 		$details = $_POST['data'];
-		$totalCommande = '';
-		$nb_produit = intval($nb_produit);
-
-
+		
 		// Pour enregistrer le prix total de la commande
+		$totalCommande = '';		
 		for($i = 0 ; $i < $nb_produit; $i++){
 			$totalCommande += $infoCommande->{"$i"}->{"prix"} * $infoCommande->{"$i"}->{"quant"};
 		}
+
+		// Requête Code province Adresse
+		$idbd = $this->bd->getBD();
+		$reqAdd = $idbd->prepare('SELECT province FROM wa_adresse WHERE id_adresse = ?');
+		$reqAdd->bindParam(1, $id_adresse);
+		$reqAdd->execute();
+		$codeProvinciel = $reqAdd->fetch(PDO::FETCH_ASSOC);
+
+		if(!$codeProvinciel)
+			throw new Exception("Error d'adresse, aucune adresse trouvée");
+		
+		switch ($codeProvinciel['province']) {
+			case 'QC':
+				$taxes = $totalCommande * (QC+CA);
+				break;
+			case 'ON':
+				$taxes = $totalCommande * (ON+CA);
+				break;
+			case 'MN':
+				$taxes = $totalCommande * (MN+CA);
+				break;
+			case 'SK':
+				$taxes = $totalCommande * (SK+CA);
+				break;
+			case 'CB':
+				$taxes = $totalCommande * (CB+CA);
+				break;
+			case 'NB':
+				$taxes = $totalCommande * (NB+CA);
+				break;
+			case 'NE':
+				$taxes = $totalCommande * (NE+CA);
+				break;
+			case 'IE':
+				$taxes = $totalCommande * (IE+CA);
+				break;
+			case 'AL':
+				$taxes = $totalCommande * (AL+CA);
+				break;
+			case 'TN':
+				$taxes = $totalCommande * (TN+CA);
+				break;
+			case 'NO':
+				$taxes = $totalCommande * (NO+CA);
+				break;
+			case 'YK':
+				$taxes = $totalCommande * (YK+CA);
+				break;
+			case 'NV':
+				$taxes = $totalCommande * (NV+CA);
+				break;
+		}
+
 		// Création de la date actuelle de la commande
 		$dateCommande = date("Y-m-d H:i:s");
 
-		// Bonne insertion dans la BD :)
-		// Ajoute de htmlentities() et addslashes()
-		//$info = $this->maDB->executer("INSERT INTO infoCommandeTP3 (email, dateCommande, details, total, produits) values ('".htmlentities($courriel)."', '".$dateCommande."', '".addslashes($infoCommande)."', ".$totalCommande.", ".$produits." )");
-		var_dump($infoCommande);
+		$adresse = new Adresse;
+		$oAdresse = $adresse->afficher(array('id_adresse' => $id_adresse));
 
-		$info = ''.$courriel.'-'.$nb_produit.'-'.$id_adresse.'-'.$totalCommande.'-'.'-'.$dateCommande.' - DETAILS'.$details;
+		//Tableau de retour d'information pour la dernière étape du panier
+		$tableauPanier = array('courriel' => $courriel, 'nb_produit' => $nb_produit, 'adresse'=> $oAdresse, 'info_commande'=> $infoCommande, 'total_commande'=> round($totalCommande,2), 'taxes'=> round($taxes, 2) ) ;
 
-		return $info;
+		return $tableauPanier;
 		
 	}
 

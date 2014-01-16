@@ -61,22 +61,18 @@
 	}
 
 	function confirmationAdresse(){
-		if(empty($_POST['data']))
-		{
-			$_POST['data'] = '';
+		try{
+						
+			$panier =  new Panier();
+			$resultatNewCommande = $panier->confirmationAdresse($_POST);
+
+			$vuePanier =  new VuePanier();
+			$vuePanier->affichePanierFinal($resultatNewCommande);
+
 		}
-		$info = json_decode($_POST['data']);
-
-		$vuePanier =  new Panier();
-		$resultatNewCommande = $vuePanier->confirmationAdresse($_POST, $info);
-		echo $resultatNewCommande; // Réponse AJAX , pour la vérification de l'enregistrement
-
-		/*$commande = new Commande();
-		$resultatNewCommande = $commande->creerCommande($_POST['email'], $details, round($totalCommande, 2), $nbProduits);
- 		
-		//var_dump($_POST['quantite'], $_POST['email'], $_POST['data'], $nbProduits, $resultatNewCommande);
-		//return $resultatNewCommande;
-		echo $resultatNewCommande; // Réponse AJAX , pour la vérification de l'enregistrement*/
+		catch(Exception $e){
+			echo $e->getMessage();
+		}
 
 	}
 

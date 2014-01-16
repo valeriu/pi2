@@ -42,7 +42,7 @@ class Controler {
 			}
 		}
 		private function accueil() {
-			$form = (isset($_POST['form'])) ? $_POST['form'] : '';
+			//$form = (isset($_POST['form'])) ? $_POST['form'] : '';
 			$oVue = new Vue();
 			$oVue->afficherEntete();
 			if(!isset($_SESSION['usager'])){
@@ -53,7 +53,7 @@ class Controler {
 			}
 			$oVue->afficherBoutonPanier();
 			VueMenu::afficherMenu();
-			$oVue->afficherAccueil($form);
+			$oVue->afficherAccueil();
 			$oVue->afficherFooter();
 
 		}

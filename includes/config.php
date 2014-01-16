@@ -44,6 +44,12 @@
 	define("NO", 1);
 	define("YK", 1);
 	define("NV", 1);
+
+	// courriel de PAYPAL
+	define("PAYPAL", 'wadagbe.solar@gmail.com');
+	define("URL_SUCCESS", 'http://e1295805.webdev.cmaisonneuve.qc.ca/Projet_Luis/index.php?requete=succes');
+	define("URL_IPN", 'http://e1295805.webdev.cmaisonneuve.qc.ca/Projet_Luis/ipn.php');
+
 	
 	
 // Google Maps API

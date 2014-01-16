@@ -119,18 +119,16 @@ var Panier = (function () {
                     },
                     cache: false,
                     success: function(info){
-                        if(info == 1){ // Vérification de la réponse AJAX TRUE
-                            $('#myModal').modal({backdrop:false});
-                            $('#myModal').modal('hide');
-                            $('#panier').remove();
-                            $('#panierConfirmation').show();
-                            localStorage.clear();
-                        }else{
+                        //if(info == 1){ // Vérification de la réponse AJAX TRUE
+                            //$('#ShippingAddress').remove();
+                            $('#ShippingAddress').html(info);
+                            //localStorage.clear();
+                        /*}else{
                             $('#myModal').modal('hide');
                             $('#panier').remove();
                             $('#pasEnregistre').show();
 
-                        }
+                        }*/
                     },
                     error: function(error){
                         console.log("Error:", error);

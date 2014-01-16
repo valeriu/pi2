@@ -116,7 +116,7 @@ class Vue {
 
 	}
 
-	public function afficherAccueil($form = '') {
+	public function afficherAccueil() {
 		
 		?>
   <!-- Carousel -->

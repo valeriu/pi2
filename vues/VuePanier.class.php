@@ -150,15 +150,81 @@ class VuePanier {
 		
 	}
 
-	
-	public function affiche() {
-		?>
-		<article>
-			<h1>PANIER</h1>
-			<p>Information panier</p>
-		</article>
-		<?php
-		
+	public function affichePanierFinal($aDonnes) {
+
+	?>
+		<div id="panierConfirmer" class="">
+				<div class="panel panel-default">
+					<header class="panel-heading">
+						<h2>Votre commande</h2>
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="col-sm-2">
+									<h4>Produit</h4>
+								</div>
+								<div class="col-sm-4">
+									<h4>Description</h4>
+								</div>
+								<div class="col-sm-2">
+									<h4>Prix</h4>
+								</div>
+								<div class="col-sm-2">
+									<h4>Qt</h4>
+								</div>
+								<div class="col-sm-2">
+									<h4>Total</h4>
+								</div>
+							</div>
+						</div>
+					</header>
+					<article id="produits" class="panel-body">
+
+					<?php
+					$htmlProduits = '';
+					for ($i = 0; $i < $aDonnes['nb_produit']; $i++){ 
+						$htmlProduits .= '<article id="'.$aDonnes['info_commande']->{"$i"}->{"idP"}.'" class="row"><div class="col-sm-12"><div class="col-sm-2"><a href="#" class="thumbnail"><img class="img-responsive" src="'.$aDonnes['info_commande']->{"$i"}->{'image'}.'" alt="'.$aDonnes['info_commande']->{"$i"}->{'nom'}.'"></a></div><div class="col-sm-4"><p>'.$aDonnes['info_commande']->{"$i"}->{'nom'}.'</p></div><div class="col-sm-2"><p><span class="prix">'.$aDonnes['info_commande']->{"$i"}->{'prix'}.'</span><span> $CAD</span></p></div><div class="col-sm-1"><p>'.$aDonnes['info_commande']->{"$i"}->{'quant'}.'</p></div><div class="col-sm-2 text-center"><p><span class="total">'.round($aDonnes['info_commande']->{"$i"}->{'prix'} * $aDonnes['info_commande']->{"$i"}->{'quant'}, 2).'</span><span> $CAD</span></p></div></div></article>';
+           			}
+           			echo $htmlProduits;
+					?>				    	
+				  	</article>
+				  	<article id="infoPanier" class="panel-footer">
+				  		<article id="totalProduits" class="row">
+							<div class="col-sm-12">
+								<div class="col-sm-offset-8 col-sm-2 text-right">
+									<p><strong>Taxes</strong></p>
+								</div>
+								<div class="col-sm-2 text-center">
+									<p id="totalProduitsPanier"><?= $aDonnes['taxes'] ?></p>
+								</div>
+							</div>
+						</article>
+						<article id="totalPrix" class="row">
+							<div class="col-sm-12">
+								<div class="col-sm-offset-8 col-sm-2 text-right">
+									<p><strong>Prix total</strong></p>
+								</div>
+								<div class="col-sm-2 text-center">
+									<p><strong id="totalPrixPanier"><?= $aDonnes['total_commande'] ?></strong><strong> $CAD</strong></p>
+								</div>
+							</div>
+						</article>
+				  	</article>
+				</div>
+				<a href="./index.php?requete=panier"><button name="retourner" id="back" class="btn btn-lg btn-primary" type="button">Retour au panier</button></a>
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+					<input type="hidden" name="amount" value="<?= $aDonnes['total_commande']+$aDonnes['taxes'] ?>">
+					<input type="hidden" name="cmd" value="_xclick">
+					<input type="hidden" name="business" value="<?= PAYPAL?>">
+					<input type="hidden" name="item_name" value="WADAGBE">
+					<input type="hidden" name="item_number" value="">
+					<input type="hidden" name="currency_code" value="CAD">					
+					<input type="hidden" name="return" value="<?= URL_SUCCESS ?>">
+					<input type="hidden" name="notify_url" value="<?= URL_IPN ?>" />
+					<button id="confirmerPayment" class="btn btn-lg btn-primary" >Payer</button>
+				</form>
+			</div>
+	<?php
+
 	}
 
 
