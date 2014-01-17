@@ -119,9 +119,9 @@ var Panier = (function () {
                     },
                     cache: false,
                     success: function(info){
+                        $('#ShippingAddress').html(info);
                         //if(info == 1){ // Vérification de la réponse AJAX TRUE
-                            //$('#ShippingAddress').remove();
-                            $('#ShippingAddress').html(info);
+                            //$('#ShippingAddress').remove();                        
                             //localStorage.clear();
                         /*}else{
                             $('#myModal').modal('hide');
@@ -285,20 +285,3 @@ $(function(){
     }());
 
 });
-/*
-$(function(){
-    $('#etape2').on('click', function(){
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "ajaxControler.php?requete=formConnecter", true);   
-        xhr.onreadystatechange = function() {
-            if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
-                //clearTimeout(timeout);
-                //console.log(xhr.responseText);
-                $('.modal-content').html(xhr.responseText);
-                $('#myModal').modal('show');
-            }
-        };
-        xhr.send();
-        
-    });
-});*/
