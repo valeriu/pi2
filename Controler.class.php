@@ -133,7 +133,7 @@ class Controler {
 			}
 			Vue::afficherBoutonPanier();
 			VueMenu::afficherMenu();
-			VueCatalogue::afficherCatalogue($aProduits, $aSelectCat);
+			VueCatalogue::afficherCatalogue($aProduits);
 			Vue::afficherFooter();
 		}
 		// Placer les méthodes du controleur.
