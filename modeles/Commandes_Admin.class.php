@@ -54,7 +54,7 @@ class Commandes_Admin {
 	 */
 	public function afficherListe () {
 		$idbd = $this->bd->getBD();
-		$req = $idbd->prepare ("SELECT * FROM  `wa_commandes`");
+		$req = $idbd->prepare ("SELECT * FROM  wa_commandes ORDER BY date_commande DESC ");
 		$reponse = $req->execute();
 	
 		if($reponse){
