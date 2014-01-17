@@ -61,7 +61,7 @@ class VueAdresse {
 			});	
 		</script>
 
-			<form id="ShippingAddress" method="POST" action="#">
+			<div id="ShippingAddress" method="POST" action="#">
 				<div class="panel-group" id="accordion">
 					<div class="panel panel-default">
 						<div class="panel-heading">
