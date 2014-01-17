@@ -427,7 +427,7 @@ class ControlerAdmin {
 			
 			$oVueAdmin	= new VueAdmin();
 			$oProduits  = new Catalogue();
-			$aProduits  = $oProduits->afficher("tous");
+			$aProduits  = $oProduits->afficherListe("tous");
 			
 			$pagePagination = new Pagination();
 			$aDonnees 		= array("aTousElements" => $aProduits);

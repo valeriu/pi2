@@ -22,10 +22,10 @@ class VueCatalogue {
 <?php
 				switch ($result) {
 					case 1:
-						echo "<div class=\"alert alert-success\"><strong>Bien fait!</strong> Vous insérez cette page dans la base de données avec succès.</div>";
+						echo "<div class=\"alert alert-success\"><strong>Bien fait!</strong> Vous avez ajouter/modifier ce produit dans la base de données avec succès.</div>";
 						break;
 					case 0:
-						echo "<div class=\"alert alert-danger\"><strong>Oh rupture!</strong> Changer quelques choses et essayer à nouveau soumission.</div>";
+						echo "<div class=\"alert alert-danger\"><strong>Oh rupture!</strong>Changer quelques choses et essayer à nouveau la soumission.</div>";
 						break;
 					default:
 						break;
@@ -33,7 +33,7 @@ class VueCatalogue {
 ?>
 
 				<!-- Form Edit pages-->
-				<form role="form" method="POST" action="./adminka.php?requete=<?php if(isset($_POST['modifierProduit'])) echo "modifier"; else echo "ajouter"; ?>_produit&produit_id=<?php if(isset($data)) echo $data["id_produits"]; ?>">
+				<form role="form" method="POST" action="./adminka.php?requete=<?php if(isset($data['nom'])) echo "modifier"; else echo "ajouter"; ?>_produit&produit_id=<?php if(isset($data)) echo $data["id_produits"]; ?>">
 					<div class="form-group">
 						<label for="product-title">Nom du produit</label>
 						<input type="text" class="form-control" id="nomProduit" name="nomProduit" placeholder="Titre du produit" value="<?php if(isset($data['nom'])) echo $data['nom']; if(isset($data['nomProduit'])) echo $data['nomProduit']; ?>">
@@ -141,13 +141,13 @@ class VueCatalogue {
 					$htmlPage .= "<td><abbr title=\"{$aDonnees[$i]["fournisseur"]}\">{$aDonnees[$i]["fournisseur"]}</abbr></td>\r\n";
 					$htmlPage .= "<td>{$aDonnees[$i]["prix"]}$</td>\r\n";
 					switch ($aDonnees[$i]["statut"]) {
-						case 0: // Inactif
+						case "0": // Inactif
 							$htmlPage .= "<td><span class=\"label label-warning\">Inactif</span></td>";
 							break;
-						case 1: // Actif
+						case "1": // Actif
 							$htmlPage .= "<td><span class=\"label label-success\">Actif</span></td>";
 							break;
-						case 2: // Supprimé
+						case "2": // Supprimé
 							$htmlPage .= "<td><span class=\"label label-danger\">Supprimé</span></td>";
 							break;
 					}
