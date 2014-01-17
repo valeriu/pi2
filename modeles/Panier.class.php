@@ -21,10 +21,10 @@ class Panier {
 	// Methode de création d'une commande
 	public function confirmationAdresse($aDonnees) { //$courriel='', $infoCommande='', $totalCommande=0, $produits=0
 
-		$courriel 		= (!empty($aDonnees['email'])) ? $aDonnees['email'] : '';
-		$nb_produit		= (!empty($aDonnees['nb_produit'])) ? $aDonnees['nb_produit'] : '';
-		$id_adresse		= (!empty($aDonnees['id_adresse'])) ? $aDonnees['id_adresse'] : '';
-		$data 	= (!empty($aDonnees['data'])) ? $aDonnees['data'] : '';
+		$courriel 	= (!empty($aDonnees['email'])) ? $aDonnees['email'] : '';
+		$nb_produit	= (!empty($aDonnees['nb_produit'])) ? $aDonnees['nb_produit'] : '';
+		$id_adresse	= (!empty($aDonnees['id_adresse'])) ? $aDonnees['id_adresse'] : '';
+		$data 		= (!empty($aDonnees['data'])) ? $aDonnees['data'] : '';
 		//var_dump($courriel);
 		
 		if(!Valider::estCourriel($courriel))
@@ -33,8 +33,8 @@ class Panier {
 			throw new Exception("Quantite de produtis doit être un nombre");
 		if(!Valider::estInt(intval($id_adresse)))
 			throw new Exception("L'id de l'adresse doit éxister!");
-		//if(!Valider::estTableau($data))
-			//throw new Exception("Les produits doivent être dans un tableau!.");
+		if(!Valider::estObject($data))
+			throw new Exception("Les produits doivent être un objet!.");
 
 		$infoCommande = json_decode($data);
 		$details = $_POST['data'];
