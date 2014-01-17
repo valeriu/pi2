@@ -43,7 +43,7 @@ class VuePages {
 			}
 		?>
 	<?php }
-public function ajouterPageAdmin($result) {
+public function ajouterPageAdmin($result="", $mes="") {
 		//print_r($result);
 		?>
 		
@@ -52,6 +52,14 @@ public function ajouterPageAdmin($result) {
 			<div class="panel-heading">Ajouter ou modifier une page</div>
 			<div class="panel-body">
 			<?php
+				
+			if ($mes !=""){
+				
+				echo "<div class=\"alert alert-danger\">".$mes."</div>";
+			}
+
+			
+			if ($result != NULL) {
 				switch ($result) {
 					case 1:
 						echo "<div class=\"alert alert-success\"><strong>Bien fait!</strong> Vous insérez cette page dans la base de données avec succès.<br />
@@ -59,9 +67,12 @@ public function ajouterPageAdmin($result) {
 							</div>";
 						break;
 					case 0:
-						echo "<div class=\"alert alert-danger\"><strong>Oh rupture!</strong> Changer quelques choses et essayer à nouveau soumission.</div>";
-						break;
-					default:
+						echo "<div class=\"alert alert-danger\"><strong>Oh rupture!</strong> Changer quelques choses et essayer à nouveau soumission.";
+						echo "</div>";
+						break;					
+			}	}
+			
+			
 						?>
 					<!-- Form Edit pages-->
 			<form role="form" method="POST" action="<?php echo $_SERVER['REQUEST_URI'];?>">
@@ -127,10 +138,7 @@ public function ajouterPageAdmin($result) {
 			</div>
 			</div><!--end panel-->
 		  </div>
-						<?php
-						break;
-				}
-			?>
+
 		
 	<?php }
 	

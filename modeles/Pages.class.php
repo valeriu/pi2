@@ -42,13 +42,30 @@ class Pages {
 	 */	
 	
 	public function ajouter ($aDonnees = Array()) {
+		//var_dump($aDonnees);
+		if(isset($_POST["page-ajouter"])){
+			$titre				= trim(strip_tags($_POST["page-title"]));
+			$description_meta	= trim(strip_tags($_POST["page-description"]));
+			$contenu			= $_POST["page-contenu"];
+			$statut				= intval($_POST["optionsRadios"]);
+			$geo_lat			= (!empty($_POST["page-latitudes"])) ? trim(strip_tags($_POST["page-latitudes"])) : NULL;
+			$geo_long			= (!empty($_POST["page-longitudes"])) ? trim(strip_tags($_POST["page-longitudes"])) : NULL;
+
+		
+		/*else {
+			
+			$titre				= $aDonnees['titre'];
+			$description_meta	= $aDonnees['description_meta'];
+			$contenu			= $aDonnees['contenu'];
+			$statut 			= (!empty($aDonnees['statut'])) ? $aDonnees['statut'] : 1;
+			$geo_long 			= (!empty($aDonnees['geo_long'])) ? $aDonnees['geo_long'] : NULL;
+			$geo_lat			= (!empty($aDonnees['geo_lat'])) ? $aDonnees['geo_lat'] : NULL;
+		}
+		*/
+		
+		
 		$date_modif			= date("Y-m-d H:i:s");
-		$titre				= $aDonnees['titre'];
-		$description_meta	= $aDonnees['description_meta'];
-		$contenu			= $aDonnees['contenu'];
-		$statut 			= (!empty($aDonnees['statut'])) ? $aDonnees['statut'] : 1;
-		$geo_long 			= (!empty($aDonnees['geo_long'])) ? $aDonnees['geo_long'] : NULL;
-		$geo_lat			= (!empty($aDonnees['geo_lat'])) ? $aDonnees['geo_lat'] : NULL;
+
 		
 		if (!empty($titre) && !Valider::estString($titre)){
 			throw new Exception("Titre, doit être un string");
@@ -95,11 +112,11 @@ class Pages {
 		$req->bindParam(':geo_lat', $geo_lat, PDO::PARAM_STR);   
 		$reponse = $req->execute();
 		
-		if($reponse){
+		if($reponse)
 				return $reponse;
 			throw new Exception("Erreur lors de la ajouter, recommencez");
-		}
-
+		
+	} 
 	}
 	/** 
 	 * Méthode modifier() - Modifier une page dans notre base de données en fonction de ID

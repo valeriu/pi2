@@ -138,40 +138,27 @@ class ControlerAdmin {
 			$oVueAdmin->afficherFinContent();
 			$oVueAdmin->afficherFooter();
 		}
+		/**
+		 * Ajouter une page
+		 */
 		private function ajouterPage() {
-			if(isset($_POST["page-ajouter"])){
-				$titre				= $_POST["page-title"];
-				$description_meta	= $_POST["page-description"];
-				$contenu			= $_POST["page-contenu"];
-				$statut				= intval($_POST["optionsRadios"]);
-				$geo_lat			= $_POST["page-latitudes"];
-				$geo_long			= $_POST["page-longitudes"];
-				
-				
-				//$page = new Pages();
-				$aDonneesPOST = array( 
-									"titre" => $titre, 
-									"description_meta" => $description_meta, 
-									"contenu" => $contenu, 
-									"statut" => $statut, 
-									"geo_long" => $geo_long, 
-									"geo_lat" => $geo_lat
-								);
-				$oPage = new Pages();
-				$result = $oPage->ajouter($aDonneesPOST);
-				
-			} else {
-				$result = "2";
-			}
-			
 			$oVueAdmin	= new VueAdmin();			
 			$oVueAdmin->afficherEntete();
 			$oVueAdmin->afficherToolbar();
 			$oVueAdmin->afficherNavigation();
-			VuePages::ajouterPageAdmin($result);
+			$oPage = new Pages();
+			$mes="";
+			try {
+				$result = $oPage->ajouter($_POST);
+			} catch (Exception $e) {
+				$mes = $e->getMessage();
+				$result = FALSE;
+			}
+			VuePages::ajouterPageAdmin($result, $mes);
 			$oVueAdmin->afficherFinContent();
 			$oVueAdmin->afficherFooter();
-		}
+
+}
 		
 		private function modifierPage() {
 			$page_id = (!empty($_GET['page_id'])) ? $_GET['page_id'] : 0;
