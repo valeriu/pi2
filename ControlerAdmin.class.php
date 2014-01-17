@@ -547,10 +547,11 @@ class ControlerAdmin {
 		 */
 		private function ajouterProduit() {
 
-			if(isset($_POST['modifierProduit']) && (!empty($_POST['IdProduit']))) {
+			if(isset($_POST['modifierProduit'])) {
 				try {
 					$oProduits  = new Catalogue();
 					$result 	= $oProduits->enregistrer($_POST);
+					$produit_id = intval($oProduits->dernierIdProduit());
 					$aProduit 	= $oProduits->afficherProduit($produit_id);
 				} 
 				catch(Exception $e) {

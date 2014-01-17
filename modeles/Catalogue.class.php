@@ -316,6 +316,12 @@ class Catalogue {
 		}
 	}
 
+	public function dernierIdProduit() {
+		$idbd 	= $this->bd->getBD();
+		$lastID = $idbd->lastInsertId();
+		return $lastID;
+	}
+
 }
 
 ?>
