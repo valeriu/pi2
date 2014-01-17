@@ -12,6 +12,7 @@ class VueCatalogue {
 	public function modifierProduitAdmin($data,$result) {
 		if(isset($_POST['modifierProduit'])) {
 			$data = $_POST;
+			$data['statut'] = $_POST['statutProduit'];
 		}
 ?>
 		
@@ -60,19 +61,19 @@ class VueCatalogue {
 						<label for="product-status">Statut</label>
 						<div class="radio">
 							<label>
-								<input type="radio" name="statutProduit" id="statutProduit1" value="1" <?php if(isset($data['statut'])||isset($data['statutProduit'])){if($data['statut']==1) echo "checked"; if($data['statutProduit']=="1") echo "checked";} ?>>
+								<input type="radio" name="statutProduit" id="statutProduit1" value="1" <?php if(isset($data['statut'])){if($data['statut']==1) echo "checked";} ?>>
 								<span class="label label-success">Disponible</span>
 							</label>
 						</div>
 						<div class="radio">
 							<label>
-								<input type="radio" name="statutProduit" id="statutProduit0" value="0" <?php if($data['statut']==0) echo "checked"; if($data['statutProduit']=="0") echo "checked"; ?>>
+								<input type="radio" name="statutProduit" id="statutProduit0" value="0" <?php if(isset($data['statut'])){if($data['statut']==0) echo "checked";} ?>>
 								<span class="label label-warning">Non-disponible</span>
 							</label>
 						</div>
 						<div class="radio">
 							<label>
-								<input type="radio" name="statutProduit" id="statutProduit2" value="2" <?php if($data['statut']==2) echo "checked"; if($data['statutProduit']=="2") echo "checked"; ?>>
+								<input type="radio" name="statutProduit" id="statutProduit2" value="2" <?php if(isset($data['statut'])){if($data['statut']==2) echo "checked";} ?>>
 								<span class="label label-danger">Supprimée</span>
 							</label>
 						</div>
