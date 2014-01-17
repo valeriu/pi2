@@ -163,44 +163,25 @@ class ControlerAdmin {
 		 * Modifier une page
 		 */
 		private function modifierPage() {
-			$page_id = (!empty($_GET['page_id'])) ? $_GET['page_id'] : 0;
+			$page_id = (!empty($_GET['page_id'])) ? $_GET['page_id'] : "";
 			$aDonnees = array("id_page" => $page_id);
-			if(isset($_POST["page-modifier"])){
-				$id_page			= intval($_POST["page-id"]);
-				$titre				= $_POST["page-title"];
-				$description_meta	= $_POST["page-description"];
-				$contenu			= $_POST["page-contenu"];
-				$statut				= intval($_POST["optionsRadios"]);
-				$geo_lat			= $_POST["page-latitudes"];
-				$geo_long			= $_POST["page-longitudes"];
-				$date_modif			= $_POST["page-date"];
-				
-				//$page = new Pages();
-				$aDonneesPOST = array(	"id_page" => $id_page, 
-									"titre" => $titre, 
-									"description_meta" => $description_meta, 
-									"contenu" => $contenu, 
-									"statut" => $statut, 
-									"geo_long" => $geo_long, 
-									"geo_lat" => $geo_lat
-								);
-				$oPage = new Pages();
-				$result = $oPage->modifier($aDonneesPOST);
-				$courentPage = $oPage->afficher($aDonnees);
-			} else {
-				$oPage = new Pages();
-				$courentPage = $oPage->afficher($aDonnees);
-				$result = "2";
-			}
 			
 			$oVueAdmin	= new VueAdmin();			
 			$oVueAdmin->afficherEntete();
 			$oVueAdmin->afficherToolbar();
 			$oVueAdmin->afficherNavigation();
-			VuePages::modifierPageAdmin($courentPage, $result);
+			$oPage = new Pages();
+			try {
+				$result = $oPage->modifier($aDonnees, $_POST);
+				$courentPage = $oPage->afficher($aDonnees);
+				VuePages::modifierPageAdmin($courentPage, $result);
+			} catch (Exception $e){
+				$courentPage = $oPage->afficher($aDonnees);
+				VuePages::modifierPageAdmin($courentPage, $e->getMessage());
+			}
 			$oVueAdmin->afficherFinContent();
 			$oVueAdmin->afficherFooter();
-		}
+	}
 		/**
 		 * Menu
 		 */

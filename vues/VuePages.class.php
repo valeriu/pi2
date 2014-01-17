@@ -142,7 +142,7 @@ public function ajouterPageAdmin($result="", $mes="") {
 		
 	<?php }
 	
-	public function modifierPageAdmin($data, $result) {
+	public function modifierPageAdmin($data, $mes="") {
 		//print_r($result);
 		?>
 		
@@ -151,14 +151,14 @@ public function ajouterPageAdmin($result="", $mes="") {
 			<div class="panel-heading">Ajouter ou modifier une page</div>
 			<div class="panel-body">
 			<?php
-				switch ($result) {
+				switch ($mes) {
 					case 1:
 						echo "<div class=\"alert alert-success\"><strong>Bien fait!</strong> Vous insérez cette page dans la base de données avec succès.</div>";
 						break;
-					case 0:
-						echo "<div class=\"alert alert-danger\"><strong>Oh rupture!</strong> Changer quelques choses et essayer à nouveau soumission.</div>";
+					case '':
 						break;
 					default:
+						echo "<div class=\"alert alert-danger\">".$mes."</div>";
 						break;
 				}
 			?>
