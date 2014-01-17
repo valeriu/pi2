@@ -49,9 +49,8 @@ class VueMenu {
 									} else {
 										$li .= "<li><a href=\"{$v1["url"]}\">{$v1["titre"]}</a></li>\r\n";
 									}
-									
-									
 								}
+								$li .= "</ul>";
 								echo $li;
 							?>
 							</div><!-- / PLUGIN DROPDOWN BOOTSTRAP -->
@@ -128,11 +127,35 @@ class VueMenu {
 			<?php echo $htmlPagination; ?>
 	<?php }
 	
-	public function ajouterMenuAdmin() {	?>
+	public function ajouterMenuAdmin($result="", $mes="") {	?>
 		<div class="panel panel-default">
 			<!-- Default panel contents -->
 			<div class="panel-heading">Ajouter ou modifier un menu</div>
 			<div class="panel-body">
+						<?php
+				
+			if ($mes !=""){
+				
+				echo "<div class=\"alert alert-danger\">".$mes."</div>";
+			}
+
+			
+			if ($result != NULL) {
+				switch ($result) {
+					case 1:
+						echo "<div class=\"alert alert-success\"><strong>Bien fait!</strong> Vous insérez cette lien dans la base de données avec succès.<br />
+							Vous voulez  <a href=\"adminka.php?requete=menu_ajouter\" class=\"alert-link\">ajouter</a> une autre lien?
+							</div>";
+						break;
+					case 0:
+						echo "<div class=\"alert alert-danger\"><strong>Oh rupture!</strong> Changer quelques choses et essayer à nouveau soumission.";
+						echo "</div>";
+						break;					
+			}	}
+			
+			
+						?>	
+				
 			<!-- Form Edit pages-->
 				<form role="form" method="POST" action="<?php echo $_SERVER['REQUEST_URI'];?>">
 					<div class="form-group">
@@ -187,23 +210,22 @@ class VueMenu {
 		  </div>
 	<?php }
 	
-	public function modifierMenuAdmin($data, $result) {	?>
+	public function modifierMenuAdmin($data, $mes="") {	?>
 		<div class="panel panel-default">
 			<!-- Default panel contents -->
 			<div class="panel-heading">Ajouter ou modifier une page</div>
 			<div class="panel-body">
 			<?php
-				switch ($result) {
+				switch ($mes) {
 					case 1:
-						echo "<div class=\"alert alert-success\"><strong>Bien fait!</strong> Vous insérez cette page dans la base de données avec succès.</div>";
+						echo "<div class=\"alert alert-success\"><strong>Bien fait!</strong> Vous modifiez cette lien dans la base de données avec succès.</div>";
 						break;
-					case 0:
-						echo "<div class=\"alert alert-danger\"><strong>Oh rupture!</strong> Changer quelques choses et essayer à nouveau soumission.</div>";
+					case '':
 						break;
 					default:
+						echo "<div class=\"alert alert-danger\">".$mes."</div>";
 						break;
 				}
-				print_r($data);
 			?>
 				
 			<!-- Form Edit pages-->

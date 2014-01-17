@@ -56,18 +56,26 @@ class Menu {
 	 * Enregistrer un nouvel item de menu
 	 */
 	public function enregistrer ($aDonnees = Array()) {
-		//id_menu	titre	description	url	parent	order	statut
-		$titre 			= (!empty($aDonnees['titre'])) ? $aDonnees['titre'] : '';
-		$description 	= (!empty($aDonnees['description'])) ? $aDonnees['description'] : null;
-		$url 			= (!empty($aDonnees['url'])) ? $aDonnees['url'] : '';
-		$parent 		= (!empty($aDonnees['parent'])) ? $aDonnees['parent'] : 0;
-		$ordre 			= (!empty($aDonnees['ordre'])) ? $aDonnees['ordre'] : 0;
-		$statut 		= (!empty($aDonnees['statut'])) ? $aDonnees['statut'] : 0;
+		if(isset($_POST["menu-ajouter"])){
+			$titre				= (!empty($_POST["menu-title"])) ? trim(strip_tags($_POST["menu-title"])) : "";
+			$description		= (!empty($_POST["menu-description"])) ? trim(strip_tags($_POST["menu-description"])) : null;
+			$url				= (!empty($_POST["menu-url"])) ? trim(strip_tags($_POST["menu-url"])) : "";
+			$parent				= (!empty($_POST["menu-parent"])) ? intval($_POST["menu-parent"]) : 0;
+			$ordre				= (!empty($_POST["menu-ordre"])) ? intval($_POST["menu-ordre"]) : 0;
+			$statut				= (!empty($_POST["optionsRadios"])) ? intval($_POST["optionsRadios"]) : 0;
 		
-		/*if($this->verifier($aDonnees)){
-			throw new Exception("Ce titre existe déjà");
-		}*/
+		if (!empty($ordre) && !Valider::estInt($statut)){
+			throw new Exception("Ordre, doit être un nombre!");
+		}
+		if (!empty($parent) && !Valider::estInt($statut)){
+			throw new Exception("Parent, doit être un nombre!");
+		}
+		if (!empty($statut) && !Valider::estEntreInt($statut, 0, 2)){
+			throw new Exception("Statut, doit être un nombre entre 0 et 2");
+		}
+		
 		$idbd = $this->bd->getBD();
+		$idbd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		//Préparation de la requête
 		$reqInsertion = $idbd->prepare(	"INSERT INTO wa_menu
 								(titre, description, url, parent, ordre, statut)
@@ -91,24 +99,35 @@ class Menu {
 			throw new Exception("Une erreur s'est produite lors de l'enregistrement, recommencez");
 		}					
 		
-	} 
+	} }
 	
 	/**
 	 * Modifier un item de menu
 	 */
 	public function modifier ($aDonnees = Array()) {
-		$id_menu 		= $aDonnees['id_menu'];
-		$titre 			= $aDonnees['titre'];
-		$description 	= $aDonnees['description'];
-		$url 			= $aDonnees['url'];
-		$parent 		= (!empty($aDonnees['parent'])) ? $aDonnees['parent'] : 0;
-		$ordre 			= (!empty($aDonnees['ordre'])) ? $aDonnees['ordre'] : 0;
-		$statut 		= (!empty($aDonnees['statut'])) ? $aDonnees['statut'] : 0;
-
 		
-
+		if(isset($_POST["menu-modifier"])){
+			
+			$id_menu		= intval($_POST['menu-id']);
+			$titre			= (!empty($_POST["menu-title"])) ? trim(strip_tags($_POST["menu-title"])) : "";
+			$description	= (!empty($_POST["menu-description"])) ? trim(strip_tags($_POST["menu-description"])) : null;
+			$url			= (!empty($_POST["menu-url"])) ? trim(strip_tags($_POST["menu-url"])) : "";
+			$parent			= (!empty($_POST["menu-parent"])) ? intval($_POST["menu-parent"]) : 0;
+			$ordre			= (!empty($_POST["menu-ordre"])) ? intval($_POST["menu-ordre"]) : 0;
+			$statut			= (!empty($_POST["optionsRadios"])) ? intval($_POST["optionsRadios"]) : 0;
 		
+		if (!empty($ordre) && !Valider::estInt($statut)){
+			throw new Exception("Ordre, doit être un nombre!");
+		}
+		if (!empty($parent) && !Valider::estInt($statut)){
+			throw new Exception("Parent, doit être un nombre!");
+		}
+		if (!empty($statut) && !Valider::estEntreInt($statut, 0, 2)){
+			throw new Exception("Statut, doit être un nombre entre 0 et 2");
+		}
+
 		$idbd = $this->bd->getBD();
+		$idbd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		//Préparation de la requête
 		$req = $idbd->prepare(	"UPDATE wa_menu SET
 										titre = ?,
@@ -137,7 +156,7 @@ class Menu {
 		else{
 			throw new Exception("Erreur lors de la modification, recommencez");
 		}	
-	}
+	}}
 	
 	/**
 	 * Affichage du menu pour les ADMIN

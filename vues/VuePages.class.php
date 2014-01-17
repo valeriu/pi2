@@ -57,8 +57,6 @@ public function ajouterPageAdmin($result="", $mes="") {
 				
 				echo "<div class=\"alert alert-danger\">".$mes."</div>";
 			}
-
-			
 			if ($result != NULL) {
 				switch ($result) {
 					case 1:
@@ -71,8 +69,6 @@ public function ajouterPageAdmin($result="", $mes="") {
 						echo "</div>";
 						break;					
 			}	}
-			
-			
 						?>
 					<!-- Form Edit pages-->
 			<form role="form" method="POST" action="<?php echo $_SERVER['REQUEST_URI'];?>">
@@ -153,7 +149,7 @@ public function ajouterPageAdmin($result="", $mes="") {
 			<?php
 				switch ($mes) {
 					case 1:
-						echo "<div class=\"alert alert-success\"><strong>Bien fait!</strong> Vous insérez cette page dans la base de données avec succès.</div>";
+						echo "<div class=\"alert alert-success\"><strong>Bien fait!</strong> Vous modifiez cette page dans la base de données avec succès.</div>";
 						break;
 					case '':
 						break;

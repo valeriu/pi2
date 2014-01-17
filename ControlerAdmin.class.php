@@ -206,38 +206,24 @@ class ControlerAdmin {
 			$oVueAdmin->afficherFinContent();
 			$oVueAdmin->afficherFooter();
 		}
+		
 		private function ajouterMenu() {
-			if(isset($_POST["menu-ajouter"])){
-				$titre				= $_POST["menu-title"];
-				$description		= $_POST["menu-description"];
-				$url				= $_POST["menu-url"];
-				$parent				= intval($_POST["menu-parent"]);
-				$ordre				= intval($_POST["menu-ordre"]);
-				$statut				= intval($_POST["optionsRadios"]);
-	
-				//$page = new Pages();
-				$aDonneesPOST = array( 
-									"titre" => $titre, 
-									"description" => $description, 
-									"url" => $url, 
-									"parent" => $parent, 
-									"ordre" => $ordre, 
-									"statut" => $statut
-								);
-				$oMenu = new Menu();
-				$result = $oMenu->enregistrer($aDonneesPOST);
-				
-			} else {
-				$result = "2";
-			}
-			
 			$oVueAdmin	= new VueAdmin();			
 			$oVueAdmin->afficherEntete();
 			$oVueAdmin->afficherToolbar();
 			$oVueAdmin->afficherNavigation();
-			VueMenu::ajouterMenuAdmin($result);
+			$oMenu = new Menu();
+			$mes="";
+			try {
+				$result = $oMenu->enregistrer($_POST);
+			} catch (Exception $e) {
+				$mes = $e->getMessage();
+				$result = FALSE;
+			}
+			VueMenu::ajouterMenuAdmin($result, $mes);
 			$oVueAdmin->afficherFinContent();
 			$oVueAdmin->afficherFooter();
+			
 		}
 		
 		/**
@@ -246,40 +232,22 @@ class ControlerAdmin {
 		private function modifierMenu() {
 			$menu_id = (!empty($_GET['menu_id'])) ? $_GET['menu_id'] : 0;
 			$aDonnees = array("id_menu" => $menu_id);
-			if(isset($_POST["menu-modifier"])){
-				$id_menu			= intval($_POST["menu-id"]);
-				$titre				= $_POST["menu-title"];
-				$description		= $_POST["menu-description"];
-				$url				= $_POST["menu-url"];
-				$parent				= intval($_POST["menu-parent"]);
-				$ordre				= intval($_POST["menu-ordre"]);
-				$statut				= intval($_POST["optionsRadios"]);
-				
-				//$page = new Pages();
-				$aDonneesPOST = array(	"id_menu" => $id_menu, 
-									"titre" => $titre, 
-									"description" => $description, 
-									"url" => $url, 
-									"parent" => $parent, 
-									"ordre" => $ordre, 
-									"statut" => $statut
-								);
-				$oMenu = new Menu();
-				$result = $oMenu->modifier($aDonneesPOST);
-				$courentMenu = $oMenu->afficherMenuAdminID($aDonnees);
-			} else {
-				$oMenu = new Menu();
-				$courentMenu = $oMenu->afficherMenuAdminID($aDonnees);
-				$result = "2";
-			}
-			
 			$oVueAdmin	= new VueAdmin();			
 			$oVueAdmin->afficherEntete();
 			$oVueAdmin->afficherToolbar();
 			$oVueAdmin->afficherNavigation();
-			VueMenu::modifierMenuAdmin($courentMenu, $result);
+			$oMenu = new Menu();
+			try {
+				$result = $oMenu->modifier($aDonnees, $_POST);
+				$courentMenu = $oMenu->afficherMenuAdminID($aDonnees);
+				VueMenu::modifierMenuAdmin($courentMenu, $result);
+			} catch (Exception $e) {
+				$courentMenu = $oMenu->afficherMenuAdminID($aDonnees);
+				VueMenu::modifierMenuAdmin($courentMenu, $e->getMessage());
+			}
 			$oVueAdmin->afficherFinContent();
 			$oVueAdmin->afficherFooter();
+			
 		}
 		
 		/**
@@ -523,7 +491,7 @@ class ControlerAdmin {
 			$oVueAdmin->afficherFooter();
 		}
 		
-		/**
+			/**
 		 * Ajouter un produit
 		 */
 		private function ajouterProduit() {
