@@ -71,6 +71,7 @@ abstract class Valider {
 	}
 	
 	/**
+	 * Vérifiez si la $valeur est une Array
 	 * 
 	 * @param type $valeur
 	 * @return type
@@ -79,6 +80,16 @@ abstract class Valider {
 		return is_array($valeur);
 	}
 
+	/**
+	 * Vérifiez si la $valeur est un Object
+	 * 
+	 * @param type $valeur
+	 * @return type
+	 */
+	public function estObject($valeur){
+		return is_object($valeur);
+	}
+	
 	/**
 	 * Vérifiez si la longueur du $valeur est comprise entre $nb1 et $nb2
 	 * 
@@ -171,7 +182,7 @@ abstract class Valider {
 	}
 	
 	/**
-	 * 
+	 * Vérifiez si nombre de telephone  est valide
 	 * 
 	 * http://en.wikipedia.org/wiki/Telephone_numbers_in_Canada
 	 * 
@@ -195,6 +206,7 @@ abstract class Valider {
 	}
 	
 	/**
+	 * Vérifiez si code postal canadien est valide
 	 * 
 	 * @param type $valeur
 	 * @return boolean
@@ -205,7 +217,7 @@ abstract class Valider {
 	}
 	
 	/**
-	 * 
+	 * Vérifiez si les provinces sont valides
 	 * 
 	 * http://en.wikipedia.org/wiki/Canadian_subnational_postal_abbreviations
 	 * AB	Alberta
