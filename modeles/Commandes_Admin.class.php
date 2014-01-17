@@ -31,8 +31,8 @@ class Commandes_Admin {
 	public function afficher ($aDonnees = array()) {
 		$id_commande = (!empty($aDonnees['id_commande'])) ? $aDonnees['id_commande'] : '';
 
-		if($id_commande == '')
-			//throw new Exception("Pas de id Commande");
+		if(!$id_commande)
+			throw new Exception("Pas de id Commande");
 		
 		if(!Valider::estInt(intval($id_commande))) {
 			throw new Exception("Id commande ne pas valide");
@@ -43,10 +43,13 @@ class Commandes_Admin {
 		$req->bindParam(":id_commande", $id_commande, PDO::PARAM_INT);
         
 		$reponse = $req->execute();
+
+		$obj = $req->fetch(PDO::FETCH_ASSOC);
 		
-		if($reponse){
-				return $req->fetch(PDO::FETCH_ASSOC);
-			throw new Exception("Erreur lors de la modification, recommencez");
+		if($obj){
+			return $obj;
+		}else{
+			throw new Exception("Commande ne pas trouvée");
 		}
 	}
 	
@@ -69,14 +72,19 @@ class Commandes_Admin {
 	/**
 	 * Méthode modifier() - Modifier une commande spécifique
 	 * 
+	 * @param type $commande-modifier - Page titre
+	 * @param type $commande_id - Description Meta
+	 * @param type $commande-commentaires - Contenu de la page
+	 * @param type $statut (optionsRadios) - 0 -> en-traitement,  1 -> backorder, 2 -> expedié, 3 -> anullé
+	 *
 	 * @return type Array - Retourne un tableau des tableau qui contient l'information de la commande et ses modifications
 	 */
 	public function modifier ($aDonnees = array()) {
 
-		if(isset($_POST["commande-modifier"])){
-			$id_commandes		= intval($_POST["commande_id"]);
-			$commentaires		= $_POST["commande-commentaires"];
-			$statut				= intval($_POST["optionsRadios"]);
+		if(isset($aDonnees["commande-modifier"])){
+			$id_commandes		= intval($aDonnees["commande_id"]);
+			$commentaires		= $aDonnees["commande-commentaires"];
+			$statut				= intval($aDonnees["optionsRadios"]);
 		}
 		if(!Valider::estInt($id_commandes)){
 			throw new Exception("Id commande non conforme");
