@@ -33,11 +33,14 @@ class Panier {
 			throw new Exception("Quantite de produtis doit être un nombre");
 		if(!Valider::estInt(intval($id_adresse)))
 			throw new Exception("L'id de l'adresse doit éxister!");
-		if(!Valider::estObject($data))
-			throw new Exception("Les produits doivent être un objet!.");
+		if(!Valider::estString($data))
+			throw new Exception("Les produits doivent être un objet en string!.");
 
 		$infoCommande = json_decode($data);
 		$details = $_POST['data'];
+
+		if(!Valider::estObject($infoCommande))
+			throw new Exception("Les produits doivent être un objet!.");
 		
 		// Pour enregistrer le prix total de la commande
 		$totalCommande = '';		

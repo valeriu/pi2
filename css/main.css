@@ -194,6 +194,16 @@ footer{
 	box-shadow: 0 1px 0 1px #D2D2D2;
 	text-shadow: 2px 2px 2px #222222;
 }
+.btn:active, .btn.active{
+	background: #ffa73d;
+	background: -moz-linear-gradient(top,  #ffa73d 4%, #ff7c00 50%, #ff7f04 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(4%,#ffa73d), color-stop(50%,#ff7c00), color-stop(100%,#ff7f04));
+	background: -webkit-linear-gradient(top,  #ffa73d 4%,#ff7c00 50%,#ff7f04 100%);
+	background: -o-linear-gradient(top,  #ffa73d 4%,#ff7c00 50%,#ff7f04 100%);
+	background: -ms-linear-gradient(top,  #ffa73d 4%,#ff7c00 50%,#ff7f04 100%);
+	background: linear-gradient(to bottom,  #ffa73d 4%,#ff7c00 50%,#ff7f04 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffa73d', endColorstr='#ff7f04',GradientType=0 );
+}
 /* / Panier */
 
 /* ---------------- Carrousel ---------------*/

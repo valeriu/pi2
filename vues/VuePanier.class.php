@@ -131,19 +131,9 @@ class VuePanier {
 				</div>
 				<a href="./index.php"><button name="retourner" id="back" class="btn btn-lg btn-primary" type="button">Retour au catalogue</button></a>
 			</div>
-			<div id="panierConfirmation"><!-- Message de confirmation de la commande -->
-				<div class="alert alert-success">
-					<p>Votre commande a été envoyé!.</p>
-				</div>
-			</div>
-			<div id="msgError"><!-- Message d'error de télechargement ou autre -->
+			<div id="msgError"><!-- Message d'error de réponse ou autre -->
 				<div class="alert alert-danger">
 					<p>Désolé, trop temps, essayez plus tard!</p>
-				</div>
-			</div>
-			<div id="pasEnregistre"><!-- Message d'error de télechargement ou autre -->
-				<div class="alert alert-danger">
-					<p>Désolé, votre commande n'a pas été enregistré, essayez plus tard!</p>
 				</div>
 			</div>
 <?php
@@ -162,13 +152,13 @@ class VuePanier {
 								<div class="col-sm-2">
 									<h4>Produit</h4>
 								</div>
-								<div class="col-sm-4">
+								<div class="col-sm-5">
 									<h4>Description</h4>
 								</div>
 								<div class="col-sm-2">
 									<h4>Prix</h4>
 								</div>
-								<div class="col-sm-2">
+								<div class="col-sm-1">
 									<h4>Qt</h4>
 								</div>
 								<div class="col-sm-2">
@@ -182,37 +172,60 @@ class VuePanier {
 					<?php
 					$htmlProduits = '';
 					for ($i = 0; $i < $aDonnes['nb_produit']; $i++){ 
-						$htmlProduits .= '<article id="'.$aDonnes['info_commande']->{"$i"}->{"idP"}.'" class="row"><div class="col-sm-12"><div class="col-sm-2"><a href="#" class="thumbnail"><img class="img-responsive" src="'.$aDonnes['info_commande']->{"$i"}->{'image'}.'" alt="'.$aDonnes['info_commande']->{"$i"}->{'nom'}.'"></a></div><div class="col-sm-4"><p>'.$aDonnes['info_commande']->{"$i"}->{'nom'}.'</p></div><div class="col-sm-2"><p><span class="prix">'.$aDonnes['info_commande']->{"$i"}->{'prix'}.'</span><span> $CAD</span></p></div><div class="col-sm-1"><p>'.$aDonnes['info_commande']->{"$i"}->{'quant'}.'</p></div><div class="col-sm-2 text-center"><p><span class="total">'.round($aDonnes['info_commande']->{"$i"}->{'prix'} * $aDonnes['info_commande']->{"$i"}->{'quant'}, 2).'</span><span> $CAD</span></p></div></div></article>';
+						$htmlProduits .= '<article id="'.$aDonnes['info_commande']->{"$i"}->{"idP"}.'" class="row"><div class="col-sm-12"><div class="col-sm-2"><a href="#" class="thumbnail"><img class="img-responsive" src="'.$aDonnes['info_commande']->{"$i"}->{'image'}.'" alt="'.$aDonnes['info_commande']->{"$i"}->{'nom'}.'"></a></div><div class="col-sm-5"><p>'.$aDonnes['info_commande']->{"$i"}->{'nom'}.'</p></div><div class="col-sm-2"><p><span class="prix">'.$aDonnes['info_commande']->{"$i"}->{'prix'}.'</span><span> $CAD</span></p></div><div class="col-sm-1"><p>'.$aDonnes['info_commande']->{"$i"}->{'quant'}.'</p></div><div class="col-sm-2 text-center"><p><span class="total">'.round($aDonnes['info_commande']->{"$i"}->{'prix'} * $aDonnes['info_commande']->{"$i"}->{'quant'}, 2).'</span><span> $CAD</span></p></div></div></article>';
            			}
            			echo $htmlProduits;
 					?>				    	
 				  	</article>
 				  	<article id="infoPanier" class="panel-footer">
+				  		<article id="totalPrix" class="row">
+							<div class="col-sm-12 text-right">
+								<div class="col-lg-offset-8 col-md-offset-7 col-sm-offset-7 col-lg-2 col-md-2 col-sm-2 text-right">
+									<p><strong>Prix</strong></p>
+								</div>
+								<div class="col-lg-2 col-md-3 col-sm-3">
+									<p><strong><?= $aDonnes['total_commande'] ?> $CAD</strong></p>
+								</div>
+							</div>
+						</article>
 				  		<article id="totalProduits" class="row">
-							<div class="col-sm-12">
-								<div class="col-sm-offset-8 col-sm-2 text-right">
+							<div class="col-sm-12 text-right">
+								<div class="col-lg-offset-8 col-md-offset-7 col-sm-offset-7 col-lg-2 col-md-2 col-sm-2 text-right">
 									<p><strong>Taxes</strong></p>
 								</div>
-								<div class="col-sm-2 text-center">
-									<p id="totalProduitsPanier"><?= $aDonnes['taxes'] ?></p>
+								<div class="col-lg-2 col-md-3 col-sm-3">
+									<p><strong><?= $aDonnes['taxes'] ?> $CAD</strong></p>
 								</div>
 							</div>
 						</article>
 						<article id="totalPrix" class="row">
-							<div class="col-sm-12">
-								<div class="col-sm-offset-8 col-sm-2 text-right">
+							<div class="col-sm-12 text-right">
+								<div class="col-lg-offset-8 col-md-offset-7 col-sm-offset-7 col-lg-2 col-md-2 col-sm-2 text-right">
 									<p><strong>Prix total</strong></p>
 								</div>
-								<div class="col-sm-2 text-center">
-									<p><strong id="totalPrixPanier"><?= $aDonnes['total_commande'] ?></strong><strong> $CAD</strong></p>
+								<div class="col-lg-2 col-md-3 col-sm-3">
+									<p><strong><?= ($aDonnes['total_commande']+$aDonnes['taxes']) ?> $CAD</strong></p>
 								</div>
 							</div>
 						</article>
 				  	</article>
 				</div>
+				<div id="adresseLivraison" class="row">
+					<div class="col-lg-6 col-md-6 col-sm-6">
+					  	<div class="panel panel-default">
+						  	<div class="panel-heading">
+						    	<h3 class="panel-title">Adresse de livraison</h3>
+						  	</div>
+						  	<div class="panel-body">
+								<p><?= $aDonnes['adresse']['rue'] ?>&nbsp;<?= "App.".$aDonnes['adresse']['appartement'] ?></p>
+								<p><?= $aDonnes['adresse']['ville'] ?>,&nbsp;<?= $aDonnes['adresse']['province'] ?>&nbsp;&nbsp;<?= $aDonnes['adresse']['code_postal'] ?></p>
+					  		</div>
+						</div>
+				  	</div><!-- /.col-lg-6 -->
+				</div><!-- /.row -->
 				<a href="./index.php?requete=panier"><button name="retourner" id="back" class="btn btn-lg btn-primary" type="button">Retour au panier</button></a>
-				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-					<input type="hidden" name="amount" value="<?= $aDonnes['total_commande']+$aDonnes['taxes'] ?>">
+				<form class="passerCommande" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+					<input type="hidden" name="amount" value="<?= ($aDonnes['total_commande']+$aDonnes['taxes']) ?>">
 					<input type="hidden" name="cmd" value="_xclick">
 					<input type="hidden" name="business" value="<?= PAYPAL?>">
 					<input type="hidden" name="item_name" value="WADAGBE">
