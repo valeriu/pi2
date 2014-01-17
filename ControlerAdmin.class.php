@@ -159,7 +159,9 @@ class ControlerAdmin {
 			$oVueAdmin->afficherFooter();
 
 }
-		
+		/**
+		 * Modifier une page
+		 */
 		private function modifierPage() {
 			$page_id = (!empty($_GET['page_id'])) ? $_GET['page_id'] : 0;
 			$aDonnees = array("id_page" => $page_id);
@@ -257,6 +259,9 @@ class ControlerAdmin {
 			$oVueAdmin->afficherFooter();
 		}
 		
+		/**
+		 * Modifier le menu
+		 */
 		private function modifierMenu() {
 			$menu_id = (!empty($_GET['menu_id'])) ? $_GET['menu_id'] : 0;
 			$aDonnees = array("id_menu" => $menu_id);
@@ -346,6 +351,9 @@ class ControlerAdmin {
 			$oVueAdmin->afficherFooter();
 		}
 
+		/**
+		 * Détails d'une commande
+		 */
 		public function detailsCommande() {
 			$commande_id = (!empty($_GET['commande_id'])) ? $_GET['commande_id'] : 0;
 			$aDonnees = array("id_commande" => $commande_id);
@@ -369,6 +377,9 @@ class ControlerAdmin {
 			//}		
 		}
 
+		/**
+		 * Modifier une commande
+		 */
 		public function modifierCommande() {
 			$commande_id = (!empty($_GET['commande_id'])) ? $_GET['commande_id'] : 0;
 			$aDonnees = array("id_commande" => $commande_id);
@@ -397,7 +408,10 @@ class ControlerAdmin {
 
 		}
 		
-		public function details_usager(){
+		/**
+		 * Détails usager
+		 */
+		public function details_usager($msg = ''){
 			$id_utilisateurs = (!empty($_GET['id_utilisateurs'])) ? $_GET['id_utilisateurs'] : '';
 			$aDonnees = array("id_utilisateurs" => $id_utilisateurs);
 			
@@ -418,42 +432,40 @@ class ControlerAdmin {
 			$oVueAdmin->afficherEntete();
 			$oVueAdmin->afficherToolbar();
 			$oVueAdmin->afficherNavigation();
-			VueUsagers::detailsUsagerAdmin($aUsager, $aAdresses);
+			VueUsagers::detailsUsagerAdmin($aUsager, $aAdresses, $msg);
 			$oVueAdmin->afficherFinContent();
 			$oVueAdmin->afficherFooter();
 		}
 
+		/**
+		 * Modifier un usager
+		 */
 		public function modifier_usager(){
 			$id_utilisateurs = (!empty($_GET['id_utilisateurs'])) ? $_GET['id_utilisateurs'] : '';
 			$aId = array("id_utilisateurs" => $id_utilisateurs);
 			
-			var_dump($_POST);
+			//var_dump($_POST);
 			try{
 				$oUsagers = new Usagers();
-				$aUsager = $oUsagers->modifier($aId, $_POST);
+				$result = $oUsagers->modifier($aId, $_POST);
 				$aUsager = $oUsagers->afficher($aId);
 				$oAdresse = new Adresse();
 				$aAdresses = $oAdresse->afficherAdresseUsager(array('courriel' => $aUsager['courriel']));
 				//var_dump($result);
-			}
-			catch(Exception $e){
-				echo $e->getMessage();
 				$oVueAdmin	= new VueAdmin();			
 				$oVueAdmin->afficherEntete();
 				$oVueAdmin->afficherToolbar();
 				$oVueAdmin->afficherNavigation();
-				VueUsagers::detailsUsagerAdmin($aUsager, $aAdresses, $e->getMessage());
+				VueUsagers::detailsUsagerAdmin($aUsager, $aAdresses, $result);
 				$oVueAdmin->afficherFinContent();
 				$oVueAdmin->afficherFooter();
 			}
+			catch(Exception $e){
+				//echo $e->getMessage();
+				$this->details_usager($e->getMessage());
+			}
 			
-			$oVueAdmin	= new VueAdmin();			
-			$oVueAdmin->afficherEntete();
-			$oVueAdmin->afficherToolbar();
-			$oVueAdmin->afficherNavigation();
-			VueUsagers::detailsUsagerAdmin($aUsager, $aAdresses);
-			$oVueAdmin->afficherFinContent();
-			$oVueAdmin->afficherFooter();
+			
 			
 		}
 
@@ -482,6 +494,9 @@ class ControlerAdmin {
 			$oVueAdmin->afficherFooter();
 		}
 
+		/**
+		 * Détails d'un produit
+		 */
 		private function detailsProduit() {
 			$produit_id = (!empty($_GET['produit_id'])) ? $_GET['produit_id'] : 0;
 
@@ -503,6 +518,9 @@ class ControlerAdmin {
 			$oVueAdmin->afficherFooter();
 		}
 		
+		/**
+		 * Modifier un produit
+		 */
 		private function modifierProduit() {
 			$produit_id = (!empty($_GET['produit_id'])) ? $_GET['produit_id'] : 0;
 
@@ -524,6 +542,9 @@ class ControlerAdmin {
 			$oVueAdmin->afficherFooter();
 		}
 		
+			/**
+		 * Ajouter un produit
+		 */
 		private function ajouterProduit() {
 
 			if(isset($_POST['modifierProduit']) && (!empty($_POST['IdProduit']))) {

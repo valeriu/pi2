@@ -406,7 +406,7 @@ class VueUsagers {
 	<?php 
 	}
 
-	public function detailsUsagerAdmin($aUsager, $aAdresses, $result = '') {
+	public function detailsUsagerAdmin($aUsager, $aAdresses, $msg = '') {
 		//print_r($result);
 		?>
 		
@@ -415,17 +415,16 @@ class VueUsagers {
 			<div class="panel-heading">Modifier les informations d'un usager</div>
 			<div class="panel-body">
 			<?php
-				switch ($result) {
+				switch ($msg) {
 					case 1:
 						echo "<div class=\"alert alert-success\"><strong>Bien fait!</strong> Vous avez inséré le détails de la commande dans la base de données avec succès.</div>";
 						break;
 					case '':
 						break;
 					default:
-						echo "<div class=\"alert alert-danger\"><strong>Oh rupture!</strong> Il y a eu un problèmme, essayer de nouveau soumission.</div>";
+						echo "<div class=\"alert alert-danger\">.$msg.</div>";
 						break;
 				}
-
 			?>
 				<!-- Form modif USAGERS-->
 				<form role="form" action="adminka.php?requete=modifier_usager&id_utilisateurs=<?php echo $aUsager['id_utilisateurs']; ?>" method="post">
