@@ -55,7 +55,7 @@ class Panier {
 		if(!$codeProvinciel)
 			throw new Exception("Error d'adresse, aucune adresse trouvée");
 		
-		switch ($codeProvinciel['province']) {
+		switch (strtoupper($codeProvinciel['province'])) {
 			case 'QC':
 				$taxes = $totalCommande * (QC+CA);
 				break;
@@ -96,6 +96,9 @@ class Panier {
 				$taxes = $totalCommande * (NV+CA);
 				break;
 		}
+
+		if(!$taxes)
+			throw new Exception("Code postal ne pas correct!");
 
 		// Création de la date actuelle de la commande
 		$dateCommande = date("Y-m-d H:i:s");

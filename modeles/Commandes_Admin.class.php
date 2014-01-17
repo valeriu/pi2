@@ -29,9 +29,12 @@ class Commandes_Admin {
 	 * @return type array - Retourne un tableau contenant tous les champs de la commande
 	 */
 	public function afficher ($aDonnees = array()) {
-		$id_commande = intval($aDonnees['id_commande']);
+		$id_commande = (!empty($aDonnees['id_commande'])) ? $aDonnees['id_commande'] : '';
+
+		if($id_commande == '')
+			//throw new Exception("Pas de id Commande");
 		
-		if(!Valider::estInt($id_commande)){
+		if(!Valider::estInt(intval($id_commande))) {
 			throw new Exception("Id commande ne pas valide");
 		}
 		
