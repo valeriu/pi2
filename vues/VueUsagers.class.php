@@ -59,11 +59,11 @@ class VueUsagers {
 					<form class="form-signin" name="form-usager-connecter">
 						<div class="input-group input-group-sm">
 							Courriel:
-							<input name="courriel" value="a@a.eu" id="courriel" type="email" class="form-control" required>
+							<input name="courriel" id="courriel" type="email" class="form-control" required>
 						</div>
 						<div class="input-group input-group-sm">
 							Mot de Passe:
-							<input name="mot_passe" value="password" id="mot_passe" type="password" class="form-control" required>
+							<input name="mot_passe" id="mot_passe" type="password" class="form-control" required>
 						</div>
 						<button name="motPasseOublie" id="motPasseOublie" type="button">Mot de passe oublié</a>
 						<br>
