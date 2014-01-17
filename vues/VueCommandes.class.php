@@ -38,7 +38,7 @@ class VueCommandes {
 					$heureFormatLisible = date("H:i:s",strtotime($aDonneesCommandes[$i]["date_commande"]));
 
 					$htmlPage .= "<td><abbr title=\"{$heureFormatLisible}\">{$dateFormatLisible}</abbr></td>\r\n";
-					$htmlPage .= "<td><a href=\"adminka.php?requete=usagers&usager_id={$aDonneesCommandes[$i]["utilisateurs_id_utilisateurs"]}\" title=\"Edit: {$aDonneesCommandes[$i]["utilisateurs_id_utilisateurs"]}\">{$aDonneesCommandes[$i]["utilisateurs_id_utilisateurs"]}</a></td>\r\n";
+					$htmlPage .= "<td><a href=\"adminka.php?requete=details_usager&id_utilisateurs={$aDonneesCommandes[$i]["utilisateurs_id_utilisateurs"]}\" title=\"Edit: {$aDonneesCommandes[$i]["utilisateurs_id_utilisateurs"]}\">{$aDonneesCommandes[$i]["utilisateurs_id_utilisateurs"]}</a></td>\r\n";
 					switch ($aDonneesCommandes[$i]["statut"]) {
 						case 0: // En traitement
 							$htmlPage .= "<td><span class=\"label label-warning\">En-traitement</span></td>";

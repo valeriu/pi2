@@ -437,10 +437,26 @@ class VueUsagers {
 						<label for="courriel">Courriel</label>
 						<input type="text" class="form-control" name="courriel" value="<?php echo $aUsager['courriel']; ?>">
 					</div>
-					<div class="form-group">
-						<label for="courriel">Role(0->usager, 1->admin, 2->super admin)</label>
-						<input type="text" class="form-control" name="role" value="<?php echo $aUsager['role']; ?>">
-					</div>
+					<div class="panel-body">
+							<div class="radio">
+								<label>
+									<input type="radio" name="role" id="0" value="0" <?php echo $nb1 = ($aUsager['role']==0) ? "checked" : "";?>>
+									<span class="label label-default">Usager</span>
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="role" id="1" value="1" <?php echo $nb1 = ($aUsager['role']==1) ? "checked" : "";?>>
+									<span class="label label-default">Administrateur</span>
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="role" id="2" value="2" <?php echo $nb1 = ($aUsager['role']==2) ? "checked" : "";?>>
+									<span class="label label-default">Super-Administrateur</span>
+								</label>
+							</div>
+						</div>
 			<?php		
 					for($i = 0; $i < count($aAdresses); $i++){
 			?>
