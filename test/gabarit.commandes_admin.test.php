@@ -11,8 +11,7 @@
 		</div>
 		<div id="contenu">
 			<h3>Test: afficherListe() fonctionnel</h3>
-			<?php 
-			$r = rand(1,31);
+			<?php
 			try {
 				$page = new Commandes_Admin();
 				$result = $page->afficherListe();
@@ -23,7 +22,7 @@
 				echo $e->getMessage();
 			}	
 			?>
-			<h3>Test: afficher() non-fonctionnel</h3>
+			<h3>Test: afficher() fonctionnel</h3>
 			<?php 
 			$r = rand(1,31);
 			try {
@@ -39,7 +38,7 @@
 			?>
 			<h3>Test: afficher() non-fonctionnel</h3>
 			<?php 
-			$r = rand(31,50);
+			$r = rand(32,50);
 			try {
 				$page = new Commandes_Admin();
 				$aDonnees = array("id_commande" => $r);
@@ -63,8 +62,35 @@
 			} catch (Exception $e) {
 				echo $e->getMessage();
 			}	
+			?>
+			<h3>Test: modifier() fonctionnel</h3>
+			<p>POST inexistent</p>
+			<?php
+			try {
+				$page = new Commandes_Admin();
+				$aDonnees = array("commande_id" => 4, "commande-commentaires" => 'Pellentesque habitant morbi tristique', 'optionsRadios' => 2);
+				$result = $page->modifier($aDonnees);
+
+				var_dump($result);
+				
+			} catch (Exception $e) {
+				echo $e->getMessage();
+			}	
 			?>	
-		
+			<h3>Test: modifier() non-fonctionnel</h3>
+			<p>POST inexistent</p>
+			<?php
+			try {
+				$page = new Commandes_Admin();
+				$aDonnees = array("commande_id" => '4', "commande-commentaires" => 'Pellentesque habitant morbi tristique', 'optionsRadios' => '');
+				$result = $page->modifier($aDonnees);
+
+				var_dump($result);
+				
+			} catch (Exception $e) {
+				echo $e->getMessage();
+			}	
+			?>
 		</div>
 	</body>
 </html>

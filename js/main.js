@@ -21,15 +21,6 @@ $(function(){
     	$('#msgError').show(); // Affichage d'error
     }
 
-    // Modals de connexion
-
-    /*$("#formEnregistrer").on("click", clickEnregistrer);
-
-    $('#formConnecter').on('click', clickConnecter);
-    
-    $('#deconnecter').on('click', clickDeconnecter);
-*/
-
     //Initialisation du logo anime
     $( document ).ready(function() {
         initLogo();
@@ -110,9 +101,10 @@ function clickDeconnecter(){
     xhr.onreadystatechange = function() {
         if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
             //clearTimeout(timeout);
-            console.log(xhr.responseText);
-            $("#usager").replaceWith(xhr.responseText);
-            $('#myModal').modal('hide');
+            //console.log(xhr.responseText);
+            //$("#usager").replaceWith(xhr.responseText);
+            //$('#myModal').modal('hide');
+            window.location.assign('index.php');
         }
     };
     xhr.send();
