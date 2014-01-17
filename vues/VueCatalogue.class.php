@@ -194,13 +194,13 @@ class VueCatalogue {
 			  <div class="panel-heading">
 			    <div>
 			       <label class="checkbox-inline">
-			        <input type="checkbox" class="categorieBox" id="inlineCheckbox1" value="1" <?php if($_GET["1"]=="true") echo "checked"; ?>> Solar Panels
+			        <input type="checkbox" class="categorieBox" id="inlineCheckbox1" value="1" <?php if($_GET["1"]=="true" || (!isset($_GET["1"]))) echo "checked"; ?>> Solar Panels
 			       </label>
 			       <label class="checkbox-inline">
-			         <input type="checkbox" class="categorieBox" id="inlineCheckbox2" value="2" <?php if($_GET["2"]=="true") echo "checked"; ?>> Solar Kits
+			         <input type="checkbox" class="categorieBox" id="inlineCheckbox2" value="2" <?php if($_GET["2"]=="true" || (!isset($_GET["2"]))) echo "checked"; ?>> Solar Kits
 			       </label>
 			       <label class="checkbox-inline">
-			         <input type="checkbox" class="categorieBox" id="inlineCheckbox3" value="3" <?php if($_GET["3"]=="true") echo "checked"; ?>> LED Lamps
+			         <input type="checkbox" class="categorieBox" id="inlineCheckbox3" value="3" <?php if($_GET["3"]=="true" || (!isset($_GET["3"]))) echo "checked"; ?>> LED Lamps
 			       </label>
 			    </div>
 			    <div class="pull-right">
@@ -209,13 +209,13 @@ class VueCatalogue {
 			  </div>
 			  <div id="panel-filtres" class="panel-heading" hidden>
 			  	<label class="radio-inline">
-			        <input type="radio" id="inlineradio1" name="radio-filtres" value="option1"> Spécifications
+			        <input type="radio" class="filtreRadio" id="inlineradio1" name="radio-filtres" value="specs" <?php if(isset($_GET['mode'])) {if($_GET['mode']=="specs") echo "checked";} ?>> Spécifications
 			       </label>
 			       <label class="radio-inline">
-			         <input type="radio" id="inlineradio2" name="radio-filtres" value="option2"> Catégories
+			         <input type="radio" class="filtreRadio" id="inlineradio2" name="radio-filtres" value="tous" <?php if(isset($_GET['mode'])) {if($_GET['mode']=="tous") echo "checked";} ?>> Catégories
 			       </label>
 			       <label class="radio-inline">
-			         <input type="radio" id="inlineradio3" name="radio-filtres" value="option3"> Prix
+			         <input type="radio" class="filtreRadio" id="inlineradio3" name="radio-filtres" value="prix" <?php if(isset($_GET['mode'])) {if($_GET['mode']=="prix") echo "checked";} ?>> Prix
 			       </label>
 			  </div>
 			<!--CATALOGUE-->

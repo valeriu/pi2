@@ -523,7 +523,7 @@ class ControlerAdmin {
 			$oVueAdmin->afficherFooter();
 		}
 		
-			/**
+		/**
 		 * Ajouter un produit
 		 */
 		private function ajouterProduit() {

@@ -51,7 +51,19 @@ $(function() {
 
     //SELECTIONS DES CATEGORIES
     $("input.categorieBox").bind("click", function() {
+        var aBox   = document.querySelectorAll("input.categorieBox");
+        var aRadio = document.querySelectorAll("input.filtreRadio");
+        if(aRadio[0].checked) var tri = "specs";
+        if(aRadio[1].checked) var tri = "tous";
+        if(aRadio[2].checked) var tri = "prix";
+        if(!tri) var tri = "tous";
+        window.location.replace("./index.php?requete=produits&mode="+tri+"&1="+aBox[0].checked+"&2="+aBox[1].checked+"&3="+aBox[2].checked);
+    });
+
+    //SELECTION DU MODE DE TRI
+    $("input.filtreRadio").bind("change", function() {
         var aBox = document.querySelectorAll("input.categorieBox");
-        window.location.replace("./index.php?requete=produits&1="+aBox[0].checked+"&2="+aBox[1].checked+"&3="+aBox[2].checked);
+        var tri  = this.value;
+        window.location.replace("./index.php?requete=produits&mode="+tri+"&1="+aBox[0].checked+"&2="+aBox[1].checked+"&3="+aBox[2].checked);
     });
 });

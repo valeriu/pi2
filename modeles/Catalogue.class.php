@@ -8,11 +8,14 @@ class Catalogue {
 	// PARAMS
 	private $bd;
 	private $aCategories;
-	private $sWhere = "WHERE ";
+	private $sWhere = "WHERE (";
 
 	// CONSTRUCTEUR
 	public function __construct($aCategories=array(1=>"true",2=>"true",3=>"true")){
 		$this->aCategories = $aCategories;
+		if(isset($_GET['1'])) $this->aCategories['1'] = $_GET['1'];
+		if(isset($_GET['2'])) $this->aCategories['2'] = $_GET['2'];
+		if(isset($_GET['3'])) $this->aCategories['3'] = $_GET['3'];
 		$this->bd 		   = BD::getInstance();
 
 		// $categories --> string SQL $sWhere
@@ -22,9 +25,9 @@ class Catalogue {
 			}
 		}
 		if($this->sWhere!="WHERE ") {
-			$this->sWhere = substr($this->sWhere,0,-4);
+			$this->sWhere = substr($this->sWhere,0,-4).") AND ";
 		} else {
-			$this->sWhere = "";
+			$this->sWhere = "WHERE (";
 		}
 		//var_dump($this->sWhere);
 	}
@@ -49,9 +52,8 @@ class Catalogue {
 	}
 
 	// afficher les produits
-	public function afficher($mode,$aCategories=array(1=>"true",2=>"true",3=>"true")) {
+	public function afficher($mode) {
 		$idbd = $this->bd->getBD();
-		$this->aCategories = $aCategories;
 		
 		switch ($mode) {
 			// tri par specification
@@ -76,10 +78,11 @@ class Catalogue {
 		}
 		// requete SQL
 		$req = $idbd->prepare(	"SELECT *
-                                FROM wa_produits ".$this->sWhere." ORDER BY ".$sOrderBy.";");
+                                FROM wa_produits ".$this->sWhere."statut=1 ORDER BY ".$sOrderBy.";");
 		$req->execute();
 		//var_dump($req);
 		$aProduits = $req->fetchAll();
+		//var_dump($aProduits);
 		
 		if($aProduits){
 			return $aProduits;
