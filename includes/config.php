@@ -25,8 +25,8 @@
 // Constantes 
 	//Base de donne
 	define("HOST","localhost");
-	define("USER","e1295805");
-	define("BD","e1295805");
+	define("USER","e1296026");
+	define("BD","e1296026");
 	define("PASS","50319801101");
 	
 	//TAXES PAR PROVINCES
@@ -47,8 +47,8 @@
 
 	// courriel de PAYPAL
 	define("PAYPAL", 'wadagbe.solar@gmail.com');
-	define("URL_SUCCESS", 'http://e1295805.webdev.cmaisonneuve.qc.ca/Projet_Luis/index.php?requete=succes');
-	define("URL_IPN", 'http://e1295805.webdev.cmaisonneuve.qc.ca/Projet_Luis/ipn.php');
+	define("URL_SUCCESS", 'http://e1296026.webdev.cmaisonneuve.qc.ca/pi2/index.php?requete=succes');
+	define("URL_IPN", 'http://e1296026.webdev.cmaisonneuve.qc.ca/pi2/ipn.php');
 
 	
 	
