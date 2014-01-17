@@ -86,10 +86,11 @@ class Usagers {
 		$idbd = $this->bd->getBD();
 		//$idbd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		//Préparation de la requête
-		$req = $idbd->prepare(	"SELECT *
-                                FROM wa_utilisateurs
-                                WHERE courriel = ?
-								AND mot_passe = ?");
+		$req = $idbd->prepare(	"	SELECT *
+                              FROM wa_utilisateurs
+                              WHERE courriel = ?
+															AND mot_passe = ?
+															AND statut = 1");
 
         //var_dump($req);
         //var_dump($courriel);
@@ -136,6 +137,7 @@ class Usagers {
                               FROM wa_utilisateurs
                               WHERE courriel = ?
 															AND mot_passe = ?
+															AND statut = 1
 															AND (role = 1 OR role = 2)");
 
 		//var_dump($req);
