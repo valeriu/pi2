@@ -61,7 +61,7 @@ class ControlerAdmin {
 					case 'produits':
 						$this->produits();
 						break;
-					case 'ajouter_produits':
+					case 'ajouter_produit':
 						$this->ajouterProduit();
 						break;	
 					case 'details_produits':
@@ -525,11 +525,30 @@ class ControlerAdmin {
 		}
 		
 		private function ajouterProduit() {
+
+			if(isset($_POST['modifierProduit']) && (!empty($_POST['IdProduit']))) {
+				try {
+					$oProduits  = new Catalogue();
+					$result 	= $oProduits->enregistrer($_POST);
+					$aProduit 	= $oProduits->afficherProduit($produit_id);
+				} 
+				catch(Exception $e) {
+					echo $e->getMessage();
+				}
+			} else {
+				$result = 2;
+			}
+	
+			if(isset($_POST['modifierProduit'])) {
+				$aProduit = $_POST;
+			} else {
+				$aProduit = array();
+			}
 			$oVueAdmin	= new VueAdmin();			
 			$oVueAdmin->afficherEntete();
 			$oVueAdmin->afficherToolbar();
 			$oVueAdmin->afficherNavigation();
-			VueCatalogue::modifierProduitAdmin($aProduit, $result);
+			VueCatalogue::modifierProduitAdmin($aProduit,$result);
 			$oVueAdmin->afficherFinContent();
 			$oVueAdmin->afficherFooter();
 		}	

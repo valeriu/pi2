@@ -96,8 +96,8 @@ class Catalogue {
 		$descProduit   = (!empty($aDonnees['descProduit']))   ? $aDonnees['descProduit']   	  	    : '';
 		$specsProduit  = (!empty($aDonnees['specsProduit']))  ? $aDonnees['specsProduit']  	  	    : '';
 		$imgProduit    = (!empty($aDonnees['imgProduit'])) 	  ? $aDonnees['imgProduit']    	  	    : '';
-		$statutProduit = (!empty($aDonnees['statutProduit'])) ? intval($aDonnees['statutProduit'])  : '';
-		$typeProduit   = (!empty($aDonnees['typeProduit']))   ? intval($aDonnees['typeProduit'])    : '';
+		$statutProduit = (!empty($aDonnees['statutProduit'])) ? $aDonnees['statutProduit']  		: '';
+		$typeProduit   = (!empty($aDonnees['typeProduit']))   ? $aDonnees['typeProduit']    		: '';
 		$suppProduit   = (!empty($aDonnees['suppProduit']))   ? $aDonnees['suppProduit']  	  	    : '';
 		$suppIdProduit = (!empty($aDonnees['suppIdProduit'])) ? $aDonnees['suppIdProduit'] 	   		: '';
 		$poidsProduit  = (!empty($aDonnees['poidsProduit']))  ? floatval($aDonnees['poidsProduit']) : '';
@@ -117,22 +117,22 @@ class Catalogue {
 		if(!Valider::estStringValide($descProduit)){
 			throw new Exception("Description du produit non conforme");
 		}
-		if(!Valider::estStringValide($specsProduit)){
+		if(!Valider::estString($specsProduit)){
 			throw new Exception("Specifications du produit non conforme");
 		}
 		if(!Valider::estImage($imgProduit)){
 			throw new Exception("Image du produit non conforme");
 		}
-		if(!Valider::estInt($statutProduit)){
+		if(!Valider::estString($statutProduit)){
 			throw new Exception("Statut produit non conforme");
 		}
-		if(!Valider::estInt($typeProduit)){
+		if(!Valider::estString($typeProduit)){
 			throw new Exception("Type produit non conforme");
 		}
 		if(!Valider::estStringValide($suppProduit)){
 			throw new Exception("Fournisseur du produit non conforme");
 		}
-		if(!Valider::estAlphaNumerique($suppIdProduit)){
+		if(!Valider::estStringValide($suppIdProduit)){
 			throw new Exception("ID du produit au fournisseur non conforme");
 		}
 		if(!Valider::estFloat($poidsProduit)){
