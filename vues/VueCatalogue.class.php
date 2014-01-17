@@ -134,8 +134,9 @@ class VueCatalogue {
 			for ($i=$partir, $j=$fin; $i<$j; $i++){
 				$htmlPage .= "<tr>\r\n";
 					$htmlPage .= "<td><a href=\"adminka.php?requete=details_produits&produit_id={$aDonnees[$i]["id_produits"]}\" title=\"Editer: {$aDonnees[$i]["nom"]}\">{$aDonnees[$i]["id_produits"]}</a></td>\r\n";
-					$htmlPage .= "<td><abbr title=\"{$aDonnees[$i]["fournisseur"]}\">{$aDonnees[$i]["fournisseur"]}</abbr></td>\r\n";
 					$htmlPage .= "<td>{$aDonnees[$i]["nom"]}</td>\r\n";
+					$htmlPage .= "<td><abbr title=\"{$aDonnees[$i]["fournisseur"]}\">{$aDonnees[$i]["fournisseur"]}</abbr></td>\r\n";
+					$htmlPage .= "<td>{$aDonnees[$i]["prix"]}$</td>\r\n";
 					switch ($aDonnees[$i]["statut"]) {
 						case 0: // Inactif
 							$htmlPage .= "<td><span class=\"label label-warning\">Inactif</span></td>";
@@ -147,7 +148,6 @@ class VueCatalogue {
 							$htmlPage .= "<td><span class=\"label label-danger\">Supprimé</span></td>";
 							break;
 					}
-				$htmlPage .= "<td>{$aDonnees[$i]["prix"]}$</td>\r\n";
 				$htmlPage .= "</tr>\r\n";
 			}
 
@@ -165,10 +165,10 @@ class VueCatalogue {
 				<thead>
 				  <tr>
 					<th>Id</th>
-					<th>Fournisseur</th>
 					<th>Nom</th>
-					<th>Statut</th>
+					<th>Fournisseur</th>
 					<th>Prix</th>
+					<th>Statut</th>
 				  </tr>
 				</thead>
 				<tbody>
