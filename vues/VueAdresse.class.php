@@ -44,7 +44,7 @@ class VueAdresse {
 					xhr.onreadystatechange = function() {
 						if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
 							var str = xhr.responseText;
-							if(str == 'Tous les champs sont obligatiore'){
+							if(str.length < 100){
 								//$('#ShippingAddress').html();
 								$("#adresse-erreur").html(xhr.responseText);
 								$('#msgError').show();
