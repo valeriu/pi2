@@ -33,24 +33,24 @@ class VueCatalogue {
 				<form role="form" method="POST" action="./adminka.php?requete=modifier_produit&produit_id=<?php echo $data["id_produits"]?>">
 					<div class="form-group">
 						<label for="product-title">Nom du produit</label>
-						<input type="text" class="form-control" id="nomProduit" placeholder="Titre du produit" value="<?php echo $data['nom']; ?>">
+						<input type="text" class="form-control" id="nomProduit" name="nomProduit" placeholder="Titre du produit" value="<?php echo $data['nom']; ?>">
 					</div>
 					<div class="form-group">
 						<label for="product-details">Spécifications</label>
-						<textarea class="form-control" rows="18" id="specsProduit" placeholder="Détails du produit"><?php echo $data['specification']; ?></textarea>
+						<textarea class="form-control" rows="18" id="specsProduit" name="specsProduit" placeholder="Détails du produit"><?php echo $data['specification']; ?></textarea>
 						<p>Séparer d'une virgule (,) chancun des points importants..</p>
 					</div>
 					<div class="form-group">
 						<label for="product-power">Détails</label>
-						<input type="text" class="form-control" id="descProduit" value="<?php echo $data['description']; ?>">
+						<input type="text" class="form-control" id="descProduit" name="descProduit" value="<?php echo $data['description']; ?>">
 					</div>
 					<div class="form-group">
 						<label for="product-power">Puissance (W)</label>
-						<input type="text" class="form-control" id="powerProduit" value="<?php echo $data['puissance']; ?>">
+						<input type="text" class="form-control" id="powerProduit" name="powerProduit" value="<?php echo $data['puissance']; ?>">
 					</div>
 					<div class="form-group">
 						<label for="product-category">Catégorie</label>
-						<input type="text" class="form-control" id="catIdProduit" value="<?php echo $data['categorie_id_categorie']; ?>">
+						<input type="text" class="form-control" id="catIdProduit" name="catIdProduit" value="<?php echo $data['categorie_id_categorie']; ?>">
 						<p>1=>"Panneaux solaires",2=>"Kits Solaires",3=>"Lampes DEL"</p>
 					</div>
 					<div class="form-group">
@@ -76,35 +76,36 @@ class VueCatalogue {
 					</div>
 					<div class="form-group">
 						<label for="product-type">Type du produit</label>
-						<input type="text" class="form-control" id="typeProduit" value="<?php echo $data['type']; ?>">
+						<input type="text" class="form-control" id="typeProduit" name="typeProduit" value="<?php echo $data['type']; ?>">
 						<p>0=>"Régulier",2=>"Nouveauté",3=>"Meilleur vendeur"</p>
 					</div>
 					<div class="form-group">
 						<label for="product-supplier">Fournisseur</label>
-						<input type="text" class="form-control" id="suppProduit" value="<?php echo $data['fournisseur']; ?>">
+						<input type="text" class="form-control" id="suppProduit" name="suppProduit" value="<?php echo $data['fournisseur']; ?>">
 					</div>
 					<div class="form-group">
 						<label for="product-supplier-id">ID du produit du fournisseur</label>
-						<input type="text" class="form-control" id="suppIdProduit" value="<?php echo $data['iditem_fournisseur']; ?>">
+						<input type="text" class="form-control" id="suppIdProduit" name="suppIdProduit" value="<?php echo $data['iditem_fournisseur']; ?>">
 					</div>
 					<div class="form-group">
 						<label for="product-price">Prix</label>
-						<input type="text" class="form-control" id="prixProduit" value="<?php echo $data['prix']; ?>">
+						<input type="text" class="form-control" id="prixProduit" name="prixProduit" value="<?php echo $data['prix']; ?>">
 					</div>
 					<div class="form-group">
 						<label for="product-weight">Poids (kilogrammes)</label>
-						<input type="text" class="form-control" id="poidsProduit" value="<?php echo $data['poids']; ?>">
+						<input type="text" class="form-control" id="poidsProduit" name="poidsProduit" value="<?php echo $data['poids']; ?>">
 					</div>
 					<div class="form-group">
 						<label for="product-dimensions">Dimensions (cm)</label>
-						<input type="text" class="form-control" id="hautProduit" value="<?php echo $data['taille_hauteur']; ?>">
-						<input type="text" class="form-control" id="largProduit" value="<?php echo $data['taille_largeur']; ?>">
-						<input type="text" class="form-control" id="longProduit" value="<?php echo $data['taille_longueur']; ?>">
+						<input type="text" class="form-control" id="hautProduit" name="hautProduit" value="<?php echo $data['taille_hauteur']; ?>">
+						<input type="text" class="form-control" id="largProduit" name="largProduit" value="<?php echo $data['taille_largeur']; ?>">
+						<input type="text" class="form-control" id="longProduit" name="longProduit" value="<?php echo $data['taille_longueur']; ?>">
 					</div>
-					<input type="hidden" id="evalProduit" value="<?php echo $data["evaluation_id_evaluation"];?>">
-					<input type="hidden" id="imgProduit" value="<?php echo $data["image"];?>.jpg">
+					<input type="hidden" id="evalProduit" name="evalProduit" value="<?php echo $data["evaluation_id_evaluation"];?>">
+					<input type="hidden" id="IdProduit" name="IdProduit" value="<?php echo $data["id_produits"];?>">
+					<input type="hidden" id="imgProduit" name="imgProduit" value="<?php echo $data["image"];?>.jpg">
 					<div class="form-group">
-						<button name="modifier-produit" type="submit" class="btn btn-primary" data-loading-text="Sauvegarde...">Soumettre</button>
+						<button id="modifierProduit" type="submit" class="btn btn-primary" data-loading-text="Sauvegarde...">Soumettre</button>
 					</div>
 					<div class="btn-group" data-toggle="buttons">
 				</form>		<!-- /Form Edit pages-->
@@ -190,13 +191,13 @@ class VueCatalogue {
 			  <div class="panel-heading">
 			    <div>
 			       <label class="checkbox-inline">
-			        <input type="checkbox" id="inlineCheckbox1" value="option1"> Solar Panels
+			        <input type="checkbox" class="categorieBox" id="inlineCheckbox1" value="1" <?php if($_GET["1"]=="true") echo "checked"; ?>> Solar Panels
 			       </label>
 			       <label class="checkbox-inline">
-			         <input type="checkbox" id="inlineCheckbox2" value="option2"> Solar Kits
+			         <input type="checkbox" class="categorieBox" id="inlineCheckbox2" value="2" <?php if($_GET["2"]=="true") echo "checked"; ?>> Solar Kits
 			       </label>
 			       <label class="checkbox-inline">
-			         <input type="checkbox" id="inlineCheckbox3" value="option3"> LED Lamps
+			         <input type="checkbox" class="categorieBox" id="inlineCheckbox3" value="3" <?php if($_GET["3"]=="true") echo "checked"; ?>> LED Lamps
 			       </label>
 			    </div>
 			    <div class="pull-right">

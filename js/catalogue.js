@@ -48,4 +48,10 @@ $(function() {
     $("#btn-filtres").bind("click", function() {
         $("#panel-filtres").slideToggle("fast");
     });
+
+    //SELECTIONS DES CATEGORIES
+    $("input.categorieBox").bind("click", function() {
+        var aBox = document.querySelectorAll("input.categorieBox");
+        window.location.replace("./index.php?requete=produits&1="+aBox[0].checked+"&2="+aBox[1].checked+"&3="+aBox[2].checked);
+    });
 });

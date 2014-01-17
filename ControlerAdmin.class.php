@@ -67,7 +67,7 @@ class ControlerAdmin {
 					case 'details_produits':
 						$this->detailsProduit();
 						break;
-					case 'modifier_produits':
+					case 'modifier_produit':
 						$this->modifierProduit();
 						break;	
 					default:
@@ -529,7 +529,7 @@ class ControlerAdmin {
 			$oVueAdmin->afficherEntete();
 			$oVueAdmin->afficherToolbar();
 			$oVueAdmin->afficherNavigation();
-			VueCatalogue::modifierProduitAdmin();
+			VueCatalogue::modifierProduitAdmin($aProduit, $result);
 			$oVueAdmin->afficherFinContent();
 			$oVueAdmin->afficherFooter();
 		}	

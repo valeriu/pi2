@@ -114,8 +114,16 @@ class Controler {
 			if(empty($_GET['mode']))
 				//default : tous les produits
 				$_GET['mode'] = "tous";
-			$oCatalogue = new Catalogue();
-			$aProduits = $oCatalogue->afficher($_GET['mode']);
+			if(isset($_GET["1"])) {
+				$aCategories[1] = $_GET["1"];
+				$aCategories[2] = $_GET["2"];
+				$aCategories[3] = $_GET["3"];
+			}
+			else {
+				$aCategories=array(1=>"true",2=>"true",3=>"true");
+			}
+			$oCatalogue = new Catalogue($aCategories);
+			$aProduits = $oCatalogue->afficher($_GET['mode'],$aCategories);
 			Vue::afficherEntete();
 			if(!isset($_SESSION['usager'])){
 				VueUsagers::afficherFormUsagers();
@@ -125,7 +133,7 @@ class Controler {
 			}
 			Vue::afficherBoutonPanier();
 			VueMenu::afficherMenu();
-			VueCatalogue::afficherCatalogue($aProduits);
+			VueCatalogue::afficherCatalogue($aProduits, $aSelectCat);
 			Vue::afficherFooter();
 		}
 		// Placer les méthodes du controleur.

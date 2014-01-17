@@ -11,13 +11,13 @@ class Catalogue {
 	private $sWhere = "WHERE ";
 
 	// CONSTRUCTEUR
-	public function __construct($aCategories=array(1=>true,2=>true,3=>true)){
+	public function __construct($aCategories=array(1=>"true",2=>"true",3=>"true")){
 		$this->aCategories = $aCategories;
 		$this->bd 		   = BD::getInstance();
 
 		// $categories --> string SQL $sWhere
 		foreach ($this->aCategories as $key => $value) {
-			if($value==true) {
+			if($value=="true") {
 				$this->sWhere .= "categorie_id_categorie=".$key." OR ";
 			}
 		}
@@ -49,8 +49,9 @@ class Catalogue {
 	}
 
 	// afficher les produits
-	public function afficher($mode) {
+	public function afficher($mode,$aCategories=array(1=>"true",2=>"true",3=>"true")) {
 		$idbd = $this->bd->getBD();
+		$this->aCategories = $aCategories;
 		
 		switch ($mode) {
 			// tri par specification
@@ -90,22 +91,22 @@ class Catalogue {
 
 		// ajouter un nouveau produit
 	public function enregistrer($aDonnees = Array()) {
-		$nomProduit    = (!empty($aDonnees['nomProduit']))	  ? $aDonnees['nomProduit']    : '';
-		$prixProduit   = (!empty($aDonnees['prixProduit']))   ? $aDonnees['prixProduit']   : '';
-		$descProduit   = (!empty($aDonnees['descProduit']))   ? $aDonnees['descProduit']   : '';
-		$specsProduit  = (!empty($aDonnees['specsProduit']))  ? $aDonnees['specsProduit']  : '';
-		$imgProduit    = (!empty($aDonnees['imgProduit'])) 	  ? $aDonnees['imgProduit']    : '';
-		$statutProduit = (!empty($aDonnees['statutProduit'])) ? $aDonnees['statutProduit'] : '';
-		$typeProduit   = (!empty($aDonnees['typeProduit']))   ? $aDonnees['typeProduit']   : '';
-		$suppProduit   = (!empty($aDonnees['suppProduit']))   ? $aDonnees['suppProduit']   : '';
-		$suppIdProduit = (!empty($aDonnees['suppIdProduit'])) ? $aDonnees['suppIdProduit'] : '';
-		$poidsProduit  = (!empty($aDonnees['poidsProduit']))  ? $aDonnees['poidsProduit']  : '';
-		$longProduit   = (!empty($aDonnees['longProduit']))   ? $aDonnees['longProduit']   : '';
-		$largProduit   = (!empty($aDonnees['largProduit']))   ? $aDonnees['largProduit']   : '';
-		$hautProduit   = (!empty($aDonnees['hautProduit']))   ? $aDonnees['hautProduit']   : '';
-		$evalProduit   = (!empty($aDonnees['evalProduit']))   ? $aDonnees['evalProduit']   : '';
-		$catIdProduit  = (!empty($aDonnees['catIdProduit']))  ? $aDonnees['catIdProduit']  : '';
-		$powerProduit  = (!empty($aDonnees['powerProduit']))  ? $aDonnees['powerProduit']  : '';
+		$nomProduit    = (!empty($aDonnees['nomProduit']))	  ? $aDonnees['nomProduit']    	  	    : '';
+		$prixProduit   = (!empty($aDonnees['prixProduit']))   ? floatval($aDonnees['prixProduit'])  : '';
+		$descProduit   = (!empty($aDonnees['descProduit']))   ? $aDonnees['descProduit']   	  	    : '';
+		$specsProduit  = (!empty($aDonnees['specsProduit']))  ? $aDonnees['specsProduit']  	  	    : '';
+		$imgProduit    = (!empty($aDonnees['imgProduit'])) 	  ? $aDonnees['imgProduit']    	  	    : '';
+		$statutProduit = (!empty($aDonnees['statutProduit'])) ? intval($aDonnees['statutProduit'])  : '';
+		$typeProduit   = (!empty($aDonnees['typeProduit']))   ? intval($aDonnees['typeProduit'])    : '';
+		$suppProduit   = (!empty($aDonnees['suppProduit']))   ? $aDonnees['suppProduit']  	  	    : '';
+		$suppIdProduit = (!empty($aDonnees['suppIdProduit'])) ? $aDonnees['suppIdProduit'] 	   		: '';
+		$poidsProduit  = (!empty($aDonnees['poidsProduit']))  ? floatval($aDonnees['poidsProduit']) : '';
+		$longProduit   = (!empty($aDonnees['longProduit']))   ? floatval($aDonnees['longProduit'])  : '';
+		$largProduit   = (!empty($aDonnees['largProduit']))   ? floatval($aDonnees['largProduit'])  : '';
+		$hautProduit   = (!empty($aDonnees['hautProduit']))   ? floatval($aDonnees['hautProduit'])  : '';
+		$evalProduit   = (!empty($aDonnees['evalProduit']))   ? intval($aDonnees['evalProduit'])    : '';
+		$catIdProduit  = (!empty($aDonnees['catIdProduit']))  ? intval($aDonnees['catIdProduit'])   : '';
+		$powerProduit  = (!empty($aDonnees['powerProduit']))  ? intval($aDonnees['powerProduit'])   : '';
 
 		if(!Valider::estStringValide($nomProduit)){
 			throw new Exception("Nom du produit non conforme");
@@ -194,23 +195,23 @@ class Catalogue {
 
 		// modifier un produit
 	public function modifier($aDonnees = Array()) {
-		$IdProduit     = (!empty($aDonnees['IdProduit']))	  ? $aDonnees['IdProduit']     : '';
-		$nomProduit    = (!empty($aDonnees['nomProduit']))	  ? $aDonnees['nomProduit']    : '';
-		$prixProduit   = (!empty($aDonnees['prixProduit']))   ? $aDonnees['prixProduit']   : '';
-		$descProduit   = (!empty($aDonnees['descProduit']))   ? $aDonnees['descProduit']   : '';
-		$specsProduit  = (!empty($aDonnees['specsProduit']))  ? $aDonnees['specsProduit']  : '';
-		$imgProduit    = (!empty($aDonnees['imgProduit'])) 	  ? $aDonnees['imgProduit']    : '';
-		$statutProduit = (!empty($aDonnees['statutProduit'])) ? $aDonnees['statutProduit'] : '';
-		$typeProduit   = (!empty($aDonnees['typeProduit']))   ? $aDonnees['typeProduit']   : '';
-		$suppProduit   = (!empty($aDonnees['suppProduit']))   ? $aDonnees['suppProduit']   : '';
-		$suppIdProduit = (!empty($aDonnees['suppIdProduit'])) ? $aDonnees['suppIdProduit'] : '';
-		$poidsProduit  = (!empty($aDonnees['poidsProduit']))  ? $aDonnees['poidsProduit']  : '';
-		$longProduit   = (!empty($aDonnees['longProduit']))   ? $aDonnees['longProduit']   : '';
-		$largProduit   = (!empty($aDonnees['largProduit']))   ? $aDonnees['largProduit']   : '';
-		$hautProduit   = (!empty($aDonnees['hautProduit']))   ? $aDonnees['hautProduit']   : '';
-		$evalProduit   = (!empty($aDonnees['evalProduit']))   ? $aDonnees['evalProduit']   : '';
-		$catIdProduit  = (!empty($aDonnees['catIdProduit']))  ? $aDonnees['catIdProduit']  : '';
-		$powerProduit  = (!empty($aDonnees['powerProduit']))  ? $aDonnees['powerProduit']  : '';
+		$IdProduit     = (!empty($aDonnees['IdProduit']))	  ? intval($aDonnees['IdProduit'])	    : '';
+		$nomProduit    = (!empty($aDonnees['nomProduit']))	  ? $aDonnees['nomProduit']    	  	    : '';
+		$prixProduit   = (!empty($aDonnees['prixProduit']))   ? floatval($aDonnees['prixProduit'])  : '';
+		$descProduit   = (!empty($aDonnees['descProduit']))   ? $aDonnees['descProduit']   	  	    : '';
+		$specsProduit  = (!empty($aDonnees['specsProduit']))  ? $aDonnees['specsProduit']  	  	    : '';
+		$imgProduit    = (!empty($aDonnees['imgProduit'])) 	  ? $aDonnees['imgProduit']    	  	    : '';
+		$statutProduit = (!empty($aDonnees['statutProduit'])) ? intval($aDonnees['statutProduit'])  : '';
+		$typeProduit   = (!empty($aDonnees['typeProduit']))   ? intval($aDonnees['typeProduit'])    : '';
+		$suppProduit   = (!empty($aDonnees['suppProduit']))   ? $aDonnees['suppProduit']  	  	    : '';
+		$suppIdProduit = (!empty($aDonnees['suppIdProduit'])) ? $aDonnees['suppIdProduit'] 	   		: '';
+		$poidsProduit  = (!empty($aDonnees['poidsProduit']))  ? floatval($aDonnees['poidsProduit']) : '';
+		$longProduit   = (!empty($aDonnees['longProduit']))   ? floatval($aDonnees['longProduit'])  : '';
+		$largProduit   = (!empty($aDonnees['largProduit']))   ? floatval($aDonnees['largProduit'])  : '';
+		$hautProduit   = (!empty($aDonnees['hautProduit']))   ? floatval($aDonnees['hautProduit'])  : '';
+		$evalProduit   = (!empty($aDonnees['evalProduit']))   ? intval($aDonnees['evalProduit'])    : '';
+		$catIdProduit  = (!empty($aDonnees['catIdProduit']))  ? intval($aDonnees['catIdProduit'])   : '';
+		$powerProduit  = (!empty($aDonnees['powerProduit']))  ? intval($aDonnees['powerProduit'])   : '';
 
 		if(!Valider::estInt($IdProduit)){
 			throw new Exception("ID produit non conforme");
@@ -224,7 +225,7 @@ class Catalogue {
 		if(!Valider::estStringValide($descProduit)){
 			throw new Exception("Description du produit non conforme");
 		}
-		if(!Valider::estStringValide($specsProduit)){
+		if(!Valider::estString($specsProduit)){
 			throw new Exception("Specifications du produit non conforme");
 		}
 		if(!Valider::estImage($imgProduit)){
