@@ -359,7 +359,15 @@
 					echo $e->getMessage();
 				}
 			?>
-
+			<h2>Test: afficher() non-fonctionnel</h2>
+			<?php 
+				try {
+					$rep = $catalogue->afficher(1);
+					var_dump($rep);
+				} catch(Exception $e) {
+					echo $e->getMessage();
+				}
+			?>
 			<h2>Test: afficher() tous les produits</h2>
 			<?php
 				try {
@@ -383,6 +391,24 @@
 			<?php 
 				try {
 					$rep = $catalogue->afficher("prix");
+					var_dump($rep);
+				} catch(Exception $e) {
+					echo $e->getMessage();
+				}
+			?>
+			<h2>Test: afficherProduit() non-fonctionnel</h2>
+			<?php 
+				try {
+					$rep = $catalogue->afficherProduit("abc");
+					var_dump($rep);
+				} catch(Exception $e) {
+					echo $e->getMessage();
+				}
+			?>
+			<h2>Test: afficherProduit() (1 produit)</h2>
+			<?php 
+				try {
+					$rep = $catalogue->afficherProduit(17);
 					var_dump($rep);
 				} catch(Exception $e) {
 					echo $e->getMessage();

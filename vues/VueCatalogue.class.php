@@ -9,6 +9,113 @@
 
 class VueCatalogue { 
 
+	public function modifierProduitAdmin($data,$result) {
+?>
+		
+		  <div class="panel panel-default">
+			<!-- Default panel contents -->
+			<div class="panel-heading">Ajouter ou modifier un produit</div>
+			<div class="panel-body">
+<?php
+				switch ($result) {
+					case 1:
+						echo "<div class=\"alert alert-success\"><strong>Bien fait!</strong> Vous insérez cette page dans la base de données avec succès.</div>";
+						break;
+					case 0:
+						echo "<div class=\"alert alert-danger\"><strong>Oh rupture!</strong> Changer quelques choses et essayer à nouveau soumission.</div>";
+						break;
+					default:
+						break;
+				}
+?>
+
+				<!-- Form Edit pages-->
+				<form role="form" method="POST" action="./adminka.php?requete=modifier_produit&produit_id=<?php echo $data["id_produits"]?>">
+					<div class="form-group">
+						<label for="product-title">Nom du produit</label>
+						<input type="text" class="form-control" id="nomProduit" placeholder="Titre du produit" value="<?php echo $data['nom']; ?>">
+					</div>
+					<div class="form-group">
+						<label for="product-details">Spécifications</label>
+						<textarea class="form-control" rows="18" id="specsProduit" placeholder="Détails du produit"><?php echo $data['specification']; ?></textarea>
+						<p>Séparer d'une virgule (,) chancun des points importants..</p>
+					</div>
+					<div class="form-group">
+						<label for="product-power">Détails</label>
+						<input type="text" class="form-control" id="descProduit" value="<?php echo $data['description']; ?>">
+					</div>
+					<div class="form-group">
+						<label for="product-power">Puissance (W)</label>
+						<input type="text" class="form-control" id="powerProduit" value="<?php echo $data['puissance']; ?>">
+					</div>
+					<div class="form-group">
+						<label for="product-category">Catégorie</label>
+						<input type="text" class="form-control" id="catIdProduit" value="<?php echo $data['categorie_id_categorie']; ?>">
+						<p>1=>"Panneaux solaires",2=>"Kits Solaires",3=>"Lampes DEL"</p>
+					</div>
+					<div class="form-group">
+						<label for="product-status">Statut</label>
+						<div class="radio">
+							<label>
+								<input type="radio" name="statutProduit" id="statutProduit1" value="1" <?php if($data['statut']==1) echo "checked"; ?>>
+								<span class="label label-success">Disponible</span>
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name="statutProduit" id="statutProduit0" value="0" <?php if($data['statut']==0) echo "checked"; ?>>
+								<span class="label label-warning">Non-disponible</span>
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name="statutProduit" id="statutProduit2" value="2" <?php if($data['statut']==2) echo "checked"; ?>>
+								<span class="label label-danger">Supprimée</span>
+							</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="product-type">Type du produit</label>
+						<input type="text" class="form-control" id="typeProduit" value="<?php echo $data['type']; ?>">
+						<p>0=>"Régulier",2=>"Nouveauté",3=>"Meilleur vendeur"</p>
+					</div>
+					<div class="form-group">
+						<label for="product-supplier">Fournisseur</label>
+						<input type="text" class="form-control" id="suppProduit" value="<?php echo $data['fournisseur']; ?>">
+					</div>
+					<div class="form-group">
+						<label for="product-supplier-id">ID du produit du fournisseur</label>
+						<input type="text" class="form-control" id="suppIdProduit" value="<?php echo $data['iditem_fournisseur']; ?>">
+					</div>
+					<div class="form-group">
+						<label for="product-price">Prix</label>
+						<input type="text" class="form-control" id="prixProduit" value="<?php echo $data['prix']; ?>">
+					</div>
+					<div class="form-group">
+						<label for="product-weight">Poids (kilogrammes)</label>
+						<input type="text" class="form-control" id="poidsProduit" value="<?php echo $data['poids']; ?>">
+					</div>
+					<div class="form-group">
+						<label for="product-dimensions">Dimensions (cm)</label>
+						<input type="text" class="form-control" id="hautProduit" value="<?php echo $data['taille_hauteur']; ?>">
+						<input type="text" class="form-control" id="largProduit" value="<?php echo $data['taille_largeur']; ?>">
+						<input type="text" class="form-control" id="longProduit" value="<?php echo $data['taille_longueur']; ?>">
+					</div>
+					<input type="hidden" id="evalProduit" value="<?php echo $data["evaluation_id_evaluation"];?>">
+					<input type="hidden" id="imgProduit" value="<?php echo $data["image"];?>.jpg">
+					<div class="form-group">
+						<button name="modifier-produit" type="submit" class="btn btn-primary" data-loading-text="Sauvegarde...">Soumettre</button>
+					</div>
+					<div class="btn-group" data-toggle="buttons">
+				</form>		<!-- /Form Edit pages-->
+			</div>
+			</div><!--end panel-->
+		  </div>
+
+<?php
+
+	}
+
 	public function afficherListAdmin($aDonnees, $aDonneesPaginator, $partir, $fin) {
 		
 			$nbProduits = count($aDonnees);
@@ -47,7 +154,7 @@ class VueCatalogue {
 
 			<div class="panel panel-default">
 			<!-- Default panel contents -->
-			<div class="panel-heading">Tous les produits<span class="badge pull-right"><?php echo $nbProduits;?></span><div> <a href="adminka.php?requete=produits_ajouter">Ajouter un produit</a></div>
+			<div class="panel-heading">Tous les produits<span class="badge pull-right"><?php echo $nbProduits;?></span><div> <a href="adminka.php?requete=ajouter_produit">Ajouter un produit</a></div>
 			</div>
 			<div class="panel-body">
 				Vous pouvez modifier et ajouter des produits du catalogue.

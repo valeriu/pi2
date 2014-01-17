@@ -60,6 +60,15 @@ class ControlerAdmin {
 						break;
 					case 'produits':
 						$this->produits();
+						break;
+					case 'ajouter_produits':
+						$this->ajouterProduit();
+						break;	
+					case 'details_produits':
+						$this->detailsProduit();
+						break;
+					case 'modifier_produits':
+						$this->modifierProduit();
 						break;	
 					default:
 						$this->connexion();
@@ -469,11 +478,11 @@ class ControlerAdmin {
 			$nb2 = (!empty($_GET['fin'])) ? $_GET['fin'] : 20;	
 			
 			$oVueAdmin	= new VueAdmin();
-			$oProduits = new Catalogue();
-			$aProduits = $oProduits->afficher("tous");
+			$oProduits  = new Catalogue();
+			$aProduits  = $oProduits->afficher("tous");
 			
 			$pagePagination = new Pagination();
-			$aDonnees = array("aTousElements" => $aProduits);
+			$aDonnees 		= array("aTousElements" => $aProduits);
 			$pagesPaginator = $pagePagination->paginate($aDonnees);
 			$datas = $pagePagination->voirResultats();
 			
@@ -485,7 +494,57 @@ class ControlerAdmin {
 			$oVueAdmin->afficherFinContent();
 			$oVueAdmin->afficherFooter();
 		}
-		
+
+		private function detailsProduit() {
+			$produit_id = (!empty($_GET['produit_id'])) ? $_GET['produit_id'] : 0;
+
+			try {
+				$oProduits  = new Catalogue();
+				$aProduit 	= $oProduits->afficherProduit($produit_id);
+				$result = "2";
+			} 
+			catch(Exception $e) {
+				echo $e->getMessage();
+			}
 				
+			$oVueAdmin	= new VueAdmin();			
+			$oVueAdmin->afficherEntete();
+			$oVueAdmin->afficherToolbar();
+			$oVueAdmin->afficherNavigation();
+			VueCatalogue::modifierProduitAdmin($aProduit, $result);
+			$oVueAdmin->afficherFinContent();
+			$oVueAdmin->afficherFooter();
+		}
+		
+		private function modifierProduit() {
+			$produit_id = (!empty($_GET['produit_id'])) ? $_GET['produit_id'] : 0;
+
+			try {
+				$oProduits  = new Catalogue();
+				$result 	= $oProduits->modifier($_POST);
+				$aProduit 	= $oProduits->afficherProduit($produit_id);
+			} 
+			catch(Exception $e) {
+				echo $e->getMessage();
+			}
+				
+			$oVueAdmin	= new VueAdmin();			
+			$oVueAdmin->afficherEntete();
+			$oVueAdmin->afficherToolbar();
+			$oVueAdmin->afficherNavigation();
+			VueCatalogue::modifierProduitAdmin($aProduit, $result);
+			$oVueAdmin->afficherFinContent();
+			$oVueAdmin->afficherFooter();
+		}
+		
+		private function ajouterProduit() {
+			$oVueAdmin	= new VueAdmin();			
+			$oVueAdmin->afficherEntete();
+			$oVueAdmin->afficherToolbar();
+			$oVueAdmin->afficherNavigation();
+			VueCatalogue::modifierProduitAdmin();
+			$oVueAdmin->afficherFinContent();
+			$oVueAdmin->afficherFooter();
+		}	
 }
 ?>

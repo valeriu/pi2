@@ -36,17 +36,15 @@ class Catalogue {
 		$idbd = $this->bd->getBD();
 
 		// requete SQL
-		$req = $idbd->prepare(	"SELECT *
-                                FROM wa_produits WHERE categorie_id_categorie=".$id.";");
+		$req = $idbd->prepare("SELECT *
+                                FROM wa_produits WHERE id_produits=".$id.";");
 		$req->execute();
-		//var_dump($req);
-		$aProduit = $req->fetchAll();
-		
-		if($aProduits){
+		$aProduit = $req->fetch();
+		if($aProduit){
 			return $aProduit;
 		}
 		else{
-			throw new Exception("Erreur lors du chargement du produit...");
+			throw new Exception("ID du produit invalide...");
 		}
 	}
 
@@ -72,7 +70,7 @@ class Catalogue {
 			
 			// erreur
 			default:
-				throw new Exception("Mode de tri invalide...");
+				throw new Exception("Mode d'affichage invalide...");
 				break;
 		}
 		// requete SQL
