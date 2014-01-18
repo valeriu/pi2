@@ -39,6 +39,7 @@ class VueCommandes {
 
 					$htmlPage .= "<td><abbr title=\"{$heureFormatLisible}\">{$dateFormatLisible}</abbr></td>\r\n";
 					$htmlPage .= "<td><a href=\"adminka.php?requete=details_usager&id_utilisateurs={$aDonneesCommandes[$i]["utilisateurs_id_utilisateurs"]}\" title=\"Edit: {$aDonneesCommandes[$i]["utilisateurs_id_utilisateurs"]}\">{$aDonneesCommandes[$i]["utilisateurs_id_utilisateurs"]}</a></td>\r\n";
+					$htmlPage .= "<td>{$aDonneesCommandes[$i]["total_commande"]}</td>\r\n";
 					switch ($aDonneesCommandes[$i]["statut"]) {
 						case 0: // En traitement
 							$htmlPage .= "<td><span class=\"label label-warning\">En-traitement</span></td>";
@@ -53,7 +54,6 @@ class VueCommandes {
 							$htmlPage .= "<td><span class=\"label label-danger\">Anullé</span></td>";
 							break;
 					}
-				$htmlPage .= "<td>{$aDonneesCommandes[$i]["total_commande"]}</td>\r\n";
 				$htmlPage .= "</tr>\r\n";
 			}
 				//var_dump($tousPages);
