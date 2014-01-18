@@ -136,6 +136,7 @@ class VueCommandes {
 									<div class="col-sm-1"><?php echo $data["id_commandes"] ;?></div>
 									<div class="col-sm-3"><?php echo $dateEtHeure ;?></div>
 									<div class="col-sm-2"><?php echo $data["utilisateurs_id_utilisateurs"] ;?></div>
+									<div class="col-sm-2"><?php echo $data["total_commande"] ;?></div>
 									<div class="col-sm-3"><?php
 										$htmlPage = '';
 										switch ($data["statut"]) {
@@ -155,7 +156,6 @@ class VueCommandes {
 										echo $htmlPage;
 										?>
 									</div>
-									<div class="col-sm-2"><?php echo $data["total_commande"] ;?></div>
 								</div>
 							</div>
 						</div>
