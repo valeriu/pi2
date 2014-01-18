@@ -52,6 +52,46 @@ class Catalogue {
 	}
 
 	// afficher les produits
+	public function afficherListe($mode) {
+		$idbd = $this->bd->getBD();
+		
+		switch ($mode) {
+			// tri par specification
+			case 'specs':
+				$sOrderBy = "puissance";
+				break;
+
+			// tri par prix
+			case 'prix':
+				$sOrderBy = "prix";
+				break;
+
+			// tri par prix
+			case 'tous':
+				$sOrderBy = "categorie_id_categorie";
+				break;
+			
+			// erreur
+			default:
+				throw new Exception("Mode d'affichage invalide...");
+				break;
+		}
+		// requete SQL
+		$req = $idbd->prepare(	"SELECT *
+                                FROM wa_produits ".substr($this->sWhere,0,-4)." ORDER BY ".$sOrderBy.";");
+		$req->execute();
+		//var_dump($req);
+		$aProduits = $req->fetchAll();
+		//var_dump($aProduits);
+		
+		if($aProduits){
+			return $aProduits;
+		}
+		else{
+			throw new Exception("Erreur lors du chargement des produits...");
+		}
+	}
+
 	public function afficher($mode) {
 		$idbd = $this->bd->getBD();
 		
