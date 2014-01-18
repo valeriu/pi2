@@ -74,8 +74,8 @@ class VueCommandes {
 					<th>Id</th>
 					<th>Date</th>
 					<th>id Client</th>
-					<th>Statut</th>
 					<th>Total $CAD</th>
+					<th>Statut</th>
 				  </tr>
 				</thead>
 				<tbody>
@@ -124,8 +124,8 @@ class VueCommandes {
 									<div class="col-sm-2">id</div>
 									<div class="col-sm-2">Date</div>
 									<div class="col-sm-2">id Client</div>
-									<div class="col-sm-3">Statut</div>
 									<div class="col-sm-2">Prix total</div>
+									<div class="col-sm-3">Statut</div>
 								</div>
 							</div>
 						</div>
