@@ -109,5 +109,25 @@ class VueAdmin {
 		</div>
     </div><!-- end content -->
 	<?php }
+	
+	public function tinymce($textarea) { ?>
+		<script type="text/javascript" src="tinymce/tinymce.min.js"></script>
+		<script type="text/javascript">
+		tinymce.init({
+			mode : "exact",
+			elements : "<?php echo $textarea; ?>",
+			theme: "modern",
+			plugins: [
+				"advlist autolink lists link image charmap  hr anchor",
+				"searchreplace wordcount visualblocks visualchars code fullscreen",
+				"media nonbreaking save  directionality",
+				"paste textcolor"
+			],
+			toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | link image media | forecolor backcolor",
+			
+			image_advtab: true
+		});
+		</script>
+	<?php }
 }
 ?>
