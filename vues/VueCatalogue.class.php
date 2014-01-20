@@ -13,7 +13,10 @@ class VueCatalogue {
 		if(isset($_POST['modifierProduit'])) {
 			$data = $_POST;
 			$data['statut'] = $_POST['statutProduit'];
+			$data['type'] = $_POST['typeProduit'];
+			$data['categorie_id_categorie'] = $_POST['catIdProduit'];
 		}
+
 ?>
 		
 		  <div class="panel panel-default">
@@ -34,7 +37,7 @@ class VueCatalogue {
 ?>
 
 				<!-- Form Edit pages-->
-				<form role="form" method="POST" action="./adminka.php?requete=<?php if(isset($data['nom'])) echo "modifier"; else echo "ajouter"; ?>_produit&produit_id=<?php if(isset($data)) echo $data["id_produits"]; ?>">
+				<form role="form" method="POST" action="./adminka.php?requete=<?php if(isset($_GET['modifier'])) echo "modifier"; else echo "ajouter"; ?>_produit&produit_id=<?php if(isset($data)) echo $data["id_produits"]; ?>&modifier=1">
 					<div class="form-group">
 						<label for="product-title">Nom du produit</label>
 						<input type="text" class="form-control" id="nomProduit" name="nomProduit" placeholder="Titre du produit" value="<?php if(isset($data['nom'])) echo $data['nom']; if(isset($data['nomProduit'])) echo $data['nomProduit']; ?>">
@@ -53,12 +56,28 @@ class VueCatalogue {
 						<input type="text" class="form-control" id="powerProduit" name="powerProduit" value="<?php if(isset($data['puissance'])) echo $data['puissance']; if(isset($data['powerProduit'])) echo $data['powerProduit']; ?>">
 					</div>
 					<div class="form-group">
-						<label for="product-category">Catégorie</label>
-						<input type="text" class="form-control" id="catIdProduit" name="catIdProduit" value="<?php if(isset($data['categorie_id_categorie'])) echo $data['categorie_id_categorie']; if(isset($data['catIdProduit'])) echo $data['catIdProduit']; ?>">
-						<p>1=>"Panneaux solaires",2=>"Kits Solaires",3=>"Lampes DEL"</p>
+						<label for="product-status">Catégorie</label>
+						<div class="radio">
+							<label>
+								<input type="radio" name="catIdProduit" id="catIdProduit0" value="1" <?php if(isset($data['categorie_id_categorie'])){if($data['categorie_id_categorie']==1) echo "checked";} ?>>
+								<span class="label label-default">Panneaux solaires</span>
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name="catIdProduit" id="catIdProduit1" value="2" <?php if(isset($data['categorie_id_categorie'])){if($data['categorie_id_categorie']==2) echo "checked";} ?>>
+								<span class="label label-default">Kits Solaires</span>
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name="catIdProduit" id="catIdProduit2" value="3" <?php if(isset($data['categorie_id_categorie'])){if($data['categorie_id_categorie']==3) echo "checked";} ?>>
+								<span class="label label-default">Lampes DEL</span>
+							</label>
+						</div>
 					</div>
 					<div class="form-group">
-						<label for="product-status">Statut</label>
+						<label for="product-status">Statut du produit</label>
 						<div class="radio">
 							<label>
 								<input type="radio" name="statutProduit" id="statutProduit1" value="1" <?php if(isset($data['statut'])){if($data['statut']==1) echo "checked";} ?>>
@@ -79,9 +98,25 @@ class VueCatalogue {
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="product-type">Type du produit</label>
-						<input type="text" class="form-control" id="typeProduit" name="typeProduit" value="<?php if(isset($data['type'])) echo $data['type']; if(isset($data['typeProduit'])) echo $data['typeProduit']; ?>">
-						<p>0=>"Régulier",1=>"Nouveauté",2=>"Meilleur vendeur"</p>
+						<label for="product-status">Type du produit</label>
+						<div class="radio">
+							<label>
+								<input type="radio" name="typeProduit" id="typeProduit0" value="0" <?php if(isset($data['type'])){if($data['type']==0) echo "checked";} ?>>
+								<span class="label label-primary">Régulier</span>
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name="typeProduit" id="typeProduit1" value="1" <?php if(isset($data['type'])){if($data['type']==1) echo "checked";} ?>>
+								<span class="label label-success">Nouveauté</span>
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name="typeProduit" id="typeProduit2" value="2" <?php if(isset($data['type'])){if($data['type']==2) echo "checked";} ?>>
+								<span class="label label-warning">Meilleur vendeur</span>
+							</label>
+						</div>
 					</div>
 					<div class="form-group">
 						<label for="product-supplier">Fournisseur</label>
@@ -137,9 +172,9 @@ class VueCatalogue {
 
 			for ($i=$partir, $j=$fin; $i<$j; $i++){
 				$htmlPage .= "<tr>\r\n";
-					$htmlPage .= "<td><a href=\"adminka.php?requete=details_produits&produit_id={$aDonnees[$i]["id_produits"]}\" title=\"Editer: {$aDonnees[$i]["nom"]}\">{$aDonnees[$i]["id_produits"]}</a></td>\r\n";
-					$htmlPage .= "<td>{$aDonnees[$i]["nom"]}</td>\r\n";
-					$htmlPage .= "<td><abbr title=\"{$aDonnees[$i]["fournisseur"]}\">{$aDonnees[$i]["fournisseur"]}</abbr></td>\r\n";
+					$htmlPage .= "<td><a href=\"adminka.php?requete=details_produits&produit_id={$aDonnees[$i]["id_produits"]}&modifier=1\" title=\"Editer: {$aDonnees[$i]["nom"]}\">{$aDonnees[$i]["id_produits"]}</a></td>\r\n";
+					$htmlPage .= "<td><a href=\"adminka.php?requete=details_produits&produit_id={$aDonnees[$i]["id_produits"]}&modifier=1\" title=\"Editer: {$aDonnees[$i]["nom"]}\">{$aDonnees[$i]["nom"]}</a></td>\r\n";
+					$htmlPage .= "<td>{$aDonnees[$i]["fournisseur"]}</td>\r\n";
 					$htmlPage .= "<td>{$aDonnees[$i]["prix"]}$</td>\r\n";
 					switch ($aDonnees[$i]["statut"]) {
 						case "0": // Inactif
