@@ -93,12 +93,13 @@ class VueAdmin {
     	<div class="row">
 		  <div class="col-lg-2 col-md-2">
 			<div class="list-group">
-				<a href="#" class="list-group-item active">Panneau d'administration</a>
-				<a href="adminka.php?requete=commandes" class="list-group-item">Commandes</a>
-				<a href="adminka.php?requete=produits" class="list-group-item">Produits</a>
-				<a href="adminka.php?requete=page" class="list-group-item">Pages</a>
-				<a href="adminka.php?requete=liste_usagers" class="list-group-item">Usagers</a>
-				<a href="adminka.php?requete=menu" class="list-group-item">Menu</a>
+			<?php $dGet = $_GET["requete"]; ?>
+				<a href="adminka.php" class="list-group-item <?php echo ($dGet == "") ? "active" : ""; ?>">Panneau d'administration</a>
+				<a href="adminka.php?requete=commandes" class="list-group-item <?php echo ($dGet == "details_commande" || $dGet == "commandes") ? "active" : ""; ?>">Commandes</a>
+				<a href="adminka.php?requete=produits" class="list-group-item <?php echo ($dGet == "modifier_produit" || $dGet == "details_produits" || $dGet == "produits" || $dGet == "ajouter_produit") ? "active" : ""; ?>">Produits</a>
+				<a href="adminka.php?requete=page" class="list-group-item <?php echo ($dGet == "page" || $dGet == "page_ajouter" || $dGet == "page_modifier") ? "active" : ""; ?>">Pages</a>
+				<a href="adminka.php?requete=liste_usagers" class="list-group-item <?php echo ($dGet == "liste_usagers" || $dGet == "details_usager" || $dGet == "modifier_usager") ? "active" : ""; ?>">Usagers</a>
+				<a href="adminka.php?requete=menu" class="list-group-item <?php echo ($dGet == "menu" || $dGet == "menu_ajouter" || $dGet == "menu_modifier") ? "active" : ""; ?>">Menu</a>
 			</div>
 		  </div>
 	<div class="col-lg-10 col-md-10">
