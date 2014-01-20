@@ -65,8 +65,7 @@ class VueUsagers {
 							Mot de Passe:
 							<input name="mot_passe" id="mot_passe" type="password" class="form-control" required>
 						</div>
-						<button name="motPasseOublie" id="motPasseOublie" type="button">Mot de passe oublié</a>
-						<br>
+						<button name="motPasseOublie" id="motPasseOublie" class="btn btn-sm btn-primary" type="button">Mot de passe oublié</button>
 						<button name="connexion" id="connexion" class="btn btn-primary" type="button">Connexion</button>
 						<br>
 					</form>
