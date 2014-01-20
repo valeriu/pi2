@@ -98,7 +98,7 @@ class VueMenu {
 							$htmlPage .= "<td><span class=\"label label-success\">Publié</span></td>";
 							break;
 						case 2:
-							$htmlPage .= "<td><span class=\"label label-danger\">Privé</span></td>";
+							$htmlPage .= "<td><span class=\"label label-danger\">Supprimé</span></td>";
 							break;
 					}
 				$htmlPage .= "</tr>\r\n";
@@ -195,7 +195,7 @@ class VueMenu {
 						<div class="radio">
 							<label>
 								<input type="radio" name="optionsRadios" id="optionsRadios3" value="2">
-								<span class="label label-danger">Privé</span>
+								<span class="label label-danger">Supprimé</span>
 							</label>
 						</div>
 					</div>
@@ -268,7 +268,7 @@ class VueMenu {
 						<div class="radio">
 							<label>
 								<input type="radio" name="optionsRadios" id="optionsRadios3" value="2" <?php echo $nb1 = ($data["statut"]==2) ? "checked" : "";?>>
-								<span class="label label-danger">Privé</span>
+								<span class="label label-danger">Supprimé</span>
 							</label>
 						</div>
 					</div>

@@ -102,7 +102,7 @@ public function ajouterPageAdmin($result="", $mes="") {
 						<div class="radio">
 							<label>
 								<input type="radio" name="optionsRadios" id="optionsRadios3" value="2">
-								<span class="label label-danger">Privé</span>
+								<span class="label label-danger">Supprimé</span>
 							</label>
 						</div>
 					</div>
@@ -190,7 +190,7 @@ public function ajouterPageAdmin($result="", $mes="") {
 						<div class="radio">
 							<label>
 								<input type="radio" name="optionsRadios" id="optionsRadios3" value="2" <?php echo $nb1 = ($data["statut"]==2) ? "checked" : "";?>>
-								<span class="label label-danger">Privé</span>
+								<span class="label label-danger">Supprimé</span>
 							</label>
 						</div>
 					</div>
@@ -257,7 +257,7 @@ public function ajouterPageAdmin($result="", $mes="") {
 							$htmlPage .= "<td><span class=\"label label-success\">Publié</span></td>";
 							break;
 						case 2:
-							$htmlPage .= "<td><span class=\"label label-danger\">Privé</span></td>";
+							$htmlPage .= "<td><span class=\"label label-danger\">Supprimé</span></td>";
 							break;
 					}
 				$htmlPage .= "</tr>\r\n";
@@ -288,7 +288,6 @@ public function ajouterPageAdmin($result="", $mes="") {
 				</tbody>
 			  </table><!-- end table-->
 			</div><!--end panel-->
-			
 			
 			<?php echo $htmlPagination; ?>
 			
