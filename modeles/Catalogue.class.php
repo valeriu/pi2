@@ -163,7 +163,7 @@ class Catalogue {
 		if(!Valider::estString($specsProduit)){
 			throw new Exception("Specifications du produit non conforme");
 		}
-		if(!Valider::estImage($imgProduit)){
+		if(!Valider::estStringValide($imgProduit)){
 			throw new Exception("Image du produit non conforme");
 		}
 		if(!Valider::estString($statutProduit)){
@@ -271,7 +271,7 @@ class Catalogue {
 		if(!Valider::estString($specsProduit)){
 			throw new Exception("Specifications du produit non conforme");
 		}
-		if(!Valider::estImage($imgProduit)){
+		if(!Valider::estStringValide($imgProduit)){
 			throw new Exception("Image du produit non conforme");
 		}
 		if(!Valider::estString($statutProduit)){

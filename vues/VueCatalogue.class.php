@@ -142,7 +142,10 @@ class VueCatalogue {
 					</div>
 					<input type="hidden" id="evalProduit" name="evalProduit" value="<?php if(isset($data['evaluation_id_evaluation'])) echo $data["evaluation_id_evaluation"]; if(isset($data['evalProduit'])) echo $data["evalProduit"]; else echo "3";?>">
 					<input type="hidden" id="IdProduit" name="IdProduit" value="<?php if(isset($data['id_produits'])) echo $data["id_produits"]; if(isset($data['IdProduit'])) echo $data["IdProduit"];?>">
-					<input type="hidden" id="imgProduit" name="imgProduit" value="<?php if(isset($data['image'])) echo $data["image"]; if(isset($data['imgProduit'])) echo $data["imgProduit"]; else echo "test";?>.jpg">
+					<label for="imgProduit">Image du produit</label>
+					<input type="file" id="imgProduit">
+					<input type="hidden" name="imgProduit" value="<?php if(isset($data['imgProduit'])) echo $data["imgProduit"]; if(isset($data['image'])) echo $data["image"];?>">
+					<br>
 					<div class="form-group">
 						<button id="modifierProduit" name="modifierProduit" type="submit" class="btn btn-primary" data-loading-text="Sauvegarde...">Soumettre</button>
 					</div>
@@ -223,20 +226,26 @@ class VueCatalogue {
 	}
 
 	public function afficherCatalogue($aProduits) {
-		$aCategories = array(1=>"Panneaux solaires",2=>"Kits Solaires",3=>"Lampes DEL");
+		$aCategories 	 = array(1=>"Panneaux solaires",2=>"Kits Solaires",3=>"Lampes DEL");
+		$checkCategories = 0;
+		if(isset($_GET["1"])) {
+			if($_GET["1"]=="true") $checkCategories++;
+			if($_GET["2"]=="true") $checkCategories++;
+			if($_GET["3"]=="true") $checkCategories++;
+		}
 ?>
 			<div class="panel panel-default">
 			<!--TRI DU CATALOGUE-->
 			  <div class="panel-heading">
 			    <div>
 			       <label class="checkbox-inline">
-			        <input type="checkbox" class="categorieBox" id="inlineCheckbox1" value="1" <?php if($_GET["1"]=="true" || (!isset($_GET["1"]))) echo "checked"; ?>> Solar Panels
+			        <input type="checkbox" class="categorieBox" id="inlineCheckbox1" value="1" <?php if($_GET["1"]=="true" || (!isset($_GET["1"]))) echo "checked"; if($checkCategories==1 && $_GET["1"]=="true") echo " disabled"; ?>> Solar Panels
 			       </label>
 			       <label class="checkbox-inline">
-			         <input type="checkbox" class="categorieBox" id="inlineCheckbox2" value="2" <?php if($_GET["2"]=="true" || (!isset($_GET["2"]))) echo "checked"; ?>> Solar Kits
+			         <input type="checkbox" class="categorieBox" id="inlineCheckbox2" value="2" <?php if($_GET["2"]=="true" || (!isset($_GET["2"]))) echo "checked"; if($checkCategories==1 && $_GET["2"]=="true") echo " disabled"; ?>> Solar Kits
 			       </label>
 			       <label class="checkbox-inline">
-			         <input type="checkbox" class="categorieBox" id="inlineCheckbox3" value="3" <?php if($_GET["3"]=="true" || (!isset($_GET["3"]))) echo "checked"; ?>> LED Lamps
+			         <input type="checkbox" class="categorieBox" id="inlineCheckbox3" value="3" <?php if($_GET["3"]=="true" || (!isset($_GET["3"]))) echo "checked"; if($checkCategories==1 && $_GET["3"]=="true") echo " disabled"; ?>> LED Lamps
 			       </label>
 			    </div>
 			    <div class="pull-right">
@@ -269,7 +278,7 @@ class VueCatalogue {
 			            <td class="clickable nom"><h3><?php echo $aProduits[$i]["nom"]; ?></h3></td>
 			            <td class="clickable"><?php echo $aProduits[$i]["puissance"]; ?>W</td>
 			            <td class="clickable"><?php echo $aCategories[$aProduits[$i]["categorie_id_categorie"]]; ?></td>
-			            <td class="clickable img"><img src="img/products/<?php echo $aProduits[$i]["image"]; ?>.jpg"></td>
+			            <td class="clickable img"><img src="img/products/<?php echo $aProduits[$i]["image"]; ?>"></td>
 			            <td class="clickable text-success text-pricing"><strong><span class="prix-valeur"><?php echo $aProduits[$i]["prix"]; ?></span>$</strong></td>
 			            <td>
 			              <button type="button" id="<?php echo $aProduits[$i]["id_produits"]; ?>" class="btn btn-primary btn-home ajouter"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Ajouter au panier</button>
