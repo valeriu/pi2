@@ -15,6 +15,7 @@ class VueAdresse {
 		?>
 		<script>
 			$(function(){
+				$('#msgError').hide();
 			//window.addEventListener('load', function () {
 				$('input[name="shippingAddress"]').on('change', function(e){
 					var idTarget = e.target.id;
@@ -32,34 +33,70 @@ class VueAdresse {
 				
 				//Enregistrer une adresse
 				$("#adresse").on("click", function(){
-					var xhr = new XMLHttpRequest();
+					
 					var t = $("#tel").val();
 					var r = $("#rue").val();
 					var a = $("#appartement").val();
 					var v = $("#ville").val();
 					var p = $("#province").val();
 					var cp = $("#codePostal").val();
-					xhr.open("POST", "ajaxControler.php?requete=adresse", true);
-					//telephone	rue	appartement	ville	code_postal	province
-					var req = "telephone=" + t + "&rue=" + r + "&appartement=" + a + "&ville=" + v + "&province=" + p + "&code_postal=" + cp;
-					xhr.onreadystatechange = function() {
-						if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
-							var str = xhr.responseText;
-							if(str.length < 100){
-								//$('#ShippingAddress').html();
-								$("#adresse-erreur").html(xhr.responseText);
-								$('#msgError').show();
-							}
-							else{
-								$('#msgError').hide();
-								$('#ShippingAddress').html(xhr.responseText);
-							}
+					if(t == '' || r == '' || v == '' || p == '' || cp == '' ){
+						$("#adresse-erreur").html('Veuillez remplir les champs en rouge');
+						$('#msgError').show();
+						if(t == ''){
+							$("#tel").css({ "border-color": "red" });
 						}
-					};
-					xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-					xhr.send(req);
+						else{
+							$("#tel").css({ "border-color": "#CCCCCC" });
+						}
+						if(r == ''){
+							$("#rue").css({ "border-color": "red" });
+						}
+						else{
+							$("#rue").css({ "border-color": "#CCCCCC" });
+						}
+						if(v == ''){
+							$("#ville").css({ "border-color": "red" });
+						}
+						else{
+							$("#ville").css({ "border-color": "#CCCCCC" });
+						}
+						if(p == ''){
+							$("#province").css({ "border-color": "red" });
+						}
+						else{
+							$("#province").css({ "border-color": "#CCCCCC" });
+						}
+						if(cp == ''){
+							$("#codePostal").css({ "border-color": "red" });
+						}
+						else{
+							$("#codePostal").css({ "border-color": "#CCCCCC" });
+						}
+					}
+					else{
+						var xhr = new XMLHttpRequest();
+						xhr.open("POST", "ajaxControler.php?requete=adresse", true);
+						//telephone	rue	appartement	ville	code_postal	province
+						var req = "telephone=" + t + "&rue=" + r + "&appartement=" + a + "&ville=" + v + "&province=" + p + "&code_postal=" + cp;
+						xhr.onreadystatechange = function() {
+							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
+								var str = xhr.responseText;
+								if(str.length < 100){
+									//$('#ShippingAddress').html();
+									$("#adresse-erreur").html(xhr.responseText);
+									$('#msgError').show();
+								}
+								else{
+									$('#msgError').hide();
+									$('#ShippingAddress').html(xhr.responseText);
+								}
+							}
+						};
+						xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+						xhr.send(req);
+					}
 				});
-				
 				//Suppression d'adresse
 				$('[name="supprimer"]').on("click", function(e){
 					//console.log(e);
