@@ -1,9 +1,9 @@
 <?php
 /**
- * Class Vue Pages
- * Template de classe Vue Pages.
+ * Class Vue Commandes
+ * Template de classe Vue Commandes.
  * 
- * @author Valeriu Tihai
+ * @author Luis
  * 
  */
 

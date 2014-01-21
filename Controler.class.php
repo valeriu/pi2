@@ -33,6 +33,12 @@ class Controler {
 				case 'adresseCommande':
 					$this->adresseCommande();
 					break;
+				case 'payer':
+					$this->payer();
+					break;
+				case 'ipn':
+					$this->ipn();
+					break;
 				case 'produits':
 					$this->produits();
 					break;
@@ -109,7 +115,40 @@ class Controler {
 				$vue->afficherFooter();
 			}
 		}
+		private function payer(){
+			if(!isset($_SESSION['usager'])){
+				$this->accueil();
+			}
+			else{
+				$pp = new PayPal();
+				$ret = ($pp->doExpressCheckout($_SESSION['tct']));
+			}
+		}
+		
+		private function ipn(){
+			if(!isset($_SESSION['usager'])){
+				$this->accueil();
+			}
+			else{
+				$pp = new PayPal();
+				$final = $pp->doPayment();
 
+				if ($final['ACK'] == 'Success') {
+					
+					echo 'Succeed!';
+					//suprime session
+					//suprime localstorage
+					//
+					//$pp->getCheckoutDetails($final['TOKEN']);
+					//insert in bd token (pour command)
+					//header location succese page
+
+				} else {
+					//header location to error page
+				}
+			}
+		}
+		
 		private function produits() {
 			if(empty($_GET['mode']))
 				//default : tous les produits

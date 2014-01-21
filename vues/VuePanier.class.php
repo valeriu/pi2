@@ -224,15 +224,9 @@ class VuePanier {
 				  	</div><!-- /.col-lg-6 -->
 				</div><!-- /.row -->
 				<a href="./index.php?requete=panier"><button name="retourner" id="back" class="btn btn-lg btn-primary" type="button">Retour au panier</button></a>
-				<form class="passerCommande" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-					<input type="hidden" name="amount" value="<?= ($aDonnes['total_commande']+$aDonnes['taxes']) ?>">
-					<input type="hidden" name="cmd" value="_xclick">
-					<input type="hidden" name="business" value="<?= PAYPAL?>">
-					<input type="hidden" name="item_name" value="WADAGBE">
-					<input type="hidden" name="item_number" value="">
-					<input type="hidden" name="currency_code" value="CAD">					
-					<input type="hidden" name="return" value="<?= URL_SUCCESS ?>">
-					<input type="hidden" name="notify_url" value="<?= URL_IPN ?>" />
+				<form class="passerCommande" action="index.php?requete=payer" method="post">
+					<?php $_SESSION['tct'] = ($aDonnes['total_commande']+$aDonnes['taxes']); ?>
+
 					<button id="confirmerPayment" class="btn btn-lg btn-primary" >Payer</button>
 				</form>
 			</div>
