@@ -465,7 +465,6 @@ class ControlerAdmin {
 			$oVueAdmin->afficherNavigation();
 			VueCatalogue::modifierProduitAdmin($aProduit, $result);
 			$oVueAdmin->afficherFinContent();
-			$oVueAdmin->tinymce("specsProduit");
 			$oVueAdmin->afficherFooter();
 		}
 		
@@ -490,7 +489,6 @@ class ControlerAdmin {
 			$oVueAdmin->afficherNavigation();
 			VueCatalogue::modifierProduitAdmin($aProduit, $result);
 			$oVueAdmin->afficherFinContent();
-			$oVueAdmin->tinymce("specsProduit");
 			$oVueAdmin->afficherFooter();
 		}
 		
@@ -524,7 +522,6 @@ class ControlerAdmin {
 			$oVueAdmin->afficherNavigation();
 			VueCatalogue::modifierProduitAdmin($aProduit,$result);
 			$oVueAdmin->afficherFinContent();
-			$oVueAdmin->tinymce("specsProduit");
 			$oVueAdmin->afficherFooter();
 		}	
 }
