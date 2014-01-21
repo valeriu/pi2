@@ -114,7 +114,7 @@ class VueCatalogue {
 						<div class="radio">
 							<label>
 								<input required type="radio" name="typeProduit" id="typeProduit2" value="2" <?php if(isset($data['type'])){if($data['type']==2) echo "checked";} ?>>
-								<span class="label label-warning">Meilleur vendeur</span>
+								<span class="label label-info">Meilleur vendeur</span>
 							</label>
 						</div>
 					</div>
@@ -177,8 +177,8 @@ class VueCatalogue {
 				$htmlPage .= "<tr>\r\n";
 					$htmlPage .= "<td><a href=\"adminka.php?requete=details_produits&produit_id={$aDonnees[$i]["id_produits"]}&modifier=1\" title=\"Editer: {$aDonnees[$i]["nom"]}\">{$aDonnees[$i]["id_produits"]}</a></td>\r\n";
 					$htmlPage .= "<td><a href=\"adminka.php?requete=details_produits&produit_id={$aDonnees[$i]["id_produits"]}&modifier=1\" title=\"Editer: {$aDonnees[$i]["nom"]}\">{$aDonnees[$i]["nom"]}</a></td>\r\n";
-					$htmlPage .= "<td>{$aDonnees[$i]["fournisseur"]}</td>\r\n";
 					$htmlPage .= "<td>{$aDonnees[$i]["prix"]}$</td>\r\n";
+					$htmlPage .= "<td>{$aDonnees[$i]["fournisseur"]}</td>\r\n";
 					switch ($aDonnees[$i]["statut"]) {
 						case "0": // Inactif
 							$htmlPage .= "<td><span class=\"label label-warning\">Inactif</span></td>";
@@ -208,8 +208,8 @@ class VueCatalogue {
 				  <tr>
 					<th>Id</th>
 					<th>Nom</th>
-					<th>Fournisseur</th>
 					<th>Prix</th>
+					<th>Fournisseur</th>
 					<th>Statut</th>
 				  </tr>
 				</thead>
@@ -239,17 +239,17 @@ class VueCatalogue {
 			  <div class="panel-heading">
 			    <div>
 			       <label class="checkbox-inline">
-			        <input type="checkbox" class="categorieBox" id="inlineCheckbox1" value="1" <?php if($_GET["1"]=="true" || (!isset($_GET["1"]))) echo "checked"; if($checkCategories==1 && $_GET["1"]=="true") echo " disabled"; ?>> Solar Panels
+			        <input type="checkbox" class="categorieBox" id="inlineCheckbox1" value="1" <?php if($_GET["1"]=="true" || (!isset($_GET["1"]))) echo "checked"; if($checkCategories==1 && $_GET["1"]=="true") echo " disabled"; ?>> Panneaux solaires
 			       </label>
 			       <label class="checkbox-inline">
-			         <input type="checkbox" class="categorieBox" id="inlineCheckbox2" value="2" <?php if($_GET["2"]=="true" || (!isset($_GET["2"]))) echo "checked"; if($checkCategories==1 && $_GET["2"]=="true") echo " disabled"; ?>> Solar Kits
+			         <input type="checkbox" class="categorieBox" id="inlineCheckbox2" value="2" <?php if($_GET["2"]=="true" || (!isset($_GET["2"]))) echo "checked"; if($checkCategories==1 && $_GET["2"]=="true") echo " disabled"; ?>> Kits solaires
 			       </label>
 			       <label class="checkbox-inline">
-			         <input type="checkbox" class="categorieBox" id="inlineCheckbox3" value="3" <?php if($_GET["3"]=="true" || (!isset($_GET["3"]))) echo "checked"; if($checkCategories==1 && $_GET["3"]=="true") echo " disabled"; ?>> LED Lamps
+			         <input type="checkbox" class="categorieBox" id="inlineCheckbox3" value="3" <?php if($_GET["3"]=="true" || (!isset($_GET["3"]))) echo "checked"; if($checkCategories==1 && $_GET["3"]=="true") echo " disabled"; ?>> Lampes DEL
 			       </label>
 			    </div>
 			    <div class="pull-right">
-			      <button type="button" id="btn-filtres" class="btn btn-default">Ordonner</button>
+			      <button type="button" id="btn-filtres" class="btn btn-default">Trier</button>
 			    </div>
 			  </div>
 			  <div id="panel-filtres" class="panel-heading" hidden>

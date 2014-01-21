@@ -61,7 +61,7 @@ class Vue {
 					<article class="row"><!-- Une autre division pour le logo de la page -->
 						<article class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 							<a class="thumbnail" href="index.php">
-								<canvas id="canvasLogo" width="600" height="200"></canvas>
+								<canvas id="canvasLogo" width="400" height="133"></canvas>
 							</a>
 						</article>
 						<article class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-12 pull-right">

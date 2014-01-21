@@ -22,6 +22,20 @@ $(function(){
     }
 
     //Initialisation du logo anime
+    var canvas, stage, exportRoot;
+
+    function initLogo() {
+        canvas = document.getElementById("canvasLogo");
+        exportRoot = new lib.animated_logo();
+
+        stage = new createjs.Stage(canvas);
+        stage.addChild(exportRoot);
+        stage.update();
+
+        createjs.Ticker.setFPS(24);
+        createjs.Ticker.addEventListener("tick", stage);
+    }
+    
     $( document ).ready(function() {
         initLogo();
     }); 

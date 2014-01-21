@@ -2,7 +2,7 @@
    Catalog's custom styles
    ========================================================================== */
 
-/*PAFDDING TABLEAU CATALOGUE*/
+/*PADDING TABLEAU CATALOGUE*/
 table>tbody>tr>td:not([colspan='7']) {
 	padding: 10px;
 }

@@ -8,56 +8,56 @@ var p; // shortcut to reference prototypes
 
 	// Layer 2
 	this.instance = new lib.Symbol7();
-	this.instance.setTransform(124.5,162.7,0.516,0.486,0,0,0,31.8,35.3);
+	this.instance.setTransform(83.6,108.5,0.346,0.319,0,0,0,31.8,35.3);
 
 	this.instance_1 = new lib.Symbol5();
-	this.instance_1.setTransform(79.1,180,0.516,0.486,0,0,0,18.6,41.3);
+	this.instance_1.setTransform(53.1,119.9,0.346,0.319,0,0,0,18.7,41.3);
 
 	this.instance_2 = new lib.Symbol3();
-	this.instance_2.setTransform(31,150,0.516,0.486,0,0,0,41,27.9);
+	this.instance_2.setTransform(20.8,100.2,0.346,0.319,0,0,0,41.1,27.9);
 
 	this.instance_3 = new lib.Symbol1();
-	this.instance_3.setTransform(19.6,109.6,0.516,0.486,0,0,0,38,18.2);
+	this.instance_3.setTransform(13.2,73.8,0.346,0.319,0,0,0,38,18.2);
 
 	// Layer 1
 	this.instance_4 = new lib.Symbol9();
-	this.instance_4.setTransform(85.4,116.4,0.516,0.486,0,0,0,84.8,85.1);
+	this.instance_4.setTransform(57.3,78.2,0.346,0.319,0,0,0,84.7,85);
 
 	this.shape = new cjs.Shape();
 	this.shape.graphics.f("#171717").s().p("AmfJSQiripAAj4QABj2CrirQCtiqD5AAQD1AACnCmQCnCnAADyIgFBPIp/AAQgPgwAAgpQABg5AUg2IDVAAQgXh7h3AAQhMAAgzBDQgxBBAABpQAABuAwBEQAwBEBMAAQA/AAA7hAIDxEiQioCEjPAAQj4AAiriogAh4nzIDskGIEMAAIkMEGg");
-	this.shape.setTransform(565.7,114.3,0.516,0.486);
+	this.shape.setTransform(379.7,76.9,0.346,0.319);
 
 	this.shape_1 = new cjs.Shape();
 	this.shape_1.graphics.f("#171717").s().p("Aj+LXQh4g3hOheQiIijAAkDIAAupIGnAAIAAOaQAADgCiAAQBCAAAxguQAvgvAAhDQAAhFgtgvQgsgvhCAAQgtAAg7ApIAAnQQBKgHAkAAQDvABCqCrQCqCsAADwQAAD3itCqQitCpj6AAQh+AAh5g3g");
-	this.shape_1.setTransform(502.6,113.3,0.516,0.486);
+	this.shape_1.setTransform(337.3,76.3,0.346,0.319);
 
 	this.shape_2 = new cjs.Shape();
 	this.shape_2.graphics.f("#171717").s().p("Aj9MbIAAmBQBTAtBUAAQBxAAA+hLQA+hKAAiNIAAmmQAAixiQAAQg7AAguAvQgtAvAAA9QAABBArAqQAsArA+AAQArAAAogUIAAGCQhaAihUAAQjMgBiOiaQiOiZAAjgQAAjyCrimQCqimD3AAQCFAAB4A1QB5A1BFBZQB0CVAAEZIAAFxQgBEtirC8QirC8kRAAQhTAAiAgpg");
-	this.shape_2.setTransform(434.7,135.1,0.516,0.486);
+	this.shape_2.setTransform(291.8,90.5,0.346,0.319);
 
 	this.shape_3 = new cjs.Shape();
 	this.shape_3.graphics.f("#171717").s().p("AmhGjQiqinAAj8QAAj0CriqQCsirD0AAQERABCdCfQCeCgAAETIAAIoImnAAIAAoKQAAhXgrg1Qgsg1hJAAQhBAAgxAxQgwAwAABBQAABGAsAtQAsAtBEAAQA1AAAvgdIAAG1QgzAJgrAAIgCAAQj7AAiping");
-	this.shape_3.setTransform(369.3,122.9,0.516,0.486);
+	this.shape_3.setTransform(247.8,82.5,0.346,0.319);
 
 	this.shape_4 = new cjs.Shape();
 	this.shape_4.graphics.f("#171717").s().p("AmfJlQitiqAAj2QAAjtCriuQCtiuDqAAQAkABBMAGIAAHQQg0gpgzAAQhAAAgwAwQgvAwAABEQAABCAxAvQAwAuBCAAQCjAAAAjgIAAuaIGnAAIAAOpQAAEDiICjQhOBeh4A3Qh5A3h+AAIgBAAQj6AAisipg");
-	this.shape_4.setTransform(304.2,113.3,0.516,0.486);
+	this.shape_4.setTransform(204.1,76.3,0.346,0.319);
 
 	this.shape_5 = new cjs.Shape();
 	this.shape_5.graphics.f("#171717").s().p("AmhGjQiqinAAj8QAAj0CriqQCsirD0AAQERABCdCfQCeCgAAETIAAIoImnAAIAAoKQAAhXgrg1Qgsg1hJAAQhBAAgxAxQgwAwAABBQAABGAsAtQAsAtBEAAQA1AAAvgdIAAG1QgzAJgrAAIgCAAQj7AAiping");
-	this.shape_5.setTransform(237.9,122.9,0.516,0.486);
+	this.shape_5.setTransform(159.7,82.5,0.346,0.319);
 
 	this.shape_6 = new cjs.Shape();
 	this.shape_6.graphics.f("#171717").s().p("AnBuPIOCAAIAAUzQkigKjiB2QjzB+iLECg");
-	this.shape_6.setTransform(65.1,50.1,0.516,0.486);
+	this.shape_6.setTransform(43.7,34.8,0.346,0.319);
 
 	this.shape_7 = new cjs.Shape();
 	this.shape_7.graphics.f("#171717").s().p("AizWHQh3hZiFjiQBHi1gEjEQgFjBhNiwQhQiziOiCQiWiHjJg+IAB1WIOEAAIAAd3QAABAALA2QAJArAOAdQAMAXAdANQAcAMAiAAQBAAAAZg7QAWg1AAh+IAA93IN6AAMAAAAhJQAADRg0CfQg4Coh3B9Qh7CBiUA+QiXBAjAAAQjZAAiNhog");
-	this.shape_7.setTransform(153.3,79.8,0.516,0.486);
+	this.shape_7.setTransform(102.9,54.3,0.346,0.319);
 
 	this.addChild(this.shape_7,this.shape_6,this.shape_5,this.shape_4,this.shape_3,this.shape_2,this.shape_1,this.shape,this.instance_4,this.instance_3,this.instance_2,this.instance_1,this.instance);
 }).prototype = p = new cjs.Container();
-p.nominalBounds = new cjs.Rectangle(0,5.7,596,194.3);
+p.nominalBounds = new cjs.Rectangle(0,5.8,400,127.3);
 
 
 // symbols:
@@ -208,16 +208,3 @@ p.nominalBounds = new cjs.Rectangle(0,0,76.3,36.4);
 
 })(lib = lib||{}, images = images||{}, createjs = createjs||{});
 var lib, images, createjs;
-var canvas, stage, exportRoot;
-
-function initLogo() {
-	canvas = document.getElementById("canvasLogo");
-	exportRoot = new lib.animated_logo();
-
-	stage = new createjs.Stage(canvas);
-	stage.addChild(exportRoot);
-	stage.update();
-
-	createjs.Ticker.setFPS(24);
-	createjs.Ticker.addEventListener("tick", stage);
-}
