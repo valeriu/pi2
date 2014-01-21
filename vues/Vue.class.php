@@ -159,20 +159,20 @@ class Vue {
                                 <div class="col-lg-4 col-md-4">
                                   <img class="img-thumbnail" src="img/produit_promo.jpg" alt="Generic placeholder image">
                                   <h2>Panneaux solaires</h2>
-                                  <p>Nous faisons vos rêves reels! Nos artisans sont capables de reproduire toutes sortes de créations à votre demande. Si vous n'avez pas un modelé à vous, nous mettons la meilleure équipe d’experts créateurs à votre service.</p>
-                                  <p><a class="btn btn-default" href="catalogue.html" role="button">En savoir plus &raquo;</a></p>
+                                  <p></p>
+                                  <p><a class="btn btn-default" href="index.php?requete=produits&mode=tous&1=true&2=false&3=false" role="button">Voir &raquo;</a></p>
                                 </div><!-- /.col-lg-4 -->
                                 <div class="col-lg-4 col-md-4">
                                   <img class="img-thumbnail" src="img/LED_lamp.jpg" alt="Generic placeholder image">
                                   <h2>Lampes DEL</h2>
-                                  <p>Les plus fines bagues de mariage pour ce moment si spécial. Célébrez votre amour avec des bagues de mariage fait spécialement pour vous.</p>
-                                  <p><a class="btn btn-default" href="catalogue.html" role="button">En savoir plus &raquo;</a></p>
+                                  <p></p>
+                                  <p><a class="btn btn-default" href="index.php?requete=produits&mode=tous&1=false&2=false&3=true" role="button">Voir &raquo;</a></p>
                                 </div><!-- /.col-lg-4 -->
                                 <div class="col-lg-4 col-md-4">
                                   <img class="img-thumbnail" src="img/solar_kit.jpg" alt="Generic placeholder image">
-                                  <h2>Ensemble</h2>
-                                  <p>Le mariage parfait entre modernité et élégance. Vous aimerez notre ample collection de bijoux contemporains. Dessin exclusif de Fabio Villalba!</p>
-                                  <p><a class="btn btn-default" href="catalogue.html" role="button">En savoir plus &raquo;</a></p>
+                                  <h2>Ensembles</h2>
+                                  <p></p>
+                                  <p><a class="btn btn-default" href="index.php?requete=produits&mode=tous&1=false&2=true&3=false" role="button">Voir &raquo;</a></p>
                                 </div><!-- /.col-lg-4 -->
                         </div><!-- /.row -->
     
