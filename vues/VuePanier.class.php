@@ -1,16 +1,11 @@
 <?php
 /**
- * Class Vue
- * Template de classe Vue. Dupliquer et modifier pour votre usage.
- * 
- * @author Jonathan Martel
- * @version 1.0
- * @update 2013-12-11
- * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
- * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
- * 
+ * Module Vue Panier
+ * La vue qui affiche les differentes étapes du panier
+ *
+ * @author Luis Felipe Rosas
+ *
  */
-
 
 class VuePanier {
 
@@ -115,7 +110,7 @@ class VuePanier {
 				</div>
 				<a href="./index.php?requete=produits"><button name="retourner" id="back" class="btn btn-lg btn-primary" type="button">Retour au catalogue</button></a>
 				<button id="confirmer" class="btn btn-lg btn-primary" >Continuer</button>
-				
+
 
 			</div>
 			<div id="panierVide"><!-- Message de panier Vide -->
@@ -164,8 +159,9 @@ class VuePanier {
 
 					<?php
 					$htmlProduits = '';
-					for ($i = 0; $i < $aDonnes['nb_produit']; $i++){ 
-						$htmlProduits .= '<article id="'.$aDonnes['info_commande']->{"$i"}->{"idP"}.'" class="row"><div class="col-sm-12"><div class="col-sm-2"><a href="#" class="thumbnail"><img class="img-responsive" src="'.$aDonnes['info_commande']->{"$i"}->{'image'}.'" alt="'.$aDonnes['info_commande']->{"$i"}->{'nom'}.'"></a></div><div class="col-sm-5"><p>'.$aDonnes['info_commande']->{"$i"}->{'nom'}.'</p></div><div class="col-sm-2"><p><span class="prix">'.$aDonnes['info_commande']->{"$i"}->{'prix'}.'</span><span> $CAD</span></p></div><div class="col-sm-1"><p>'.$aDonnes['info_commande']->{"$i"}->{'quant'}.'</p></div><div class="col-sm-2 text-center"><p><span class="total">'.round($aDonnes['info_commande']->{"$i"}->{'prix'} * $aDonnes['info_commande']->{"$i"}->{'quant'}, 2).'</span><span> $CAD</span></p></div></div></article>';
+					for ($i = 0; $i < $aDonnes['nb_produit']; $i++){
+						//$infoCommande[$i]->prix
+						$htmlProduits .= '<article id="'.$aDonnes['info_commande'][$i]->idP.'" class="row"><div class="col-sm-12"><div class="col-sm-2"><a href="#" class="thumbnail"><img class="img-responsive" src="'.$aDonnes['info_commande'][$i]->image.'" alt="'.$aDonnes['info_commande'][$i]->nom.'"></a></div><div class="col-sm-5"><p>'.$aDonnes['info_commande'][$i]->nom.'</p></div><div class="col-sm-2"><p><span class="prix">'.$aDonnes['info_commande'][$i]->prix.'</span><span> $CAD</span></p></div><div class="col-sm-1"><p>'.$aDonnes['info_commande'][$i]->quant.'</p></div><div class="col-sm-2 text-center"><p><span class="total">'.round($aDonnes['info_commande'][$i]->prix * $aDonnes['info_commande'][$i]->quant, 2).'</span><span> $CAD</span></p></div></div></article>';
            			}
            			echo $htmlProduits;
 					?>				    	
@@ -197,7 +193,7 @@ class VuePanier {
 									<p><strong>Prix total</strong></p>
 								</div>
 								<div class="col-lg-2 col-md-3 col-sm-3">
-									<p><strong><?= ($aDonnes['total_commande']+$aDonnes['taxes']) ?> $CAD</strong></p>
+									<p><strong><?= number_format($aDonnes['total_commande'] + $aDonnes['taxes'], 2) ?> $CAD</strong></p>
 								</div>
 							</div>
 						</article>
@@ -218,8 +214,7 @@ class VuePanier {
 				</div><!-- /.row -->
 				<a href="./index.php?requete=panier"><button name="retourner" id="back" class="btn btn-lg btn-primary" type="button">Retour au panier</button></a>
 				<form class="passerCommande" action="index.php?requete=payer" method="post">
-					<?php $_SESSION['tct'] = ($aDonnes['total_commande']+$aDonnes['taxes']); ?>
-
+					<?php $_SESSION['commandePaypal'] = $aDonnes; ?>
 					<button id="confirmerPayment" class="btn btn-lg btn-primary" >Payer</button>
 				</form>
 			</div>

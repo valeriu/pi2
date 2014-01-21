@@ -77,6 +77,7 @@ var Panier = (function () {
             totalProduits.html(totalCumulatif.toFixed(0));
         }else{
             // Élimination du content Panier
+            $('#nbProducts').html('Vide');
             $('#panier').remove();
             $('#panierVide').show(); // Afficher un message de Alerte au utilisateur
         }
@@ -101,10 +102,11 @@ var Panier = (function () {
             var courriel = $("input[name='courriel']").val();
 
             if(id != "" && courriel != ""){ // Vérification de Champs
-                var produit = new Object();
+                var produit = [];
                 for (var i = 0; i < localStorage.length; i++){
                     produit[i] = JSON.parse(localStorage.getItem(localStorage.key(i)));
                 }
+                console.log(produit);
                 // Source : http://stackoverflow.com/questions/9001526/send-array-with-ajax-to-php-script
                 var jsonString = JSON.stringify(produit);
                 $.ajax({

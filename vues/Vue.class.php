@@ -179,7 +179,13 @@ class Vue {
 		<?php
 		
 	}
-	
+	public function supprimerLocalStorage(){
+	?>	
+		<script type="text/javascript">
+			localStorage.clear();
+		</script>>
+	<?php
+	}
 
 }
 ?>

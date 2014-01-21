@@ -49,6 +49,8 @@
 	define("PAYPAL", 'wadagbe.solar@gmail.com');
 	define("URL_SUCCESS", 'http://e1295805.webdev.cmaisonneuve.qc.ca/Projet_Luis/index.php?requete=succes');
 	define("URL_IPN", 'http://e1295805.webdev.cmaisonneuve.qc.ca/Projet_Luis/ipn.php');
+	define("PAYPAL_SUCCES", 1);
+	define("PAYPAL_ECHEC", 2);
 
 	
 	

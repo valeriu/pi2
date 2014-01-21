@@ -120,8 +120,11 @@ class Controler {
 				$this->accueil();
 			}
 			else{
+				$commande = new Commandes_Admin;
+				$result = $commande->enregistreCommande($_SESSION['commandePaypal']);
+
 				$pp = new PayPal();
-				$ret = ($pp->doExpressCheckout($_SESSION['tct']));
+				$ret = ($pp->doExpressCheckout($_SESSION['commandePaypal']['tct']));
 			}
 		}
 		
@@ -134,17 +137,38 @@ class Controler {
 				$final = $pp->doPayment();
 
 				if ($final['ACK'] == 'Success') {
+					$oToken = $pp->getCheckoutDetails($final['TOKEN']);
+					$token = $oToken['TOKEN'];
+					$commande = new Commandes_Admin;
+					$commande->modifieToken($token);
+
+					$aDonnees = array("id_page" => PAYPAL_SUCCES);
+
+					$oVue = new Vue();
+					$oPage = new Pages();
+					$courentPage = $oPage->afficher($aDonnees);
+					$oVue->afficherEntete($courentPage);
+					VueUsagers::afficherFormDeconnexion();
+					$oVue->afficherBoutonPanier();
+					VueMenu::afficherMenu();
 					
-					echo 'Succeed!';
-					//suprime session
-					//suprime localstorage
-					//
-					//$pp->getCheckoutDetails($final['TOKEN']);
-					//insert in bd token (pour command)
-					//header location succese page
+					VuePages::afficherPage($courentPage);
+					$oVue->supprimerLocalStorage();
+					$oVue->afficherFooter();
 
 				} else {
-					//header location to error page
+					$aDonnees = array("id_page" => PAYPAL_ECHEC);
+
+					$oVue = new Vue();
+					$oPage = new Pages();
+					$courentPage = $oPage->afficher($aDonnees);
+					$oVue->afficherEntete($courentPage);
+					VueUsagers::afficherFormDeconnexion();
+					$oVue->afficherBoutonPanier();
+					VueMenu::afficherMenu();
+					
+					VuePages::afficherPage($courentPage);
+					$oVue->afficherFooter();
 				}
 			}
 		}

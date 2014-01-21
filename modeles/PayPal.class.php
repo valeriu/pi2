@@ -44,8 +44,8 @@ class PayPal {
 	const API_USERNAME = "b_api1.w.ca";
 	const API_PASSWORD = "1390266218";
 	const API_SIGNATURE = "AfEXsgrsMbCGLpPhIaBqYTCol0BcA3sgydsqful8E7ucPMlnTH0nVxue";
-	const PP_RETURN = "http://e1295805.webdev.cmaisonneuve.qc.ca/valeriu/index.php?requete=ipn";
-	const PP_CANCEL = "http://e1295805.webdev.cmaisonneuve.qc.ca/valeriu/index.php?requete=page&page_id=210";
+	const PP_RETURN = "http://e1295805.webdev.cmaisonneuve.qc.ca/Projet_Luis/index.php?requete=ipn";
+	const PP_CANCEL = "http://e1295805.webdev.cmaisonneuve.qc.ca/Projet_Luis/index.php?requete=page&page_id=210";
 
 	private $endpoint;
 	private $host;

@@ -1,41 +1,42 @@
 ﻿/* ==========================================================================
 *   Projet d'intégration II.
-*	Prof.	: Jonathan Martel
-*	Author	: Luis Felipe Rosas, Valeriu Tihai, Luc Cinq-Mars, Yan Boucher-Bouchard
+*   Prof.   : Jonathan Martel
+*   Author  : Luis Felipe Rosas, Valeriu Tihai, Luc Cinq-Mars, Yan Boucher-Bouchard
    ========================================================================== */
 
 $(function(){
-	try{
-		$('#msgError').hide();
+    try{
+        $('#msgError').hide();
         Catalogue.demarre();  // fonction qui demarre module //
     }catch(e){
          $('#msgError').show(); // Affichage d'error
     }
 
     try{
-    	$('.ajouter').bind('click', function(e){
+        $('.ajouter').bind('click', function(e){
             //event.preventDefault();
-    		Catalogue.ajouterProduit(e);
-    	});
+            Catalogue.ajouterProduit(e);
+        });
     }catch(e){
-    	$('#msgError').show(); // Affichage d'error
+        $('#msgError').show(); // Affichage d'error
     }
 
     //Initialisation du logo anime
-    var canvas, stage, exportRoot;
 
-    function initLogo() {
-        canvas = document.getElementById("canvasLogo");
-        exportRoot = new lib.animated_logo();
+   var canvas, stage, exportRoot;
 
-        stage = new createjs.Stage(canvas);
-        stage.addChild(exportRoot);
-        stage.update();
+  function initLogo() {
+       canvas = document.getElementById("canvasLogo");
+      exportRoot = new lib.animated_logo();
 
-        createjs.Ticker.setFPS(24);
-        createjs.Ticker.addEventListener("tick", stage);
-    }
-    
+      stage = new createjs.Stage(canvas);
+       stage.addChild(exportRoot);
+      stage.update();
+
+       createjs.Ticker.setFPS(24);
+       createjs.Ticker.addEventListener("tick", stage);
+   }
+
     $( document ).ready(function() {
         initLogo();
     }); 
@@ -44,11 +45,11 @@ $(function(){
 
 });
 /* ----- Module Pattern avec IIFE et Closure ----- */
-var Catalogue = (function () {  // Module qui contient la fonction pour ajouter un produit dans le panier	
-	var nbProduitsPanier = 0;
+var Catalogue = (function () {  // Module qui contient la fonction pour ajouter un produit dans le panier   
+    var nbProduitsPanier = 0;
     var prodObject;
-	var _demarre = function(){
-		/* Ici on verfie l'existence de produits dans le web storage */
+    var _demarre = function(){
+        /* Ici on verfie l'existence de produits dans le web storage */
         if(localStorage.length != 0){
             nbProduitsPanier = localStorage.length;
             $('#nbProducts').html(nbProduitsPanier);
@@ -63,8 +64,8 @@ var Catalogue = (function () {  // Module qui contient la fonction pour ajouter 
             $('#'+prodObject.idP).attr('disabled', 'disabled');
             $('#'+prodObject.idP).html('Déjà ajouté');
         }
-	}
-	/* Fonctionne qui gère l'ajoute des produits au panier */
+    }
+    /* Fonctionne qui gère l'ajoute des produits au panier */
     var _ajouterProduit = function(e){  
         /* Evenement qui sera reconstruit à chaque fois que une page du catalogue est chargé */
             for (var i = 0; i < localStorage.length; i++){
@@ -75,12 +76,14 @@ var Catalogue = (function () {  // Module qui contient la fonction pour ajouter 
             var idElement = e.target.id;
             nbProduitsPanier++;
             $('#nbProducts').html(nbProduitsPanier);
-            var produit    = new Object();
-            produit.idP     = idElement;
-            produit.nom    = $('#'+idElement).parent().siblings('.nom').children().html();
-            produit.image  = $('#'+idElement).parent().siblings('.img').children().attr('src');
-            produit.quant  = 1;
-            produit.prix   = $('#'+idElement).parent().siblings('.text-pricing').children().children('.prix-valeur').html();
+            var produit    =
+                {
+                    idP     : idElement,
+                    nom    : $('#'+idElement).parent().siblings('.nom').children().html(),
+                    image  : $('#'+idElement).parent().siblings('.img').children().attr('src'),
+                    quant  : 1,
+                    prix   : $('#'+idElement).parent().siblings('.text-pricing').children().children('.prix-valeur').html()
+                }
             window.localStorage.setItem(produit.idP, JSON.stringify(produit));
             /* Désactivation du produit ajouté au panier */
             $('#'+idElement).attr('disabled', 'disabled');
@@ -88,7 +91,7 @@ var Catalogue = (function () {  // Module qui contient la fonction pour ajouter 
     }
 
  return { // Return des méthodes ou fonctions publiques
- 		demarre : _demarre,
+        demarre : _demarre,
         ajouterProduit : _ajouterProduit
     }
 }());
@@ -129,7 +132,7 @@ function clickDeconnecter(){
 
 
 function clickConnecter(){
-		console.log('clickConnecter');
+        console.log('clickConnecter');
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "ajaxControler.php?requete=formConnecter", true);   
     xhr.onreadystatechange = function() {
@@ -145,7 +148,7 @@ function clickConnecter(){
 };
 
 function confirmerCommande(){
-	//console.log(<?= $_SESSION['usager'] ?>);
-	window.location.assign("index.php?requete=adresseCommande");
+    //console.log(<?= $_SESSION['usager'] ?>);
+    window.location.assign("index.php?requete=adresseCommande");
 };
 

@@ -1,12 +1,11 @@
 <?php
 /**
- * Class Vue Commandes
- * Template de classe Vue Commandes.
- * 
- * @author Luis
- * 
+ * Class Vue Commandes Admin
+ * La vue qui affiche les differentes commandes du site
+ *
+ * @author Luis Felipe Rosas
+ *
  */
-
 
 class VueCommandes {
 
@@ -16,7 +15,6 @@ class VueCommandes {
 	 */
 	
 	public function afficherListAdmin($aDonneesCommandes, $aDonneesPaginator, $partir, $fin) {
-		
 			$nomberCommandes = count($aDonneesCommandes);
 			//print_r($data);
 			$htmlPage = "";
@@ -38,7 +36,8 @@ class VueCommandes {
 					$heureFormatLisible = date("H:i:s",strtotime($aDonneesCommandes[$i]["date_commande"]));
 
 					$htmlPage .= "<td><abbr title=\"{$heureFormatLisible}\">{$dateFormatLisible}</abbr></td>\r\n";
-					$htmlPage .= "<td><a href=\"adminka.php?requete=details_usager&id_utilisateurs={$aDonneesCommandes[$i]["utilisateurs_id_utilisateurs"]}\" title=\"Edit: {$aDonneesCommandes[$i]["utilisateurs_id_utilisateurs"]}\">{$aDonneesCommandes[$i]["utilisateurs_id_utilisateurs"]}</a></td>\r\n";
+					$htmlPage .= "<td>{$aDonneesCommandes[$i]["token"]}</td>\r\n";
+					$htmlPage .= "<td><a href=\"adminka.php?requete=details_usager&id_utilisateurs={$aDonneesCommandes[$i]["utilisateurs_id_utilisateurs"]}\" title=\"Edit: {$aDonneesCommandes[$i]["nom"]}\">{$aDonneesCommandes[$i]["nom"]}</a></td>\r\n";
 					$htmlPage .= "<td>{$aDonneesCommandes[$i]["total_commande"]}</td>\r\n";
 					switch ($aDonneesCommandes[$i]["statut"]) {
 						case 0: // En traitement
@@ -73,6 +72,7 @@ class VueCommandes {
 				  <tr>
 					<th>Id</th>
 					<th>Date</th>
+					<th>Token</th>
 					<th>id Client</th>
 					<th>Total $CAD</th>
 					<th>Statut</th>
