@@ -73,6 +73,13 @@ class Vue {
 	public function afficherFooter() {
 
 ?>
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">                
+				<div name="modal-content" class="modal-content">
+					
+				</div>
+			</div>
+		</div>
 		<hr class="featurette-divider">
 
 				<!-- FOOTER -->
@@ -168,13 +175,7 @@ class Vue {
                                   <p><a class="btn btn-default" href="catalogue.html" role="button">En savoir plus &raquo;</a></p>
                                 </div><!-- /.col-lg-4 -->
                         </div><!-- /.row -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">                
-				<div class="modal-content">
-					<?php echo $form; ?>
-				</div>
-			</div>
-		</div>
+    
 		<?php
 		
 	}

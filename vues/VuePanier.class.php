@@ -115,14 +115,7 @@ class VuePanier {
 				</div>
 				<a href="./index.php?requete=produits"><button name="retourner" id="back" class="btn btn-lg btn-primary" type="button">Retour au catalogue</button></a>
 				<button id="confirmer" class="btn btn-lg btn-primary" >Continuer</button>
-				<!-- Modal -->
-				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				  <div class="modal-dialog">
-				    <div name="modal-content" class="modal-content">
-				    	
-		      		</div><!-- /.modal-content -->
-				  </div><!-- /.modal-dialog -->
-				</div>
+				
 
 			</div>
 			<div id="panierVide"><!-- Message de panier Vide -->
