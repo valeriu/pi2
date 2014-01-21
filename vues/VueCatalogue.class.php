@@ -83,7 +83,7 @@ class VueCatalogue {
 						</div>
 						<div class="radio">
 							<label>
-								<input required type="radio" name="statutProduit" id="statutProduit0" value="0" <?php if(isset($data['statutProduit'])){if($data['statutProduit']==0) echo "checked";} ?>>
+								<input required type="radio" name="statutProduit" id="statutProduit0" value="3" <?php if(isset($data['statutProduit'])){if($data['statutProduit']==3) echo "checked";} ?>>
 								<span class="label label-warning">Non-disponible</span>
 							</label>
 						</div>
@@ -98,7 +98,7 @@ class VueCatalogue {
 						<label for="product-status">Type du produit</label>
 						<div class="radio">
 							<label>
-								<input required type="radio" name="typeProduit" id="typeProduit0" value="0" <?php if(isset($data['typeProduit'])){if($data['typeProduit']==0) echo "checked";} ?>>
+								<input required type="radio" name="typeProduit" id="typeProduit0" value="3" <?php if(isset($data['typeProduit'])){if($data['typeProduit']==3) echo "checked";} ?>>
 								<span class="label label-primary">Régulier</span>
 							</label>
 						</div>
@@ -177,7 +177,7 @@ class VueCatalogue {
 					$htmlPage .= "<td>{$aDonnees[$i]["prix"]}$</td>\r\n";
 					$htmlPage .= "<td>{$aDonnees[$i]["fournisseur"]}</td>\r\n";
 					switch ($aDonnees[$i]["statut"]) {
-						case "0": // Inactif
+						case "3": // Inactif
 							$htmlPage .= "<td><span class=\"label label-warning\">Inactif</span></td>";
 							break;
 						case "1": // Actif
