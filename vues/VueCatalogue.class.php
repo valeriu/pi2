@@ -12,9 +12,6 @@ class VueCatalogue {
 	public function modifierProduitAdmin($data,$result) {
 		if(isset($_POST['modifierProduit'])) {
 			$data = $_POST;
-			$data['statut'] = $_POST['statutProduit'];
-			$data['type'] = $_POST['typeProduit'];
-			$data['categorie_id_categorie'] = $_POST['catIdProduit'];
 		}
 
 ?>
@@ -37,41 +34,41 @@ class VueCatalogue {
 ?>
 
 				<!-- Form Edit pages-->
-				<form role="form" method="POST" action="./adminka.php?requete=<?php if(isset($_GET['modifier'])) echo "modifier"; else echo "ajouter"; ?>_produit&produit_id=<?php if(isset($data)) echo $data["id_produits"]; ?>&modifier=1">
+				<form role="form" method="POST" action="./adminka.php?requete=<?php if(isset($_GET['modifier'])) echo "modifier"; else echo "ajouter"; ?>_produit&produit_id=<?php if(isset($data)) echo $data["IdProduit"]; ?>&modifier=1">
 					<div class="form-group">
 						<label for="product-title">Nom du produit</label>
-						<input required type="text" class="form-control" id="nomProduit" name="nomProduit" placeholder="Titre du produit" value="<?php if(isset($data['nom'])) echo $data['nom']; if(isset($data['nomProduit'])) echo $data['nomProduit']; ?>">
+						<input required type="text" class="form-control" id="nomProduit" name="nomProduit" placeholder="Titre du produit" value="<?php if(isset($data['nomProduit'])) echo $data['nomProduit']; ?>">
 					</div>
 					<div class="form-group">
 						<label for="product-details">Spécifications</label>
-						<textarea class="form-control" rows="18" id="specsProduit" name="specsProduit" placeholder="Détails du produit"><?php if(isset($data['specification'])) echo $data['specification']; if(isset($data['specsProduit'])) echo $data['specsProduit']; ?></textarea>
+						<textarea class="form-control" rows="18" id="specsProduit" name="specsProduit" placeholder="Détails du produit"><?php if(isset($data['specsProduit'])) echo $data['specsProduit']; ?></textarea>
 						<p>Séparer d'une virgule (,) chancun des points importants..</p>
 					</div>
 					<div class="form-group">
 						<label for="product-power">Détails</label>
-						<input required type="text" class="form-control" id="descProduit" name="descProduit" value="<?php if(isset($data['description'])) echo $data['description']; if(isset($data['descProduit'])) echo $data['descProduit']; ?>">
+						<input required type="text" class="form-control" id="descProduit" name="descProduit" value="<?php if(isset($data['descProduit'])) echo $data['descProduit']; ?>">
 					</div>
 					<div class="form-group">
 						<label for="product-power">Puissance (W)</label>
-						<input required type="text" class="form-control" id="powerProduit" name="powerProduit" value="<?php if(isset($data['puissance'])) echo $data['puissance']; if(isset($data['powerProduit'])) echo $data['powerProduit']; ?>">
+						<input required type="text" class="form-control" id="powerProduit" name="powerProduit" value="<?php if(isset($data['powerProduit'])) echo $data['powerProduit']; ?>">
 					</div>
 					<div class="form-group">
 						<label for="product-status">Catégorie</label>
 						<div class="radio">
 							<label>
-								<input required type="radio" name="catIdProduit" id="catIdProduit0" value="1" <?php if(isset($data['categorie_id_categorie'])){if($data['categorie_id_categorie']==1) echo "checked";} ?>>
+								<input required type="radio" name="catIdProduit" id="catIdProduit0" value="1" <?php if(isset($data['catIdProduit'])){if($data['catIdProduit']==1) echo "checked";} ?>>
 								<span class="label label-default">Panneaux solaires</span>
 							</label>
 						</div>
 						<div class="radio">
 							<label>
-								<input required type="radio" name="catIdProduit" id="catIdProduit1" value="2" <?php if(isset($data['categorie_id_categorie'])){if($data['categorie_id_categorie']==2) echo "checked";} ?>>
+								<input required type="radio" name="catIdProduit" id="catIdProduit1" value="2" <?php if(isset($data['catIdProduit'])){if($data['catIdProduit']==2) echo "checked";} ?>>
 								<span class="label label-default">Kits Solaires</span>
 							</label>
 						</div>
 						<div class="radio">
 							<label>
-								<input required type="radio" name="catIdProduit" id="catIdProduit2" value="3" <?php if(isset($data['categorie_id_categorie'])){if($data['categorie_id_categorie']==3) echo "checked";} ?>>
+								<input required type="radio" name="catIdProduit" id="catIdProduit2" value="3" <?php if(isset($data['catIdProduit'])){if($data['catIdProduit']==3) echo "checked";} ?>>
 								<span class="label label-default">Lampes DEL</span>
 							</label>
 						</div>
@@ -80,19 +77,19 @@ class VueCatalogue {
 						<label for="product-status">Statut du produit</label>
 						<div class="radio">
 							<label>
-								<input required type="radio" name="statutProduit" id="statutProduit1" value="1" <?php if(isset($data['statut'])){if($data['statut']==1) echo "checked";} ?>>
+								<input required type="radio" name="statutProduit" id="statutProduit1" value="1" <?php if(isset($data['statutProduit'])){if($data['statutProduit']==1) echo "checked";} ?>>
 								<span class="label label-success">Disponible</span>
 							</label>
 						</div>
 						<div class="radio">
 							<label>
-								<input required type="radio" name="statutProduit" id="statutProduit0" value="0" <?php if(isset($data['statut'])){if($data['statut']==0) echo "checked";} ?>>
+								<input required type="radio" name="statutProduit" id="statutProduit0" value="0" <?php if(isset($data['statutProduit'])){if($data['statutProduit']==0) echo "checked";} ?>>
 								<span class="label label-warning">Non-disponible</span>
 							</label>
 						</div>
 						<div class="radio">
 							<label>
-								<input required type="radio" name="statutProduit" id="statutProduit2" value="2" <?php if(isset($data['statut'])){if($data['statut']==2) echo "checked";} ?>>
+								<input required type="radio" name="statutProduit" id="statutProduit2" value="2" <?php if(isset($data['statutProduit'])){if($data['statutProduit']==2) echo "checked";} ?>>
 								<span class="label label-danger">Supprimée</span>
 							</label>
 						</div>
@@ -101,50 +98,50 @@ class VueCatalogue {
 						<label for="product-status">Type du produit</label>
 						<div class="radio">
 							<label>
-								<input required type="radio" name="typeProduit" id="typeProduit0" value="0" <?php if(isset($data['type'])){if($data['type']==0) echo "checked";} ?>>
+								<input required type="radio" name="typeProduit" id="typeProduit0" value="0" <?php if(isset($data['typeProduit'])){if($data['typeProduit']==0) echo "checked";} ?>>
 								<span class="label label-primary">Régulier</span>
 							</label>
 						</div>
 						<div class="radio">
 							<label>
-								<input required type="radio" name="typeProduit" id="typeProduit1" value="1" <?php if(isset($data['type'])){if($data['type']==1) echo "checked";} ?>>
+								<input required type="radio" name="typeProduit" id="typeProduit1" value="1" <?php if(isset($data['typeProduit'])){if($data['typeProduit']==1) echo "checked";} ?>>
 								<span class="label label-success">Nouveauté</span>
 							</label>
 						</div>
 						<div class="radio">
 							<label>
-								<input required type="radio" name="typeProduit" id="typeProduit2" value="2" <?php if(isset($data['type'])){if($data['type']==2) echo "checked";} ?>>
+								<input required type="radio" name="typeProduit" id="typeProduit2" value="2" <?php if(isset($data['typeProduit'])){if($data['typeProduit']==2) echo "checked";} ?>>
 								<span class="label label-info">Meilleur vendeur</span>
 							</label>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="product-supplier">Fournisseur</label>
-						<input required type="text" class="form-control" id="suppProduit" name="suppProduit" value="<?php if(isset($data['fournisseur'])) echo $data['fournisseur']; if(isset($data['suppProduit'])) echo $data['suppProduit']; ?>">
+						<input required type="text" class="form-control" id="suppProduit" name="suppProduit" value="<?php if(isset($data['suppProduit'])) echo $data['suppProduit']; ?>">
 					</div>
 					<div class="form-group">
 						<label for="product-supplier-id">ID du produit du fournisseur</label>
-						<input required type="text" class="form-control" id="suppIdProduit" name="suppIdProduit" value="<?php if(isset($data['iditem_fournisseur'])) echo $data['iditem_fournisseur']; if(isset($data['suppIdProduit'])) echo $data['suppIdProduit']; ?>">
+						<input required type="text" class="form-control" id="suppIdProduit" name="suppIdProduit" value="<?php if(isset($data['suppIdProduit'])) echo $data['suppIdProduit']; ?>">
 					</div>
 					<div class="form-group">
 						<label for="product-price">Prix</label>
-						<input required type="text" class="form-control" id="prixProduit" name="prixProduit" value="<?php if(isset($data['prix'])) echo $data['prix']; if(isset($data['prixProduit'])) echo $data['prixProduit']; ?>">
+						<input required type="text" class="form-control" id="prixProduit" name="prixProduit" value="<?php if(isset($data['prixProduit'])) echo $data['prixProduit']; ?>">
 					</div>
 					<div class="form-group">
 						<label for="product-weight">Poids (kilogrammes)</label>
-						<input required type="text" class="form-control" id="poidsProduit" name="poidsProduit" value="<?php if(isset($data['poids'])) echo $data['poids']; if(isset($data['poidsProduit'])) echo $data['poidsProduit']; ?>">
+						<input required type="text" class="form-control" id="poidsProduit" name="poidsProduit" value="<?php if(isset($data['poidsProduit'])) echo $data['poidsProduit']; ?>">
 					</div>
 					<div class="form-group">
 						<label for="product-dimensions">Dimensions (cm)</label>
-						<input required type="text" class="form-control" id="hautProduit" name="hautProduit" value="<?php if(isset($data['taille_hauteur'])) echo $data['taille_hauteur']; if(isset($data['hautProduit'])) echo $data['hautProduit']; ?>">
-						<input required type="text" class="form-control" id="largProduit" name="largProduit" value="<?php if(isset($data['taille_largeur'])) echo $data['taille_largeur']; if(isset($data['largProduit'])) echo $data['largProduit']; ?>">
-						<input required type="text" class="form-control" id="longProduit" name="longProduit" value="<?php if(isset($data['taille_longueur'])) echo $data['taille_longueur']; if(isset($data['longProduit'])) echo $data['longProduit']; ?>">
+						<input required type="text" class="form-control" id="hautProduit" name="hautProduit" value="<?php if(isset($data['hautProduit'])) echo $data['hautProduit']; ?>">
+						<input required type="text" class="form-control" id="largProduit" name="largProduit" value="<?php if(isset($data['largProduit'])) echo $data['largProduit']; ?>">
+						<input required type="text" class="form-control" id="longProduit" name="longProduit" value="<?php if(isset($data['longProduit'])) echo $data['longProduit']; ?>">
 					</div>
-					<input required type="hidden" id="evalProduit" name="evalProduit" value="<?php if(isset($data['evaluation_id_evaluation'])) echo $data["evaluation_id_evaluation"]; if(isset($data['evalProduit'])) echo $data["evalProduit"]; else echo "3";?>">
-					<input required type="hidden" id="IdProduit" name="IdProduit" value="<?php if(isset($data['id_produits'])) echo $data["id_produits"]; if(isset($data['IdProduit'])) echo $data["IdProduit"];?>">
+					<input required type="hidden" id="evalProduit" name="evalProduit" value="<?php if(isset($data['evalProduit'])) echo $data['evalProduit']; else echo "3";?>">
+					<input required type="hidden" id="IdProduit" name="IdProduit" value="<?php if(isset($data['IdProduit'])) echo $data['IdProduit']; ?>">
 					<label for="imgProduit">Image du produit</label>
-					<input type="file" id="imgProduit">
-					<input type="hidden" name="imgProduit" value="<?php if(isset($data['imgProduit'])) echo $data["imgProduit"]; if(isset($data['image'])) echo $data["image"];?>">
+					<input type="file" id="imgProduit" name="imgUpload">
+					<input type="hidden" name="imgProduit" value="<?php if(isset($data['imgProduit'])) echo $data['imgProduit']; ?>">
 					<br>
 					<div class="form-group">
 						<button id="modifierProduit" name="modifierProduit" type="submit" class="btn btn-primary" data-loading-text="Sauvegarde...">Soumettre</button>
