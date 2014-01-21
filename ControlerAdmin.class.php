@@ -417,9 +417,6 @@ class ControlerAdmin {
 				//echo $e->getMessage();
 				$this->details_usager($e->getMessage());
 			}
-			
-			
-			
 		}
 
 		/**

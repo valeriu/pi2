@@ -263,8 +263,7 @@ class Adresse {
 		//Préparation de la requête
 		$reqID = $idbd->prepare(	"SELECT id_utilisateurs
                               FROM wa_utilisateurs
-															WHERE courriel = ?
-															AND statut = 1");
+															WHERE courriel = ?");
      
 		$reqID->bindParam(1, $courriel);
     $reqID->execute();
