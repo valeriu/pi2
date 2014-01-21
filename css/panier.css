@@ -186,6 +186,13 @@ hr:not(:first-of-type) {
 .passerCommande{
   float: right;
 }
+.supprimerAdresse{
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #FF6600;
+  margin:2px;
+}
 /* / */
 
 /* Information Final du panier = Total Prix */

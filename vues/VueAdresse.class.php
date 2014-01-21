@@ -163,7 +163,9 @@ class VueAdresse {
 															<input type="radio" id="<?php echo $data[$i]['id_adresse']; ?>" name="shippingAddress" value="<?php echo $data[$i]['id_adresse']; ?>">
 														</span>
 													</div><!-- /input-group -->
-													<a name="supprimer" id="supprimer_<?php echo $data[$i]['id_adresse']; ?>" class="" >->Supprimer</a>
+													<button name="supprimer" id="supprimer_<?php echo $data[$i]['id_adresse']; ?>" class="btn btn-default btn-xs supprimerAdresse" type="button">
+				                                        <span class="glyphicon glyphicon-remove"></span>
+				                                    </button>
 												</article>
 											<?php
 										}

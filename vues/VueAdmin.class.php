@@ -95,7 +95,7 @@ class VueAdmin {
 			<div class="list-group">
 			<?php $dGet = $_GET["requete"]; ?>
 				<a href="adminka.php" class="list-group-item <?php echo ($dGet == "") ? "active" : ""; ?>">Panneau d'administration</a>
-				<a href="adminka.php?requete=commandes" class="list-group-item <?php echo ($dGet == "details_commande" || $dGet == "commandes") ? "active" : ""; ?>">Commandes</a>
+				<a href="adminka.php?requete=commandes" class="list-group-item <?php echo ($dGet == "modifier_commande" || $dGet == "details_commande" || $dGet == "commandes") ? "active" : ""; ?>">Commandes</a>
 				<a href="adminka.php?requete=produits" class="list-group-item <?php echo ($dGet == "modifier_produit" || $dGet == "details_produits" || $dGet == "produits" || $dGet == "ajouter_produit") ? "active" : ""; ?>">Produits</a>
 				<a href="adminka.php?requete=page" class="list-group-item <?php echo ($dGet == "page" || $dGet == "page_ajouter" || $dGet == "page_modifier") ? "active" : ""; ?>">Pages</a>
 				<a href="adminka.php?requete=liste_usagers" class="list-group-item <?php echo ($dGet == "liste_usagers" || $dGet == "details_usager" || $dGet == "modifier_usager") ? "active" : ""; ?>">Usagers</a>
