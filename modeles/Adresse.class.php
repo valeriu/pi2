@@ -263,7 +263,8 @@ class Adresse {
 		//Préparation de la requête
 		$reqID = $idbd->prepare(	"SELECT id_utilisateurs
                               FROM wa_utilisateurs
-															WHERE courriel = ?");
+															WHERE courriel = ?
+															AND statut = 1");
      
 		$reqID->bindParam(1, $courriel);
     $reqID->execute();
@@ -287,12 +288,17 @@ class Adresse {
 				for($i = 0; $i < count($idAdresses); $i++){
 					$reqAdresse = $idbd->prepare(	" SELECT *
 																					FROM wa_adresse
-																					WHERE id_adresse = ?");
+																					WHERE id_adresse = ?
+																					AND statut = 1");
 			 
 					$reqAdresse->bindParam(1, $idAdresses[$i]['adresse_id_adresse']);
 					$reqAdresse->execute();
 					
-					$adressesUtilisateur[] = $reqAdresse->fetch(PDO::FETCH_ASSOC);
+					$resultat = $reqAdresse->fetch(PDO::FETCH_ASSOC);
+					
+					if($resultat['statut'] == 1){
+						$adressesUtilisateur[] = $resultat;
+					}	
 				}
 				return $adressesUtilisateur;
 			}
@@ -305,6 +311,34 @@ class Adresse {
 		}
 	}
 	
+	public function supprimerAdresse ($aDonnees = Array()) {
+		//$id_adresse
+		$id_adresse 	= (!empty($aDonnees['id_adresse'])) ? $aDonnees['id_adresse'] : '';
+		
+		if($id_adresse != ''){
+			$idbd = $this->bd->getBD();
+			//Préparation de la requête
+			$req = $idbd->prepare(	"Update wa_adresse
+																SET statut = 2
+																WHERE id_adresse = ?");
+			 
+			$req->bindParam(1, $id_adresse);
+			$req->execute();
+			
+			if($req->rowCount() > 0){
+				return true;
+			}
+			else{
+				throw new Exception("Une erreur s'est produite lors de la modification");
+			}
+		}	
+		else{
+			throw new Exception("Adresse introuvée");
+		}
+	
+	}
+
+
 	
 }
 

@@ -54,7 +54,10 @@
 			break;			
 		case 'adresse':
 			adresse();
-			break;					
+			break;
+		case 'supprimerAdresse':
+			supprimerAdresse();
+			break;		
 		default:
 			accueil();
 			break;
@@ -147,6 +150,25 @@
 			$usager = new Usagers();
 			$usager->envoyerMotPasse($_POST);
 			echo "Un courriel avec la marche à suivre vous a été envoyé";
+		}
+		catch(Exception $e){
+			echo $e->getMessage();
+		}
+	}
+	
+	function supprimerAdresse(){
+		try{
+			$adresse = new Adresse();
+			$adresse->supprimerAdresse($_POST);
+			//$adresse = new Adresse();
+			$courriel = array("courriel" => $_SESSION['usager']);
+			$data = $adresse->afficherAdresseUsager($courriel);
+			if($data){
+				VueAdresse::afficherAdrese($data);
+			}
+			else{
+				VueAdresse::afficherAdrese();
+			}
 		}
 		catch(Exception $e){
 			echo $e->getMessage();

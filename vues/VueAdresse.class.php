@@ -30,6 +30,7 @@ class VueAdresse {
 
 				});
 				
+				//Enregistrer une adresse
 				$("#adresse").on("click", function(){
 					var xhr = new XMLHttpRequest();
 					var t = $("#tel").val();
@@ -48,6 +49,32 @@ class VueAdresse {
 								//$('#ShippingAddress').html();
 								$("#adresse-erreur").html(xhr.responseText);
 								$('#msgError').show();
+							}
+							else{
+								$('#msgError').hide();
+								$('#ShippingAddress').html(xhr.responseText);
+							}
+						}
+					};
+					xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+					xhr.send(req);
+				});
+				
+				//Suppression d'adresse
+				$('[name="supprimer"]').on("click", function(e){
+					//console.log(e);
+					var xhr = new XMLHttpRequest();
+					var name = e.target.id;
+					//console.log(name.substr(10));
+					var adrId = name.substr(10);
+					var req = "id_adresse=" + adrId;
+					xhr.open("POST", "ajaxControler.php?requete=supprimerAdresse", true);
+					xhr.onreadystatechange = function() {
+						if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
+							var str = xhr.responseText;
+							if(str.length < 100){
+								//$('#ShippingAddress').html();
+								$("#supprimerAdresse-erreur").html(xhr.responseText);
 							}
 							else{
 								$('#msgError').hide();
@@ -96,6 +123,7 @@ class VueAdresse {
 															<input type="radio" id="<?php echo $data[$i]['id_adresse']; ?>" name="shippingAddress" value="<?php echo $data[$i]['id_adresse']; ?>">
 														</span>
 													</div><!-- /input-group -->
+													<a name="supprimer" id="supprimer_<?php echo $data[$i]['id_adresse']; ?>" class="" >->Supprimer</a>
 												</article>
 											<?php
 										}
@@ -103,7 +131,7 @@ class VueAdresse {
 									else{
 										?>
 										<div class="alert alert-danger">
-												<span>Aucune adresse associée à ce courriel</span>
+												<span id="supprimerAdresse-erreur">Aucune adresse associée à ce courriel</span>
 										</div>
 										<?php
 									}
