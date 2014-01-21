@@ -15,8 +15,10 @@ class VueAdresse {
 		?>
 		<script>
 			$(function(){
+				//On cache la partie pour les messages d'erreur 
 				$('#msgError').hide();
-			//window.addEventListener('load', function () {
+				
+				//Pour passer à l'étape suivante de la commande
 				$('input[name="shippingAddress"]').on('change', function(e){
 					var idTarget = e.target.id;
 					$('#confirmationAdresses').removeAttr('disabled');
@@ -40,6 +42,7 @@ class VueAdresse {
 					var v = $("#ville").val();
 					var p = $("#province").val();
 					var cp = $("#codePostal").val();
+					//Vérifications des champs vides
 					if(t == '' || r == '' || v == '' || p == '' || cp == '' ){
 						$("#adresse-erreur").html('Veuillez remplir les champs en rouge');
 						$('#msgError').show();
@@ -173,26 +176,6 @@ class VueAdresse {
 										<?php
 									}
 								?>		
-								<!--<article class="col-lg-3">
-										<p>2650 Desjardins App.4</p>
-										<p>Montreal, Québec &nbsp;H1V 2H7</p>
-										<div class="input-group">
-											<label for="address1" class="form-control">Addresse 1</label> 
-											<span class="input-group-addon">
-												<input type="radio" id="address1" name="shippingAddress" value="20">
-											</span>
-										</div><!-- /input-group 
-									</article>
-									<article class="col-lg-3">
-										<p>1936 Martial App. 9</p>
-										<p>Montreal, Québec &nbsp;H1H 1W7</p>
-										<div class="input-group">
-											<label for="address2" class="form-control">Addresse 2</label> 
-											<span class="input-group-addon">
-												<input type="radio" id="address2" name="shippingAddress" value="20">
-											</span>
-										</div><!-- /input-group
-									</article>-->
 								</div>
 							</div>
 						</div>
@@ -291,9 +274,9 @@ class VueAdresse {
 					</div>
 					<hr class="featurette-divider">
 					<a href="index.php?requete=panier"><button name="back" id="back" class="btn btn-lg btn-primary" type="button">Retour</button></a>
-					<!--<a href="index.php?requete=panier_confirmation">-->
+					
 					<button name="pay" id="confirmationAdresses" class="btn btn-lg btn-primary" type="button" disabled="disabled">Continuer</button>
-					<!--</a>-->
+				
 				</div>
 			</form>
 <?php

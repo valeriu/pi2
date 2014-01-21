@@ -9,7 +9,9 @@
 
 class VueUsagers {
 
-	
+	/*	
+	* Affichage des liens vers les formulaires de connexion ou enreistrement
+	*/
 	public function afficherFormUsagers() {
 ?>
 			<section id="usager" class="pull-right">
@@ -30,6 +32,10 @@ class VueUsagers {
 <?php
 	}
 
+	
+	/*	
+	* Affichage du lien vers la déconnexion
+	*/
 	public function afficherFormDeconnexion() {
 ?>
 			<section id="usager" class="pull-right">
@@ -48,7 +54,9 @@ class VueUsagers {
 <?php
 	}
 
-	
+	/*	
+	* Affichage du modal avec le formulaire de connexion
+	*/
 	public function afficherModalConnexion() {
 		$html =	'<div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -124,7 +132,9 @@ class VueUsagers {
 		
 	}
 
-
+	/*	
+	* Affichage du modal avec le formulaire d'enregistrement d'un usager
+	*/
 	public function afficherModalEnregistrer() {
 		$html =	'<div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -185,117 +195,9 @@ class VueUsagers {
 	}
 
 
-	public function afficherModalAdresse() {
-	
-		$html = '<div class="modal-header">	
-			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			        <h4 class="modal-title" id="myModalLabel">Complétez toutes les informations suivantes</h4>
-			    </div>
-		      	<div class="modal-body">
-						<p id="modal-erreur"></p>
-					<form class="form-signin" name="form-usager-adresse" >
-						<!-- telephone	rue	appartement	ville	code_postal	province -->
-						<div class="input-group input-group-sm">
-							Téléphone
-							<input id="tel" name="tel" type="tel" class="form-control" required placeholder="xxx-xxx-xxxx">
-						<div class="input-group input-group-sm">
-							No. civique et Rue:
-							<input id="rue" name="rue" type="text" class="form-control" required placeholder="123 rue exemple">
-						</div>
-						<div class="input-group input-group-sm">
-							Appartement:
-							<input id="appartement" name="appartement" type="text" class="form-control" placeholder="#3">
-						</div>
-						<div class="input-group input-group-sm">
-							Ville:
-							<input id="ville" name="ville" type="text" class="form-control" required placeholder="Exemple">
-						</div>
-						<div class="input-group input-group-sm">
-							Province:
-							<div class="btn-group row " data-toggle="buttons">
-								<label class="btn btn-default" title="Québec">
-									<input type="radio" name="province" id="option1" value="qc"> Qc
-								</label>
-								<label class="btn btn-default" title="Ontario">
-									<input type="radio" name="province" id="option2" value="on"> On
-								</label>
-								<label class="btn btn-default" title="Manitoba">
-									<input type="radio" name="province" id="option3" value="mn"> Mn
-								</label>
-								<label class="btn btn-default" title="Saskatchewan">
-									<input type="radio" name="province" id="option4" value="sk"> Sk
-								</label>
-								<label class="btn btn-default" title="Colombie-Britannique">
-									<input type="radio" name="province" id="option5" value="cb"> Cb
-								</label>
-								<label class="btn btn-default" title="Nouveau-Brunswick">
-									<input type="radio" name="province" id="option6" value="nb"> Nb
-								</label>
-								<label class="btn btn-default" title="Nouvelle-Écosse">
-									<input type="radio" name="province" id="option7" value="ne"> Ne
-								</label>
-								<label class="btn btn-default" title="Île-du-Prince-Édouard">
-									<input type="radio" name="province" id="option7" value="ie"> Ie
-								</label>
-								<label class="btn btn-default" title="Alberta">
-									<input type="radio" name="province" id="option8" value="al"> Al
-								</label>
-								<label class="btn btn-default" title="Terre-Neuve">
-									<input type="radio" name="province" id="option9" value="tn"> Tn
-								</label>
-								<label class="btn btn-default" title="Territoire du Nord-Ouest">
-									<input type="radio" name="province" id="option9" value="no"> No
-								</label>
-								<label class="btn btn-default" title="Yukon">
-									<input type="radio" name="province" id="option10" value="yk"> Yk
-								</label>
-								<label class="btn btn-default" title="Nunavut">
-									<input type="radio" name="province" id="option11" value="nv"> Nv
-								</label>
-							</div>
-						</div>	
-						<div class="input-group input-group-sm">
-							Code postal:
-							<input id="codePostal" name="codePostal" type="text" class="form-control" required placeholder="X1X 1X1">
-						</div>
-						<button name="adresse" id="adresse" class="btn btn-primary" type="button">Soumettre</button>
-						<br>	
-					</form>
-		      	</div>
-			    <div class="modal-footer">
-			    </div>
-			    <script>
-			    	//Enregistrement de l adresse
-			    	/*$("#adresse").on("click", function(){
-						var xhr = new XMLHttpRequest();
-						var t = $("#tel").val();
-						var r = $("#rue").val();
-						var a = $("#appartement").val();
-						var v = $("#ville").val();
-						var p = $("#province").val();
-						var cp = $("#codePostal").val();
-						xhr.open("POST", "ajaxControler.php?requete=adresse", true);
-						//telephone	rue	appartement	ville	code_postal	province
-						var req = "telephone=" + t + "&rue=" + r + "&appartement=" + a + "&ville=" + v + "&province=" + p + "&code_postal=" + cp;
-						xhr.onreadystatechange = function() {
-							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
-								if(xhr.responseText == "Nouvelle adresse enregistrée"){
-									$(".modal-content").html(xhr.responseText);
-								}
-								else{
-									$("#modal-erreur").html(xhr.responseText);
-								}
-							}
-						};
-						xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-						xhr.send(req);
-					});*/
-			    </script>';	
-
-		return $html;	    
-		
-	}	
-
+	/*	
+	* Affichage du modal avec le formulaire d'envoie de mot de passe
+	*/
 	public function afficherModalMotPasse() {
 		$html = '<div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -342,6 +244,9 @@ class VueUsagers {
 	}
 
 	
+	/*	
+	* Affichage de tous les usagers dans la partie Admin
+	*/
 	public function afficherListeUsagersAdmin($aDonneesUsagers, $aDonneesPaginator, $partir, $fin) {	
 			//var_dump($aDonneesUsagers);
 			$nomberUsager = count($aDonneesUsagers);
@@ -409,6 +314,9 @@ class VueUsagers {
 	<?php 
 	}
 
+	/*	
+	* Affichage des détails d'un usager dans la partie Admin
+	*/
 	public function detailsUsagerAdmin($aUsager, $aAdresses, $msg = '') {
 		//print_r($result);
 		?>

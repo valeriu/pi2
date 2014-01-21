@@ -36,9 +36,6 @@
 		case 'formMotPasse':
 			formMotPasse();
 			break;
-		case 'formAdresse':
-			formAdresse();
-			break;	
 		case 'connecter':
 			//var_dump($_POST);
 			connecter();
@@ -63,6 +60,9 @@
 			break;
 	}
 
+	/*	
+	* Affichage de la page de confirmation d'une commande
+	*/
 	function confirmationAdresse(){
 		try{
 						
@@ -79,42 +79,50 @@
 
 	}
 
-	function etapeDeux(){
-		$vuePanier =  new VuePanier();
-		$vuePanier->affichePanier();
-	}
-
+	/*	
+	* 
+	*/
 	function enregistreCommande(){
 		$vuePanier =  new VuePanier();
 		$vuePanier->enregistrePanier();
 	}
 
+	/*	
+	* Affichage du formulaire de connexion
+	*/
 	function formConnecter(){
 		//return 'formConnecter';
 		$html = VueUsagers::afficherModalConnexion();
 		echo $html;
 	}
 
+	/*	
+	* Affichage du formulaire d'enregistrement
+	*/
 	function formEnregistrer(){
 		//return 'formEnregistrer';
 		$html = VueUsagers::afficherModalEnregistrer();
 		echo $html;
 	}
 	
+	/*	
+	* Affichage du formulaire d'envoi d'un nouveau mot de passe
+	*/
 	function formMotPasse(){
 		$html = VueUsagers::afficherModalMotPasse();
 		echo $html;
 	}
-	
-	function formAdresse(){
-		$html = VueUsagers::afficherModalAdresse();
-		echo $html;
-	}
 
+	/*	
+	* Deconnexion 
+	*/
 	function deconnecter(){
 		session_destroy();
 	}
 
+	/*	
+	* Vérification pour une connexion
+	*/
 	function connecter(){
 		try{
 			//var_dump($_POST);
@@ -128,6 +136,9 @@
 		}
 	}
 
+	/*	
+	* Vérification pour un enregistrement d'usager
+	*/
 	function enregistrer(){
 		try{
 			$usager = new Usagers();
@@ -140,11 +151,17 @@
 		}
 	}
 
+	/*	
+	* Affichage de la page d'accueil
+	*/
 	function accueil() {
 		$oVue = new Vue();
 		$oVue->afficherAccueil();
 	}
 
+	/*	
+	* Envoie d'un courriel pour modifier un mot de passe
+	*/
 	function motpasse(){
 		try{
 			$usager = new Usagers();
@@ -156,6 +173,9 @@
 		}
 	}
 	
+	/*	
+	* Supression d'une adresse par un usager
+	*/
 	function supprimerAdresse(){
 		try{
 			$adresse = new Adresse();
@@ -175,13 +195,13 @@
 		}
 	}
 	
+	/*	
+	* Enregistrement d'une nouvelle adresse
+	*/
 	function adresse(){
 		try{
 			$adresse = new Adresse();
-			//var_dump($_POST);
-			//var_dump($_SESSION['usager']);
 			$adresse->enregistrer($_SESSION['usager'], $_POST);
-			//$adresse = new Adresse();
 			$courriel = array("courriel" => $_SESSION['usager']);
 			$data = $adresse->afficherAdresseUsager($courriel);
 			if($data){
