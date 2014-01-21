@@ -162,7 +162,12 @@
 			//$adresse = new Adresse();
 			$courriel = array("courriel" => $_SESSION['usager']);
 			$data = $adresse->afficherAdresseUsager($courriel);
-			VueAdresse::afficherAdrese($data);
+			if($data){
+				VueAdresse::afficherAdrese($data);
+			}
+			else{
+				VueAdresse::afficherAdrese();
+			}
 		}
 		catch(Exception $e){
 			echo $e->getMessage();

@@ -10,8 +10,8 @@
 class VueAdresse {
 
 	
-	public function afficherAdrese($data) {
-
+	public function afficherAdrese($data = '') {
+		
 		?>
 		<script>
 			$(function(){
@@ -84,18 +84,27 @@ class VueAdresse {
 							<div class="panel-body">
 								<div class="row adresses">
 								<?php
-									for($i = 0; $i < count($data); $i++){
+									if($data != ''){
+										for($i = 0; $i < count($data); $i++){
+											?>
+												<article class="col-lg-3 col-sm-3">
+													<p><?php echo $data[$i]['rue']; ?> <?php echo "App.".$data[$i]['appartement']; ?></p>
+													<p><?php echo $data[$i]['ville']; ?>, <?php echo $data[$i]['province']; ?> &nbsp;<?php echo $data[$i]['code_postal']; ?></p>
+													<div class="input-group">
+														<label for="<?php echo $data[$i]['id_adresse']; ?>" class="form-control">Addresse <?php echo $i+1; ?></label> 
+														<span class="input-group-addon">
+															<input type="radio" id="<?php echo $data[$i]['id_adresse']; ?>" name="shippingAddress" value="<?php echo $data[$i]['id_adresse']; ?>">
+														</span>
+													</div><!-- /input-group -->
+												</article>
+											<?php
+										}
+									}
+									else{
 										?>
-											<article class="col-lg-3 col-sm-3">
-												<p><?php echo $data[$i]['rue']; ?> <?php echo "App.".$data[$i]['appartement']; ?></p>
-												<p><?php echo $data[$i]['ville']; ?>, <?php echo $data[$i]['province']; ?> &nbsp;<?php echo $data[$i]['code_postal']; ?></p>
-												<div class="input-group">
-													<label for="<?php echo $data[$i]['id_adresse']; ?>" class="form-control">Addresse <?php echo $i+1; ?></label> 
-													<span class="input-group-addon">
-														<input type="radio" id="<?php echo $data[$i]['id_adresse']; ?>" name="shippingAddress" value="<?php echo $data[$i]['id_adresse']; ?>">
-													</span>
-												</div><!-- /input-group -->
-											</article>
+										<div class="alert alert-danger">
+												<span>Aucune adresse associée à ce courriel</span>
+										</div>
 										<?php
 									}
 								?>		

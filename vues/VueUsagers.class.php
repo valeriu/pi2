@@ -66,54 +66,58 @@ class VueUsagers {
 							<input name="mot_passe" id="mot_passe" type="password" class="form-control" required>
 						</div>
 						<button name="motPasseOublie" id="motPasseOublie" class="btn btn-sm btn-primary" type="button">Mot de passe oublié</button>
-						<button name="connexion" id="connexion" class="btn btn-primary" type="button">Connexion</button>
+						<button name="connexion" id="connexion" class="btn btn-primary" type="button">Connexion</button><br>
+						<a  name="formEnregistrer"  id="appelerFormEnregistrer" class="btn btn-md btn-lien" type="button">Nouvel utilisateur?</a>
 						<br>
 					</form>
 		      	</div>
 			    <div class="modal-footer">
 			    </div>
 			    <script>
+						$(function(){
+							$("#appelerFormEnregistrer").on("click", clickEnregistrer);
+						});	
 			    	//Mot de passe oublie
 			    	$("#motPasseOublie").on("click", function(){
 						var xhr = new XMLHttpRequest();
 						xhr.open("GET", "ajaxControler.php?requete=formMotPasse", true);	
 						xhr.onreadystatechange = function() {
-							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
-								//$(".modal-content").html(xhr.responseText);
-								var str = xhr.responseText;
-								if(str.length > 100){
-									$(".modal-content").html(xhr.responseText);
+								if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
+									//$(".modal-content").html(xhr.responseText);
+									var str = xhr.responseText;
+									if(str.length > 100){
+										$(".modal-content").html(xhr.responseText);
+									}
+									else{
+										$("#modal-erreur").html(xhr.responseText);
+									}
 								}
-								else{
-									$("#modal-erreur").html(xhr.responseText);
-								}
-							}
-						};
-						xhr.send();
-					});
+							};
+							xhr.send();
+						});
 					//Connexion
-					$("#connexion").on("click", function(){
-						var xhr = new XMLHttpRequest();
-						var m = $("#courriel").val();
-						var p = $("#mot_passe").val();
-						xhr.open("POST", "ajaxControler.php?requete=connecter", true);
-						var req = "courriel=" + m + "&mot_passe=" + p;
-						xhr.onreadystatechange = function() {
-							if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
-								var str = xhr.responseText;
-								if(str.length > 100){
-									$("#usager").replaceWith(xhr.responseText);
-									$("#deconnecter").on("click", clickDeconnecter);
-									$("#myModal").modal("hide");
+						$("#connexion").on("click", function(){
+							var xhr = new XMLHttpRequest();
+							var m = $("#courriel").val();
+							var p = $("#mot_passe").val();
+							xhr.open("POST", "ajaxControler.php?requete=connecter", true);
+							var req = "courriel=" + m + "&mot_passe=" + p;
+							xhr.onreadystatechange = function() {
+								if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
+									var str = xhr.responseText;
+									if(str.length > 100){
+										$("#usager").replaceWith(xhr.responseText);
+										$("#deconnecter").on("click", clickDeconnecter);
+										$("#myModal").modal("hide");
+									}
+									else{
+										$("#modal-erreur").html(xhr.responseText);
+									}
 								}
-								else{
-									$("#modal-erreur").html(xhr.responseText);
-								}
-							}
-						};
-						xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-						xhr.send(req);
-					});
+							};
+							xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+							xhr.send(req);
+						});
 			    </script>';	
 
 		return $html;
