@@ -141,7 +141,7 @@ class VueCatalogue {
 					<input required type="hidden" id="IdProduit" name="IdProduit" value="<?php if(isset($data['IdProduit'])) echo $data['IdProduit']; ?>">
 					<label for="imgProduit">Image du produit</label>
 					<input type="file" id="imgProduit" name="imgUpload">
-					<input type="hidden" name="imgProduit" value="<?php if(isset($data['imgProduit'])) echo $data['imgProduit']; ?>">
+					<input type="hidden" name="imgProduit" value="<?php if(isset($data['imgProduit'])) echo $data['imgProduit']; else echo "25000.jpg"; ?>">
 					<br>
 					<div class="form-group">
 						<button id="modifierProduit" name="modifierProduit" type="submit" class="btn btn-primary" data-loading-text="Sauvegarde...">Soumettre</button>

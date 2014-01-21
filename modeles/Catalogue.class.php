@@ -160,8 +160,8 @@ class Catalogue {
 		$descProduit   = (!empty($aDonnees['descProduit']))   ? $aDonnees['descProduit']   	  	    : '';
 		$specsProduit  = (!empty($aDonnees['specsProduit']))  ? $aDonnees['specsProduit']  	  	    : '';
 		$imgProduit    = (!empty($aDonnees['imgProduit'])) 	  ? $aDonnees['imgProduit']    	  	    : '';
-		$statutProduit = (!empty($aDonnees['statutProduit'])) ? $aDonnees['statutProduit']  		: '';
-		$typeProduit   = (!empty($aDonnees['typeProduit']))   ? $aDonnees['typeProduit']    		: '';
+		$statutProduit = intval($aDonnees['statutProduit']);
+		$typeProduit   = intval($aDonnees['typeProduit']);
 		$suppProduit   = (!empty($aDonnees['suppProduit']))   ? $aDonnees['suppProduit']  	  	    : '';
 		$suppIdProduit = (!empty($aDonnees['suppIdProduit'])) ? $aDonnees['suppIdProduit'] 	   		: '';
 		$poidsProduit  = (!empty($aDonnees['poidsProduit']))  ? floatval($aDonnees['poidsProduit']) : '';
@@ -184,13 +184,13 @@ class Catalogue {
 		if(!Valider::estString($specsProduit)){
 			throw new Exception("Specifications du produit non conforme");
 		}
-		if(!Valider::estStringValide($imgProduit)){
+		if(!Valider::estImage($imgProduit)){
 			throw new Exception("Image du produit non conforme");
 		}
-		if(!Valider::estString($statutProduit)){
+		if(!Valider::estInt($statutProduit)){
 			throw new Exception("Statut produit non conforme");
 		}
-		if(!Valider::estString($typeProduit)){
+		if(!Valider::estInt($typeProduit)){
 			throw new Exception("Type produit non conforme");
 		}
 		if(!Valider::estStringValide($suppProduit)){
