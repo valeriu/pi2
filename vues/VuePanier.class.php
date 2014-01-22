@@ -19,7 +19,7 @@ class VuePanier {
 		?>
 		<script>
 			window.addEventListener('load', function () {
-				Panier.creerPanier();
+				Panier.creerPanier();	
 			});
 		</script>
 		<?php

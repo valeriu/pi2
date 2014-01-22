@@ -16,8 +16,8 @@ class VueUsagers {
 ?>
 			<section id="usager" class="pull-right">
 				<form class="form-signin form-usager" method="post">
-					<a  name="formEnregistrer"  id="formEnregistrer" class="btn btn-md btn-lien" type="button">S'enregistrer</a>
-					<a  name="formConnecter"  id="formConnecter" class="btn btn-md btn-lien" type="button">Se connecter</a>
+					<a  name="formEnregistrer"  id="formEnregistrer" type="button">S'enregistrer</a>
+					<a  name="formConnecter"  id="formConnecter" type="button">Se connecter</a>
 				</form>			
 			</section>
 			<script>
@@ -73,9 +73,9 @@ class VueUsagers {
 							Mot de Passe:
 							<input name="mot_passe" id="mot_passe" type="password" class="form-control" required>
 						</div>
-						<button name="motPasseOublie" id="motPasseOublie" class="btn btn-sm btn-primary" type="button">Mot de passe oublié</button>
 						<button name="connexion" id="connexion" class="btn btn-primary" type="button">Connexion</button><br>
-						<a  name="formEnregistrer"  id="appelerFormEnregistrer" class="btn btn-md btn-lien" type="button">Nouvel utilisateur?</a>
+						<a name="motPasseOublie" id="motPasseOublie" class="btn-lien" type="button">Mot de passe oublié?</a><br>
+						<a name="formEnregistrer" id="appelerFormEnregistrer" class="btn-lien" type="button">Nouvel utilisateur?</a>
 						<br>
 					</form>
 		      	</div>
@@ -201,7 +201,7 @@ class VueUsagers {
 	public function afficherModalMotPasse() {
 		$html = '<div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			        <h4 class="modal-title" id="myModalLabel">Se connecter</h4>
+			        <h4 class="modal-title" id="myModalLabel">Mot de passe oublié</h4>
 			    </div>
 		      	<div class="modal-body">
 						<p id="modal-erreur"></p>

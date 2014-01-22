@@ -147,8 +147,7 @@ class VueAdresse {
 									echo '<input name="courriel" type="hidden" value="invalide">';
 								}
 								?>
-						</div>
-						
+						</div>						
 						<div id="collapseOne" class="panel-collapse collapse in">
 							<div class="panel-body">
 								<div class="row adresses">
@@ -206,6 +205,7 @@ class VueAdresse {
 											<div class="input-group input-group-sm">
 												Téléphone
 												<input id="tel" name="tel" type="tel" class="form-control" required placeholder="xxx-xxx-xxxx">
+											</div>
 											<div class="input-group input-group-sm">
 												No. civique et Rue:
 												<input id="rue" name="rue" type="text" class="form-control" required placeholder="123 rue exemple">
@@ -282,7 +282,7 @@ class VueAdresse {
 					<button name="pay" id="confirmationAdresses" class="btn btn-lg btn-primary" type="button" disabled="disabled">Continuer</button>
 				
 				</div>
-			</form>
+			</div>
 <?php
 		
 	}

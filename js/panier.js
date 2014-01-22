@@ -98,7 +98,6 @@ var Panier = (function () {
     // Fonction qui enregistre la commande dans la base de données
     var _passerCommande =  function(id){
         try{
-            console.log('PASSER LA COMMANDE', id);
             var courriel = $("input[name='courriel']").val();
 
             if(id != "" && courriel != ""){ // Vérification de Champs
@@ -106,7 +105,6 @@ var Panier = (function () {
                 for (var i = 0; i < localStorage.length; i++){
                     produit[i] = JSON.parse(localStorage.getItem(localStorage.key(i)));
                 }
-                console.log(produit);
                 // Source : http://stackoverflow.com/questions/9001526/send-array-with-ajax-to-php-script
                 var jsonString = JSON.stringify(produit);
                 $.ajax({
@@ -154,22 +152,6 @@ var Panier = (function () {
 }());
 
 $(function(){
-
-    window.addEventListener('load', function () {
-        "use strict";
-        // Déclaration de variables
-        var targetClickUp, targetClickDown, targetClickRemove;
-        // Récuperation de targets
-        targetClickUp = document.querySelectorAll('button[class*="up"]');
-        targetClickDown = document.querySelectorAll('button[class*="down"]');
-        targetClickRemove = document.querySelectorAll('button[class*="remove"]');
-        
-        for (var i = 0; i < targetClickUp.length; i++){
-            targetClickUp[i].addEventListener('click', up.eTarget);
-            targetClickDown[i].addEventListener('click', down.eTarget);
-            targetClickRemove[i].addEventListener('click', remove.eTarget);
-        }
-    });
 
     $('#panierConfirmation').hide();
 
@@ -284,5 +266,21 @@ $(function(){
             }
         };
     }());
+
+    window.addEventListener('load', function () {
+        "use strict";
+        // Déclaration de variables
+        var targetClickUp, targetClickDown, targetClickRemove;
+        // Récuperation de targets
+        targetClickUp = document.querySelectorAll('button[class*="up"]');
+        targetClickDown = document.querySelectorAll('button[class*="down"]');
+        targetClickRemove = document.querySelectorAll('button[class*="remove"]');
+        
+        for (var i = 0; i < targetClickUp.length; i++){
+            targetClickUp[i].addEventListener('click', up.eTarget);
+            targetClickDown[i].addEventListener('click', down.eTarget);
+            targetClickRemove[i].addEventListener('click', remove.eTarget);
+        }               
+    });
 
 });
