@@ -101,10 +101,12 @@ class VueAdresse {
 					}
 				});
 				//Suppression d'adresse
+				console.log($('[name="supprimer"]'));
+				
 				$('[name="supprimer"]').on("click", function(e){
-					//console.log(e);
+					console.log(e);
 					var xhr = new XMLHttpRequest();
-					var name = e.target.id;
+					var name = e.currentTarget.id;
 					//console.log(name.substr(10));
 					var adrId = name.substr(10);
 					var req = "id_adresse=" + adrId;
@@ -164,8 +166,8 @@ class VueAdresse {
 														</span>
 													</div><!-- /input-group -->
 													<button name="supprimer" id="supprimer_<?php echo $data[$i]['id_adresse']; ?>" class="btn btn-default btn-xs supprimerAdresse" type="button">
-				                                        <span class="glyphicon glyphicon-remove"></span>
-				                                    </button>
+				                    <span class="glyphicon glyphicon-remove"></span>
+				                  </button>
 												</article>
 											<?php
 										}

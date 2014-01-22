@@ -76,7 +76,6 @@
 		catch(Exception $e){
 			echo $e->getMessage();
 		}
-
 	}
 
 	/*	
@@ -152,14 +151,6 @@
 	}
 
 	/*	
-	* Affichage de la page d'accueil
-	*/
-	function accueil() {
-		$oVue = new Vue();
-		$oVue->afficherAccueil();
-	}
-
-	/*	
 	* Envoie d'un courriel pour modifier un mot de passe
 	*/
 	function motpasse(){
@@ -214,6 +205,14 @@
 		catch(Exception $e){
 			echo $e->getMessage();
 		}
+	}
+	
+	/*	
+	* Affichage de la page d'accueil
+	*/
+	function accueil() {
+		$oVue = new Vue();
+		$oVue->afficherAccueil();
 	}
 
 ?>
