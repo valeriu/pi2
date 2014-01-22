@@ -305,7 +305,7 @@ class ControlerAdmin {
 		/**
 		 * Détails d'une commande
 		 */
-		public function detailsCommande() {
+		private function detailsCommande() {
 			$commande_id = (!empty($_GET['commande_id'])) ? $_GET['commande_id'] : 0;
 			$aDonnees = array("id_commande" => $commande_id);
 			try{
@@ -332,7 +332,7 @@ class ControlerAdmin {
 		/**
 		 * Modifier une commande
 		 */
-		public function modifierCommande() {
+		private function modifierCommande() {
 			$commande_id = (!empty($_GET['commande_id'])) ? $_GET['commande_id'] : 0;
 			$aDonnees = array("id_commande" => $commande_id);
 			
@@ -364,7 +364,7 @@ class ControlerAdmin {
 		/**
 		 * Détails usager
 		 */
-		public function details_usager($msg = ''){
+		private function details_usager($msg = ''){
 			$id_utilisateurs = (!empty($_GET['id_utilisateurs'])) ? $_GET['id_utilisateurs'] : '';
 			$aDonnees = array("id_utilisateurs" => $id_utilisateurs);
 			
@@ -393,7 +393,7 @@ class ControlerAdmin {
 		/**
 		 * Modifier un usager
 		 */
-		public function modifier_usager(){
+		private function modifier_usager(){
 			$id_utilisateurs = (!empty($_GET['id_utilisateurs'])) ? $_GET['id_utilisateurs'] : '';
 			$aId = array("id_utilisateurs" => $id_utilisateurs);
 			
