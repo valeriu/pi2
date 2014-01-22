@@ -16,54 +16,6 @@ class Adresse {
 		$this->bd = BD::getInstance();
 	}
 	
-		/**
-	 * Vérifier l'existence d'une adresse dans la BD
-	 */
-	public function verifier($aDonnees = Array()){
-		//telephone	rue	appartement	ville	code_postal	province
-
-		$telephone 		= (!empty($aDonnees['telephone'])) ? $aDonnees['telephone'] : '';
-		$rue 			= (!empty($aDonnees['rue'])) ? $aDonnees['rue'] : '';
-		$appartement 	= (!empty($aDonnees['appartement'])) ? $aDonnees['appartement'] : '';
-		$ville 			= (!empty($aDonnees['ville'])) ? $aDonnees['ville'] : '';
-		$code_postal 	= (!empty($aDonnees['code_postal'])) ? $aDonnees['code_postal'] : '';
-		$province 		= (!empty($aDonnees['province'])) ? $aDonnees['province'] : '';
-		
-		$idbd = $this->bd->getBD();
-		//Préparation de la requête
-		$req = $idbd->prepare(	"SELECT *
-                             FROM wa_adresse
-                             WHERE telephone = ?
-														 AND rue = ?
-														 AND appartement = ?
-														 AND ville = ?
-														 AND code_postal = ?
-														 AND province = ?");
-
-		//var_dump($req);
-		//var_dump($telephone);
-		//var_dump($rue);
-		//var_dump($appartement);
-		//var_dump($ville);
-		//var_dump($code_postal);
-		//var_dump($province);
-		$req->bindParam(1, $telephone);
-		$req->bindParam(2, $rue);
-		$req->bindParam(3, $appartement);
-		$req->bindParam(4, $ville);
-		$req->bindParam(5, $code_postal);
-		$req->bindParam(6, $province);
-		$req->execute();
-		$obj = $req->fetch(PDO::FETCH_ASSOC);
-		//var_dump($req->execute());
-		if($obj){
-			return true;
-		}
-    	else{
-			return false;
-		}
-
-	}
 	
 	/**
 	 * Enregistrer une nouvelle adresse
@@ -90,14 +42,15 @@ class Adresse {
 			//Téléphone
 			$telephone	= trim(strip_tags($telephone));
 			$telephone = str_replace($search, "", $telephone);
-			if(!Valider::estEntreString($telephone, 10, 10)){
+			if((!Valider::estEntreString($telephone, 10, 10)) || (!Valider::estTel($telephone))){
 				throw new Exception("Numéro de téléphone non conforme");
 			}
+			
 			
 			//Code postal
 			$code_postal	= trim(strip_tags($code_postal));
 			$code_postal	= str_replace($search, "", $code_postal);
-			if(!Valider::estEntreString($telephone, 10, 10)){
+			if(!Valider::estCodePostal($code_postal)){
 				throw new Exception("Code Postal non conforme");
 			}
 			
@@ -147,10 +100,10 @@ class Adresse {
 					$reqAdrUtil->bindParam(1, $adresse_id_adresse);
 					$reqAdrUtil->bindParam(2, $id_utilisateurs['id_utilisateurs']);
 					
-					$reponseAdrUtil = $reqAdrUtil->execute();
+					$reqAdrUtil->execute();
 					//var_dump($reponseAdrUtil);
-					if($reponseAdrUtil){
-						return $reponseAdrUtil;
+					if($reqAdrUtil->rowCount() > 0){
+						return true;
 					}
 					else{
 						throw new Exception("Une erreur s'est produite lors de l'enregistrement, recommencez (adresse-utilisateurs)");
@@ -173,9 +126,9 @@ class Adresse {
 	public function modifier ($aDonnees = Array()) {
 		$id_adresse 	= (!empty($aDonnees['id_adresse'])) ? $aDonnees['id_adresse'] : '';
 		$telephone 		= (!empty($aDonnees['telephone'])) ? $aDonnees['telephone'] : '';
-		$rue 			= (!empty($aDonnees['rue'])) ? $aDonnees['rue'] : '';
+		$rue 					= (!empty($aDonnees['rue'])) ? $aDonnees['rue'] : '';
 		$appartement 	= (!empty($aDonnees['appartement'])) ? $aDonnees['appartement'] : '';
-		$ville 			= (!empty($aDonnees['ville'])) ? $aDonnees['ville'] : '';
+		$ville 				= (!empty($aDonnees['ville'])) ? $aDonnees['ville'] : '';
 		$code_postal 	= (!empty($aDonnees['code_postal'])) ? $aDonnees['code_postal'] : '';
 		$province 		= (!empty($aDonnees['province'])) ? $aDonnees['province'] : '';
 		
@@ -218,15 +171,14 @@ class Adresse {
 		//$id_adresse
 		$id_adresse 	= (!empty($aDonnees['id_adresse'])) ? $aDonnees['id_adresse'] : '';
 		
-		
 		$idbd = $this->bd->getBD();
 		//Préparation de la requête
 		$req = $idbd->prepare(	"SELECT *
                              FROM wa_adresse
                              WHERE id_adresse = ?");
         
-        $req->bindParam(1, $id_adresse);
-        $req->execute();
+		$req->bindParam(1, $id_adresse);
+		$req->execute();
 		$obj = $req->fetch(PDO::FETCH_ASSOC);
 		
 		if($obj){
@@ -246,7 +198,7 @@ class Adresse {
 		$req = $idbd->prepare(	"SELECT *
                               FROM wa_adresse");
         
-    	$req->execute();
+    $req->execute();
 		
 		$aAdresses = $req->fetchAll();
 		if($aAdresses){
@@ -257,6 +209,10 @@ class Adresse {
 		}
 	}
 	
+	
+	/**
+	 * Afficher la liste complète des adresses liées a un usager
+	*/
 	public function afficherAdresseUsager ($aDonnees = Array()) {
 		$courriel 	= (!empty($aDonnees['courriel'])) ? $aDonnees['courriel'] : '';
 		$idbd = $this->bd->getBD();
@@ -310,6 +266,10 @@ class Adresse {
 		}
 	}
 	
+	
+	/**
+	 * Suppression d'une adresse par un usager
+	*/
 	public function supprimerAdresse ($aDonnees = Array()) {
 		//$id_adresse
 		$id_adresse 	= (!empty($aDonnees['id_adresse'])) ? $aDonnees['id_adresse'] : '';

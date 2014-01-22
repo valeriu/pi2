@@ -199,7 +199,6 @@ class Controler {
 			VueCatalogue::afficherCatalogue($aProduits);
 			Vue::afficherFooter();
 		}
-		// Placer les méthodes du controleur.
 				
 }
 ?>
