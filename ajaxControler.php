@@ -55,9 +55,6 @@
 		case 'supprimerAdresse':
 			supprimerAdresse();
 			break;		
-		default:
-			accueil();
-			break;
 	}
 
 	/*	
@@ -207,12 +204,5 @@
 		}
 	}
 	
-	/*	
-	* Affichage de la page d'accueil
-	*/
-	function accueil() {
-		$oVue = new Vue();
-		$oVue->afficherAccueil();
-	}
 
 ?>
