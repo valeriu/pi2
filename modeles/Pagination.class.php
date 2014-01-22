@@ -1,13 +1,21 @@
 <?php
 /**
- * Description of Pagination
+ * Module Pagination
+ * Génère pagination pour certains modules du backend et frontend
  *
- * @author valeriu
+ * @author Valeriu Tihai
  */
  class Pagination{
         
 	private $pages;
 
+	/**
+	 * Génère pagination
+	 * 
+	 * @param type $aDonnees
+	 * @return type Array avec nombre du page, nombre partir et fin
+	 * @throws Exception
+	 */
 	public function paginate($aDonnees = Array()){ 
 		
 		$aTousElements	= $aDonnees['aTousElements'];
@@ -39,7 +47,11 @@
 		return $nombre;
 		
 	}
-
+	
+	/**
+	 * 
+	 * @return les rezultat de pagination
+	 */
 	public function voirResultats(){
 			$voirRsultats = $this->pages;
 			return $voirRsultats;

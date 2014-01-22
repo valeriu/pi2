@@ -1,4 +1,10 @@
 <?php
+/**
+ * Module Menu
+ * Génère le menu pour frontend, avec la possibilité de choisir l'ordre d'affichage
+ *
+ * @author Valeriu Tihai, Luc Cinq-Mars
+ */
 
 /*
  * Menu
@@ -12,14 +18,12 @@
  * 
  */
 
-/**
- * Description of Menu
- * 
- *
- * @author Valeriu et Luc
- */
 class Menu {
 	private $bd;
+	
+	 /**
+	 *  Méthode __construct() - Instancie la base de données
+	 */
 	
 	public function __construct(){
 		$this->bd = BD::getInstance();
@@ -139,7 +143,6 @@ class Menu {
 								WHERE id_menu = ?");
 		
 		
-		//var_dump($statut);
 		$req->bindParam(1, $titre);
 		$req->bindParam(2, $description);
 		$req->bindParam(3, $url);
@@ -260,5 +263,4 @@ class Menu {
 		return $menuConstruit;
 	}
 }
-
 ?>

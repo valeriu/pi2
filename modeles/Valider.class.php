@@ -7,6 +7,12 @@
  */
 abstract class Valider {
 	
+	/**
+	 * Vérifiez si la chaîne $valeur est un vide
+	 * 
+	 * @param type $valeur
+	 * @return boolean
+	 */
 	public function estVide($valeur=null){
 		if(empty($valeur))
 			return TRUE;
@@ -195,7 +201,7 @@ abstract class Valider {
 	}
 	
 	/**
-	 * 
+	 * Vérifiez si la chaîne $valeur est une string valide
 	 * 
 	 * @param type $valeur
 	 * @return boolean
