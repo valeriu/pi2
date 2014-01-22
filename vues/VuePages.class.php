@@ -1,7 +1,6 @@
 <?php
 /**
  * Class Vue Pages
- * Template de classe Vue Pages.
  * 
  * @author Valeriu Tihai
  * 
@@ -43,7 +42,14 @@ class VuePages {
 			}
 		?>
 	<?php }
-public function ajouterPageAdmin($result="", $mes="") {
+	
+	/**
+	 * Ajouter une page dans partie admin
+	 * 
+	 * @param type $result
+	 * @param type $mes
+	 */
+	public function ajouterPageAdmin($result="", $mes="") {
 		//print_r($result);
 		?>
 		
@@ -138,6 +144,12 @@ public function ajouterPageAdmin($result="", $mes="") {
 		
 	<?php }
 	
+	/**
+	 * Modifier une page dans partie admin
+	 * 
+	 * @param type $data
+	 * @param type $mes
+	 */
 	public function modifierPageAdmin($data, $mes="") {
 		//print_r($result);
 		?>
@@ -225,6 +237,15 @@ public function ajouterPageAdmin($result="", $mes="") {
 			</div><!--end panel-->
 		  </div>
 	<?php }
+	
+	/**
+	 * Ajouter list des page dans partie admin
+	 * 
+	 * @param type $aDonneesPages
+	 * @param type $aDonneesPaginator
+	 * @param type $partir
+	 * @param type $fin
+	 */
 	public function afficherListAdmin($aDonneesPages, $aDonneesPaginator, $partir, $fin) {	?>
 		<?php
 

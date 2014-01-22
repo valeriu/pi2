@@ -7,9 +7,11 @@
  * 
  */
 
-
 class VueAdmin {
 
+	/**
+	 * Afficher Entete du page
+	 */
 	public function afficherEntete() { ?>
 	<!DOCTYPE html>
 	<html lang="fr">
@@ -38,6 +40,9 @@ class VueAdmin {
 	
 	<?php }
 
+	/**
+	 * Affiche pied de page
+	 */
 	public function afficherFooter() { ?>
 	<!-- Footer div -->
 	   <div class="container">
@@ -55,7 +60,12 @@ class VueAdmin {
    </html>
 	
 	<?php }
-
+	
+	/**
+	 * Affiche Connexion (utilisateur et mot de passe)
+	 * 
+	 * @param type $msg
+	 */
 	public function afficherConnexion($msg='') { ?>
 		<div class="container">
 			<form class="form-signin" action="adminka.php?requete=connexion" method="post">
@@ -69,6 +79,9 @@ class VueAdmin {
 	
 	<?php }
 
+	/**
+	 * Affiche barre d'outils
+	 */
 	public function afficherToolbar() { ?>
 	    <div class="container">
 		<!-- Static navbar -->
@@ -88,6 +101,9 @@ class VueAdmin {
 	
 	<?php }
 	
+	/**
+	 * Afficher le menu principal
+	 */
 	public function afficherNavigation() { ?>
 	  <div class="container">
     	<div class="row">
@@ -105,12 +121,20 @@ class VueAdmin {
 	<div class="col-lg-10 col-md-10">
 	<?php }
 	
+	/**
+	 * Fermer les balises HTML nécessaires
+	 */
 	public function afficherFinContent() { ?>
 			  </div>
 		</div>
     </div><!-- end content -->
 	<?php }
 	
+	/**
+	 * Ajouter les options d'affichage pour Tinymce
+	 * 
+	 * @param type $textarea
+	 */
 	public function tinymce($textarea) { ?>
 		<script type="text/javascript" src="tinymce/tinymce.min.js"></script>
 		<script type="text/javascript">

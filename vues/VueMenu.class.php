@@ -11,7 +11,8 @@
 class VueMenu {
 
 	/**
-	 * Affiche le Menu
+	 * Affiche le Menu dans FrontEnd 
+	 * Version Descktop et Version Mobile
 	 * 
 	 */
 	public function afficherMenu() {	?>
@@ -65,6 +66,14 @@ class VueMenu {
 	  
 	<?php }
 	
+	/**
+	 * Afficher tous les liens du menu sous forme de liste
+	 * 
+	 * @param type $aDonneesPages
+	 * @param type $aDonneesPaginator
+	 * @param type $partir
+	 * @param type $fin
+	 */
 	public function afficherListMenuAdmin($aDonneesPages, $aDonneesPaginator, $partir, $fin) {	?>
 			<?php
 
@@ -127,19 +136,22 @@ class VueMenu {
 			<?php echo $htmlPagination; ?>
 	<?php }
 	
+	/**
+	 * Ajouter un nouveau lien dans le menu
+	 * 
+	 * @param type $result
+	 * @param type $mes
+	 */
 	public function ajouterMenuAdmin($result="", $mes="") {	?>
 		<div class="panel panel-default">
 			<!-- Default panel contents -->
 			<div class="panel-heading">Ajouter ou modifier un menu</div>
 			<div class="panel-body">
-						<?php
-				
+		<?php
 			if ($mes !=""){
-				
 				echo "<div class=\"alert alert-danger\">".$mes."</div>";
 			}
 
-			
 			if ($result != NULL) {
 				switch ($result) {
 					case 1:
@@ -151,10 +163,9 @@ class VueMenu {
 						echo "<div class=\"alert alert-danger\"><strong>Oh rupture!</strong> Changer quelques choses et essayer à nouveau soumission.";
 						echo "</div>";
 						break;					
-			}	}
-			
-			
-						?>	
+				}	
+			}
+		?>	
 				
 			<!-- Form Edit pages-->
 				<form role="form" method="POST" action="<?php echo $_SERVER['REQUEST_URI'];?>">
@@ -210,6 +221,12 @@ class VueMenu {
 		  </div>
 	<?php }
 	
+	/**
+	 * Modifier un nouveau lien dans le menu
+	 * 
+	 * @param type $data
+	 * @param type $mes
+	 */
 	public function modifierMenuAdmin($data, $mes="") {	?>
 		<div class="panel panel-default">
 			<!-- Default panel contents -->

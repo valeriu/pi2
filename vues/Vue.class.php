@@ -1,13 +1,9 @@
 <?php
 /**
- * Class Vue
- * Template de classe Vue. Dupliquer et modifier pour votre usage.
+ * Class Vue (principale)
  * 
- * @author Jonathan Martel
- * @version 1.0
- * @update 2013-12-11
- * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
- * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
+ * 
+ * @author Luis Felipe Rosas, Luc Cinq-Mars et Valeriu Tihai
  * 
  */
 
@@ -15,11 +11,10 @@
 class Vue {
 
 	/**
-	 * Affiche la page d'accueil 
+	 * Affiche Entete du page
 	 * @access public
 	 * 
 	 */
-
 	public function afficherEntete($aDonnees = array()) {
 		
 ?>	
@@ -32,12 +27,9 @@ class Vue {
 				<meta name="description" content="<?php  echo $titre = (isset($aDonnees["description_meta"])) ? $aDonnees["description_meta"] : 'Wadagbé'; ?>">
 				<meta name="author" content="">
 				<link rel="shortcut icon" href="img/favicon.png">
-
 				<title><?php  echo $titre = (isset($aDonnees["titre"])) ? $aDonnees["titre"] : 'Wadagbé'; ?></title>
-				
 				<!-- Bootstrap core CSS -->
 				<link href="css/bootstrap.css" rel="stylesheet">
-
 				<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 				<!--[if lt IE 9]>
 					<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -69,64 +61,73 @@ class Vue {
 <?php
 
 	}
-
+	/**
+	 * Affiche pied de page
+	 * @access public
+	 */
 	public function afficherFooter() {
 
-?>
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">                
-				<div name="modal-content" class="modal-content">
-					
+	?>
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">                
+					<div name="modal-content" class="modal-content">
+
+					</div>
 				</div>
 			</div>
-		</div>
-		<hr class="featurette-divider">
+			<hr class="featurette-divider">
 
-				<!-- FOOTER -->
-				<footer>
-					<p class="pull-right btn-lien"><a href="#">Haut de la page</a></p>
-					<p class="auteur">&copy; Wadagbé 2014 | Projet Intégration II</p>
-				</footer><!-- / FOOTER -->
-			</main>
-			<!-- /.container -->
+					<!-- FOOTER -->
+					<footer>
+						<p class="pull-right btn-lien"><a href="#">Haut de la page</a></p>
+						<p class="auteur">&copy; Wadagbé 2014 | Projet Intégration II</p>
+					</footer><!-- / FOOTER -->
+				</main>
+				<!-- /.container -->
 
-			<!-- Bootstrap core JavaScript
-			================================================== -->
-			<!-- Placed at the end of the document so the pages load faster -->
-			<script src="js/vendor/bootstrap.min.js"></script>
-			<script src="js/vendor/easeljs-0.6.0.min.js"></script>
-			<script src="js/vendor/tweenjs-0.4.0.min.js"></script>
-			<script src="js/vendor/movieclip-0.6.0.min.js"></script>
-			<script src="js/holder.js"></script>
-			<script src="js/main.js"></script>
-			<script src="js/panier.js"></script>
-			<script src="js/catalogue.js"></script>
-			<script src="js/animated_logo.js"></script>
-		</body>
-	</html>
-<?php
-	}
+				<!-- Bootstrap core JavaScript
+				================================================== -->
+				<!-- Placed at the end of the document so the pages load faster -->
+				<script src="js/vendor/bootstrap.min.js"></script>
+				<script src="js/vendor/easeljs-0.6.0.min.js"></script>
+				<script src="js/vendor/tweenjs-0.4.0.min.js"></script>
+				<script src="js/vendor/movieclip-0.6.0.min.js"></script>
+				<script src="js/holder.js"></script>
+				<script src="js/main.js"></script>
+				<script src="js/panier.js"></script>
+				<script src="js/catalogue.js"></script>
+				<script src="js/animated_logo.js"></script>
+			</body>
+		</html>
+	<?php
+		}
 
+	/**
+	 * Affiche Bouton Panier
+	 */
 	public function afficherBoutonPanier() {
-?>
-			</article>
-				<!-- Shopping Cart -->
-				<article id="shopping-cart" class="col-lg-4 pull-right text-right">
-					<a href="./index.php?requete=panier">
-						<button type="button" class="btn btn-panier btn-lg">
-							 <span class="glyphicon glyphicon-shopping-cart"></span> Panier : <span id="nbProducts">Vide</span>
-						</button>
-					</a>
+	?>
 				</article>
-				<!-- / Shopping Cart -->
-<?php
+					<!-- Shopping Cart -->
+					<article id="shopping-cart" class="col-lg-4 pull-right text-right">
+						<a href="./index.php?requete=panier">
+							<button type="button" class="btn btn-panier btn-lg">
+								 <span class="glyphicon glyphicon-shopping-cart"></span> Panier : <span id="nbProducts">Vide</span>
+							</button>
+						</a>
+					</article>
+					<!-- / Shopping Cart -->
+	<?php
 
-	}
+		}
 
+	/**
+	 * Affiche la page d'accueil
+	 */
 	public function afficherAccueil() {
 		
 		?>
-  <!-- Carousel -->
+				 <!-- Carousel -->
                         <div class="row hidden-xs">
                                 <div class="col-lg-12"><!-- configuration pour les différents écrans -->
                                   <!-- Carousel au milieu du page, pas visible dans les petits écrans -->
@@ -179,6 +180,9 @@ class Vue {
 		<?php
 		
 	}
+	/**
+	 * Supprimer LocalStorage du commande
+	 */
 	public function supprimerLocalStorage(){
 	?>	
 		<script type="text/javascript">
