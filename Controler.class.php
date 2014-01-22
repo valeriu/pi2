@@ -124,7 +124,7 @@ class Controler {
 				$result = $commande->enregistreCommande($_SESSION['commandePaypal']);
 
 				$pp = new PayPal();
-				$ret = ($pp->doExpressCheckout($_SESSION['commandePaypal']['tct']));
+				$ret = ($pp->doExpressCheckout($_SESSION['commandePaypal']['tct'], "Wadagbe # ".$_SESSION['id_commande']));
 			}
 		}
 		
@@ -154,6 +154,8 @@ class Controler {
 					
 					VuePages::afficherPage($courentPage);
 					$oVue->supprimerLocalStorage();
+					unset($_SESSION['commandePaypal']);
+					unset($_SESSION['id_commande']);
 					$oVue->afficherFooter();
 
 				} else {

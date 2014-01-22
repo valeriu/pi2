@@ -2,18 +2,12 @@
 /**
  * Fichier de configuration. Il est appelé par index.php et par test/index.php
  * Il contient notamment l'autoloader
- * @author Jonathan Martel
- * @version 1.0
- * @update 2013-03-11
- * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
- * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  * 
  */
 	function mon_autoloader($class) {
-		$dossierClasse = array('modeles/', 'vues/', 'lib/', '' );	// Ajouter les dossiers au besoin
+		$dossierClasse = array('modeles/', 'vues/', 'lib/', '' );
 		
 		foreach ($dossierClasse as $dossier) {
-			//var_dump('./'.$dossier.$class.'.class.php');
 			if(file_exists('./'.$dossier.$class.'.class.php'))	{
 				require_once('./'.$dossier.$class.'.class.php');
 			}
@@ -29,7 +23,7 @@
 	define("BD","e1295805");
 	define("PASS","50319801101");
 	
-	//TAXES PAR PROVINCES
+//TAXES PAR PROVINCES
 	define("CA", 0.05);
 	define("QC", 0.09975);
 	define("ON", 0.08);
@@ -45,12 +39,17 @@
 	define("YK", 1);
 	define("NV", 1);
 
-	// courriel de PAYPAL
+// PAYPAL API credentials
 	define("PAYPAL", 'wadagbe.solar@gmail.com');
-	define("URL_SUCCESS", 'http://e1295805.webdev.cmaisonneuve.qc.ca/Projet_Luis/index.php?requete=succes');
-	define("URL_IPN", 'http://e1295805.webdev.cmaisonneuve.qc.ca/Projet_Luis/ipn.php');
 	define("PAYPAL_SUCCES", 1);
 	define("PAYPAL_ECHEC", 2);
+	define("PAYPAL_API_USERNAME",  "b_api1.w.ca");
+	define("PAYPAL_API_PASSWORD", "1390266218");
+	define("PAYPAL_API_SIGNATURE", "AfEXsgrsMbCGLpPhIaBqYTCol0BcA3sgydsqful8E7ucPMlnTH0nVxue");
+	define("PAYPAL_HOST",  "api-3t.sandbox.paypal.com");
+	define("PAYPAL_GATE", "https://www.sandbox.paypal.com/cgi-bin/webscr?");
+	define("PAYPAL_PAGE_RETURN", "http://e1295805.webdev.cmaisonneuve.qc.ca/Projet_Luis/index.php?requete=ipn");
+	define("PAYPAL_PAGE_CANCEL", "http://e1295805.webdev.cmaisonneuve.qc.ca/Projet_Luis/index.php?requete=page&page_id=210");
 
 	
 	

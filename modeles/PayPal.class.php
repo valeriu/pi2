@@ -41,11 +41,11 @@
 class PayPal {
 
 	//these constants you have to obtain from PayPal
-	const API_USERNAME = "b_api1.w.ca";
-	const API_PASSWORD = "1390266218";
-	const API_SIGNATURE = "AfEXsgrsMbCGLpPhIaBqYTCol0BcA3sgydsqful8E7ucPMlnTH0nVxue";
-	const PP_RETURN = "http://e1295805.webdev.cmaisonneuve.qc.ca/Projet_Luis/index.php?requete=ipn";
-	const PP_CANCEL = "http://e1295805.webdev.cmaisonneuve.qc.ca/Projet_Luis/index.php?requete=page&page_id=210";
+	const API_USERNAME = PAYPAL_API_USERNAME;
+	const API_PASSWORD = PAYPAL_API_PASSWORD;
+	const API_SIGNATURE = PAYPAL_API_SIGNATURE;
+	const PP_RETURN = PAYPAL_PAGE_RETURN;
+	const PP_CANCEL = PAYPAL_PAGE_CANCEL;
 
 	private $endpoint;
 	private $host;
@@ -54,8 +54,8 @@ class PayPal {
 	function __construct($real = false) {
 		$this->endpoint = '/nvp';
 			//sandbox
-			$this->host = "api-3t.sandbox.paypal.com";
-			$this->gate = 'https://www.sandbox.paypal.com/cgi-bin/webscr?';
+			$this->host = PAYPAL_HOST;
+			$this->gate = PAYPAL_GATE;
 	}
 
 	/**
@@ -91,15 +91,13 @@ class PayPal {
 	 * 
 	 * @return array error info
 	 */
-	public function doExpressCheckout($amount, $desc='Wadagbe #', $invoice='', $currency='USD'){
-		$unique_key = substr(md5(rand(0, 1000000)), 0, 7);
-		$descnr = $desc.$unique_key;
+	public function doExpressCheckout($amount, $desc, $invoice='', $currency='USD'){
 		$data = array(
 		'PAYMENTACTION' =>'Sale',
 		'AMT' =>$amount,
 		'RETURNURL' => self::PP_RETURN,
 		'CANCELURL'  => self::PP_CANCEL,
-		'DESC'=>$descnr,
+		'DESC'=>$desc,
 		'NOSHIPPING'=>"1",
 		'ALLOWNOTE'=>"1",
 		'CURRENCYCODE'=>$currency,
