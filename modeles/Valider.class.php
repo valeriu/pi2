@@ -247,19 +247,19 @@ abstract class Valider {
 	public function estProvince($valeur){
 		$abb = strtolower($valeur);
 			switch($abb) {
-				case "ab": 
-				case "bc": 
-				case "mb": 
+				case "al": 
+				case "cb": 
+				case "mn": 
 				case "nb": 
-				case "nl": 
-				case "ns":
-				case "nt":
-				case "nu":
+				case "tn": 
+				case "ne":
+				case "no":
+				case "nv":
 				case "on":
-				case "pe":
+				case "ie":
 				case "qc":
 				case "sk":
-				case "yt":
+				case "yk":
 					return TRUE;
 					break;
 				default :

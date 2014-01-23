@@ -51,13 +51,6 @@ class Usagers {
 		}
 		$nom_prenom	= trim(strip_tags($nom_prenom));
 		
-		//Role
-		if(Valider::estEntreInt($role, 0, 2)){
-			throw new Exception("Entrez un nombre valide pour le rôle (0, 1 ou 2)");
-		}
-		$role	= trim(strip_tags($role));
-		
-		
 		
 		$idbd = $this->bd->getBD();
 		//Si le courriel est déjà dans la BD
