@@ -1,10 +1,9 @@
 ﻿/* ==========================================================================
-*   Projet d'Intégration 2 AEC Commerce Électronique 
+*   Projet d'intégration II.
+*   Prof.   : Jonathan Martel
 *   Author  : Luis Felipe Rosas
    ========================================================================== */
-/***********************************************
-        Testé en FIREFOX et  Google Chrome
-    *******************************/
+
 var Panier = (function () {
     var _creerPanier = function(){
         var htmlProduits = '';

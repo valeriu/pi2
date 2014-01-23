@@ -1,4 +1,14 @@
 <?php
+/**
+ * Test
+ * @author Valeriu Tihai, Luc Cinq-Mars
+ * @version 1.0
+ * @update 2014-01-23
+ * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
+ * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
+ * 
+ */
+
 require_once("./includes/config.php");
 
 if(isset($_GET['test'])){

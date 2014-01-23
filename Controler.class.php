@@ -3,9 +3,9 @@
  * Class Controler
  * Gère les requêtes HTTP
  * 
- * @author Jonathan Martel
+ * @author Valeriu Tihai, Luis Felipe Rosas, Luc Cinq-Mars, Yan Boucher Bouchard
  * @version 1.0
- * @update 2013-12-10
+ * @update 2014-01-23
  * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  * 
@@ -22,7 +22,6 @@ class Controler {
 			switch ($_GET['requete']) {
 				case 'accueil':
 					$this->accueil();
-					//$this->page();
 					break;
 				case 'panier':
 					$this->panier();

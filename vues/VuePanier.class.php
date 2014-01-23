@@ -3,7 +3,7 @@
  * Module Vue Panier
  * La vue qui affiche les differentes étapes du panier
  *
- * @author Luis Felipe Rosas
+ * @author Luis Felipe Rosas, Luc Cinq-Mars
  *
  */
 
@@ -161,7 +161,6 @@ class VuePanier {
 					<?php
 					$htmlProduits = '';
 					for ($i = 0; $i < $aDonnes['nb_produit']; $i++){
-						//$infoCommande[$i]->prix
 						$htmlProduits .= '<article id="'.$aDonnes['info_commande'][$i]->idP.'" class="row"><div class="col-sm-12"><div class="col-sm-2"><a href="#" class="thumbnail"><img class="img-responsive" src="'.$aDonnes['info_commande'][$i]->image.'" alt="'.$aDonnes['info_commande'][$i]->nom.'"></a></div><div class="col-sm-5"><p>'.$aDonnes['info_commande'][$i]->nom.'</p></div><div class="col-sm-2"><p><span class="prix">'.$aDonnes['info_commande'][$i]->prix.'</span><span> $CAD</span></p></div><div class="col-sm-1"><p>'.$aDonnes['info_commande'][$i]->quant.'</p></div><div class="col-sm-2 text-center"><p><span class="total">'.number_format($aDonnes['info_commande'][$i]->prix * $aDonnes['info_commande'][$i]->quant, 2).'</span><span> $CAD</span></p></div></div></article>';
            			}
            			echo $htmlProduits;

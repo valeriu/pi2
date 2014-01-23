@@ -5,7 +5,7 @@ Développement de sites Web et commerce électronique
 
 Echipe :
 * Luc Cinq-Mars
-* Luishino Rosas
+* Luis Felipe Rosas
 * Valeriu Tihai
 * Yan Boucher Bouchard
 

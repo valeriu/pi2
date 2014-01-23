@@ -3,7 +3,11 @@
  * Class Controler Admin
  * Gère les requêtes HTTP
  * 
- * @author Valeriu Tihai
+ * @author Valeriu Tihai, Luis Felipe Rosas, Luc Cinq-Mars, Yan Boucher Bouchard
+ * @version 1.0
+ * @update 2014-01-23
+ * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
+ * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  * 
  */
 
