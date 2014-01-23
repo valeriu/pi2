@@ -3,3 +3,7 @@ $(function(){
 		$("#pagemap").toggle(  "slow" );
 	});
 });
+$(function(){ 
+	$("#myTable").tablesorter(); 
+
+});

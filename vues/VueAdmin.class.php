@@ -27,7 +27,6 @@ class VueAdmin {
 		<link href="css/bootstrap.css" rel="stylesheet">
 
 		<!-- Custom styles for login page -->
-		<link href="css/login.css" rel="stylesheet">
 		<link href="css/adminka.css" rel="stylesheet">
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -56,6 +55,7 @@ class VueAdmin {
 		<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 		<script src="js/vendor/bootstrap.min.js"></script>
 		<script src="js/adminka.js"></script>
+		<script src="js/tablesorter/jquery.tablesorter.min.js"></script>
 	 </body>
    </html>
 	
