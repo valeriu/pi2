@@ -73,7 +73,7 @@ class VueCommandes {
 					<th>Id</th>
 					<th>Date</th>
 					<th>Token</th>
-					<th>id Client</th>
+					<th>Nom du client</th>
 					<th>Total $CAD</th>
 					<th>Statut</th>
 				  </tr>
@@ -121,11 +121,11 @@ class VueCommandes {
 						<div class="panel-heading">
 							<div class="row">
 								<div class="col-sm-12">
-									<div class="col-sm-2">id</div>
-									<div class="col-sm-2">Date</div>
-									<div class="col-sm-2">id Client</div>
+									<div class="col-sm-1">id</div>
+									<div class="col-sm-3">Date</div>
+									<div class="col-sm-3">Token</div>
 									<div class="col-sm-2">Prix total</div>
-									<div class="col-sm-3">Statut</div>
+									<div class="col-sm-2">Statut</div>
 								</div>
 							</div>
 						</div>
@@ -135,9 +135,9 @@ class VueCommandes {
 									<input type="hidden" name="commande_id" value="<?php echo $data["id_commandes"] ;?>">
 									<div class="col-sm-1"><?php echo $data["id_commandes"] ;?></div>
 									<div class="col-sm-3"><?php echo $dateEtHeure ;?></div>
-									<div class="col-sm-2"><?php echo $data["utilisateurs_id_utilisateurs"] ;?></div>
+									<div class="col-sm-3"><?php echo $data["token"] ;?></div>
 									<div class="col-sm-2"><?php echo $data["total_commande"] ;?></div>
-									<div class="col-sm-3"><?php
+									<div class="col-sm-2"><?php
 										$htmlPage = '';
 										switch ($data["statut"]) {
 											case 0: // En traitement
