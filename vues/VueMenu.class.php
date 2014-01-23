@@ -95,8 +95,9 @@ class VueMenu {
 				$htmlPage .= "<tr>\r\n"; 
 					$titre = (!empty($aDonneesPages[$i]["titre"])) ? $aDonneesPages[$i]["titre"] : "Sans titre";
 					$url = substr($aDonneesPages[$i]["url"],0,70).'...';
-					$htmlPage .= "<td><a href=\"adminka.php?requete=menu_modifier&menu_id={$aDonneesPages[$i]["id_menu"]}\" title=\"Edit: {$aDonneesPages[$i]["titre"]}\">{$titre}</a></td>\r\n";
-					$htmlPage .= "<td><a href=\"{$aDonneesPages[$i]["url"]}\">{$url}</a></td>\r\n";
+					$htmlPage .= "<td><a href=\"adminka.php?requete=menu_modifier&menu_id={$aDonneesPages[$i]["id_menu"]}\" title=\"Edit: {$aDonneesPages[$i]["titre"]}\">{$aDonneesPages[$i]["id_menu"]}</a></td>\r\n";
+					$htmlPage .= "<td>{$titre}</td>\r\n";
+					$htmlPage .= "<td><a target=\"_blank\" href=\"{$aDonneesPages[$i]["url"]}\">{$url}</a></td>\r\n";
 					$htmlPage .= "<td>{$aDonneesPages[$i]["parent"]}</td>\r\n";
 					$htmlPage .= "<td>{$aDonneesPages[$i]["ordre"]}</td>\r\n";
 					switch ($aDonneesPages[$i]["statut"]) {
@@ -121,6 +122,7 @@ class VueMenu {
 			<table class="table table-hover">
 				<thead>
 				  <tr>
+					<th>#</th>
 					<th>Titre</th>
 					<th>URL</th>
 					<th>Parent</th>
