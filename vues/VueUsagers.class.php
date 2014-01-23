@@ -328,7 +328,7 @@ class VueUsagers {
 			<?php
 				switch ($msg) {
 					case 1:
-						echo "<div class=\"alert alert-success\"><strong>Bien fait!</strong> Vous avez inséré le détails de la commande dans la base de données avec succès.</div>";
+						echo "<div class=\"alert alert-success\"><strong>Bien fait!</strong> Les modifications ont été enregistrées avec succès dans la base de données.</div>";
 						break;
 					case '':
 						break;
@@ -350,19 +350,19 @@ class VueUsagers {
 					<div class="panel-body">
 							<div class="radio">
 								<label>
-									<input type="radio" name="role" id="0" value="0" <?php echo $nb1 = ($aUsager['role']==0) ? "checked" : "";?>>
+									<input type="radio" name="role" value="0" <?php echo $nb1 = ($aUsager['role']==0) ? "checked" : "";?>>
 									<span class="label label-default">Usager</span>
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="role" id="1" value="1" <?php echo $nb1 = ($aUsager['role']==1) ? "checked" : "";?>>
+									<input type="radio" name="role" value="1" <?php echo $nb1 = ($aUsager['role']==1) ? "checked" : "";?>>
 									<span class="label label-default">Administrateur</span>
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="role" id="2" value="2" <?php echo $nb1 = ($aUsager['role']==2) ? "checked" : "";?>>
+									<input type="radio" name="role" value="2" <?php echo $nb1 = ($aUsager['role']==2) ? "checked" : "";?>>
 									<span class="label label-default">Super-Administrateur</span>
 								</label>
 							</div>
@@ -393,13 +393,13 @@ class VueUsagers {
 						<div class="panel-body">
 							<div class="radio">
 								<label>
-									<input type="radio" name="statut" id="1" value="1" <?php echo $nb1 = ($aUsager['statut']==1) ? "checked" : "";?>>
+									<input type="radio" name="statut" value="1" <?php echo $nb1 = ($aUsager['statut']==1) ? "checked" : "";?>>
 									<span class="label label-success">Actif</span>
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="statut" id="2" value="2" <?php echo $nb1 = ($aUsager['statut']==2) ? "checked" : "";?>>
+									<input type="radio" name="statut" value="2" <?php echo $nb1 = ($aUsager['statut']==2) ? "checked" : "";?>>
 									<span class="label label-danger">Supprimé</span>
 								</label>
 							</div>
