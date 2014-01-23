@@ -432,3 +432,67 @@ footer{
   Fin Panier
 ========================================================*/
 
+/*======================================================
+  Catalogue
+========================================================*/
+
+/*PADDING TABLEAU CATALOGUE*/
+table>tbody>tr>td:not([colspan='7']) {
+  padding: 10px;
+}
+
+/*PREVENIR HOVER SUR DESCRIPTION*/
+table>tbody>tr>td[colspan='7']:hover {
+  background-color: white;
+}
+
+/*IMAGES PRODUITS*/
+table>tbody>tr>td>img {
+  width: 150px;
+  height: 150px;
+}
+
+/*MARGES TABLEAU CATALOGUE*/
+table.table-hover {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/*TEXTE CATALOGUE*/
+table.table-hover>tbody>tr>td {
+  text-align: center;
+}
+
+/*ÉTOILES PLEINES*/
+span[class~=glyphicon-star] {
+  color: orange;
+  font-size: 120%;
+  margin-top: 25px;
+}
+
+/*ÉTOILES VIDES*/
+span[class~=glyphicon-star-empty] {
+  font-size: 120%;
+  margin-top: 25px;
+}
+
+/*PRIX*/
+.text-pricing {
+  font-size: 125%;
+  font-weight: bolder;
+}
+
+/*PANNEAU FILTRES*/
+#panel-filtres {
+  background-color: white;
+  font-size: 85%;
+}
+
+/*BOUTON FILTRES*/
+#btn-filtres {
+  font-size: 85%;
+}
+/* ====================================================
+   / Fin Catalogue
+   ====================================================*/
+

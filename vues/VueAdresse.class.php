@@ -3,7 +3,7 @@
  * Description of vueUsagers
  * La vue qui affiche les formulaire d'inscriptions ou les modals
  *
- * @author Luc Cinq-Mars
+ * @author Luc Cinq-Mars, Luis Felipe Rosas
  */
 
 

@@ -1,10 +1,9 @@
 <?php
-
 /**
  * Controlleur AJAX. Ce fichier est la porte d'entrée des requêtes AJAX (XHR)
- * @author Luis Rosas, Luc Cinq-Mars
+ * @author Luis Rosas, Luc Cinq-Mars, Valeriu Tihai, Yan Boucher Bouchard
  * @version 1.0
- * @update 09-01-2014
+ * @update 2014-01-23
  * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  * 
@@ -20,12 +19,6 @@
 	switch ($_GET['requete']) {
 		case 'confirmation_adresse':
 			confirmationAdresse();
-			break;
-		case 'etapeDeux':
-			etapeDeux();
-			break;
-		case 'passerCommande':
-			enregistreCommande();
 			break;
 		case 'formConnecter':
 			formConnecter();
@@ -73,14 +66,6 @@
 		catch(Exception $e){
 			echo $e->getMessage();
 		}
-	}
-
-	/*	
-	* 
-	*/
-	function enregistreCommande(){
-		$vuePanier =  new VuePanier();
-		$vuePanier->enregistrePanier();
 	}
 
 	/*	
