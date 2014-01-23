@@ -28,6 +28,7 @@ class VueAdmin {
 
 		<!-- Custom styles for login page -->
 		<link href="css/adminka.css" rel="stylesheet">
+		<link href="js/tablesorter/themes/blue/style.css" rel="stylesheet">
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
 		  <script src="js/html5shiv.js"></script>
