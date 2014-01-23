@@ -79,6 +79,7 @@ class Vue {
 
 					<!-- FOOTER -->
 					<footer>
+						<img alt="PayPal" src="./img/paypal-icon.png" ><br><br>
 						<p class="pull-right btn-lien"><a href="#">Haut de la page</a></p>
 						<p class="auteur">&copy; Wadagbé 2014 | Projet Intégration II</p>
 					</footer><!-- / FOOTER -->
