@@ -4,6 +4,6 @@ $(function(){
 	});
 });
 $(function(){ 
-	$("#myTable").tablesorter(); 
+	$("#trier").tablesorter(); 
 
 });
