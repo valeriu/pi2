@@ -295,7 +295,7 @@ class VuePages {
 			</div>
 
 			<!-- Table pages-->
-			<table class="table table-hover">
+			<table class="table table-hover tablesorter" id="trier">
 				<thead>
 				  <tr>
 					<th>#</th>
@@ -308,6 +308,9 @@ class VuePages {
 				  <?php echo $htmlPage; ?>
 				</tbody>
 			  </table><!-- end table-->
+			  <script>
+
+			</script>
 			</div><!--end panel-->
 			
 			<?php echo $htmlPagination; ?>

@@ -119,7 +119,7 @@ class VueMenu {
 			<!-- Default panel contents -->
 			<div class="panel-heading">Toutes les lien du menu<span class="badge pull-right"><?php echo $nomberMenu;?></span><div> <a href="adminka.php?requete=menu_ajouter">Ajouter un lien</a></div></div>
 			<!-- Table pages-->
-			<table class="table table-hover">
+			<table class="table table-hover tablesorter" id="trier">
 				<thead>
 				  <tr>
 					<th>#</th>

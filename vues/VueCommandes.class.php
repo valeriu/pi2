@@ -67,7 +67,7 @@ class VueCommandes {
 				Vous pouvez regarder le détails de la commande et aussi le cliente qui a accheté la commande.
 			</div>
 			<!-- Table pages-->
-			<table class="table table-hover">
+			<table class="table table-hover tablesorter" id="trier">
 				<thead>
 				  <tr>
 					<th>Id</th>

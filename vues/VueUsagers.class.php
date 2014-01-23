@@ -293,7 +293,7 @@ class VueUsagers {
 				Vous pouvez regarder le détails d'un usager en cliquant sur son nom.
 			</div>
 			<!-- Table pages-->
-			<table class="table table-hover">
+			<table class="table table-hover tablesorter" id="trier">
 				<thead>
 				  <tr>
 						<th>Id</th>

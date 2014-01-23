@@ -183,7 +183,7 @@ class VueCatalogue {
 				$htmlPage .= "<tr>\r\n";
 					$htmlPage .= "<td><a href=\"adminka.php?requete=details_produits&produit_id={$aDonnees[$i]["id_produits"]}&modifier=1\" title=\"Editer: {$aDonnees[$i]["nom"]}\">{$aDonnees[$i]["id_produits"]}</a></td>\r\n";
 					$htmlPage .= "<td><a href=\"adminka.php?requete=details_produits&produit_id={$aDonnees[$i]["id_produits"]}&modifier=1\" title=\"Editer: {$aDonnees[$i]["nom"]}\">{$aDonnees[$i]["nom"]}</a></td>\r\n";
-					$htmlPage .= "<td>{$aDonnees[$i]["prix"]}$</td>\r\n";
+					$htmlPage .= "<td>{$aDonnees[$i]["prix"]}</td>\r\n";
 					$htmlPage .= "<td>{$aDonnees[$i]["fournisseur"]}</td>\r\n";
 					switch ($aDonnees[$i]["statut"]) {
 						case "3": // Inactif
@@ -209,12 +209,12 @@ class VueCatalogue {
 				Vous pouvez modifier et ajouter des produits du catalogue.
 			</div>
 			<!-- Table pages-->
-			<table class="table table-hover">
+			<table class="table table-hover tablesorter" id="trier">
 				<thead>
 				  <tr>
 					<th>Id</th>
 					<th>Nom</th>
-					<th>Prix</th>
+					<th>Prix $</th>
 					<th>Fournisseur</th>
 					<th>Statut</th>
 				  </tr>
