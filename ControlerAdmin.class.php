@@ -476,6 +476,8 @@ class ControlerAdmin {
 
 			try {
 				$oProduits  = new Catalogue();
+				if($_FILES['imgUpload']['name']=="" && isset($_POST['imgProduit']))
+					$_FILES['imgUpload']['name'] = $_POST['imgProduit'];
 				$result 	= $oProduits->modifier($_POST, $_FILES['imgUpload']);
 				$aProduit 	= $oProduits->afficherProduit($produit_id);
 			} 
@@ -492,7 +494,7 @@ class ControlerAdmin {
 			$oVueAdmin->afficherFooter();
 		}
 		
-			/**
+		/**
 		 * Ajouter un produit
 		 */
 		private function ajouterProduit() {

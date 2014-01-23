@@ -145,8 +145,9 @@ class VueCatalogue {
 					    <img class="media-object" src="<?php if(!isset($_FILES['imgUpload'])) echo "img/products/".$data['imgProduit']; else echo "img/products/".$_FILES['imgUpload']['name']; ?>" alt="Apercu du produit">
 					  </a>
 					  <div class="media-body">
-					  	<label class="media-heading" for="imgProduit">Image du produit</label>
+					  	<label class="media-heading" for="imgUpload">Image du produit</label>
 					    <input type="file" id="imgUpload" name="imgUpload">
+					    <input type="hidden" id="imgProduit" name="imgProduit" value="<?php if(empty($_FILES['imgUpload']['name'])) echo $data['imgProduit']; else echo $_FILES['imgUpload']['name']; ?>">
 					  </div>
 					</div>
 					<br>

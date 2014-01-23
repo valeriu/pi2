@@ -16,7 +16,7 @@ class Catalogue {
 		if(isset($_GET['1'])) $this->aCategories['1'] = $_GET['1'];
 		if(isset($_GET['2'])) $this->aCategories['2'] = $_GET['2'];
 		if(isset($_GET['3'])) $this->aCategories['3'] = $_GET['3'];
-		$this->bd 		   = BD::getInstance();
+		$this->bd = BD::getInstance();
 
 		// $categories --> string SQL $sWhere
 		foreach ($this->aCategories as $key => $value) {
@@ -32,9 +32,7 @@ class Catalogue {
 		//var_dump($this->sWhere);
 	}
 
-	// METHODES
-
-		// afficher 1 seul produit
+	// METHODE POUR RETOURNER UN SEUL PRODUIT PAR ID
 	public function afficherProduit($id) {
 		$idbd = $this->bd->getBD();
 
@@ -44,23 +42,23 @@ class Catalogue {
 		$req->execute();
 		$aProduit = $req->fetch();
 		if(isset($aProduit['nom'])) {
-			$aProduit['nomProduit'] = $aProduit['nom'];
-			$aProduit['statutProduit'] = $aProduit['statut'];
-			$aProduit['typeProduit'] = $aProduit['type'];
-			$aProduit['prixProduit'] = $aProduit['prix'];
-			$aProduit['descProduit'] = $aProduit['description'];
-			$aProduit['specsProduit'] = $aProduit['specification'];
-			$aProduit['imgProduit'] = $aProduit['image'];
-			$aProduit['suppProduit'] = $aProduit['fournisseur'];
-			$aProduit['suppIdProduit'] = $aProduit['iditem_fournisseur'];
-			$aProduit['poidsProduit'] = $aProduit['poids'];
-			$aProduit['longProduit'] = $aProduit['taille_longueur'];
-			$aProduit['largProduit'] = $aProduit['taille_largeur'];
-			$aProduit['hautProduit'] = $aProduit['taille_hauteur'];
-			$aProduit['evalProduit'] = $aProduit['evaluation_id_evaluation'];
-			$aProduit['catIdProduit'] = $aProduit['categorie_id_categorie'];
-			$aProduit['powerProduit'] = $aProduit['puissance'];
-			$aProduit['IdProduit'] = $aProduit['id_produits'];
+			$aProduit['nomProduit'] 	= $aProduit['nom'];
+			$aProduit['statutProduit'] 	= $aProduit['statut'];
+			$aProduit['typeProduit'] 	= $aProduit['type'];
+			$aProduit['prixProduit'] 	= $aProduit['prix'];
+			$aProduit['descProduit'] 	= $aProduit['description'];
+			$aProduit['specsProduit'] 	= $aProduit['specification'];
+			$aProduit['imgProduit'] 	= $aProduit['image'];
+			$aProduit['suppProduit'] 	= $aProduit['fournisseur'];
+			$aProduit['suppIdProduit'] 	= $aProduit['iditem_fournisseur'];
+			$aProduit['poidsProduit'] 	= $aProduit['poids'];
+			$aProduit['longProduit'] 	= $aProduit['taille_longueur'];
+			$aProduit['largProduit'] 	= $aProduit['taille_largeur'];
+			$aProduit['hautProduit'] 	= $aProduit['taille_hauteur'];
+			$aProduit['evalProduit'] 	= $aProduit['evaluation_id_evaluation'];
+			$aProduit['catIdProduit'] 	= $aProduit['categorie_id_categorie'];
+			$aProduit['powerProduit'] 	= $aProduit['puissance'];
+			$aProduit['IdProduit'] 		= $aProduit['id_produits'];
 		}
 			
 
@@ -72,7 +70,7 @@ class Catalogue {
 		}
 	}
 
-	// afficher les produits
+	// METHODE POUR RETOURNER LA LISTE COMPLETE DES PRODUITS
 	public function afficherListe($mode) {
 		$idbd = $this->bd->getBD();
 		
@@ -113,6 +111,7 @@ class Catalogue {
 		}
 	}
 
+	// METHODE POUR RETOURNER LA LISTE DES PRODUITS DISPONIBLES
 	public function afficher($mode) {
 		$idbd = $this->bd->getBD();
 		
@@ -153,7 +152,7 @@ class Catalogue {
 		}
 	}
 
-		// ajouter un nouveau produit
+	//METHODE POUR AJOUTER LE PRODUIT DANS LA BD
 	public function enregistrer($aDonnees = Array(), $imgFile) {
 		$nomProduit    = (!empty($aDonnees['nomProduit']))	  ? $aDonnees['nomProduit']    	  	    : '';
 		$prixProduit   = (!empty($aDonnees['prixProduit']))   ? floatval($aDonnees['prixProduit'])  : '';
@@ -184,10 +183,10 @@ class Catalogue {
 		if(!Valider::estString($specsProduit)){
 			throw new Exception("Specifications du produit non conforme");
 		}
-		if(!Valider::estInt($statutProduit)){
+		if(!Valider::estEntreInt($statutProduit,1,3)){
 			throw new Exception("Statut produit non conforme");
 		}
-		if(!Valider::estInt($typeProduit)){
+		if(!Valider::estEntreInt($typeProduit,1,3)){
 			throw new Exception("Type produit non conforme");
 		}
 		if(!Valider::estStringValide($suppProduit)){
@@ -211,7 +210,7 @@ class Catalogue {
 		if(!Valider::estInt($evalProduit)){
 			throw new Exception("Evaluation du produit non conforme");
 		}
-		if(!Valider::estInt($catIdProduit)){
+		if(!Valider::estEntreInt($catIdProduit,1,3)){
 			throw new Exception("Categorie de produit non conforme");
 		}
 		if(!Valider::estInt($powerProduit)){
@@ -221,12 +220,7 @@ class Catalogue {
 			throw new Exception("Image du produit non conforme");
 		} else {
 			//SAUVEGARDE DE L'IMAGE DU PRODUIT SUR LE SERVEUR
-			 if (file_exists("img/products/" . $imgProduit["name"]))
-		      {
-		      move_uploaded_file($imgProduit["tmp_name"],"img/products/"."_".$imgProduit["name"]);
-		      $imgProduit["name"] = "_".$imgProduit["name"];
-		      }
-		    else
+			 if (!file_exists("img/products/" . $imgProduit["name"]))
 		      {
 		      move_uploaded_file($imgProduit["tmp_name"],"img/products/".$imgProduit["name"]);
 		      }
@@ -268,7 +262,7 @@ class Catalogue {
 
 	}
 
-		// modifier un produit
+	//METHODE POUR MODIFIER LE PRODUIT DANS LA BD
 	public function modifier($aDonnees = Array(), $imgFile) {
 		$IdProduit     = intval($aDonnees['IdProduit']);
 		$nomProduit    = (!empty($aDonnees['nomProduit']))	  ? $aDonnees['nomProduit']    	  	    : '';
@@ -303,10 +297,10 @@ class Catalogue {
 		if(!Valider::estString($specsProduit)){
 			throw new Exception("Specifications du produit non conforme");
 		}
-		if(!Valider::estInt($statutProduit)){
+		if(!Valider::estEntreInt($statutProduit,1,3)){
 			throw new Exception("Statut produit non conforme");
 		}
-		if(!Valider::estInt($typeProduit)){
+		if(!Valider::estEntreInt($typeProduit,1,3)){
 			throw new Exception("Type produit non conforme");
 		}
 		if(!Valider::estStringValide($suppProduit)){
@@ -330,7 +324,7 @@ class Catalogue {
 		if(!Valider::estInt($evalProduit)){
 			throw new Exception("Evaluation du produit non conforme");
 		}
-		if(!Valider::estInt($catIdProduit)){
+		if(!Valider::estEntreInt($catIdProduit,1,3)){
 			throw new Exception("Categorie de produit non conforme");
 		}
 		if(!Valider::estInt($powerProduit)){
@@ -339,16 +333,10 @@ class Catalogue {
 		if(!Valider::estImage($imgProduit['name'])){
 			throw new Exception("Image du produit non conforme");
 		} else {
-			 if (file_exists("img/products/" . $imgProduit["name"]))
+			//SAUVEGARDE DE L'IMAGE DU PRODUIT SUR LE SERVEUR
+			 if (!file_exists("img/products/" . $imgProduit["name"]))
 		      {
-		      move_uploaded_file($imgProduit["tmp_name"],
-		      "img/products/" . "_" . $imgProduit["name"]);
-		      $imgProduit["name"] = "_" . $imgProduit["name"];
-		      }
-		    else
-		      {
-		      move_uploaded_file($imgProduit["tmp_name"],
-		      "img/products/" . $imgProduit["name"]);
+		      move_uploaded_file($imgProduit["tmp_name"],"img/products/" . $imgProduit["name"]);
 		      }
 		}
 
@@ -403,6 +391,7 @@ class Catalogue {
 		}
 	}
 
+	//RETOURNE LE DERNIER ID DE PRODUIT CRÉÉ
 	public function dernierIdProduit() {
 		$idbd 	= $this->bd->getBD();
 		$lastID = $idbd->lastInsertId();

@@ -175,6 +175,7 @@ class Controler {
 			}
 		}
 		
+		// CONTROLEUR CLIENT DES PRODUITS
 		private function produits() {
 			if(empty($_GET['mode']))
 				//default : tous les produits
