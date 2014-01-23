@@ -187,7 +187,7 @@ class Vue {
 	?>	
 		<script type="text/javascript">
 			localStorage.clear();
-		</script>>
+		</script>
 	<?php
 	}
 
