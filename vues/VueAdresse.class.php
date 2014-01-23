@@ -194,7 +194,7 @@ class VueAdresse {
 											?>
 												<article class="col-lg-3 col-sm-3">
 													<p><?php echo $data[$i]['rue']; ?> <?php echo "App.".$data[$i]['appartement']; ?></p>
-													<p><?php echo $data[$i]['ville']; ?>, <?php echo $data[$i]['province']; ?> &nbsp;<?php echo $data[$i]['code_postal']; ?></p>
+													<p><?php echo $data[$i]['ville']; ?>, <?php echo strtoupper($data[$i]['province']); ?> &nbsp;<?php echo $data[$i]['code_postal']; ?></p>
 													<div class="input-group">
 														<label for="<?php echo $data[$i]['id_adresse']; ?>" class="form-control">Addresse <?php echo $i+1; ?></label> 
 														<span class="input-group-addon">
