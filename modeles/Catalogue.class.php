@@ -184,19 +184,6 @@ class Catalogue {
 		if(!Valider::estString($specsProduit)){
 			throw new Exception("Specifications du produit non conforme");
 		}
-		if(!Valider::estImage($imgProduit['name'])){
-			throw new Exception("Image du produit non conforme");
-		} else {
-			 if (file_exists("img/products/" . $imgProduit["name"]))
-		      {
-		      move_uploaded_file($imgProduit["tmp_name"],"img/products/"."_".$imgProduit["name"]);
-		      $imgProduit["name"] = "_".$imgProduit["name"];
-		      }
-		    else
-		      {
-		      move_uploaded_file($imgProduit["tmp_name"],"img/products/".$imgProduit["name"]);
-		      }
-		}
 		if(!Valider::estInt($statutProduit)){
 			throw new Exception("Statut produit non conforme");
 		}
@@ -229,6 +216,20 @@ class Catalogue {
 		}
 		if(!Valider::estInt($powerProduit)){
 			throw new Exception("Puissance du produit non conforme");
+		}
+		if(!Valider::estImage($imgProduit['name'])){
+			throw new Exception("Image du produit non conforme");
+		} else {
+			//SAUVEGARDE DE L'IMAGE DU PRODUIT SUR LE SERVEUR
+			 if (file_exists("img/products/" . $imgProduit["name"]))
+		      {
+		      move_uploaded_file($imgProduit["tmp_name"],"img/products/"."_".$imgProduit["name"]);
+		      $imgProduit["name"] = "_".$imgProduit["name"];
+		      }
+		    else
+		      {
+		      move_uploaded_file($imgProduit["tmp_name"],"img/products/".$imgProduit["name"]);
+		      }
 		}
 
 		$idbd = $this->bd->getBD();
@@ -302,21 +303,6 @@ class Catalogue {
 		if(!Valider::estString($specsProduit)){
 			throw new Exception("Specifications du produit non conforme");
 		}
-		if(!Valider::estImage($imgProduit['name'])){
-			throw new Exception("Image du produit non conforme");
-		} else {
-			 if (file_exists("img/products/" . $imgProduit["name"]))
-		      {
-		      move_uploaded_file($imgProduit["tmp_name"],
-		      "img/products/" . "_" . $imgProduit["name"]);
-		      $imgProduit["name"] = "_" . $imgProduit["name"];
-		      }
-		    else
-		      {
-		      move_uploaded_file($imgProduit["tmp_name"],
-		      "img/products/" . $imgProduit["name"]);
-		      }
-		}
 		if(!Valider::estInt($statutProduit)){
 			throw new Exception("Statut produit non conforme");
 		}
@@ -349,6 +335,21 @@ class Catalogue {
 		}
 		if(!Valider::estInt($powerProduit)){
 			throw new Exception("Puissance du produit non conforme");
+		}
+		if(!Valider::estImage($imgProduit['name'])){
+			throw new Exception("Image du produit non conforme");
+		} else {
+			 if (file_exists("img/products/" . $imgProduit["name"]))
+		      {
+		      move_uploaded_file($imgProduit["tmp_name"],
+		      "img/products/" . "_" . $imgProduit["name"]);
+		      $imgProduit["name"] = "_" . $imgProduit["name"];
+		      }
+		    else
+		      {
+		      move_uploaded_file($imgProduit["tmp_name"],
+		      "img/products/" . $imgProduit["name"]);
+		      }
 		}
 
 		$idbd = $this->bd->getBD();

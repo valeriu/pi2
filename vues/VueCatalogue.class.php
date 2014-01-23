@@ -9,6 +9,7 @@
 
 class VueCatalogue { 
 
+	//VUE POUR MODIFIER UN PRODUIT DANS L'ADMIN
 	public function modifierProduitAdmin($data,$result) {
 		if(isset($_POST['modifierProduit'])) {
 			$data = $_POST;
@@ -162,6 +163,7 @@ class VueCatalogue {
 
 	}
 
+	//VUE POUR CONSULTER LA LISTE DES PRODUITS DANS L'ADMIN
 	public function afficherListAdmin($aDonnees, $aDonneesPaginator, $partir, $fin) {
 		
 			$nbProduits = count($aDonnees);
@@ -228,6 +230,7 @@ class VueCatalogue {
 			
 	}
 
+	//VUE PRINCIPAL DU CATALOGUE COTÉ CLIENT
 	public function afficherCatalogue($aProduits) {
 		$aCategories 	 = array(1=>"Panneaux solaires",2=>"Kits Solaires",3=>"Lampes DEL");
 		$checkCategories = 0;
