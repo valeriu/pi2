@@ -41,8 +41,8 @@
 
 // PAYPAL API credentials
 	define("PAYPAL", 'wadagbe.solar@gmail.com');
-	define("PAYPAL_SUCCES", 1);
-	define("PAYPAL_ECHEC", 2);
+	define("PAYPAL_SUCCES", 211);
+	define("PAYPAL_ECHEC", 212);
 	define("PAYPAL_API_USERNAME",  "b_api1.w.ca");
 	define("PAYPAL_API_PASSWORD", "1390266218");
 	define("PAYPAL_API_SIGNATURE", "AfEXsgrsMbCGLpPhIaBqYTCol0BcA3sgydsqful8E7ucPMlnTH0nVxue");
