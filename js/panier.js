@@ -95,58 +95,10 @@ var Panier = (function () {
 
     }
 
-    // Fonction qui enregistre la commande dans la base de données
-    var _passerCommande =  function(id){
-        try{
-            var courriel = $("input[name='courriel']").val();
-
-            if(id != "" && courriel != ""){ // Vérification de Champs
-                var produit = [];
-                for (var i = 0; i < localStorage.length; i++){
-                    produit[i] = JSON.parse(localStorage.getItem(localStorage.key(i)));
-                }
-                // Source : http://stackoverflow.com/questions/9001526/send-array-with-ajax-to-php-script
-                var jsonString = JSON.stringify(produit);
-                $.ajax({
-                    type: "POST",
-                    url: "ajaxControler.php?requete=confirmation_adresse",
-                    data: {
-                        nb_produit : localStorage.length,
-                        email : courriel,
-                        id_adresse : id,
-                        data : jsonString
-                    },
-                    cache: false,
-                    success: function(info){
-                        $('#ShippingAddress').html(info);
-                        //if(info == 1){ // Vérification de la réponse AJAX TRUE
-                            //$('#ShippingAddress').remove();                        
-                            //localStorage.clear();
-                        /*}else{
-                            $('#myModal').modal('hide');
-                            $('#panier').remove();
-                            $('#pasEnregistre').show();
-
-                        }*/
-                    },
-                    error: function(error){
-                        console.log("Error:", error);
-                        $('#msgError').show();
-                    }
-                });
-            }else{
-              $('#champsVides').show();
-            }
-        }catch(e){
-            $('#msgError').show(); // Affichage d'error
-        }
-    }
-
     return {
         creerPanier : _creerPanier,
         totalProduitsPanier : _totalProduitsPanier,
-        totalPrix : _totalPrix,
-        passerCommande : _passerCommande
+        totalPrix : _totalPrix
     };
 
 }());

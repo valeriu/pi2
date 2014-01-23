@@ -23,10 +23,48 @@ class VueAdresse {
 					var idTarget = e.target.id;
 					$('#confirmationAdresses').removeAttr('disabled');
 					$('#confirmationAdresses').on('click', function(){
-		               Panier.passerCommande(idTarget);
+		               passerCommande(idTarget);
 		            });
 
 				});
+
+				// Fonction qui enregistre la commande dans la base de données
+			    function passerCommande(id) {
+			        try{
+			            var courriel = $("input[name='courriel']").val();
+
+			            if(id != "" && courriel != ""){ // Vérification de Champs
+			                var produit = [];
+			                for (var i = 0; i < localStorage.length; i++){
+			                    produit[i] = JSON.parse(localStorage.getItem(localStorage.key(i)));
+			                }
+			                // Source : http://stackoverflow.com/questions/9001526/send-array-with-ajax-to-php-script
+			                var jsonString = JSON.stringify(produit);
+			                $.ajax({
+			                    type: "POST",
+			                    url: "ajaxControler.php?requete=confirmation_adresse",
+			                    data: {
+			                        nb_produit : localStorage.length,
+			                        email : courriel,
+			                        id_adresse : id,
+			                        data : jsonString
+			                    },
+			                    cache: false,
+			                    success: function(info){
+			                        $('#ShippingAddress').html(info);
+			                    },
+			                    error: function(error){
+			                        $('#msgError').show();
+			                    }
+			                });
+			            }else{
+			              $('#champsVides').show();
+			            }
+			        }catch(e){
+			            $('#msgError').show(); // Affichage d'error
+			        }
+			    }
+
 				//Pour la province
 				$('input[name="choixProvince"]').on('change', function(){
 					$('#province').val(this.id);
@@ -101,7 +139,6 @@ class VueAdresse {
 					}
 				});
 				//Suppression d'adresse
-				console.log($('[name="supprimer"]'));
 				
 				$('[name="supprimer"]').on("click", function(e){
 					console.log(e);

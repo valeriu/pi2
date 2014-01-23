@@ -94,7 +94,6 @@ class Vue {
 				<script src="js/vendor/movieclip-0.6.0.min.js"></script>
 				<script src="js/holder.js"></script>
 				<script src="js/main.js"></script>
-				<script src="js/panier.js"></script>
 				<script src="js/catalogue.js"></script>
 				<script src="js/animated_logo.js"></script>
 			</body>

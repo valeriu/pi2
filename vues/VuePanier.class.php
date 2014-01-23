@@ -17,6 +17,7 @@ class VuePanier {
 	public function affichePanier() {
 
 		?>
+		<script src="js/panier.js"></script>
 		<script>
 			window.addEventListener('load', function () {
 				Panier.creerPanier();	
@@ -117,7 +118,7 @@ class VuePanier {
 				<div class="alert alert-danger">
 					<p>Votre panier est vide.</p>
 				</div>
-				<a href="./index.php"><button name="retourner" id="back" class="btn btn-lg btn-primary" type="button">Retour au catalogue</button></a>
+				<a href="./index.php?requete=produits"><button name="retourner" id="back" class="btn btn-lg btn-primary" type="button">Retour au catalogue</button></a>
 			</div>
 			<div id="msgError"><!-- Message d'error de réponse ou autre -->
 				<div class="alert alert-danger">
@@ -161,7 +162,7 @@ class VuePanier {
 					$htmlProduits = '';
 					for ($i = 0; $i < $aDonnes['nb_produit']; $i++){
 						//$infoCommande[$i]->prix
-						$htmlProduits .= '<article id="'.$aDonnes['info_commande'][$i]->idP.'" class="row"><div class="col-sm-12"><div class="col-sm-2"><a href="#" class="thumbnail"><img class="img-responsive" src="'.$aDonnes['info_commande'][$i]->image.'" alt="'.$aDonnes['info_commande'][$i]->nom.'"></a></div><div class="col-sm-5"><p>'.$aDonnes['info_commande'][$i]->nom.'</p></div><div class="col-sm-2"><p><span class="prix">'.$aDonnes['info_commande'][$i]->prix.'</span><span> $CAD</span></p></div><div class="col-sm-1"><p>'.$aDonnes['info_commande'][$i]->quant.'</p></div><div class="col-sm-2 text-center"><p><span class="total">'.round($aDonnes['info_commande'][$i]->prix * $aDonnes['info_commande'][$i]->quant, 2).'</span><span> $CAD</span></p></div></div></article>';
+						$htmlProduits .= '<article id="'.$aDonnes['info_commande'][$i]->idP.'" class="row"><div class="col-sm-12"><div class="col-sm-2"><a href="#" class="thumbnail"><img class="img-responsive" src="'.$aDonnes['info_commande'][$i]->image.'" alt="'.$aDonnes['info_commande'][$i]->nom.'"></a></div><div class="col-sm-5"><p>'.$aDonnes['info_commande'][$i]->nom.'</p></div><div class="col-sm-2"><p><span class="prix">'.$aDonnes['info_commande'][$i]->prix.'</span><span> $CAD</span></p></div><div class="col-sm-1"><p>'.$aDonnes['info_commande'][$i]->quant.'</p></div><div class="col-sm-2 text-center"><p><span class="total">'.number_format($aDonnes['info_commande'][$i]->prix * $aDonnes['info_commande'][$i]->quant, 2).'</span><span> $CAD</span></p></div></div></article>';
            			}
            			echo $htmlProduits;
 					?>				    	
@@ -173,7 +174,7 @@ class VuePanier {
 									<p><strong>Prix</strong></p>
 								</div>
 								<div class="col-lg-2 col-md-3 col-sm-3">
-									<p><strong><?= $aDonnes['total_commande'] ?> $CAD</strong></p>
+									<p><strong><?= number_format($aDonnes['total_commande'], 2) ?> $CAD</strong></p>
 								</div>
 							</div>
 						</article>
@@ -183,7 +184,7 @@ class VuePanier {
 									<p><strong>Taxes</strong></p>
 								</div>
 								<div class="col-lg-2 col-md-3 col-sm-3">
-									<p><strong><?= $aDonnes['taxes'] ?> $CAD</strong></p>
+									<p><strong><?= number_format($aDonnes['taxes'], 2) ?> $CAD</strong></p>
 								</div>
 							</div>
 						</article>
@@ -207,7 +208,8 @@ class VuePanier {
 						  	</div>
 						  	<div class="panel-body">
 								<p><?= $aDonnes['adresse']['rue'] ?>&nbsp;<?= "App.".$aDonnes['adresse']['appartement'] ?></p>
-								<p><?= $aDonnes['adresse']['ville'] ?>,&nbsp;<?= $aDonnes['adresse']['province'] ?>&nbsp;&nbsp;<?= $aDonnes['adresse']['code_postal'] ?></p>
+								<p><?= $aDonnes['adresse']['ville'] ?>,&nbsp;<?= $aDonnes['adresse']['province'] ?>&nbsp;&nbsp;<?= $aDonnes['adresse']['code_postal'] ?>
+								<a href="./index.php?requete=adresseCommande"><button type="button" class="btn btn-sm btn-default pull-right" id="back" name="retourner">Changer l'adresse</button></a></p>
 					  		</div>
 						</div>
 				  	</div><!-- /.col-lg-6 -->
@@ -215,7 +217,7 @@ class VuePanier {
 				<a href="./index.php?requete=panier"><button name="retourner" id="back" class="btn btn-lg btn-primary" type="button">Retour au panier</button></a>
 				<form class="passerCommande" action="index.php?requete=payer" method="post">
 					<?php $_SESSION['commandePaypal'] = $aDonnes; ?>
-					<button id="confirmerPayment" class="btn btn-lg btn-primary" >Payer</button>
+					<button id="confirmerPayment" class="btn btn-lg btn-primary" >Payer avec PayPal</button>
 				</form>
 			</div>
 	<?php
