@@ -264,9 +264,9 @@ class VuePages {
 			
 			for ($i=$partir, $j=$fin; $i<$j; $i++){
 				$htmlPage .= "<tr>\r\n";
-					$htmlPage .= "<td><a href=\"index.php?requete=page&page_id={$aDonneesPages[$i]["id_page"]}\" target=\"_blank\" title=\"Preview - {$aDonneesPages[$i]["titre"]}\">{$aDonneesPages[$i]["id_page"]}</a></td>\r\n";
+					$htmlPage .= "<td><a href=\"adminka.php?requete=page_modifier&page_id={$aDonneesPages[$i]["id_page"]}\" title=\"Edit: {$aDonneesPages[$i]["titre"]}\">{$aDonneesPages[$i]["id_page"]}</a></td>\r\n";
 					$titre = (!empty($aDonneesPages[$i]["titre"])) ? $aDonneesPages[$i]["titre"] : "Sans titre";
-					$htmlPage .= "<td><a href=\"adminka.php?requete=page_modifier&page_id={$aDonneesPages[$i]["id_page"]}\" title=\"Edit: {$aDonneesPages[$i]["titre"]}\">{$titre}</a></td>\r\n";
+					$htmlPage .= "<td>{$titre}</td>\r\n";
 					$dateFormatLisible = date("l, d F Y",strtotime($aDonneesPages[$i]["date_modif"]));
 					$heureFormatLisible = date("H:i:s",strtotime($aDonneesPages[$i]["date_modif"]));
 					$htmlPage .= "<td><abbr title=\"{$heureFormatLisible}\">{$dateFormatLisible}</abbr></td>";
