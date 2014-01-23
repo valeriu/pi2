@@ -476,7 +476,7 @@ class ControlerAdmin {
 
 			try {
 				$oProduits  = new Catalogue();
-				$result 	= $oProduits->modifier($_POST);
+				$result 	= $oProduits->modifier($_POST, $_FILES['imgUpload']);
 				$aProduit 	= $oProduits->afficherProduit($produit_id);
 			} 
 			catch(Exception $e) {
@@ -500,7 +500,7 @@ class ControlerAdmin {
 			if(isset($_POST['modifierProduit'])) {
 				try {
 					$oProduits  = new Catalogue();
-					$result 	= $oProduits->enregistrer($_POST);
+					$result 	= $oProduits->enregistrer($_POST, $_FILES['imgUpload']);
 					$produit_id = intval($oProduits->dernierIdProduit());
 					$aProduit 	= $oProduits->afficherProduit($produit_id);
 				} 

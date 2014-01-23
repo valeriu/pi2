@@ -154,12 +154,12 @@ class Catalogue {
 	}
 
 		// ajouter un nouveau produit
-	public function enregistrer($aDonnees = Array()) {
+	public function enregistrer($aDonnees = Array(), $imgFile) {
 		$nomProduit    = (!empty($aDonnees['nomProduit']))	  ? $aDonnees['nomProduit']    	  	    : '';
 		$prixProduit   = (!empty($aDonnees['prixProduit']))   ? floatval($aDonnees['prixProduit'])  : '';
 		$descProduit   = (!empty($aDonnees['descProduit']))   ? $aDonnees['descProduit']   	  	    : '';
 		$specsProduit  = (!empty($aDonnees['specsProduit']))  ? $aDonnees['specsProduit']  	  	    : '';
-		$imgProduit    = (!empty($aDonnees['imgProduit'])) 	  ? $aDonnees['imgProduit']    	  	    : '';
+		$imgProduit    = (!empty($imgFile)) 	  			  ? $imgFile    	  	     			: '';
 		$statutProduit = intval($aDonnees['statutProduit']);
 		$typeProduit   = intval($aDonnees['typeProduit']);
 		$suppProduit   = (!empty($aDonnees['suppProduit']))   ? $aDonnees['suppProduit']  	  	    : '';
@@ -184,8 +184,18 @@ class Catalogue {
 		if(!Valider::estString($specsProduit)){
 			throw new Exception("Specifications du produit non conforme");
 		}
-		if(!Valider::estImage($imgProduit)){
+		if(!Valider::estImage($imgProduit['name'])){
 			throw new Exception("Image du produit non conforme");
+		} else {
+			 if (file_exists("img/products/" . $imgProduit["name"]))
+		      {
+		      move_uploaded_file($imgProduit["tmp_name"],"img/products/"."_".$imgProduit["name"]);
+		      $imgProduit["name"] = "_".$imgProduit["name"];
+		      }
+		    else
+		      {
+		      move_uploaded_file($imgProduit["tmp_name"],"img/products/".$imgProduit["name"]);
+		      }
 		}
 		if(!Valider::estInt($statutProduit)){
 			throw new Exception("Statut produit non conforme");
@@ -232,7 +242,7 @@ class Catalogue {
         $req->bindParam(2, $prixProduit);
         $req->bindParam(3, $descProduit);
         $req->bindParam(4, $specsProduit);
-        $req->bindParam(5, $imgProduit);
+        $req->bindParam(5, $imgProduit['name']);
         $req->bindParam(6, $statutProduit);
         $req->bindParam(7, $typeProduit);
         $req->bindParam(8, $suppProduit);
@@ -258,13 +268,13 @@ class Catalogue {
 	}
 
 		// modifier un produit
-	public function modifier($aDonnees = Array()) {
+	public function modifier($aDonnees = Array(), $imgFile) {
 		$IdProduit     = intval($aDonnees['IdProduit']);
 		$nomProduit    = (!empty($aDonnees['nomProduit']))	  ? $aDonnees['nomProduit']    	  	    : '';
 		$prixProduit   = (!empty($aDonnees['prixProduit']))   ? floatval($aDonnees['prixProduit'])  : '';
 		$descProduit   = (!empty($aDonnees['descProduit']))   ? $aDonnees['descProduit']   	  	    : '';
 		$specsProduit  = (!empty($aDonnees['specsProduit']))  ? $aDonnees['specsProduit']  	  	    : '';
-		$imgProduit    = (!empty($aDonnees['imgProduit'])) 	  ? $aDonnees['imgProduit']    	  	    : '';
+		$imgProduit    = (!empty($imgFile)) 	  			  ? $imgFile    	  	     			: '';
 		$statutProduit = intval($aDonnees['statutProduit']);
 		$typeProduit   = intval($aDonnees['typeProduit']);
 		$suppProduit   = (!empty($aDonnees['suppProduit']))   ? $aDonnees['suppProduit']  	  	    : '';
@@ -292,8 +302,20 @@ class Catalogue {
 		if(!Valider::estString($specsProduit)){
 			throw new Exception("Specifications du produit non conforme");
 		}
-		if(!Valider::estImage($imgProduit)){
+		if(!Valider::estImage($imgProduit['name'])){
 			throw new Exception("Image du produit non conforme");
+		} else {
+			 if (file_exists("img/products/" . $imgProduit["name"]))
+		      {
+		      move_uploaded_file($imgProduit["tmp_name"],
+		      "img/products/" . "_" . $imgProduit["name"]);
+		      $imgProduit["name"] = "_" . $imgProduit["name"];
+		      }
+		    else
+		      {
+		      move_uploaded_file($imgProduit["tmp_name"],
+		      "img/products/" . $imgProduit["name"]);
+		      }
 		}
 		if(!Valider::estInt($statutProduit)){
 			throw new Exception("Statut produit non conforme");
@@ -355,7 +377,7 @@ class Catalogue {
         $req->bindParam(2, $prixProduit);
         $req->bindParam(3, $descProduit);
         $req->bindParam(4, $specsProduit);
-        $req->bindParam(5, $imgProduit);
+        $req->bindParam(5, $imgProduit['name']);
         $req->bindParam(6, $statutProduit);
         $req->bindParam(7, $typeProduit);
         $req->bindParam(8, $suppProduit);

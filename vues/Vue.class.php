@@ -158,19 +158,19 @@ class Vue {
                         <!-- Trois colonnes de texte en dessous du carrousel -->
                         <div class="row">
                                 <div class="col-lg-4 col-md-4">
-                                  <img class="img-thumbnail" src="img/produit_promo.jpg" alt="Generic placeholder image">
+                                  <img class="img-thumbnail" src="img/produit_promo.jpg" alt="Panneaux solaires">
                                   <h2>Panneaux solaires</h2>
                                   <p></p>
                                   <p><a class="btn btn-default" href="index.php?requete=produits&mode=tous&1=true&2=false&3=false" role="button">Voir &raquo;</a></p>
                                 </div><!-- /.col-lg-4 -->
                                 <div class="col-lg-4 col-md-4">
-                                  <img class="img-thumbnail" src="img/LED_lamp.jpg" alt="Generic placeholder image">
+                                  <img class="img-thumbnail" src="img/LED_lamp.jpg" alt="Lampes DEL">
                                   <h2>Lampes DEL</h2>
                                   <p></p>
                                   <p><a class="btn btn-default" href="index.php?requete=produits&mode=tous&1=false&2=false&3=true" role="button">Voir &raquo;</a></p>
                                 </div><!-- /.col-lg-4 -->
                                 <div class="col-lg-4 col-md-4">
-                                  <img class="img-thumbnail" src="img/solar_kit.jpg" alt="Generic placeholder image">
+                                  <img class="img-thumbnail" src="img/solar_kit.jpg" alt="Ensembles">
                                   <h2>Ensembles</h2>
                                   <p></p>
                                   <p><a class="btn btn-default" href="index.php?requete=produits&mode=tous&1=false&2=true&3=false" role="button">Voir &raquo;</a></p>

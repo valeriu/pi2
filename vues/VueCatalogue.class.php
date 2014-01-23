@@ -34,7 +34,7 @@ class VueCatalogue {
 ?>
 
 				<!-- Form Edit pages-->
-				<form role="form" method="POST" action="./adminka.php?requete=<?php if(isset($_GET['modifier'])) echo "modifier"; else echo "ajouter"; ?>_produit&produit_id=<?php if(isset($data)) echo $data["IdProduit"]; ?>&modifier=1">
+				<form role="form" method="POST" action="./adminka.php?requete=<?php if(isset($_GET['modifier'])) echo "modifier"; else echo "ajouter"; ?>_produit&produit_id=<?php if(isset($data)) echo $data["IdProduit"]; ?>&modifier=1" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="product-title">Nom du produit</label>
 						<input required type="text" class="form-control" id="nomProduit" name="nomProduit" placeholder="Titre du produit" value="<?php if(isset($data['nomProduit'])) echo $data['nomProduit']; ?>">
@@ -139,9 +139,15 @@ class VueCatalogue {
 					</div>
 					<input required type="hidden" id="evalProduit" name="evalProduit" value="<?php if(isset($data['evalProduit'])) echo $data['evalProduit']; else echo "3";?>">
 					<input required type="hidden" id="IdProduit" name="IdProduit" value="<?php if(isset($data['IdProduit'])) echo $data['IdProduit']; ?>">
-					<label for="imgProduit">Image du produit</label>
-					<input type="file" id="imgProduit" name="imgUpload">
-					<input type="hidden" name="imgProduit" value="<?php if(isset($data['imgProduit'])) echo $data['imgProduit']; else echo "25000.jpg"; ?>">
+					<div class="media">
+					  <a class="pull-left" href="#">
+					    <img class="media-object" src="<?php if(!isset($_FILES['imgUpload'])) echo "img/products/".$data['imgProduit']; else echo "img/products/".$_FILES['imgUpload']['name']; ?>" alt="Apercu du produit">
+					  </a>
+					  <div class="media-body">
+					  	<label class="media-heading" for="imgProduit">Image du produit</label>
+					    <input type="file" id="imgUpload" name="imgUpload">
+					  </div>
+					</div>
 					<br>
 					<div class="form-group">
 						<button id="modifierProduit" name="modifierProduit" type="submit" class="btn btn-primary" data-loading-text="Sauvegarde...">Soumettre</button>
