@@ -123,7 +123,7 @@ abstract class Valider {
 	 *  @return boolean
 	 */
 	public function estEntreInt($valeur, $nb1, $nb2){
-		if(!($nb1 >= $valeur) && ($valeur <= $nb2))
+		if(($nb1 <= $valeur) && ($valeur <= $nb2))
 			return TRUE;
 		return FALSE;
 	}

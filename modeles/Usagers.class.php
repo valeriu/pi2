@@ -22,7 +22,7 @@ class Usagers {
 		$courriel 		= (!empty($aDonnees['courriel'])) ? $aDonnees['courriel'] : '';
 		$mot_passe 		= (!empty($aDonnees['mot_passe'])) ? $aDonnees['mot_passe'] : '';
 		$nom_prenom 	= (!empty($aDonnees['nom_prenom'])) ? $aDonnees['nom_prenom'] : '';
-		$role 				= (!empty($aDonnees['role'])) ? $aDonnees['role'] : 0;
+		$role 				= (!empty($aDonnees['role'])) ? intval($aDonnees['role']) : 0;
 		//var_dump($_POST);
 	
 		//Courriel
@@ -50,6 +50,12 @@ class Usagers {
 			throw new Exception("Entrez votre nom et prénom");
 		}
 		$nom_prenom	= trim(strip_tags($nom_prenom));
+		
+		//Role
+		if(Valider::estEntreInt($role, 0, 2)){
+			throw new Exception("Entrez un nombre valide pour le rôle (0, 1 ou 2)");
+		}
+		$role	= trim(strip_tags($role));
 		
 		
 		
@@ -182,8 +188,8 @@ class Usagers {
 		$courriel 				= (!empty($aDonnees['courriel'])) ? $aDonnees['courriel'] : '';
 		$nom_prenom 			= (!empty($aDonnees['nom_prenom'])) ? $aDonnees['nom_prenom'] : '';
 		$date_entree 			= date("Y-m-d H:i:s");
-		$role 						= (!empty($aDonnees['role'])) ? (int)$aDonnees['role'] : 0;
-		$statut 					= (!empty($aDonnees['statut'])) ? (int)$aDonnees['statut'] : 1;
+		$role 						= (!empty($aDonnees['role'])) ? intval($aDonnees['role']) : 0;
+		$statut 					= (!empty($aDonnees['statut'])) ? intval($aDonnees['statut']) : 1;
 		
 		//ID
 		if(!Valider::estInt((int)$id_utilisateurs)){
@@ -202,6 +208,17 @@ class Usagers {
 		}
 		$nom_prenom	= trim(strip_tags($nom_prenom));
 		
+		//Role
+		if(!Valider::estEntreInt($role, 0, 2)){
+			throw new Exception("Entrez un nombre valide pour le rôle (0, 1 ou 2)");
+		}
+		$role	= trim(strip_tags($role));
+		
+		//Statut
+		if(!Valider::estEntreInt($statut, 1, 2)){
+			throw new Exception("Entrez un nombre valide pour le rôle (0, 1 ou 2)");
+		}
+		$statut	= trim(strip_tags($statut));
 		
 		$idbd = $this->bd->getBD();
 		//Préparation de la requête
