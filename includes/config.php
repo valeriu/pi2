@@ -48,8 +48,8 @@
 	define("PAYPAL_API_SIGNATURE", "AfEXsgrsMbCGLpPhIaBqYTCol0BcA3sgydsqful8E7ucPMlnTH0nVxue");
 	define("PAYPAL_HOST",  "api-3t.sandbox.paypal.com");
 	define("PAYPAL_GATE", "https://www.sandbox.paypal.com/cgi-bin/webscr?");
-	define("PAYPAL_PAGE_RETURN", "http://e1295805.webdev.cmaisonneuve.qc.ca/Projet_Luis/index.php?requete=ipn");
-	define("PAYPAL_PAGE_CANCEL", "http://e1295805.webdev.cmaisonneuve.qc.ca/Projet_Luis/index.php?requete=page&page_id=210");
+	define("PAYPAL_PAGE_RETURN", "http://e1295805.webdev.cmaisonneuve.qc.ca/finale/index.php?requete=ipn");
+	define("PAYPAL_PAGE_CANCEL", "http://e1295805.webdev.cmaisonneuve.qc.ca/finale/index.php?requete=page&page_id=210");
 
 	
 	

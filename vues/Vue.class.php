@@ -39,7 +39,6 @@ class Vue {
 				<!-- Custom styles for this template -->
 				<link href="css/carousel.css" rel="stylesheet">
 				<link href="css/main.css" rel="stylesheet">
-				<link href="css/panier.css" rel="stylesheet">
 				<!-- GOOGLE FONTS -->
 				<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 				<script src="js/vendor/jquery-1.10.2.min.js"></script>
