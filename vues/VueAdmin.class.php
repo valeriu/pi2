@@ -137,7 +137,7 @@ class VueAdmin {
 	 * @param type $textarea
 	 */
 	public function tinymce($textarea) { ?>
-		<script type="text/javascript" src="tinymce/tinymce.min.js"></script>
+		<script type="text/javascript" src="js/tinymce/tinymce.min.js"></script>
 		<script type="text/javascript">
 		tinymce.init({
 			mode : "exact",
