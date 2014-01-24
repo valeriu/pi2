@@ -10,28 +10,6 @@
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
-
--- --------------------------------------------------------
-
---
--- Structure de la table `commandes`
---
-
-DROP TABLE IF EXISTS `commandes`;
-CREATE TABLE IF NOT EXISTS `commandes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(250) NOT NULL,
-  `commande` varchar(1500) DEFAULT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
-
-
 --
 -- Structure de la table `wa_adresse`
 --
@@ -184,23 +162,6 @@ INSERT INTO `wa_commandes` (`id_commandes`, `statut`, `commentaires`, `adresse_u
 (6, 0, NULL, 6, '2014-01-23 11:10:38', 267, '237.30', 'EC-9NY720140D319722Y');
 
 -- --------------------------------------------------------
-
---
--- Structure de la table `wa_evaluation`
---
-
-DROP TABLE IF EXISTS `wa_evaluation`;
-CREATE TABLE IF NOT EXISTS `wa_evaluation` (
-  `id_evaluation` int(11) NOT NULL AUTO_INCREMENT,
-  `votes` int(11) DEFAULT '0',
-  `evaluation_total` int(11) DEFAULT '0',
-  PRIMARY KEY (`id_evaluation`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Contenu de la table `wa_evaluation`
---
-
 
 -- --------------------------------------------------------
 
